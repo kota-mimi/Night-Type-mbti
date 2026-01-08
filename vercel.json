@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "src/app/**/*.tsx": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "routes": [
+    {
+      "src": "/quiz/([^/]+)",
+      "dest": "/quiz/[id]"
+    }
+  ]
+}
