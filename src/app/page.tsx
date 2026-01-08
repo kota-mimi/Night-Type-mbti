@@ -48,14 +48,25 @@ export default function Home() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
+          className="space-y-4"
         >
           <Link href="/quiz/1">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#2196F3] hover:bg-[#1976D2] text-white font-bold py-4 px-12 rounded-full text-lg md:text-xl shadow-lg transition-all duration-300 min-w-[300px]"
+              className="bg-[#2196F3] hover:bg-[#1976D2] text-white font-bold py-4 px-12 rounded-full text-lg md:text-xl shadow-lg transition-all duration-300 min-w-[300px] block"
             >
               診断を始める
+            </motion.button>
+          </Link>
+          
+          <Link href="/gallery">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-[#2196F3] font-bold py-3 px-8 rounded-full text-base md:text-lg shadow-lg transition-all duration-300 border-2 border-[#2196F3]"
+            >
+              全16タイプを見る
             </motion.button>
           </Link>
         </motion.div>
