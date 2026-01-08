@@ -122,41 +122,35 @@ export default function ResultPage() {
              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%)
            `
          }}>
-      <div className="container mx-auto px-4 py-8 max-w-2xl">
+      <div className="container mx-auto px-4 py-6 max-w-sm sm:max-w-md md:max-w-2xl sm:py-8">
         
-        {/* キャラクターカード画像 */}
+        {/* 統合されたメインカード */}
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="mb-8 flex justify-center"
-        >
-          {!imageError ? (
-            <Image
-              src={`/characters/${userType}_new3.png`}
-              alt={`${typeData.name}のキャラクター`}
-              width={640}
-              height={760}
-              className="w-80 h-auto max-w-full drop-shadow-2xl rounded-2xl md:w-96"
-              quality={95}
-              onError={() => setImageError(true)}
-              priority
-            />
-          ) : (
-            <div className="text-8xl drop-shadow-2xl">{typeData.emoji}</div>
-          )}
-        </motion.div>
-
-        {/* メインコンテンツカード */}
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
           className="bg-white rounded-3xl shadow-2xl overflow-hidden"
         >
+          {/* キャラクター画像 */}
+          <div className="flex justify-center pt-8 pb-4">
+            {!imageError ? (
+              <Image
+                src={`/characters/${userType}_new3.png`}
+                alt={`${typeData.name}のキャラクター`}
+                width={640}
+                height={760}
+                className="w-64 h-auto max-w-full drop-shadow-xl rounded-2xl sm:w-72 md:w-80"
+                quality={95}
+                onError={() => setImageError(true)}
+                priority
+              />
+            ) : (
+              <div className="text-6xl drop-shadow-xl sm:text-7xl md:text-8xl">{typeData.emoji}</div>
+            )}
+          </div>
 
           {/* カードボディ */}
-          <div className="p-8 space-y-8">
+          <div className="px-4 py-6 space-y-6 sm:px-6 sm:py-8 sm:space-y-8 md:px-8">
             
             {/* キャッチコピー */}
             <motion.div
