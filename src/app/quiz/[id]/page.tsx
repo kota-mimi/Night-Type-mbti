@@ -176,29 +176,30 @@ export default function QuizPage() {
             <div className="bg-white border border-gray-200 rounded-xl p-8 space-y-8">
               {questionGroup.map((question, index) => (
                 <div key={question.id} id={`question-${question.id}`} className="space-y-4 scroll-mt-20">
-                  <h3 className="text-base md:text-lg font-medium text-[#333333] text-center leading-relaxed">
+                  <h3 className="text-base md:text-lg font-medium text-[#333333] text-left leading-relaxed">
                     {question.text}
                   </h3>
 
                   {/* 4段階スケール - モバイル最適化版 */}
                   <div className="w-full mx-auto py-4">
-                    {/* スマホ用レイアウト - 16Personalities風 */}
+                    {/* スマホ用レイアウト */}
                     <div className="sm:hidden">
-                      <div className="space-y-3">
-                        {/* 7段階ボタン - 16Personalities風 */}
-                        <div className="flex justify-start gap-2">
-                          {[2, 1.5, 1, 0, -1, -1.5, -2].map((score, scoreIndex) => {
+                      <div className="space-y-4">
+                        {/* ラベル */}
+                        <div className="flex justify-between text-xs px-2">
+                          <span className="text-[#4CAF50] font-medium">そう思う</span>
+                          <span className="text-[#9C27B0] font-medium">そう思わない</span>
+                        </div>
+                        
+                        {/* ボタン群 - スマホ用サイズ */}
+                        <div className="flex justify-center gap-4">
+                          {[2, 1, -1, -2].map((score, scoreIndex) => {
                             const isSelected = answers[question.id] === score
-                            const size = scoreIndex === 0 || scoreIndex === 6 ? 'w-10 h-10' : 
-                                        scoreIndex === 1 || scoreIndex === 5 ? 'w-8 h-8' :
-                                        scoreIndex === 2 || scoreIndex === 4 ? 'w-6 h-6' : 'w-5 h-5'
+                            const size = scoreIndex === 0 || scoreIndex === 3 ? 'w-12 h-12' : 'w-10 h-10'
                             
-                            const colorStyle = scoreIndex <= 2 ? {
+                            const colorStyle = scoreIndex <= 1 ? {
                               borderColor: isSelected ? '#4CAF50' : '#4CAF50',
                               backgroundColor: isSelected ? '#4CAF50' : 'transparent'
-                            } : scoreIndex === 3 ? {
-                              borderColor: isSelected ? '#9E9E9E' : '#9E9E9E',
-                              backgroundColor: isSelected ? '#9E9E9E' : 'transparent'
                             } : {
                               borderColor: isSelected ? '#9C27B0' : '#9C27B0', 
                               backgroundColor: isSelected ? '#9C27B0' : 'transparent'
@@ -215,12 +216,6 @@ export default function QuizPage() {
                               />
                             )
                           })}
-                        </div>
-                        
-                        {/* ラベル */}
-                        <div className="flex justify-between text-xs px-1">
-                          <span className="text-[#4CAF50] font-medium">そう思う</span>
-                          <span className="text-[#9C27B0] font-medium">そう思わない</span>
                         </div>
                       </div>
                     </div>
