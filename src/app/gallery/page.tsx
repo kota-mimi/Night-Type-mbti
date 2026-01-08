@@ -96,16 +96,17 @@ export default function GalleryPage() {
                     <button
                       onClick={() => {
                         // 該当タイプの結果をローカルストレージに保存
+                        const typeCodeStr = String(typeCode)
                         const mockAnswers = Array.from({ length: 20 }, (_, i) => ({
                           questionId: i + 1,
-                          score: typeCode.includes('S') ? 
-                            (typeCode.includes('RF') ? 2 : typeCode.includes('RC') ? 1 : typeCode.includes('EF') ? -1 : -2) :
-                            (typeCode.includes('RF') ? 1 : typeCode.includes('RC') ? 2 : typeCode.includes('EF') ? -2 : -1)
+                          score: typeCodeStr.includes('S') ? 
+                            (typeCodeStr.includes('RF') ? 2 : typeCodeStr.includes('RC') ? 1 : typeCodeStr.includes('EF') ? -1 : -2) :
+                            (typeCodeStr.includes('RF') ? 1 : typeCodeStr.includes('RC') ? 2 : typeCodeStr.includes('EF') ? -2 : -1)
                         }))
                         
                         // 実際のスコアリング結果になるように調整
                         const answers = mockAnswers.map((answer, index) => {
-                          if (typeCode.startsWith('S')) {
+                          if (typeCodeStr.startsWith('S')) {
                             // S (Self-improvement) type
                             if (index < 10) return { ...answer, score: Math.random() > 0.5 ? 1 : 2 }
                             return { ...answer, score: Math.random() > 0.5 ? -1 : -2 }
