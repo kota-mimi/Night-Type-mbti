@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Share2, Home, Twitter, MessageSquare, Instagram, Download } from 'lucide-react'
+import { Home, Twitter, MessageSquare, Instagram, Download } from 'lucide-react'
 import Image from 'next/image'
 import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import { getTypeFromAnswers } from '@/lib/scoring'
@@ -41,8 +41,11 @@ export default function ResultPage() {
     }
 
     const typeCode = getTypeFromAnswers(answers)
-    setUserType(typeCode)
-    setIsLoading(false)
+    // Use setTimeout to avoid synchronous state update
+    setTimeout(() => {
+      setUserType(typeCode)
+      setIsLoading(false)
+    }, 0)
   }, [router])
 
   const handleShare = (platform: string) => {

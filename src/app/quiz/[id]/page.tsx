@@ -3,10 +3,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, ArrowRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
 import { getQuestionGroupByPage, getTotalPages } from '@/lib/questionGroups'
-import { Answer, Question } from '@/types'
+import { Answer } from '@/types'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -37,10 +37,6 @@ export default function QuizPage() {
       localStorage.setItem('diet-quiz-answers', JSON.stringify(savedAnswers))
     }
   }, [savedAnswers])
-
-  if (!questionGroup) {
-    return <div>ページが見つかりません</div>
-  }
 
   const progress = ((pageNumber - 1) / totalPages) * 100
 
@@ -132,8 +128,11 @@ export default function QuizPage() {
     return () => window.removeEventListener('keydown', handleKeyPress)
   }, [answers, questionGroup, isLoading])
 
+  if (!questionGroup) {
+    return <div>ページが見つかりません</div>
+  }
+
   const allAnswered = questionGroup.every(q => answers[q.id] !== undefined)
-  const scaleColors = ['#4CAF50', '#66BB6A', '#81C784', '#A5D6A7', '#90CAF9', '#64B5F6', '#42A5F5']
 
   return (
     <div className={`min-h-screen bg-white ${notoSansJP.className}`}>
