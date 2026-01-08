@@ -125,7 +125,7 @@ export default function ResultPage() {
              radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%)
            `
          }}>
-      <div className="container mx-auto px-4 py-6 max-w-sm sm:max-w-md md:max-w-2xl sm:py-8">
+      <div className="container mx-auto px-3 py-4 max-w-sm sm:max-w-md md:max-w-2xl sm:px-4 sm:py-8">
         
         {/* 統合されたメインカード */}
         <motion.div
@@ -135,20 +135,20 @@ export default function ResultPage() {
           className="bg-white rounded-3xl shadow-2xl overflow-hidden"
         >
           {/* キャラクター画像 */}
-          <div className="flex justify-center pt-8 pb-4">
+          <div className="flex justify-center pt-4 pb-3 sm:pt-8 sm:pb-4">
             {!imageError ? (
               <Image
                 src={`/characters/${userType}_new3.png`}
                 alt={`${typeData.name}のキャラクター`}
                 width={640}
                 height={760}
-                className="w-64 h-auto max-w-full drop-shadow-xl rounded-2xl sm:w-72 md:w-80"
+                className="w-56 h-auto max-w-full drop-shadow-xl rounded-2xl sm:w-72 md:w-80"
                 quality={95}
                 onError={() => setImageError(true)}
                 priority
               />
             ) : (
-              <div className="text-6xl drop-shadow-xl sm:text-7xl md:text-8xl">{typeData.emoji}</div>
+              <div className="text-5xl drop-shadow-xl sm:text-7xl md:text-8xl">{typeData.emoji}</div>
             )}
           </div>
 
@@ -162,7 +162,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-center"
             >
-              <p className="text-2xl text-[#2196F3] font-bold leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-[#2196F3] font-bold leading-relaxed">
                 「{typeData.catchcopy}」
               </p>
             </motion.div>
@@ -302,7 +302,7 @@ export default function ResultPage() {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-8 max-w-md mx-auto space-y-4"
+          className="mt-6 sm:mt-8 max-w-md mx-auto space-y-3 sm:space-y-4"
         >
           
           {/* Primary CTA - LINE専用メニュー */}
@@ -314,10 +314,10 @@ export default function ResultPage() {
               scale: [1, 1.02, 1],
               transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
             }}
-            className={`w-full bg-[#06C755] hover:bg-[#05b04a] text-white font-bold py-4 px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-3 ${zenMaruGothic.className}`}
+            className={`w-full bg-[#06C755] hover:bg-[#05b04a] text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 ${zenMaruGothic.className}`}
           >
             <MessageSquare className="w-6 h-6" />
-            <span className="text-lg">ヘルシーくんを使ってみる（LINE無料）</span>
+            <span className="text-sm sm:text-base md:text-lg">ヘルシーくんを使ってみる（LINE無料）</span>
           </motion.button>
 
           {/* Secondary - Instagram Story */}
@@ -325,10 +325,10 @@ export default function ResultPage() {
             onClick={() => handleShare('instagram')}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className={`w-full bg-gradient-to-r from-[#E4405F] via-[#C13584] to-[#833AB4] hover:opacity-90 text-white font-bold py-4 px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-3 ${zenMaruGothic.className}`}
+            className={`w-full bg-gradient-to-r from-[#E4405F] via-[#C13584] to-[#833AB4] hover:opacity-90 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 ${zenMaruGothic.className}`}
           >
             <Instagram className="w-5 h-5" />
-            <span className="text-base">Instagram Storyにシェア</span>
+            <span className="text-sm sm:text-base">Instagram Storyにシェア</span>
           </motion.button>
 
           {/* Tertiary - X (Twitter) */}
@@ -336,10 +336,10 @@ export default function ResultPage() {
             onClick={() => handleShare('twitter')}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className={`w-full bg-black hover:bg-gray-800 text-white font-bold py-4 px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-3 ${zenMaruGothic.className}`}
+            className={`w-full bg-black hover:bg-gray-800 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 ${zenMaruGothic.className}`}
           >
             <Twitter className="w-5 h-5" />
-            <span className="text-base">X (Twitter) にシェア</span>
+            <span className="text-sm sm:text-base">X (Twitter) にシェア</span>
           </motion.button>
 
           {/* Utility - 画像ダウンロード */}

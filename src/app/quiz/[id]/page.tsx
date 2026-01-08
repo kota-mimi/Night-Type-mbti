@@ -180,48 +180,82 @@ export default function QuizPage() {
                     {question.text}
                   </h3>
 
-                  {/* 4段階スケール - 16Personalitiesスタイル */}
-                  <div className="w-full max-w-2xl mx-auto py-4">
-                    <div className="flex items-center justify-center gap-6">
-                      
-                      {/* そう思うラベル */}
-                      <span className="text-sm text-[#4CAF50] font-medium">そう思う</span>
-                      
-                      {/* ボタン群 */}
-                      <div className="flex items-center gap-3">
-                        {[2, 1, -1, -2].map((score, scoreIndex) => {
-                          const isSelected = answers[question.id] === score
-                          // グラデーションサイズ：大→中→中→大
-                          const size = scoreIndex === 0 ? 'w-16 h-16' :     // 最左（そう思う）
-                                      scoreIndex === 1 ? 'w-12 h-12' :      // 左中
-                                      scoreIndex === 2 ? 'w-12 h-12' :      // 右中  
-                                      'w-16 h-16'                           // 最右（そう思わない）
-                          
-                          // カラー：左側緑系、右側紫系
-                          const colorStyle = scoreIndex <= 1 ? {
-                            borderColor: isSelected ? '#4CAF50' : '#4CAF50',
-                            backgroundColor: isSelected ? '#4CAF50' : 'transparent'
-                          } : {
-                            borderColor: isSelected ? '#9C27B0' : '#9C27B0', 
-                            backgroundColor: isSelected ? '#9C27B0' : 'transparent'
-                          }
-                          
-                          return (
-                            <motion.button
-                              key={score}
-                              onClick={() => handleAnswerSelect(question.id, score)}
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              className={`${size} rounded-full transition-all duration-300 border-2`}
-                              style={colorStyle}
-                            />
-                          )
-                        })}
+                  {/* 4段階スケール - モバイル最適化版 */}
+                  <div className="w-full mx-auto py-4">
+                    {/* スマホ用レイアウト */}
+                    <div className="sm:hidden">
+                      <div className="space-y-4">
+                        {/* ラベル */}
+                        <div className="flex justify-between text-xs px-2">
+                          <span className="text-[#4CAF50] font-medium">そう思う</span>
+                          <span className="text-[#9C27B0] font-medium">そう思わない</span>
+                        </div>
+                        
+                        {/* ボタン群 - スマホ用サイズ */}
+                        <div className="flex justify-center gap-4">
+                          {[2, 1, -1, -2].map((score, scoreIndex) => {
+                            const isSelected = answers[question.id] === score
+                            const size = scoreIndex === 0 || scoreIndex === 3 ? 'w-12 h-12' : 'w-10 h-10'
+                            
+                            const colorStyle = scoreIndex <= 1 ? {
+                              borderColor: isSelected ? '#4CAF50' : '#4CAF50',
+                              backgroundColor: isSelected ? '#4CAF50' : 'transparent'
+                            } : {
+                              borderColor: isSelected ? '#9C27B0' : '#9C27B0', 
+                              backgroundColor: isSelected ? '#9C27B0' : 'transparent'
+                            }
+                            
+                            return (
+                              <motion.button
+                                key={score}
+                                onClick={() => handleAnswerSelect(question.id, score)}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                className={`${size} rounded-full transition-all duration-300 border-2`}
+                                style={colorStyle}
+                              />
+                            )
+                          })}
+                        </div>
                       </div>
+                    </div>
 
-                      {/* そう思わないラベル */}
-                      <span className="text-sm text-[#9C27B0] font-medium">そう思わない</span>
-                      
+                    {/* PC/タブレット用レイアウト */}
+                    <div className="hidden sm:block">
+                      <div className="flex items-center justify-center gap-6">
+                        <span className="text-sm text-[#4CAF50] font-medium">そう思う</span>
+                        
+                        <div className="flex items-center gap-3">
+                          {[2, 1, -1, -2].map((score, scoreIndex) => {
+                            const isSelected = answers[question.id] === score
+                            const size = scoreIndex === 0 ? 'w-16 h-16' :
+                                        scoreIndex === 1 ? 'w-12 h-12' :
+                                        scoreIndex === 2 ? 'w-12 h-12' :
+                                        'w-16 h-16'
+                            
+                            const colorStyle = scoreIndex <= 1 ? {
+                              borderColor: isSelected ? '#4CAF50' : '#4CAF50',
+                              backgroundColor: isSelected ? '#4CAF50' : 'transparent'
+                            } : {
+                              borderColor: isSelected ? '#9C27B0' : '#9C27B0', 
+                              backgroundColor: isSelected ? '#9C27B0' : 'transparent'
+                            }
+                            
+                            return (
+                              <motion.button
+                                key={score}
+                                onClick={() => handleAnswerSelect(question.id, score)}
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                className={`${size} rounded-full transition-all duration-300 border-2`}
+                                style={colorStyle}
+                              />
+                            )
+                          })}
+                        </div>
+
+                        <span className="text-sm text-[#9C27B0] font-medium">そう思わない</span>
+                      </div>
                     </div>
                   </div>
 
