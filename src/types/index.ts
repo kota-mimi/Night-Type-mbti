@@ -11,6 +11,7 @@ export interface DiagramType {
   basicEcology: string;
   fatCause: string;
   solution: string;
+  reboundRate: number;
   compatibility: {
     good: {
       type: string;

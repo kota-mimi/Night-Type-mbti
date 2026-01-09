@@ -9,6 +9,7 @@ import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import { getTypeFromAnswers } from '@/lib/scoring'
 import { diagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
+import ReboundRateBadge from '@/components/ReboundRateBadge'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -154,6 +155,23 @@ export default function ResultPage() {
 
           {/* カードボディ */}
           <div className="px-4 py-6 space-y-6 sm:px-6 sm:py-8 sm:space-y-8 md:px-8">
+            
+            {/* キャラクター名とリバウンド率 */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center space-y-4"
+            >
+              <h1 className={`text-2xl sm:text-3xl md:text-4xl font-bold text-[#333333] ${zenMaruGothic.className}`}>
+                {typeData.name} {typeData.emoji}
+              </h1>
+              
+              {/* リバウンド率バッジ */}
+              <div className="flex justify-center">
+                <ReboundRateBadge reboundRate={typeData.reboundRate} />
+              </div>
+            </motion.div>
             
             {/* キャッチコピー */}
             <motion.div
