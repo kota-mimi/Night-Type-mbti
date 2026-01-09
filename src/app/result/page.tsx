@@ -154,7 +154,7 @@ export default function ResultPage() {
                     alt={`${typeData.name}のキャラクター`}
                     width={640}
                     height={760}
-                    className="w-56 h-auto max-w-full drop-shadow-2xl rounded-2xl sm:w-64 md:w-72"
+                    className="w-full max-w-sm h-auto drop-shadow-2xl rounded-2xl"
                     quality={95}
                     onError={() => setImageError(true)}
                     priority
@@ -164,12 +164,6 @@ export default function ResultPage() {
                 )}
               </div>
               
-              {/* キャッチコピー */}
-              <div className="flex-1 text-center md:text-left">
-                <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 font-bold leading-relaxed">
-                  「{typeData.catchcopy}」
-                </p>
-              </div>
             </div>
           </div>
 
