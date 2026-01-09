@@ -117,184 +117,189 @@ export default function ResultPage() {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-[#87CEEB] via-[#B0E0E6] to-[#98E4E8] ${notoSansJP.className}`} 
+    <div className={`min-h-screen ${notoSansJP.className}`} 
          style={{
-           backgroundImage: `
-             radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-             radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-             radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.05) 0%, transparent 50%)
+           background: `
+             linear-gradient(135deg, 
+               rgba(135, 206, 235, 0.95) 0%, 
+               rgba(176, 224, 230, 0.95) 25%,
+               rgba(152, 228, 232, 0.95) 50%,
+               rgba(176, 196, 222, 0.95) 75%,
+               rgba(221, 160, 221, 0.95) 100%
+             ),
+             radial-gradient(circle at 30% 70%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+             radial-gradient(circle at 70% 30%, rgba(173, 216, 230, 0.3) 0%, transparent 50%),
+             radial-gradient(circle at 50% 50%, rgba(240, 248, 255, 0.2) 0%, transparent 70%)
            `
          }}>
-      <div className="container mx-auto px-3 py-4 max-w-sm sm:max-w-md md:max-w-2xl sm:px-4 sm:py-8">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
         
-        {/* 統合されたメインカード */}
+        {/* メインコンテンツカード */}
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden"
+          className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
         >
-          {/* キャラクター画像 */}
-          <div className="flex justify-center pt-4 pb-3 sm:pt-8 sm:pb-4">
-            {!imageError ? (
-              <Image
-                src={`/characters/${userType}_new3.png`}
-                alt={`${typeData.name}のキャラクター`}
-                width={640}
-                height={760}
-                className="w-56 h-auto max-w-full drop-shadow-xl rounded-2xl sm:w-72 md:w-80"
-                quality={95}
-                onError={() => setImageError(true)}
-                priority
-              />
-            ) : (
-              <div className="text-5xl drop-shadow-xl sm:text-7xl md:text-8xl">{typeData.emoji}</div>
-            )}
-          </div>
+          
+          {/* キャラクター画像とタイトル */}
+          <div className="text-center mb-16">
+            {/* キャラクター画像 */}
+            <div className="flex justify-center mb-8">
+              {!imageError ? (
+                <Image
+                  src={`/characters/${userType}_new3.png`}
+                  alt={`${typeData.name}のキャラクター`}
+                  width={640}
+                  height={760}
+                  className="w-56 h-auto max-w-full drop-shadow-2xl rounded-2xl sm:w-72 md:w-80"
+                  quality={95}
+                  onError={() => setImageError(true)}
+                  priority
+                />
+              ) : (
+                <div className="text-6xl drop-shadow-xl sm:text-8xl md:text-9xl">{typeData.emoji}</div>
+              )}
+            </div>
 
-          {/* カードボディ */}
-          <div className="px-4 py-6 space-y-6 sm:px-6 sm:py-8 sm:space-y-8 md:px-8">
-            
-            {/* キャッチコピー */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-center"
-            >
-              <p className="text-lg sm:text-xl md:text-2xl text-[#2196F3] font-bold leading-relaxed">
-                「{typeData.catchcopy}」
-              </p>
-            </motion.div>
-
-            {/* 基本生態 */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="space-y-4"
-            >
-              <div className="inline-flex items-center bg-gradient-to-r from-[#E3F2FD] to-[#BBDEFB] px-4 py-2 rounded-full">
-                <span className="text-2xl mr-2">🔍</span>
-                <h2 className="text-lg font-bold text-[#1976D2]">基本生態</h2>
-              </div>
-              <p className="text-[#333333] leading-relaxed text-base">
-                {typeData.basicEcology}
-              </p>
-            </motion.div>
-
-            {/* 太る原因 */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="space-y-4"
-            >
-              <div className="inline-flex items-center bg-gradient-to-r from-[#FFEBEE] to-[#FFCDD2] px-4 py-2 rounded-full">
-                <span className="text-2xl mr-2">⚠️</span>
-                <h2 className="text-lg font-bold text-[#D32F2F]">太る原因</h2>
-              </div>
-              <div className="bg-[#FFF3E0] border-l-4 border-[#FF7043] p-4 rounded-r-lg">
-                <h3 className="font-bold text-[#FF7043] mb-2">
-                  {
-                    userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
-                    userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
-                    userType === 'SRCQ' ? '『ヘルシーなもの』の食べすぎ' :
-                    userType === 'SRCL' ? '停滞期への過剰反応' :
-                    userType === 'SEFQ' ? '買ったことで満足症候群' :
-                    userType === 'SEFL' ? '『体にいいもの』なら太らないという誤解' :
-                    userType === 'SECQ' ? '『明日からやる』の無限ループ' :
-                    userType === 'SECL' ? '『最適な方法』を探しすぎて動けない' :
-                    userType === 'GRFQ' ? '『付き合い』での飲み食い' :
-                    userType === 'GRFL' ? '『ご褒美』の頻度が高い' :
-                    userType === 'GRCQ' ? '無理な減量による反動' :
-                    userType === 'GRCL' ? '『監督』ポジションへの安住' :
-                    userType === 'GEFQ' ? '『やってみた動画』で満足' :
-                    userType === 'GEFL' ? '『ご褒美スタバ』の常習化' :
-                    userType === 'GECQ' ? '『頭でっかち』による行動不全' :
-                    '自分への甘さが糖度120%'
-                  }
-                </h3>
-                <p className="text-[#333333] leading-relaxed">
-                  {typeData.fatCause}
-                </p>
-              </div>
-            </motion.div>
-
-            {/* あなただけの痩せ方 */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="space-y-4"
-            >
-              <div className="inline-flex items-center bg-gradient-to-r from-[#E8F5E8] to-[#C8E6C9] px-4 py-2 rounded-full">
-                <span className="text-2xl mr-2">💡</span>
-                <h2 className="text-lg font-bold text-[#388E3C]">あなただけの痩せ方</h2>
-              </div>
-              <div className="bg-[#F1F8E9] border-l-4 border-[#4CAF50] p-4 rounded-r-lg">
-                <h3 className="font-bold text-[#4CAF50] mb-2">
-                  {
-                    userType === 'SRFQ' ? 'チートデイの『義務化』' :
-                    userType === 'SRFL' ? '匿名アカウントでの発散' :
-                    userType === 'SRCQ' ? '『ヘルシーくん』への完全服従' :
-                    userType === 'SRCL' ? '『ヘルシーくん』での記録習慣' :
-                    userType === 'SEFQ' ? '飽きる前提の『味変』戦略' :
-                    userType === 'SEFL' ? '『見た目』の変化を楽しむ' :
-                    userType === 'SECQ' ? '『夜だけ』管理法' :
-                    userType === 'SECL' ? '『思考停止』の実践' :
-                    userType === 'GRFQ' ? '『宣言』による退路遮断' :
-                    userType === 'GRFL' ? '『料理教室』や『サークル』へ参加' :
-                    userType === 'GRCQ' ? '『賭け』の要素を取り入れる' :
-                    userType === 'GRCL' ? '『プレイヤー』に戻る宣言' :
-                    userType === 'GEFQ' ? '『次々と乗り換える』サーキット' :
-                    userType === 'GEFL' ? '『憧れの服』を先に買う' :
-                    userType === 'GECQ' ? '『誰かに教える』ために実践する' :
-                    '『ハードルを地面に埋める』'
-                  }
-                </h3>
-                <p className="text-[#333333] leading-relaxed">
-                  {typeData.solution}
-                </p>
-              </div>
-            </motion.div>
-
-            {/* 相性チェック */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="space-y-4"
-            >
-              <div className="inline-flex items-center bg-gradient-to-r from-[#FFF3E0] to-[#FFE0B2] px-4 py-2 rounded-full">
-                <span className="text-2xl mr-2">💞</span>
-                <h2 className="text-lg font-bold text-[#F57C00]">相性チェック</h2>
-              </div>
+            {/* キャラクター名とキャッチコピー */}
+            <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-6 ${zenMaruGothic.className}`}>
+              {typeData.name} {typeData.emoji}
+            </h1>
               
-              <div className="grid grid-cols-1 gap-4">
-                {/* 最高の相性 */}
-                <div className="bg-[#E8F5E8] border border-[#4CAF50] rounded-xl p-4">
-                  <h3 className="text-base font-bold text-[#4CAF50] mb-2 flex items-center">
-                    🙆‍♀️ 最高の相性：{diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
-                  </h3>
-                  <p className="text-[#333333] leading-relaxed text-sm">
-                    {typeData.compatibility.good.reason}
-                  </p>
-                </div>
+            <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 font-bold leading-relaxed mb-12">
+              「{typeData.catchcopy}」
+            </p>
+          </div>
 
-                {/* 最悪の相性 */}
-                <div className="bg-[#FFEBEE] border border-[#FF7043] rounded-xl p-4">
-                  <h3 className="text-base font-bold text-[#FF7043] mb-2 flex items-center">
-                    🙅‍♀️ 要注意：{diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
-                  </h3>
-                  <p className="text-[#333333] leading-relaxed text-sm">
-                    {typeData.compatibility.bad.reason}
-                  </p>
-                </div>
+          {/* セクションごとの直接配置 */}
+          <div className="space-y-16">
+          
+          {/* 基本生態セクション */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center space-y-6"
+          >
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
+              【基本生態】
+            </h2>
+            <p className="text-lg sm:text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto px-4">
+              {typeData.basicEcology}
+            </p>
+          </motion.div>
+
+          {/* 太る原因セクション */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-center space-y-6"
+          >
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
+              【太る原因】
+            </h2>
+            <div className="max-w-3xl mx-auto px-4 space-y-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-red-600">
+                {
+                  userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
+                  userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
+                  userType === 'SRCQ' ? '『ヘルシーなもの』の食べすぎ' :
+                  userType === 'SRCL' ? '停滞期への過剰反応' :
+                  userType === 'SEFQ' ? '買ったことで満足症候群' :
+                  userType === 'SEFL' ? '『体にいいもの』なら太らないという誤解' :
+                  userType === 'SECQ' ? '『明日からやる』の無限ループ' :
+                  userType === 'SECL' ? '『最適な方法』を探しすぎて動けない' :
+                  userType === 'GRFQ' ? '『付き合い』での飲み食い' :
+                  userType === 'GRFL' ? '『ご褒美』の頻度が高い' :
+                  userType === 'GRCQ' ? '無理な減量による反動' :
+                  userType === 'GRCL' ? '『監督』ポジションへの安住' :
+                  userType === 'GEFQ' ? '『やってみた動画』で満足' :
+                  userType === 'GEFL' ? '『ご褒美スタバ』の常習化' :
+                  userType === 'GECQ' ? '『頭でっかち』による行動不全' :
+                  '自分への甘さが糖度120%'
+                }
+              </h3>
+              <p className="text-lg sm:text-xl leading-relaxed text-gray-700">
+                {typeData.fatCause}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* あなただけの痩せ方セクション */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-center space-y-6"
+          >
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
+              【あなただけの痩せ方】
+            </h2>
+            <div className="max-w-3xl mx-auto px-4 space-y-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-green-600">
+                {
+                  userType === 'SRFQ' ? 'チートデイの『義務化』' :
+                  userType === 'SRFL' ? '匿名アカウントでの発散' :
+                  userType === 'SRCQ' ? '『ヘルシーくん』への完全服従' :
+                  userType === 'SRCL' ? '『ヘルシーくん』での記録習慣' :
+                  userType === 'SEFQ' ? '飽きる前提の『味変』戦略' :
+                  userType === 'SEFL' ? '『見た目』の変化を楽しむ' :
+                  userType === 'SECQ' ? '『夜だけ』管理法' :
+                  userType === 'SECL' ? '『思考停止』の実践' :
+                  userType === 'GRFQ' ? '『宣言』による退路遮断' :
+                  userType === 'GRFL' ? '『料理教室』や『サークル』へ参加' :
+                  userType === 'GRCQ' ? '『賭け』の要素を取り入れる' :
+                  userType === 'GRCL' ? '『プレイヤー』に戻る宣言' :
+                  userType === 'GEFQ' ? '『次々と乗り換える』サーキット' :
+                  userType === 'GEFL' ? '『憧れの服』を先に買う' :
+                  userType === 'GECQ' ? '『誰かに教える』ために実践する' :
+                  '『ハードルを地面に埋める』'
+                }
+              </h3>
+              <p className="text-lg sm:text-xl leading-relaxed text-gray-700">
+                {typeData.solution}
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 相性チェックセクション */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="text-center space-y-8"
+          >
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
+              【相性チェック】
+            </h2>
+            
+            <div className="max-w-3xl mx-auto px-4 space-y-8">
+              {/* 最高の相性 */}
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-green-600 mb-4">
+                  🙆‍♀️ 最高の相性：{diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
+                </h3>
+                <p className="text-lg leading-relaxed text-gray-700">
+                  {typeData.compatibility.good.reason}
+                </p>
               </div>
-            </motion.div>
+
+              {/* 最悪の相性 */}
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-red-600 mb-4">
+                  🙅‍♀️ 要注意：{diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
+                </h3>
+                <p className="text-lg leading-relaxed text-gray-700">
+                  {typeData.compatibility.bad.reason}
+                </p>
+              </div>
+            </div>
+          </motion.div>
 
           </div>
+
         </motion.div>
 
         {/* Love Character 64 スタイルボタンスタック */}

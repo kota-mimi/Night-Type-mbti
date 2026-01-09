@@ -48,51 +48,82 @@ export default function GalleryPage() {
         >
           {typeKeys.map((typeCode, index) => {
             const type = diagramTypes[typeCode]
+            
+            // カードの背景色を決定
+            let cardBgColor = 'bg-blue-200/50' // デフォルト
+            if (typeCode.startsWith('SR')) {
+              cardBgColor = 'bg-green-200/50' // SR系統（緑）
+            } else if (typeCode.startsWith('SE')) {
+              cardBgColor = 'bg-purple-200/50' // SE系統（紫）
+            } else if (typeCode.startsWith('GR')) {
+              cardBgColor = 'bg-red-200/50' // GR系統（赤）
+            } else if (typeCode.startsWith('GE')) {
+              cardBgColor = 'bg-blue-200/50' // GE系統（青）
+            }
+            
             return (
               <motion.div
                 key={typeCode}
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+                className={`${cardBgColor} rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300`}
               >
-                {/* キャラクター画像 */}
-                <div className="flex justify-center pt-4 pb-2">
+                <div className="bg-white rounded-xl p-4 shadow-sm"
+              >
+                {/* タイプコード - 小さく上部に表示 */}
+                <div className="text-center pt-4 pb-2">
+                  <h2 className="text-lg font-bold text-blue-600">
+                    {typeCode}
+                  </h2>
+                </div>
+
+                {/* キャラクター画像 - 大きく中央に */}
+                <div className="flex justify-center pb-4">
                   <Image
-                    src={`/characters/${typeCode}_new3.png`}
+                    src={`/characters/${typeCode === 'SRFQ' ? 'SRFQ_gallery.png' : typeCode === 'SECQ' ? 'SECQ_gallery.png' : typeCode === 'SEFL' ? 'SEFL_gallery.png' : typeCode === 'SRCL' ? 'SRCL_gallery.png' : typeCode === 'GEFQ' ? 'GEFQ_gallery.png' : typeCode === 'SRFL' ? 'SRFL_gallery.png' : typeCode === 'GRCQ' ? 'GRCQ_gallery.png' : typeCode === 'GEFL' ? 'GEFL_gallery.png' : typeCode === 'GECL' ? 'GECL_gallery.png' : typeCode === 'GECQ' ? 'GECQ_gallery.png' : typeCode === 'SRCQ' ? 'SRCQ_gallery.png' : typeCode === 'SEFQ' ? 'SEFQ_gallery.png' : typeCode === 'GRCL' ? 'GRCL_gallery.png' : typeCode === 'GRFQ' ? 'GRFQ_gallery.png' : typeCode === 'SECL' ? 'SECL_gallery.png' : typeCode === 'GRFL' ? 'GRFL_gallery.png' : typeCode + '_new3.png'}`}
                     alt={`${type.name}のキャラクター`}
                     width={160}
-                    height={190}
-                    className="w-32 h-auto rounded-lg drop-shadow-md"
+                    height={180}
+                    className="w-36 h-auto"
                     quality={95}
                   />
                 </div>
 
-                <div className="p-4 space-y-3">
-                  {/* タイプコード */}
-                  <div className="text-center">
-                    <span className="inline-block bg-[#2196F3] text-white text-xs font-bold px-3 py-1 rounded-full">
-                      {typeCode}
-                    </span>
-                  </div>
-
+                <div className="px-4 pb-6 space-y-3">
                   {/* タイプ名 */}
-                  <h3 className="text-lg font-bold text-[#333333] text-center">
+                  <h3 className="text-sm font-bold text-[#333333] text-center leading-tight">
                     {type.name}
                   </h3>
 
-                  {/* キャッチコピー */}
-                  <p className="text-sm text-[#2196F3] font-medium text-center leading-relaxed">
-                    {type.catchcopy}
-                  </p>
-
-                  {/* 基本生態（短縮版） */}
-                  <p className="text-xs text-[#666666] text-center leading-relaxed line-clamp-3">
-                    {type.basicEcology.substring(0, 80)}...
+                  {/* 基本生態（3行でキリよく） */}
+                  <p className="text-sm text-[#666666] text-center leading-relaxed">
+                    {(() => {
+                      const text = type.basicEcology
+                      // 3行表示用の文字数制限（約45-60文字で3行）
+                      if (text.length <= 60) return text
+                      
+                      // 「です」「ます」「。」で終わる位置を探す（45-60文字の範囲）
+                      const cutPoints = []
+                      for (let i = 45; i < Math.min(text.length, 60); i++) {
+                        if (text.substring(i, i + 2) === 'です' || 
+                            text.substring(i, i + 2) === 'ます' || 
+                            text.charAt(i) === '。') {
+                          cutPoints.push(text.charAt(i) === '。' ? i + 1 : i + 2)
+                        }
+                      }
+                      
+                      if (cutPoints.length > 0) {
+                        return text.substring(0, cutPoints[0])
+                      }
+                      
+                      // 見つからない場合は55文字で切って「。」を追加
+                      return text.substring(0, 55) + '。'
+                    })()}
                   </p>
 
                   {/* 詳細ボタン */}
-                  <div className="pt-2">
+                  <div className="pt-3">
                     <button
                       onClick={() => {
                         // 該当タイプの結果を生成するためのスコアを計算
@@ -128,10 +159,11 @@ export default function GalleryPage() {
                         localStorage.setItem('diet-quiz-answers', JSON.stringify(answers))
                         window.location.href = '/result'
                       }}
-                      className="w-full bg-[#4CAF50] hover:bg-[#45A049] text-white text-sm font-medium py-2 px-4 rounded-lg transition-colors"
+                      className="w-full bg-teal-500 hover:bg-teal-600 text-white text-sm font-medium py-3 px-4 rounded-full transition-colors"
                     >
-                      詳細を見る
+                      詳しく見る
                     </button>
+                  </div>
                   </div>
                 </div>
               </motion.div>
