@@ -176,21 +176,14 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-center space-y-6"
+            className="text-center space-y-8"
           >
-            <div className="space-y-2">
-              <p className="text-xs tracking-widest uppercase text-gray-500 font-medium">
-                BASIC INFO
-              </p>
-              <h2 className={`text-2xl md:text-3xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
-                基本生態
-              </h2>
-            </div>
-            <div className="bg-gray-50 rounded-2xl p-8 max-w-4xl mx-auto">
-              <p className="text-lg leading-relaxed text-gray-700">
-                {typeData.detailedEcology}
-              </p>
-            </div>
+            <h2 className={`text-3xl md:text-4xl font-bold text-gray-800 mb-8 ${zenMaruGothic.className}`}>
+              基本生態
+            </h2>
+            <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-5xl mx-auto">
+              {typeData.detailedEcology}
+            </p>
           </motion.div>
 
           {/* 太る原因セクション */}
@@ -198,41 +191,34 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center space-y-6"
+            className="text-center space-y-8"
           >
-            <div className="space-y-2">
-              <p className="text-xs tracking-widest uppercase text-red-500 font-medium">
-                CAUSE
-              </p>
-              <h2 className={`text-2xl md:text-3xl font-bold text-red-600 ${zenMaruGothic.className}`}>
-                太る原因
-              </h2>
-            </div>
-            <div className="bg-red-50 rounded-2xl p-8 max-w-4xl mx-auto space-y-4">
-              <h3 className="text-xl font-bold text-red-600">
-                {
-                  userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
-                  userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
-                  userType === 'SRCQ' ? '『ヘルシーなもの』の食べすぎ' :
-                  userType === 'SRCL' ? '停滞期への過剰反応' :
-                  userType === 'SEFQ' ? '買ったことで満足症候群' :
-                  userType === 'SEFL' ? '『体にいいもの』なら太らないという誤解' :
-                  userType === 'SECQ' ? '『明日からやる』の無限ループ' :
-                  userType === 'SECL' ? '『最適な方法』を探しすぎて動けない' :
-                  userType === 'GRFQ' ? '『付き合い』での飲み食い' :
-                  userType === 'GRFL' ? '『ご褒美』の頻度が高い' :
-                  userType === 'GRCQ' ? '無理な減量による反動' :
-                  userType === 'GRCL' ? '『監督』ポジションへの安住' :
-                  userType === 'GEFQ' ? '『やってみた動画』で満足' :
-                  userType === 'GEFL' ? '『ご褒美スタバ』の常習化' :
-                  userType === 'GECQ' ? '『頭でっかち』による行動不全' :
-                  '自分への甘さが糖度120%'
-                }
-              </h3>
-              <p className="text-lg leading-relaxed text-gray-700">
-                {typeData.fatCause}
-              </p>
-            </div>
+            <h2 className={`text-3xl md:text-4xl font-bold text-red-600 mb-8 ${zenMaruGothic.className}`}>
+              太る原因
+            </h2>
+            <h3 className="text-2xl md:text-3xl font-bold text-red-700 mb-6">
+              {
+                userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
+                userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
+                userType === 'SRCQ' ? '『ヘルシーなもの』の食べすぎ' :
+                userType === 'SRCL' ? '停滞期への過剰反応' :
+                userType === 'SEFQ' ? '買ったことで満足症候群' :
+                userType === 'SEFL' ? '『体にいいもの』なら太らないという誤解' :
+                userType === 'SECQ' ? '『明日からやる』の無限ループ' :
+                userType === 'SECL' ? '『最適な方法』を探しすぎて動けない' :
+                userType === 'GRFQ' ? '『付き合い』での飲み食い' :
+                userType === 'GRFL' ? '『ご褒美』の頻度が高い' :
+                userType === 'GRCQ' ? '無理な減量による反動' :
+                userType === 'GRCL' ? '『監督』ポジションへの安住' :
+                userType === 'GEFQ' ? '『やってみた動画』で満足' :
+                userType === 'GEFL' ? '『ご褒美スタバ』の常習化' :
+                userType === 'GECQ' ? '『頭でっかち』による行動不全' :
+                '自分への甘さが糖度120%'
+              }
+            </h3>
+            <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-5xl mx-auto">
+              {typeData.fatCause}
+            </p>
           </motion.div>
 
           {/* あなただけの痩せ方セクション */}
@@ -240,41 +226,34 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center space-y-6"
+            className="text-center space-y-8"
           >
-            <div className="space-y-2">
-              <p className="text-xs tracking-widest uppercase text-green-500 font-medium">
-                SOLUTION
-              </p>
-              <h2 className={`text-2xl md:text-3xl font-bold text-green-600 ${zenMaruGothic.className}`}>
-                あなただけの痩せ方
-              </h2>
-            </div>
-            <div className="bg-green-50 rounded-2xl p-8 max-w-4xl mx-auto space-y-4">
-              <h3 className="text-xl font-bold text-green-600">
-                {
-                  userType === 'SRFQ' ? 'チートデイの『義務化』' :
-                  userType === 'SRFL' ? '匿名アカウントでの発散' :
-                  userType === 'SRCQ' ? '『ヘルシーくん』への完全服従' :
-                  userType === 'SRCL' ? '『ヘルシーくん』での記録習慣' :
-                  userType === 'SEFQ' ? '飽きる前提の『味変』戦略' :
-                  userType === 'SEFL' ? '『見た目』の変化を楽しむ' :
-                  userType === 'SECQ' ? '『夜だけ』管理法' :
-                  userType === 'SECL' ? '『思考停止』の実践' :
-                  userType === 'GRFQ' ? '『宣言』による退路遮断' :
-                  userType === 'GRFL' ? '『料理教室』や『サークル』へ参加' :
-                  userType === 'GRCQ' ? '『賭け』の要素を取り入れる' :
-                  userType === 'GRCL' ? '『プレイヤー』に戻る宣言' :
-                  userType === 'GEFQ' ? '『次々と乗り換える』サーキット' :
-                  userType === 'GEFL' ? '『憧れの服』を先に買う' :
-                  userType === 'GECQ' ? '『誰かに教える』ために実践する' :
-                  '『ハードルを地面に埋める』'
-                }
-              </h3>
-              <p className="text-lg leading-relaxed text-gray-700">
-                {typeData.solution}
-              </p>
-            </div>
+            <h2 className={`text-3xl md:text-4xl font-bold text-green-600 mb-8 ${zenMaruGothic.className}`}>
+              あなただけの痩せ方
+            </h2>
+            <h3 className="text-2xl md:text-3xl font-bold text-green-700 mb-6">
+              {
+                userType === 'SRFQ' ? 'チートデイの『義務化』' :
+                userType === 'SRFL' ? '匿名アカウントでの発散' :
+                userType === 'SRCQ' ? '『ヘルシーくん』への完全服従' :
+                userType === 'SRCL' ? '『ヘルシーくん』での記録習慣' :
+                userType === 'SEFQ' ? '飽きる前提の『味変』戦略' :
+                userType === 'SEFL' ? '『見た目』の変化を楽しむ' :
+                userType === 'SECQ' ? '『夜だけ』管理法' :
+                userType === 'SECL' ? '『思考停止』の実践' :
+                userType === 'GRFQ' ? '『宣言』による退路遮断' :
+                userType === 'GRFL' ? '『料理教室』や『サークル』へ参加' :
+                userType === 'GRCQ' ? '『賭け』の要素を取り入れる' :
+                userType === 'GRCL' ? '『プレイヤー』に戻る宣言' :
+                userType === 'GEFQ' ? '『次々と乗り換える』サーキット' :
+                userType === 'GEFL' ? '『憧れの服』を先に買う' :
+                userType === 'GECQ' ? '『誰かに教える』ために実践する' :
+                '『ハードルを地面に埋める』'
+              }
+            </h3>
+            <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-5xl mx-auto">
+              {typeData.solution}
+            </p>
           </motion.div>
 
           {/* 相性チェックセクション */}
@@ -284,40 +263,31 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="text-center space-y-8"
           >
-            <div className="space-y-2">
-              <p className="text-xs tracking-widest uppercase text-purple-500 font-medium">
-                COMPATIBILITY
-              </p>
-              <h2 className={`text-2xl md:text-3xl font-bold text-purple-600 ${zenMaruGothic.className}`}>
-                相性チェック
-              </h2>
-            </div>
+            <h2 className={`text-3xl md:text-4xl font-bold text-purple-600 mb-8 ${zenMaruGothic.className}`}>
+              相性チェック
+            </h2>
             
-            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-              {/* 最高の相性カード */}
-              <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-6 space-y-4">
-                <div className="text-center space-y-2">
-                  <div className="text-4xl">💖</div>
-                  <p className="text-sm font-medium text-green-600">最高の相性</p>
-                  <h3 className="text-xl font-bold text-gray-800">
-                    {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
-                  </h3>
-                </div>
-                <p className="text-sm leading-relaxed text-gray-700 text-center">
+            <div className="max-w-5xl mx-auto space-y-8">
+              {/* 最高の相性 */}
+              <div className="text-center space-y-4">
+                <div className="text-6xl">💖</div>
+                <h3 className="text-2xl md:text-3xl font-bold text-green-600">最高の相性</h3>
+                <h4 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                  {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
+                </h4>
+                <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-4xl mx-auto">
                   {typeData.compatibility.good.reason}
                 </p>
               </div>
 
-              {/* 要注意カード */}
-              <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-6 space-y-4">
-                <div className="text-center space-y-2">
-                  <div className="text-4xl">⚡</div>
-                  <p className="text-sm font-medium text-purple-600">要注意</p>
-                  <h3 className="text-xl font-bold text-gray-800">
-                    {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
-                  </h3>
-                </div>
-                <p className="text-sm leading-relaxed text-gray-700 text-center">
+              {/* 要注意 */}
+              <div className="text-center space-y-4">
+                <div className="text-6xl">⚡</div>
+                <h3 className="text-2xl md:text-3xl font-bold text-purple-600">要注意</h3>
+                <h4 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                  {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
+                </h4>
+                <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-4xl mx-auto">
                   {typeData.compatibility.bad.reason}
                 </p>
               </div>
