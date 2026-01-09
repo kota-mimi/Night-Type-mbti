@@ -162,10 +162,6 @@ export default function ResultPage() {
               )}
             </div>
 
-            {/* キャラクター名とキャッチコピー */}
-            <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold text-gray-800 mb-6 ${zenMaruGothic.className}`}>
-              {typeData.name} {typeData.emoji}
-            </h1>
               
             <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 font-bold leading-relaxed mb-12">
               「{typeData.catchcopy}」
