@@ -181,9 +181,15 @@ export default function ResultPage() {
             <h2 className={`text-3xl md:text-4xl font-bold text-gray-800 mb-8 ${zenMaruGothic.className}`}>
               基本生態
             </h2>
-            <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-5xl mx-auto">
-              {typeData.detailedEcology}
-            </p>
+            <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-5xl mx-auto">
+              {typeData.detailedEcology.split('。').map((sentence, index, array) => (
+                <span key={index}>
+                  {sentence.trim()}
+                  {index < array.length - 1 && sentence.trim() && '。'}
+                  {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
           {/* 太る原因セクション */}
@@ -216,9 +222,15 @@ export default function ResultPage() {
                 '自分への甘さが糖度120%'
               }
             </h3>
-            <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-5xl mx-auto">
-              {typeData.fatCause}
-            </p>
+            <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-5xl mx-auto">
+              {typeData.fatCause.split('。').map((sentence, index, array) => (
+                <span key={index}>
+                  {sentence.trim()}
+                  {index < array.length - 1 && sentence.trim() && '。'}
+                  {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
           {/* あなただけの痩せ方セクション */}
@@ -251,9 +263,15 @@ export default function ResultPage() {
                 '『ハードルを地面に埋める』'
               }
             </h3>
-            <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-5xl mx-auto">
-              {typeData.solution}
-            </p>
+            <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-5xl mx-auto">
+              {typeData.solution.split('。').map((sentence, index, array) => (
+                <span key={index}>
+                  {sentence.trim()}
+                  {index < array.length - 1 && sentence.trim() && '。'}
+                  {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
+                </span>
+              ))}
+            </div>
           </motion.div>
 
           {/* 相性チェックセクション */}
@@ -275,9 +293,15 @@ export default function ResultPage() {
                 <h4 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
                   {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
                 </h4>
-                <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-4xl mx-auto">
-                  {typeData.compatibility.good.reason}
-                </p>
+                <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-4xl mx-auto">
+                  {typeData.compatibility.good.reason.split('。').map((sentence, index, array) => (
+                    <span key={index}>
+                      {sentence.trim()}
+                      {index < array.length - 1 && sentence.trim() && '。'}
+                      {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
+                    </span>
+                  ))}
+                </div>
               </div>
 
               {/* 要注意 */}
@@ -287,9 +311,15 @@ export default function ResultPage() {
                 <h4 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
                   {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
                 </h4>
-                <p className="text-xl md:text-2xl leading-relaxed text-gray-800 font-medium max-w-4xl mx-auto">
-                  {typeData.compatibility.bad.reason}
-                </p>
+                <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-4xl mx-auto">
+                  {typeData.compatibility.bad.reason.split('。').map((sentence, index, array) => (
+                    <span key={index}>
+                      {sentence.trim()}
+                      {index < array.length - 1 && sentence.trim() && '。'}
+                      {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
