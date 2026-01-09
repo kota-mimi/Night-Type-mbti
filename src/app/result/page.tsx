@@ -154,7 +154,7 @@ export default function ResultPage() {
                     alt={`${typeData.name}のキャラクター`}
                     width={640}
                     height={760}
-                    className="w-48 h-auto max-w-full drop-shadow-2xl rounded-2xl sm:w-56 md:w-64"
+                    className="w-56 h-auto max-w-full drop-shadow-2xl rounded-2xl sm:w-64 md:w-72"
                     quality={95}
                     onError={() => setImageError(true)}
                     priority
