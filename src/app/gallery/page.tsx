@@ -51,13 +51,14 @@ export default function GalleryPage() {
             
             // カードの背景色を決定
             let cardBgColor = 'bg-blue-200/50' // デフォルト
-            if (typeCode.startsWith('SR')) {
+            const typeCodeStr = String(typeCode)
+            if (typeCodeStr.startsWith('SR')) {
               cardBgColor = 'bg-green-200/50' // SR系統（緑）
-            } else if (typeCode.startsWith('SE')) {
+            } else if (typeCodeStr.startsWith('SE')) {
               cardBgColor = 'bg-purple-200/50' // SE系統（紫）
-            } else if (typeCode.startsWith('GR')) {
+            } else if (typeCodeStr.startsWith('GR')) {
               cardBgColor = 'bg-red-200/50' // GR系統（赤）
-            } else if (typeCode.startsWith('GE')) {
+            } else if (typeCodeStr.startsWith('GE')) {
               cardBgColor = 'bg-blue-200/50' // GE系統（青）
             }
             
