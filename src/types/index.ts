@@ -9,6 +9,7 @@ export interface DiagramType {
   emoji: string;
   catchcopy: string;
   basicEcology: string;
+  detailedEcology: string;
   fatCause: string;
   solution: string;
   compatibility: {

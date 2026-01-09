@@ -169,7 +169,7 @@ export default function ResultPage() {
           </div>
 
           {/* セクションごとの直接配置 */}
-          <div className="space-y-16">
+          <div className="space-y-10">
           
           {/* 基本生態セクション */}
           <motion.div
@@ -178,12 +178,19 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-center space-y-6"
           >
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
-              【基本生態】
-            </h2>
-            <p className="text-lg sm:text-xl leading-relaxed text-gray-700 max-w-3xl mx-auto px-4">
-              {typeData.basicEcology}
-            </p>
+            <div className="space-y-2">
+              <p className="text-xs tracking-widest uppercase text-gray-500 font-medium">
+                BASIC INFO
+              </p>
+              <h2 className={`text-2xl md:text-3xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
+                基本生態
+              </h2>
+            </div>
+            <div className="bg-gray-50 rounded-2xl p-8 max-w-4xl mx-auto">
+              <p className="text-lg leading-relaxed text-gray-700">
+                {typeData.detailedEcology}
+              </p>
+            </div>
           </motion.div>
 
           {/* 太る原因セクション */}
@@ -193,11 +200,16 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-center space-y-6"
           >
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
-              【太る原因】
-            </h2>
-            <div className="max-w-3xl mx-auto px-4 space-y-4">
-              <h3 className="text-xl sm:text-2xl font-bold text-red-600">
+            <div className="space-y-2">
+              <p className="text-xs tracking-widest uppercase text-red-500 font-medium">
+                CAUSE
+              </p>
+              <h2 className={`text-2xl md:text-3xl font-bold text-red-600 ${zenMaruGothic.className}`}>
+                太る原因
+              </h2>
+            </div>
+            <div className="bg-red-50 rounded-2xl p-8 max-w-4xl mx-auto space-y-4">
+              <h3 className="text-xl font-bold text-red-600">
                 {
                   userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
                   userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
@@ -217,7 +229,7 @@ export default function ResultPage() {
                   '自分への甘さが糖度120%'
                 }
               </h3>
-              <p className="text-lg sm:text-xl leading-relaxed text-gray-700">
+              <p className="text-lg leading-relaxed text-gray-700">
                 {typeData.fatCause}
               </p>
             </div>
@@ -230,11 +242,16 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-center space-y-6"
           >
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
-              【あなただけの痩せ方】
-            </h2>
-            <div className="max-w-3xl mx-auto px-4 space-y-4">
-              <h3 className="text-xl sm:text-2xl font-bold text-green-600">
+            <div className="space-y-2">
+              <p className="text-xs tracking-widest uppercase text-green-500 font-medium">
+                SOLUTION
+              </p>
+              <h2 className={`text-2xl md:text-3xl font-bold text-green-600 ${zenMaruGothic.className}`}>
+                あなただけの痩せ方
+              </h2>
+            </div>
+            <div className="bg-green-50 rounded-2xl p-8 max-w-4xl mx-auto space-y-4">
+              <h3 className="text-xl font-bold text-green-600">
                 {
                   userType === 'SRFQ' ? 'チートデイの『義務化』' :
                   userType === 'SRFL' ? '匿名アカウントでの発散' :
@@ -254,7 +271,7 @@ export default function ResultPage() {
                   '『ハードルを地面に埋める』'
                 }
               </h3>
-              <p className="text-lg sm:text-xl leading-relaxed text-gray-700">
+              <p className="text-lg leading-relaxed text-gray-700">
                 {typeData.solution}
               </p>
             </div>
@@ -267,27 +284,40 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="text-center space-y-8"
           >
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 ${zenMaruGothic.className}`}>
-              【相性チェック】
-            </h2>
+            <div className="space-y-2">
+              <p className="text-xs tracking-widest uppercase text-purple-500 font-medium">
+                COMPATIBILITY
+              </p>
+              <h2 className={`text-2xl md:text-3xl font-bold text-purple-600 ${zenMaruGothic.className}`}>
+                相性チェック
+              </h2>
+            </div>
             
-            <div className="max-w-3xl mx-auto px-4 space-y-8">
-              {/* 最高の相性 */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-green-600 mb-4">
-                  🙆‍♀️ 最高の相性：{diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
-                </h3>
-                <p className="text-lg leading-relaxed text-gray-700">
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+              {/* 最高の相性カード */}
+              <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-6 space-y-4">
+                <div className="text-center space-y-2">
+                  <div className="text-4xl">💖</div>
+                  <p className="text-sm font-medium text-green-600">最高の相性</p>
+                  <h3 className="text-xl font-bold text-gray-800">
+                    {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
+                  </h3>
+                </div>
+                <p className="text-sm leading-relaxed text-gray-700 text-center">
                   {typeData.compatibility.good.reason}
                 </p>
               </div>
 
-              {/* 最悪の相性 */}
-              <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-red-600 mb-4">
-                  🙅‍♀️ 要注意：{diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
-                </h3>
-                <p className="text-lg leading-relaxed text-gray-700">
+              {/* 要注意カード */}
+              <div className="bg-purple-50 border-2 border-purple-200 rounded-2xl p-6 space-y-4">
+                <div className="text-center space-y-2">
+                  <div className="text-4xl">⚡</div>
+                  <p className="text-sm font-medium text-purple-600">要注意</p>
+                  <h3 className="text-xl font-bold text-gray-800">
+                    {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
+                  </h3>
+                </div>
+                <p className="text-sm leading-relaxed text-gray-700 text-center">
                   {typeData.compatibility.bad.reason}
                 </p>
               </div>
