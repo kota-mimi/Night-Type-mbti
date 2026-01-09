@@ -143,29 +143,34 @@ export default function ResultPage() {
         >
           
           {/* キャラクター画像とタイトル */}
-          <div className="text-center mb-16">
-            {/* キャラクター画像 */}
-            <div className="flex justify-center mb-8">
-              {!imageError ? (
-                <Image
-                  src={`/characters/${userType}_new3.png`}
-                  alt={`${typeData.name}のキャラクター`}
-                  width={640}
-                  height={760}
-                  className="w-56 h-auto max-w-full drop-shadow-2xl rounded-2xl sm:w-72 md:w-80"
-                  quality={95}
-                  onError={() => setImageError(true)}
-                  priority
-                />
-              ) : (
-                <div className="text-6xl drop-shadow-xl sm:text-8xl md:text-9xl">{typeData.emoji}</div>
-              )}
-            </div>
-
+          <div className="mb-16">
+            {/* キャラクター画像とキャッチコピーを横並び */}
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              {/* キャラクター画像 */}
+              <div className="flex-shrink-0">
+                {!imageError ? (
+                  <Image
+                    src={`/characters/${userType}_new3.png`}
+                    alt={`${typeData.name}のキャラクター`}
+                    width={640}
+                    height={760}
+                    className="w-48 h-auto max-w-full drop-shadow-2xl rounded-2xl sm:w-56 md:w-64"
+                    quality={95}
+                    onError={() => setImageError(true)}
+                    priority
+                  />
+                ) : (
+                  <div className="text-6xl drop-shadow-xl sm:text-7xl md:text-8xl">{typeData.emoji}</div>
+                )}
+              </div>
               
-            <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 font-bold leading-relaxed mb-12">
-              「{typeData.catchcopy}」
-            </p>
+              {/* キャッチコピー */}
+              <div className="flex-1 text-center md:text-left">
+                <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 font-bold leading-relaxed">
+                  「{typeData.catchcopy}」
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* セクションごとの直接配置 */}
@@ -176,12 +181,12 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-center space-y-8"
+            className="space-y-6"
           >
-            <h2 className={`text-3xl md:text-4xl font-bold text-gray-800 mb-8 ${zenMaruGothic.className}`}>
+            <h2 className={`text-2xl font-bold text-gray-800 text-center ${zenMaruGothic.className}`}>
               基本生態
             </h2>
-            <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-5xl mx-auto">
+            <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
               {typeData.detailedEcology.split('。').map((sentence, index, array) => (
                 <span key={index}>
                   {sentence.trim()}
@@ -197,12 +202,12 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center space-y-8"
+            className="space-y-6"
           >
-            <h2 className={`text-3xl md:text-4xl font-bold text-red-600 mb-8 ${zenMaruGothic.className}`}>
+            <h2 className={`text-2xl font-bold text-red-600 text-center ${zenMaruGothic.className}`}>
               太る原因
             </h2>
-            <h3 className="text-2xl md:text-3xl font-bold text-red-700 mb-6">
+            <h3 className="text-xl font-bold text-red-700 text-center">
               {
                 userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
                 userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
@@ -222,7 +227,7 @@ export default function ResultPage() {
                 '自分への甘さが糖度120%'
               }
             </h3>
-            <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-5xl mx-auto">
+            <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
               {typeData.fatCause.split('。').map((sentence, index, array) => (
                 <span key={index}>
                   {sentence.trim()}
@@ -238,12 +243,12 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center space-y-8"
+            className="space-y-6"
           >
-            <h2 className={`text-3xl md:text-4xl font-bold text-green-600 mb-8 ${zenMaruGothic.className}`}>
+            <h2 className={`text-2xl font-bold text-green-600 text-center ${zenMaruGothic.className}`}>
               あなただけの痩せ方
             </h2>
-            <h3 className="text-2xl md:text-3xl font-bold text-green-700 mb-6">
+            <h3 className="text-xl font-bold text-green-700 text-center">
               {
                 userType === 'SRFQ' ? 'チートデイの『義務化』' :
                 userType === 'SRFL' ? '匿名アカウントでの発散' :
@@ -263,7 +268,7 @@ export default function ResultPage() {
                 '『ハードルを地面に埋める』'
               }
             </h3>
-            <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-5xl mx-auto">
+            <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
               {typeData.solution.split('。').map((sentence, index, array) => (
                 <span key={index}>
                   {sentence.trim()}
@@ -279,21 +284,20 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="text-center space-y-8"
+            className="space-y-8"
           >
-            <h2 className={`text-3xl md:text-4xl font-bold text-purple-600 mb-8 ${zenMaruGothic.className}`}>
+            <h2 className={`text-2xl font-bold text-purple-600 text-center ${zenMaruGothic.className}`}>
               相性チェック
             </h2>
             
-            <div className="max-w-5xl mx-auto space-y-8">
+            <div className="max-w-4xl mx-auto space-y-8">
               {/* 最高の相性 */}
               <div className="text-center space-y-4">
-                <div className="text-6xl">💖</div>
-                <h3 className="text-2xl md:text-3xl font-bold text-green-600">最高の相性</h3>
-                <h4 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                <h3 className="text-xl font-bold text-green-600">最高の相性</h3>
+                <h4 className="text-xl font-bold text-gray-800">
                   {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
                 </h4>
-                <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-4xl mx-auto">
+                <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
                   {typeData.compatibility.good.reason.split('。').map((sentence, index, array) => (
                     <span key={index}>
                       {sentence.trim()}
@@ -306,12 +310,11 @@ export default function ResultPage() {
 
               {/* 要注意 */}
               <div className="text-center space-y-4">
-                <div className="text-6xl">⚡</div>
-                <h3 className="text-2xl md:text-3xl font-bold text-purple-600">要注意</h3>
-                <h4 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                <h3 className="text-xl font-bold text-purple-600">要注意</h3>
+                <h4 className="text-xl font-bold text-gray-800">
                   {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
                 </h4>
-                <div className="text-xl md:text-2xl leading-loose text-gray-800 font-normal max-w-4xl mx-auto">
+                <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
                   {typeData.compatibility.bad.reason.split('。').map((sentence, index, array) => (
                     <span key={index}>
                       {sentence.trim()}
