@@ -186,12 +186,12 @@ export default function ResultPage() {
             <h2 className={`text-2xl font-bold text-gray-800 text-center ${zenMaruGothic.className}`}>
               基本生態
             </h2>
-            <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
+            <div className="text-lg leading-normal text-gray-800 font-normal max-w-4xl mx-auto text-left">
               {typeData.detailedEcology.split('。').map((sentence, index, array) => (
                 <span key={index}>
                   {sentence.trim()}
                   {index < array.length - 1 && sentence.trim() && '。'}
-                  {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
+                  {index < array.length - 1 && sentence.trim() && <><br /></>}
                 </span>
               ))}
             </div>
@@ -207,34 +207,39 @@ export default function ResultPage() {
             <h2 className={`text-2xl font-bold text-red-600 text-center ${zenMaruGothic.className}`}>
               太る原因
             </h2>
-            <h3 className="text-xl font-bold text-red-700 text-center">
-              {
-                userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
-                userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
-                userType === 'SRCQ' ? '『ヘルシーなもの』の食べすぎ' :
-                userType === 'SRCL' ? '停滞期への過剰反応' :
-                userType === 'SEFQ' ? '買ったことで満足症候群' :
-                userType === 'SEFL' ? '『体にいいもの』なら太らないという誤解' :
-                userType === 'SECQ' ? '『明日からやる』の無限ループ' :
-                userType === 'SECL' ? '『最適な方法』を探しすぎて動けない' :
-                userType === 'GRFQ' ? '『付き合い』での飲み食い' :
-                userType === 'GRFL' ? '『ご褒美』の頻度が高い' :
-                userType === 'GRCQ' ? '無理な減量による反動' :
-                userType === 'GRCL' ? '『監督』ポジションへの安住' :
-                userType === 'GEFQ' ? '『やってみた動画』で満足' :
-                userType === 'GEFL' ? '『ご褒美スタバ』の常習化' :
-                userType === 'GECQ' ? '『頭でっかち』による行動不全' :
-                '自分への甘さが糖度120%'
-              }
-            </h3>
-            <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
-              {typeData.fatCause.split('。').map((sentence, index, array) => (
-                <span key={index}>
-                  {sentence.trim()}
-                  {index < array.length - 1 && sentence.trim() && '。'}
-                  {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
-                </span>
-              ))}
+            {/* サブタイトルと本文を横並び */}
+            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
+              <div className="flex-shrink-0 md:w-1/3">
+                <h3 className="text-xl font-bold text-red-700">
+                  {
+                    userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
+                    userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
+                    userType === 'SRCQ' ? '『ヘルシーなもの』の食べすぎ' :
+                    userType === 'SRCL' ? '停滞期への過剰反応' :
+                    userType === 'SEFQ' ? '買ったことで満足症候群' :
+                    userType === 'SEFL' ? '『体にいいもの』なら太らないという誤解' :
+                    userType === 'SECQ' ? '『明日からやる』の無限ループ' :
+                    userType === 'SECL' ? '『最適な方法』を探しすぎて動けない' :
+                    userType === 'GRFQ' ? '『付き合い』での飲み食い' :
+                    userType === 'GRFL' ? '『ご褒美』の頻度が高い' :
+                    userType === 'GRCQ' ? '無理な減量による反動' :
+                    userType === 'GRCL' ? '『監督』ポジションへの安住' :
+                    userType === 'GEFQ' ? '『やってみた動画』で満足' :
+                    userType === 'GEFL' ? '『ご褒美スタバ』の常習化' :
+                    userType === 'GECQ' ? '『頭でっかち』による行動不全' :
+                    '自分への甘さが糖度120%'
+                  }
+                </h3>
+              </div>
+              <div className="flex-1 text-lg leading-normal text-gray-800 font-normal text-left">
+                {typeData.fatCause.split('。').map((sentence, index, array) => (
+                  <span key={index}>
+                    {sentence.trim()}
+                    {index < array.length - 1 && sentence.trim() && '。'}
+                    {index < array.length - 1 && sentence.trim() && <><br /></>}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -248,34 +253,39 @@ export default function ResultPage() {
             <h2 className={`text-2xl font-bold text-green-600 text-center ${zenMaruGothic.className}`}>
               あなただけの痩せ方
             </h2>
-            <h3 className="text-xl font-bold text-green-700 text-center">
-              {
-                userType === 'SRFQ' ? 'チートデイの『義務化』' :
-                userType === 'SRFL' ? '匿名アカウントでの発散' :
-                userType === 'SRCQ' ? '『ヘルシーくん』への完全服従' :
-                userType === 'SRCL' ? '『ヘルシーくん』での記録習慣' :
-                userType === 'SEFQ' ? '飽きる前提の『味変』戦略' :
-                userType === 'SEFL' ? '『見た目』の変化を楽しむ' :
-                userType === 'SECQ' ? '『夜だけ』管理法' :
-                userType === 'SECL' ? '『思考停止』の実践' :
-                userType === 'GRFQ' ? '『宣言』による退路遮断' :
-                userType === 'GRFL' ? '『料理教室』や『サークル』へ参加' :
-                userType === 'GRCQ' ? '『賭け』の要素を取り入れる' :
-                userType === 'GRCL' ? '『プレイヤー』に戻る宣言' :
-                userType === 'GEFQ' ? '『次々と乗り換える』サーキット' :
-                userType === 'GEFL' ? '『憧れの服』を先に買う' :
-                userType === 'GECQ' ? '『誰かに教える』ために実践する' :
-                '『ハードルを地面に埋める』'
-              }
-            </h3>
-            <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
-              {typeData.solution.split('。').map((sentence, index, array) => (
-                <span key={index}>
-                  {sentence.trim()}
-                  {index < array.length - 1 && sentence.trim() && '。'}
-                  {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
-                </span>
-              ))}
+            {/* サブタイトルと本文を横並び */}
+            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
+              <div className="flex-shrink-0 md:w-1/3">
+                <h3 className="text-xl font-bold text-green-700">
+                  {
+                    userType === 'SRFQ' ? 'チートデイの『義務化』' :
+                    userType === 'SRFL' ? '匿名アカウントでの発散' :
+                    userType === 'SRCQ' ? '『ヘルシーくん』への完全服従' :
+                    userType === 'SRCL' ? '『ヘルシーくん』での記録習慣' :
+                    userType === 'SEFQ' ? '飽きる前提の『味変』戦略' :
+                    userType === 'SEFL' ? '『見た目』の変化を楽しむ' :
+                    userType === 'SECQ' ? '『夜だけ』管理法' :
+                    userType === 'SECL' ? '『思考停止』の実践' :
+                    userType === 'GRFQ' ? '『宣言』による退路遮断' :
+                    userType === 'GRFL' ? '『料理教室』や『サークル』へ参加' :
+                    userType === 'GRCQ' ? '『賭け』の要素を取り入れる' :
+                    userType === 'GRCL' ? '『プレイヤー』に戻る宣言' :
+                    userType === 'GEFQ' ? '『次々と乗り換える』サーキット' :
+                    userType === 'GEFL' ? '『憧れの服』を先に買う' :
+                    userType === 'GECQ' ? '『誰かに教える』ために実践する' :
+                    '『ハードルを地面に埋める』'
+                  }
+                </h3>
+              </div>
+              <div className="flex-1 text-lg leading-normal text-gray-800 font-normal text-left">
+                {typeData.solution.split('。').map((sentence, index, array) => (
+                  <span key={index}>
+                    {sentence.trim()}
+                    {index < array.length - 1 && sentence.trim() && '。'}
+                    {index < array.length - 1 && sentence.trim() && <><br /></>}
+                  </span>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -297,12 +307,12 @@ export default function ResultPage() {
                 <h4 className="text-xl font-bold text-gray-800">
                   {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
                 </h4>
-                <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
+                <div className="text-lg leading-normal text-gray-800 font-normal max-w-4xl mx-auto text-left">
                   {typeData.compatibility.good.reason.split('。').map((sentence, index, array) => (
                     <span key={index}>
                       {sentence.trim()}
                       {index < array.length - 1 && sentence.trim() && '。'}
-                      {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
+                      {index < array.length - 1 && sentence.trim() && <><br /></>}
                     </span>
                   ))}
                 </div>
@@ -314,12 +324,12 @@ export default function ResultPage() {
                 <h4 className="text-xl font-bold text-gray-800">
                   {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
                 </h4>
-                <div className="text-lg leading-relaxed text-gray-800 font-normal max-w-4xl mx-auto text-left">
+                <div className="text-lg leading-normal text-gray-800 font-normal max-w-4xl mx-auto text-left">
                   {typeData.compatibility.bad.reason.split('。').map((sentence, index, array) => (
                     <span key={index}>
                       {sentence.trim()}
                       {index < array.length - 1 && sentence.trim() && '。'}
-                      {index < array.length - 1 && sentence.trim() && <><br /><br /></>}
+                      {index < array.length - 1 && sentence.trim() && <><br /></>}
                     </span>
                   ))}
                 </div>
