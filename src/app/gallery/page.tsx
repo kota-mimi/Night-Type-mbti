@@ -95,25 +95,33 @@ export default function GalleryPage() {
                   <div className="pt-2">
                     <button
                       onClick={() => {
-                        // 該当タイプの結果をローカルストレージに保存
+                        // 該当タイプの結果を生成するためのスコアを計算
                         const typeCodeStr = String(typeCode)
-                        const mockAnswers = Array.from({ length: 20 }, (_, i) => ({
-                          questionId: i + 1,
-                          score: typeCodeStr.includes('S') ? 
-                            (typeCodeStr.includes('RF') ? 2 : typeCodeStr.includes('RC') ? 1 : typeCodeStr.includes('EF') ? -1 : -2) :
-                            (typeCodeStr.includes('RF') ? 1 : typeCodeStr.includes('RC') ? 2 : typeCodeStr.includes('EF') ? -2 : -1)
-                        }))
                         
-                        // 実際のスコアリング結果になるように調整
-                        const answers = mockAnswers.map((answer, index) => {
-                          if (typeCodeStr.startsWith('S')) {
-                            // S (Self-improvement) type
-                            if (index < 10) return { ...answer, score: Math.random() > 0.5 ? 1 : 2 }
-                            return { ...answer, score: Math.random() > 0.5 ? -1 : -2 }
-                          } else {
-                            // G (Group/social) type  
-                            if (index < 10) return { ...answer, score: Math.random() > 0.5 ? -1 : -2 }
-                            return { ...answer, score: Math.random() > 0.5 ? 1 : 2 }
+                        // スコアリング: 質問1-5(SG軸), 6-10(RE軸), 11-15(FC軸), 16-20(QL軸)
+                        // 正の値なら前者(S,R,F,Q)、負の値なら後者(G,E,C,L)
+                        const answers = Array.from({ length: 20 }, (_, i) => {
+                          const questionId = i + 1
+                          let score = 1 // デフォルト値
+                          
+                          // 各軸に対して正しいスコアを設定
+                          if (questionId >= 1 && questionId <= 5) {
+                            // SG軸: Sタイプなら正、Gタイプなら負
+                            score = typeCodeStr.startsWith('S') ? 2 : -2
+                          } else if (questionId >= 6 && questionId <= 10) {
+                            // RE軸: Rタイプなら正、Eタイプなら負
+                            score = typeCodeStr.charAt(1) === 'R' ? 2 : -2
+                          } else if (questionId >= 11 && questionId <= 15) {
+                            // FC軸: Fタイプなら正、Cタイプなら負
+                            score = typeCodeStr.charAt(2) === 'F' ? 2 : -2
+                          } else if (questionId >= 16 && questionId <= 20) {
+                            // QL軸: Qタイプなら正、Lタイプなら負
+                            score = typeCodeStr.charAt(3) === 'Q' ? 2 : -2
+                          }
+                          
+                          return {
+                            questionId,
+                            score
                           }
                         })
                         
