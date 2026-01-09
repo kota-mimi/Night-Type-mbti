@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
+import Header from "@/components/Header";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -76,6 +77,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={`${notoSansJP.className} antialiased`}>
+        <Header />
         {children}
         
         {/* Google Analytics */}

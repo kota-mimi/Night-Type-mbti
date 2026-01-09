@@ -139,7 +139,7 @@ export default function QuizPage() {
       {/* プログレスバー */}
       <div className="w-full bg-gray-100 h-2">
         <motion.div
-          className="h-full bg-[#4CAF50]"
+          className="h-full bg-[#87CEEB]"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.3 }}
@@ -198,11 +198,11 @@ export default function QuizPage() {
                             const size = scoreIndex === 0 || scoreIndex === 3 ? 'w-12 h-12' : 'w-10 h-10'
                             
                             const colorStyle = scoreIndex <= 1 ? {
-                              borderColor: isSelected ? '#4CAF50' : '#4CAF50',
-                              backgroundColor: isSelected ? '#4CAF50' : 'transparent'
+                              borderColor: isSelected ? '#87CEEB' : '#87CEEB',
+                              backgroundColor: isSelected ? '#87CEEB' : 'transparent'
                             } : {
-                              borderColor: isSelected ? '#9C27B0' : '#9C27B0', 
-                              backgroundColor: isSelected ? '#9C27B0' : 'transparent'
+                              borderColor: isSelected ? '#FFB366' : '#FFB366', 
+                              backgroundColor: isSelected ? '#FFB366' : 'transparent'
                             }
                             
                             return (
@@ -223,7 +223,7 @@ export default function QuizPage() {
                     {/* PC/タブレット用レイアウト */}
                     <div className="hidden sm:block">
                       <div className="flex items-center justify-center gap-6">
-                        <span className="text-sm text-[#4CAF50] font-medium">そう思う</span>
+                        <span className="text-sm text-gray-800 font-medium">そう思う</span>
                         
                         <div className="flex items-center gap-3">
                           {[2, 1, -1, -2].map((score, scoreIndex) => {
@@ -234,11 +234,11 @@ export default function QuizPage() {
                                         'w-16 h-16'
                             
                             const colorStyle = scoreIndex <= 1 ? {
-                              borderColor: isSelected ? '#4CAF50' : '#4CAF50',
-                              backgroundColor: isSelected ? '#4CAF50' : 'transparent'
+                              borderColor: isSelected ? '#87CEEB' : '#87CEEB',
+                              backgroundColor: isSelected ? '#87CEEB' : 'transparent'
                             } : {
-                              borderColor: isSelected ? '#9C27B0' : '#9C27B0', 
-                              backgroundColor: isSelected ? '#9C27B0' : 'transparent'
+                              borderColor: isSelected ? '#FFB366' : '#FFB366', 
+                              backgroundColor: isSelected ? '#FFB366' : 'transparent'
                             }
                             
                             return (
@@ -254,7 +254,7 @@ export default function QuizPage() {
                           })}
                         </div>
 
-                        <span className="text-sm text-[#9C27B0] font-medium">そう思わない</span>
+                        <span className="text-sm text-gray-800 font-medium">そう思わない</span>
                       </div>
                     </div>
                   </div>
@@ -282,7 +282,7 @@ export default function QuizPage() {
                 whileTap={allAnswered ? { scale: 0.98 } : {}}
                 className={`w-full py-3 rounded-lg font-medium text-base transition-all duration-300 ${
                   allAnswered
-                    ? 'bg-[#4CAF50] hover:bg-[#45A049] text-white'
+                    ? 'bg-[#87CEEB] hover:bg-[#7BB5E0] text-white'
                     : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                 }`}
               >

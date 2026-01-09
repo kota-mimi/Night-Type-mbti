@@ -16,7 +16,7 @@ export default function GalleryPage() {
   const typeKeys = Object.keys(diagramTypes) as Array<keyof typeof diagramTypes>
   
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-[#87CEEB] via-[#B0E0E6] to-[#98E4E8] ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-[#98D8E8] ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8">
         
         {/* ヘッダー */}
@@ -49,17 +49,22 @@ export default function GalleryPage() {
           {typeKeys.map((typeCode, index) => {
             const type = diagramTypes[typeCode]
             
-            // カードの背景色を決定
+            // カードの背景色とテキスト色を決定
             let cardBgColor = 'bg-blue-200/50' // デフォルト
+            let textColor = 'text-blue-600' // デフォルト
             const typeCodeStr = String(typeCode)
             if (typeCodeStr.startsWith('SR')) {
               cardBgColor = 'bg-green-200/50' // SR系統（緑）
+              textColor = 'text-green-600'
             } else if (typeCodeStr.startsWith('SE')) {
               cardBgColor = 'bg-purple-200/50' // SE系統（紫）
+              textColor = 'text-purple-600'
             } else if (typeCodeStr.startsWith('GR')) {
-              cardBgColor = 'bg-red-200/50' // GR系統（赤）
+              cardBgColor = 'bg-red-400/60' // GR系統（赤）
+              textColor = 'text-red-600'
             } else if (typeCodeStr.startsWith('GE')) {
               cardBgColor = 'bg-blue-200/50' // GE系統（青）
+              textColor = 'text-blue-600'
             }
             
             return (
@@ -68,13 +73,13 @@ export default function GalleryPage() {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className={`${cardBgColor} rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300`}
+                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl`}
               >
                 <div className="bg-white rounded-xl p-4 shadow-sm"
               >
                 {/* タイプコード - 小さく上部に表示 */}
                 <div className="text-center pt-4 pb-2">
-                  <h2 className="text-lg font-bold text-blue-600">
+                  <h2 className={`text-lg font-bold ${textColor}`}>
                     {typeCode}
                   </h2>
                 </div>
