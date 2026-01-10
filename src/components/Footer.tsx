@@ -1,0 +1,115 @@
+'use client'
+
+import Link from 'next/link'
+
+export default function Footer() {
+  return (
+    <footer className="bg-gray-100 py-8 mt-16">
+      {/* LINEスタンプ宣伝バナー */}
+      <div className="bg-green-500 text-white py-4 px-4 mb-6 mx-4 rounded-lg">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <div className="text-sm font-bold">
+              LINEスタンプ発売中！
+            </div>
+            <div className="text-xs">
+              診断キャラクターのスタンプをゲットしよう
+            </div>
+          </div>
+          <Link 
+            href="https://store.line.me/stickershop/product/your-sticker-id"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white text-green-500 px-4 py-2 rounded-full text-sm font-bold hover:bg-gray-100 transition-colors"
+          >
+            今すぐチェック
+          </Link>
+        </div>
+      </div>
+
+      {/* メインフッターコンテンツ */}
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          {/* サイト情報 */}
+          <div>
+            <h3 className="font-bold text-lg mb-4">ダイエットキャラ診断</h3>
+            <p className="text-gray-600 text-sm mb-4">
+              あなたの性格と、痩せ方が見つかる。<br/>
+              16タイプのダイエット性格診断で、最適なダイエット方法を発見。
+            </p>
+            <div className="text-xs text-gray-500">
+              一般社団法人 日本恋愛学協会 監修<br/>
+              代表理事 牧野医師<br/>
+              （東京大学医学部卒/精神科医）
+            </div>
+          </div>
+
+          {/* ナビゲーション */}
+          <div>
+            <h4 className="font-bold mb-4">コンテンツ</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/" className="text-gray-600 hover:text-blue-500 transition-colors">
+                  診断を始める
+                </Link>
+              </li>
+              <li>
+                <Link href="/gallery" className="text-gray-600 hover:text-blue-500 transition-colors">
+                  キャラクター一覧
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-600 hover:text-blue-500 transition-colors">
+                  ダイエットMBTIとは
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* お問い合わせ・その他 */}
+          <div>
+            <h4 className="font-bold mb-4">お問い合わせ</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/contact" className="text-gray-600 hover:text-blue-500 transition-colors">
+                  お問い合わせ
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-gray-600 hover:text-blue-500 transition-colors">
+                  プライバシーポリシー
+                </Link>
+              </li>
+              <li>
+                <a 
+                  href="https://x.com/lovechara64" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                >
+                  X (Twitter)
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="https://instagram.com/lovechara64"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-blue-500 transition-colors"
+                >
+                  Instagram
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* コピーライト */}
+        <div className="border-t border-gray-300 mt-8 pt-4 text-center text-sm text-gray-500">
+          © 2024 ダイエットキャラ診断. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  )
+}
