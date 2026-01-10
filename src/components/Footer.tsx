@@ -33,16 +33,6 @@ export default function Footer() {
           
           {/* サイト情報 */}
           <div>
-            <h3 className="font-bold text-lg mb-4">ダイエットキャラ診断</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              あなたの性格と、痩せ方が見つかる。<br/>
-              16タイプのダイエット性格診断で、最適なダイエット方法を発見。
-            </p>
-            <div className="text-xs text-gray-500">
-              一般社団法人 日本恋愛学協会 監修<br/>
-              代表理事 牧野医師<br/>
-              （東京大学医学部卒/精神科医）
-            </div>
           </div>
 
           {/* ナビゲーション */}
@@ -105,10 +95,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* コピーライト */}
-        <div className="border-t border-gray-300 mt-8 pt-4 text-center text-sm text-gray-500">
-          © 2024 ダイエットキャラ診断. All rights reserved.
-        </div>
       </div>
     </footer>
   )
