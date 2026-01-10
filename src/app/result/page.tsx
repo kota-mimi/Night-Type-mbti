@@ -89,7 +89,7 @@ export default function ResultPage() {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] flex items-center justify-center ${notoSansJP.className}`}>
+      <div className={`min-h-screen bg-white flex items-center justify-center ${notoSansJP.className}`}>
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -102,7 +102,7 @@ export default function ResultPage() {
   const typeData = diagramTypes[userType]
   if (!typeData) {
     return (
-      <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] flex items-center justify-center ${notoSansJP.className}`}>
+      <div className={`min-h-screen bg-white flex items-center justify-center ${notoSansJP.className}`}>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-[#333333] mb-4">エラーが発生しました</h1>
           <button
@@ -117,7 +117,7 @@ export default function ResultPage() {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-white ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         
         {/* メインコンテンツカード */}
