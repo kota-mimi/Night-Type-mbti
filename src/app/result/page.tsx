@@ -300,36 +300,42 @@ export default function ResultPage() {
               相性チェック
             </h2>
             
-            <div className="max-w-4xl mx-auto space-y-8">
-              {/* 最高の相性 */}
-              <div className="text-center space-y-4">
-                <h3 className="text-xl font-bold text-green-600">最高の相性</h3>
-                <h4 className="text-xl font-bold text-gray-800">
-                  {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
-                </h4>
-                <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
-                  {typeData.compatibility.good.reason.split('。').map((sentence, index, array) => (
-                    <p key={index} className="mb-4">
-                      {sentence.trim()}
-                      {index < array.length - 1 && sentence.trim() && '。'}
-                    </p>
-                  ))}
+            <div className="max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                {/* 最高の相性 */}
+                <div className="bg-green-50 rounded-lg p-6 border border-green-200">
+                  <div className="text-center space-y-3">
+                    <h3 className="text-lg font-bold text-green-600">最高の相性</h3>
+                    <h4 className="text-lg font-bold text-gray-800">
+                      {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
+                    </h4>
+                  </div>
+                  <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
+                    {typeData.compatibility.good.reason.split('。').map((sentence, index, array) => (
+                      <p key={index} className={index < array.length - 1 ? 'mb-2' : ''}>
+                        {sentence.trim()}
+                        {index < array.length - 1 && sentence.trim() && '。'}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* 要注意 */}
-              <div className="text-center space-y-4">
-                <h3 className="text-xl font-bold text-purple-600">要注意</h3>
-                <h4 className="text-xl font-bold text-gray-800">
-                  {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
-                </h4>
-                <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
-                  {typeData.compatibility.bad.reason.split('。').map((sentence, index, array) => (
-                    <p key={index} className="mb-4">
-                      {sentence.trim()}
-                      {index < array.length - 1 && sentence.trim() && '。'}
-                    </p>
-                  ))}
+                {/* 要注意 */}
+                <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
+                  <div className="text-center space-y-3">
+                    <h3 className="text-lg font-bold text-purple-600">要注意</h3>
+                    <h4 className="text-lg font-bold text-gray-800">
+                      {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
+                    </h4>
+                  </div>
+                  <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
+                    {typeData.compatibility.bad.reason.split('。').map((sentence, index, array) => (
+                      <p key={index} className={index < array.length - 1 ? 'mb-2' : ''}>
+                        {sentence.trim()}
+                        {index < array.length - 1 && sentence.trim() && '。'}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
