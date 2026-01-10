@@ -117,21 +117,7 @@ export default function ResultPage() {
   }
 
   return (
-    <div className={`min-h-screen ${notoSansJP.className}`} 
-         style={{
-           background: `
-             linear-gradient(135deg, 
-               rgba(135, 206, 235, 0.95) 0%, 
-               rgba(176, 224, 230, 0.95) 25%,
-               rgba(152, 228, 232, 0.95) 50%,
-               rgba(176, 196, 222, 0.95) 75%,
-               rgba(221, 160, 221, 0.95) 100%
-             ),
-             radial-gradient(circle at 30% 70%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
-             radial-gradient(circle at 70% 30%, rgba(173, 216, 230, 0.3) 0%, transparent 50%),
-             radial-gradient(circle at 50% 50%, rgba(240, 248, 255, 0.2) 0%, transparent 70%)
-           `
-         }}>
+    <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         
         {/* メインコンテンツカード */}
@@ -144,10 +130,10 @@ export default function ResultPage() {
           
           {/* キャラクター画像とタイトル */}
           <div className="mb-16">
-            {/* キャラクター画像とキャッチコピーを横並び */}
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            {/* キャラクター画像を中央配置 */}
+            <div className="flex justify-center items-center">
               {/* キャラクター画像 */}
-              <div className="flex-shrink-0 text-center">
+              <div className="text-center">
                 {!imageError ? (
                   <Image
                     src={`/characters/${userType}_new3.png`}
@@ -200,12 +186,9 @@ export default function ResultPage() {
             <h2 className={`text-2xl font-bold text-red-600 text-center ${zenMaruGothic.className}`}>
               太る原因
             </h2>
-            {/* サブタイトルと本文を横並び */}
-            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
-              <div className="flex-shrink-0 md:w-1/4">
-                <h3 className={`text-base font-bold text-red-700 whitespace-nowrap overflow-hidden text-ellipsis ${
-                  (userType === 'SEFL' || userType === 'SECL') ? 'text-left' : 'text-center'
-                }`}>
+            <div className="max-w-4xl mx-auto">
+              <div className="space-y-4 md:space-y-6">
+                <h3 className="text-base md:text-lg font-bold text-red-700 text-center">
                   {
                     userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
                     userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
@@ -225,14 +208,14 @@ export default function ResultPage() {
                     '自分への甘さが糖度120%'
                   }
                 </h3>
-              </div>
-              <div className="flex-1 text-sm md:text-base leading-relaxed text-gray-700 space-y-4 text-left">
-                {typeData.fatCause.split('。').map((sentence, index, array) => (
-                  <p key={index} className="mb-4">
-                    {sentence.trim()}
-                    {index < array.length - 1 && sentence.trim() && '。'}
-                  </p>
-                ))}
+                <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 text-left">
+                  {typeData.fatCause.split('。').map((sentence, index, array) => (
+                    <p key={index} className="mb-4">
+                      {sentence.trim()}
+                      {index < array.length - 1 && sentence.trim() && '。'}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
@@ -247,12 +230,9 @@ export default function ResultPage() {
             <h2 className={`text-2xl font-bold text-green-600 text-center ${zenMaruGothic.className}`}>
               あなただけの痩せ方
             </h2>
-            {/* サブタイトルと本文を横並び */}
-            <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
-              <div className="flex-shrink-0 md:w-1/4">
-                <h3 className={`text-base font-bold text-green-700 whitespace-nowrap overflow-hidden text-ellipsis ${
-                  (userType === 'GRFL' || userType === 'GEFQ' || userType === 'GECQ') ? 'text-left' : 'text-center'
-                }`}>
+            <div className="max-w-4xl mx-auto">
+              <div className="space-y-4 md:space-y-6">
+                <h3 className="text-base md:text-lg font-bold text-green-700 text-center">
                   {
                     userType === 'SRFQ' ? 'チートデイの『義務化』' :
                     userType === 'SRFL' ? '匿名アカウントでの発散' :
@@ -272,14 +252,14 @@ export default function ResultPage() {
                     '『ハードルを地面に埋める』'
                   }
                 </h3>
-              </div>
-              <div className="flex-1 text-sm md:text-base leading-relaxed text-gray-700 space-y-4 text-left">
-                {typeData.solution.split('。').map((sentence, index, array) => (
-                  <p key={index} className="mb-4">
-                    {sentence.trim()}
-                    {index < array.length - 1 && sentence.trim() && '。'}
-                  </p>
-                ))}
+                <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 text-left">
+                  {typeData.solution.split('。').map((sentence, index, array) => (
+                    <p key={index} className="mb-4">
+                      {sentence.trim()}
+                      {index < array.length - 1 && sentence.trim() && '。'}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>
