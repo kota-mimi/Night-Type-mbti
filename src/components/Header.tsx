@@ -27,7 +27,7 @@ export default function Header() {
   ]
 
   return (
-    <header className={`sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 ${notoSansJP.className}`}>
+    <header className={`sticky top-0 z-50 bg-white border-b border-gray-100 ${notoSansJP.className}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -58,9 +58,9 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
+              <X className="w-6 h-6 text-white" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
+              <Menu className="w-6 h-6 text-white" />
             )}
           </button>
         </div>
