@@ -58,9 +58,9 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6 text-white" />
+              <X className="w-6 h-6 text-gray-700" />
             ) : (
-              <Menu className="w-6 h-6 text-white" />
+              <Menu className="w-6 h-6 text-gray-700" />
             )}
           </button>
         </div>
@@ -85,7 +85,17 @@ export default function Header() {
         transition={{ type: 'tween', duration: 0.3 }}
         className="fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-50 md:hidden"
       >
-        <div className="p-6 pt-20">
+        {/* Close Button */}
+        <div className="flex justify-end p-4">
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="p-2"
+          >
+            <X className="w-6 h-6 text-gray-700" />
+          </button>
+        </div>
+        
+        <div className="p-6">
           <nav className="space-y-6">
             {menuItems.map((item) => (
               <Link
