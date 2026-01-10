@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- 背景の円 -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00D4AA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00C300;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <circle cx="60" cy="60" r="58" fill="url(#bgGradient)" stroke="#fff" stroke-width="2"/>
+  
+  <!-- LINEアイコン風のデザイン -->
+  <g transform="translate(30, 30)">
+    <!-- メインの吹き出し -->
+    <path d="M30 15C40 15 48 20 48 26C48 32 40 37 30 37C28 37 26 36.5 24 36L18 42V36C13 34 12 30 12 26C12 20 20 15 30 15Z" fill="white"/>
+    
+    <!-- 小さい点々 -->
+    <circle cx="22" cy="26" r="2" fill="#00C300"/>
+    <circle cx="30" cy="26" r="2" fill="#00C300"/>
+    <circle cx="38" cy="26" r="2" fill="#00C300"/>
+  </g>
+  
+  <!-- テキスト -->
+  <text x="60" y="80" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="10" font-weight="bold">
+    LINE
+  </text>
+  <text x="60" y="92" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8">
+    公式
+  </text>
+</svg>
