@@ -16,7 +16,7 @@ export default function GalleryPage() {
   const typeKeys = Object.keys(diagramTypes) as Array<keyof typeof diagramTypes>
   
   return (
-    <div className={`min-h-screen bg-[#98D8E8] ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-white ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8">
         
         {/* ヘッダー */}
@@ -25,7 +25,7 @@ export default function GalleryPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-3xl md:text-4xl font-bold text-gray-800 mb-4"
           >
             全16タイプ診断結果
           </motion.h1>
@@ -33,7 +33,7 @@ export default function GalleryPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-white/90"
+            className="text-lg text-gray-600"
           >
             あなたはどのタイプに当てはまりますか？
           </motion.p>

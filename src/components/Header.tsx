@@ -27,13 +27,13 @@ export default function Header() {
   ]
 
   return (
-    <header className={`sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-green-100 ${notoSansJP.className}`}>
+    <header className={`sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 ${notoSansJP.className}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2">
-              <div className={`text-2xl font-black text-transparent bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text ${zenMaruGothic.className}`}>
+              <div className={`text-2xl font-black text-gray-800 ${zenMaruGothic.className}`}>
                 ダイエットキャラ診断
               </div>
             </div>
@@ -45,7 +45,7 @@ export default function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-gray-700 hover:text-green-600 font-medium transition-colors"
+                className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
               >
                 {item.label}
               </Link>
@@ -91,7 +91,7 @@ export default function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="block text-xl font-medium text-gray-700 hover:text-green-600 transition-colors"
+                className="block text-xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}

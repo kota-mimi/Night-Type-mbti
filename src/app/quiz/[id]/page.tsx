@@ -185,12 +185,6 @@ export default function QuizPage() {
                     {/* スマホ用レイアウト */}
                     <div className="sm:hidden">
                       <div className="space-y-4">
-                        {/* ラベル */}
-                        <div className="flex justify-between text-xs px-2">
-                          <span className="text-[#4CAF50] font-medium">そう思う</span>
-                          <span className="text-[#9C27B0] font-medium">そう思わない</span>
-                        </div>
-                        
                         {/* ボタン群 - スマホ用サイズ */}
                         <div className="flex justify-center gap-4">
                           {[2, 1, -1, -2].map((score, scoreIndex) => {
@@ -217,15 +211,20 @@ export default function QuizPage() {
                             )
                           })}
                         </div>
+                        
+                        {/* ラベル */}
+                        <div className="flex justify-between text-xs px-2">
+                          <span className="text-black font-medium">そう思う</span>
+                          <span className="text-black font-medium">そう思わない</span>
+                        </div>
                       </div>
                     </div>
 
                     {/* PC/タブレット用レイアウト */}
                     <div className="hidden sm:block">
-                      <div className="flex items-center justify-center gap-6">
-                        <span className="text-sm text-gray-800 font-medium">そう思う</span>
-                        
-                        <div className="flex items-center gap-3">
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-center gap-6">
+                          <div className="flex items-center gap-3">
                           {[2, 1, -1, -2].map((score, scoreIndex) => {
                             const isSelected = answers[question.id] === score
                             const size = scoreIndex === 0 ? 'w-16 h-16' :
@@ -252,9 +251,13 @@ export default function QuizPage() {
                               />
                             )
                           })}
+                          </div>
                         </div>
-
-                        <span className="text-sm text-gray-800 font-medium">そう思わない</span>
+                        
+                        <div className="flex justify-between text-sm px-8">
+                          <span className="text-black font-medium">そう思う</span>
+                          <span className="text-black font-medium">そう思わない</span>
+                        </div>
                       </div>
                     </div>
                   </div>
