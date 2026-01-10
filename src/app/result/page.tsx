@@ -296,16 +296,16 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="space-y-8"
           >
-            <h2 className={`text-2xl font-bold text-purple-600 text-center ${zenMaruGothic.className}`}>
+            <h2 className={`text-2xl font-bold text-pink-500 text-center ${zenMaruGothic.className}`}>
               相性チェック
             </h2>
             
             <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 {/* 最高の相性 */}
-                <div className="bg-green-50 rounded-lg p-6 border border-green-200">
+                <div className="bg-pink-50 rounded-lg p-6 border border-pink-200">
                   <div className="text-center space-y-3">
-                    <h3 className="text-lg font-bold text-green-600">最高の相性</h3>
+                    <h3 className="text-lg font-bold text-pink-600">最高の相性</h3>
                     <h4 className="text-lg font-bold text-gray-800">
                       {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
                     </h4>
