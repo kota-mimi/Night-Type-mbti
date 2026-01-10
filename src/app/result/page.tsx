@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Home, Twitter, MessageSquare, Instagram, Download } from 'lucide-react'
+import { Home, Twitter, MessageSquare, Instagram, Download, Copy } from 'lucide-react'
 import Image from 'next/image'
 import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import { getTypeFromAnswers } from '@/lib/scoring'
@@ -80,6 +80,11 @@ export default function ResultPage() {
   const handleDownloadImage = () => {
     // 画像ダウンロード機能（将来的に実装）
     alert('画像ダウンロード機能は近日公開予定です！')
+  }
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href)
+    alert('リンクをコピーしました！')
   }
 
   const handleRestart = () => {
@@ -328,6 +333,17 @@ export default function ResultPage() {
           className="mt-6 sm:mt-8 max-w-md mx-auto space-y-3 sm:space-y-4"
         >
           
+
+          {/* リンクをコピー */}
+          <motion.button
+            onClick={handleCopyLink}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className={`w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 ${zenMaruGothic.className}`}
+          >
+            <Copy className="w-5 h-5" />
+            <span className="text-sm sm:text-base">リンクをコピー</span>
+          </motion.button>
 
           {/* Secondary - Instagram Story */}
           <motion.button
