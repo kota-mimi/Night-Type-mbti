@@ -147,14 +147,14 @@ export default function ResultPage() {
             {/* キャラクター画像とキャッチコピーを横並び */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
               {/* キャラクター画像 */}
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 text-center">
                 {!imageError ? (
                   <Image
                     src={`/characters/${userType}_new3.png`}
                     alt={`${typeData.name}のキャラクター`}
                     width={640}
                     height={760}
-                    className="w-full max-w-sm h-auto drop-shadow-2xl rounded-2xl"
+                    className="w-full max-w-sm h-auto rounded-2xl"
                     quality={95}
                     onError={() => setImageError(true)}
                     priority
@@ -162,6 +162,11 @@ export default function ResultPage() {
                 ) : (
                   <div className="text-6xl drop-shadow-xl sm:text-7xl md:text-8xl">{typeData.emoji}</div>
                 )}
+                
+                {/* キャッチコピー */}
+                <div className="mt-4 text-lg font-bold text-gray-800 text-center">
+                  {typeData.catchcopy}
+                </div>
               </div>
               
             </div>
