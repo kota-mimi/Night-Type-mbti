@@ -154,7 +154,7 @@ export default function ResultPage() {
                     alt={`${typeData.name}のキャラクター`}
                     width={640}
                     height={760}
-                    className="w-full max-w-sm h-auto rounded-2xl"
+                    className="w-full max-w-lg h-auto rounded-2xl"
                     quality={95}
                     onError={() => setImageError(true)}
                     priority
@@ -162,11 +162,6 @@ export default function ResultPage() {
                 ) : (
                   <div className="text-6xl drop-shadow-xl sm:text-7xl md:text-8xl">{typeData.emoji}</div>
                 )}
-                
-                {/* キャッチコピー */}
-                <div className="mt-4 text-lg font-bold text-gray-800 text-center">
-                  {typeData.catchcopy}
-                </div>
               </div>
               
             </div>
