@@ -64,7 +64,7 @@ export default function FloatingAd({
         fixed bottom-4 right-4 z-50 
         transition-all duration-300 ease-in-out
         opacity-100
-        w-[140px] h-[140px]
+        w-[100px] h-[100px]
       `}
     >
       {/* 広告バナー本体 */}
@@ -122,14 +122,6 @@ export default function FloatingAd({
 
       </div>
 
-      {/* 小さな「AD」ラベル */}
-      <div className="
-        absolute -top-1 -left-1 
-        bg-gray-600 text-white text-[8px] px-1 py-0.5 
-        rounded-full text-center font-bold
-      ">
-        AD
-      </div>
     </div>
   )
 }
