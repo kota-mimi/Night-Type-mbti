@@ -207,7 +207,7 @@ export default function ResultPage() {
             </h2>
             {/* サブタイトルと本文を横並び */}
             <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
-              <div className="flex-shrink-0 md:w-1/3">
+              <div className="flex-shrink-0 md:w-1/4">
                 <h3 className={`text-base font-bold text-red-700 whitespace-nowrap overflow-hidden text-ellipsis ${
                   (userType === 'SEFL' || userType === 'SECL') ? 'text-left' : 'text-center'
                 }`}>
@@ -254,7 +254,7 @@ export default function ResultPage() {
             </h2>
             {/* サブタイトルと本文を横並び */}
             <div className="flex flex-col md:flex-row items-start gap-6 md:gap-8">
-              <div className="flex-shrink-0 md:w-1/3">
+              <div className="flex-shrink-0 md:w-1/4">
                 <h3 className={`text-base font-bold text-green-700 whitespace-nowrap overflow-hidden text-ellipsis ${
                   (userType === 'GRFL' || userType === 'GEFQ' || userType === 'GECQ') ? 'text-left' : 'text-center'
                 }`}>
