@@ -185,13 +185,12 @@ export default function ResultPage() {
             <h2 className={`text-2xl font-bold text-gray-800 text-center ${zenMaruGothic.className}`}>
               基本生態
             </h2>
-            <div className="text-lg leading-normal text-gray-800 font-normal max-w-4xl mx-auto text-left">
+            <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
               {typeData.detailedEcology.split('。').map((sentence, index, array) => (
-                <span key={index}>
+                <p key={index} className="mb-4">
                   {sentence.trim()}
                   {index < array.length - 1 && sentence.trim() && '。'}
-                  {index < array.length - 1 && sentence.trim() && <><br /></>}
-                </span>
+                </p>
               ))}
             </div>
           </motion.div>
@@ -232,13 +231,12 @@ export default function ResultPage() {
                   }
                 </h3>
               </div>
-              <div className="flex-1 text-lg leading-normal text-gray-800 font-normal text-left">
+              <div className="flex-1 text-sm md:text-base leading-relaxed text-gray-700 space-y-4 text-left">
                 {typeData.fatCause.split('。').map((sentence, index, array) => (
-                  <span key={index}>
+                  <p key={index} className="mb-4">
                     {sentence.trim()}
                     {index < array.length - 1 && sentence.trim() && '。'}
-                    {index < array.length - 1 && sentence.trim() && <><br /></>}
-                  </span>
+                  </p>
                 ))}
               </div>
             </div>
@@ -280,13 +278,12 @@ export default function ResultPage() {
                   }
                 </h3>
               </div>
-              <div className="flex-1 text-lg leading-normal text-gray-800 font-normal text-left">
+              <div className="flex-1 text-sm md:text-base leading-relaxed text-gray-700 space-y-4 text-left">
                 {typeData.solution.split('。').map((sentence, index, array) => (
-                  <span key={index}>
+                  <p key={index} className="mb-4">
                     {sentence.trim()}
                     {index < array.length - 1 && sentence.trim() && '。'}
-                    {index < array.length - 1 && sentence.trim() && <><br /></>}
-                  </span>
+                  </p>
                 ))}
               </div>
             </div>
@@ -310,13 +307,12 @@ export default function ResultPage() {
                 <h4 className="text-xl font-bold text-gray-800">
                   {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
                 </h4>
-                <div className="text-lg leading-normal text-gray-800 font-normal max-w-4xl mx-auto text-left">
+                <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
                   {typeData.compatibility.good.reason.split('。').map((sentence, index, array) => (
-                    <span key={index}>
+                    <p key={index} className="mb-4">
                       {sentence.trim()}
                       {index < array.length - 1 && sentence.trim() && '。'}
-                      {index < array.length - 1 && sentence.trim() && <><br /></>}
-                    </span>
+                    </p>
                   ))}
                 </div>
               </div>
@@ -327,13 +323,12 @@ export default function ResultPage() {
                 <h4 className="text-xl font-bold text-gray-800">
                   {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
                 </h4>
-                <div className="text-lg leading-normal text-gray-800 font-normal max-w-4xl mx-auto text-left">
+                <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
                   {typeData.compatibility.bad.reason.split('。').map((sentence, index, array) => (
-                    <span key={index}>
+                    <p key={index} className="mb-4">
                       {sentence.trim()}
                       {index < array.length - 1 && sentence.trim() && '。'}
-                      {index < array.length - 1 && sentence.trim() && <><br /></>}
-                    </span>
+                    </p>
                   ))}
                 </div>
               </div>
