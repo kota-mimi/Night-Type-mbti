@@ -135,7 +135,7 @@ export default function QuizPage() {
   const allAnswered = questionGroup.every(q => answers[q.id] !== undefined)
 
   return (
-    <div className={`min-h-screen bg-white ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
       {/* プログレスバー */}
       <div className="w-full bg-gray-100 h-2">
         <motion.div

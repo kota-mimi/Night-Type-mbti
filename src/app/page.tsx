@@ -17,7 +17,7 @@ const zenMaruGothic = Zen_Maru_Gothic({
 
 export default function Home() {
   return (
-    <div className={`min-h-screen bg-white ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
       <main className="flex flex-col justify-center items-center min-h-screen text-center px-4">
         
         {/* メインコンテンツ */}
