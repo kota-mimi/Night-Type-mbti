@@ -29,8 +29,8 @@ export default function Home() {
           className="text-center"
         >
           {/* タイトル */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            ダイエットキャラ<br className="sm:hidden"/>診断16
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            ダイエットキャラ診断16
           </h1>
           
           {/* サブタイトル */}
