@@ -79,133 +79,53 @@ export default function ResultPage() {
 
   const handleDownloadImage = async () => {
     try {
-      const element = document.getElementById('result-card')
-      if (!element) {
-        alert('エラー: 共有する内容が見つかりません。')
+      const typeData = diagramTypes[userType]
+      if (!typeData) {
+        alert('エラー: 診断結果が見つかりません。')
         return
       }
 
-      // dom-to-imageライブラリを使用してhtml2canvasの色問題を回避
-      try {
-        const domtoimage = await import('dom-to-image')
-        const blob = await domtoimage.toBlob(element, {
-          quality: 0.95,
-          bgcolor: '#ffffff',
-          style: {
-            transform: 'scale(2)',
-            transformOrigin: 'top left',
-            width: element.offsetWidth + 'px',
-            height: element.offsetHeight + 'px'
-          }
-        })
+      // キャラクター画像のURLを取得
+      const imageUrl = `/characters/${userType}_new3.png`
+      
+      // 画像をfetchしてblobに変換
+      const response = await fetch(imageUrl)
+      if (!response.ok) {
+        throw new Error('画像の取得に失敗しました')
+      }
+      
+      const blob = await response.blob()
+      const file = new File([blob], `${typeData.name}.png`, { type: 'image/png' })
 
-        if (navigator.share) {
-          // Web Share API使用
-          const typeData = diagramTypes[userType]
-          const fileName = `診断結果_${typeData?.name || userType}.png`
-          const file = new File([blob], fileName, { type: 'image/png' })
-          
-          const shareData = {
-            title: `私のダイエットタイプは「${typeData?.name}」`,
-            text: `${typeData?.catchcopy}\n\nダイエットキャラ診断16で診断してみて！`,
-            files: [file]
-          }
-
-          if (navigator.canShare && navigator.canShare(shareData)) {
-            await navigator.share(shareData)
-            return
-          }
+      // Web Share API対応チェック
+      if (navigator.share) {
+        const shareData = {
+          title: `私のダイエットタイプは「${typeData.name}」`,
+          text: `${typeData.catchcopy}\n\nダイエットキャラ診断16で診断してみて！\n${window.location.origin}`,
+          files: [file]
         }
 
-        // フォールバック: 直接ダウンロード
-        const url = URL.createObjectURL(blob)
-        const a = document.createElement('a')
-        a.href = url
-        a.download = `診断結果_${diagramTypes[userType]?.name || userType}.png`
-        document.body.appendChild(a)
-        a.click()
-        document.body.removeChild(a)
-        URL.revokeObjectURL(url)
-        alert('画像をダウンロードしました！')
-        
-      } catch (domError) {
-        console.log('dom-to-image failed, falling back to html2canvas:', domError)
-        
-        // フォールバック: html2canvas（簡易設定）
-        const html2canvas = (await import('html2canvas')).default
-        const canvas = await html2canvas(element, {
-          backgroundColor: '#ffffff',
-          scale: 1, // スケールを下げて処理負荷を軽減
-          useCORS: true,
-          allowTaint: true,
-          logging: false,
-          removeContainer: true
-        })
-
-        canvas.toBlob((blob) => {
-          if (blob) {
-            if (navigator.share) {
-              // Web Share API試行
-              const typeData = diagramTypes[userType]
-              const fileName = `診断結果_${typeData?.name || userType}.png`
-              const file = new File([blob], fileName, { type: 'image/png' })
-              
-              const shareData = {
-                title: `私のダイエットタイプは「${typeData?.name}」`,
-                text: `${typeData?.catchcopy}\n\nダイエットキャラ診断16で診断してみて！`,
-                files: [file]
-              }
-
-              if (navigator.canShare && navigator.canShare(shareData)) {
-                navigator.share(shareData).catch(() => {
-                  // 共有失敗時はダウンロード
-                  const url = URL.createObjectURL(blob)
-                  const a = document.createElement('a')
-                  a.href = url
-                  a.download = fileName
-                  document.body.appendChild(a)
-                  a.click()
-                  document.body.removeChild(a)
-                  URL.revokeObjectURL(url)
-                  alert('画像をダウンロードしました！')
-                })
-              } else {
-                // ダウンロードのみ
-                const url = URL.createObjectURL(blob)
-                const a = document.createElement('a')
-                a.href = url
-                a.download = fileName
-                document.body.appendChild(a)
-                a.click()
-                document.body.removeChild(a)
-                URL.revokeObjectURL(url)
-                alert('画像をダウンロードしました！')
-              }
-            } else {
-              // Web Share API非対応時はダウンロード
-              const url = URL.createObjectURL(blob)
-              const a = document.createElement('a')
-              a.href = url
-              a.download = `診断結果_${diagramTypes[userType]?.name || userType}.png`
-              document.body.appendChild(a)
-              a.click()
-              document.body.removeChild(a)
-              URL.revokeObjectURL(url)
-              alert('画像をダウンロードしました！')
-            }
-          }
-        }, 'image/png', 0.95)
+        // ファイル共有が可能かチェック
+        if (navigator.canShare && navigator.canShare(shareData)) {
+          await navigator.share(shareData)
+          return
+        }
       }
+
+      // Web Share API非対応またはファイル共有非対応の場合は画像ダウンロード
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `${typeData.name}.png`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
+      alert('画像をダウンロードしました！SNSアプリで共有してください。')
 
     } catch (error) {
-      console.error('画像生成エラー:', error)
-      
-      // エラーの詳細をログに出力
-      if (error.message && error.message.includes('lab(')) {
-        console.error('色の解析エラー - lab()関数が原因の可能性があります')
-      }
-      
-      alert('画像の生成に失敗しました。ブラウザのスクリーンショット機能をご利用ください。')
+      console.error('画像共有エラー:', error)
+      alert('画像の共有に失敗しました。')
     }
   }
 
