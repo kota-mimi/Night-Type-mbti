@@ -13,6 +13,8 @@ export interface DiagramType {
   detailedEcology: string;
   fatCause: string;
   solution: string;
+  causeTitle: string;
+  solutionTitle: string;
   compatibility: {
     good: {
       type: string;
