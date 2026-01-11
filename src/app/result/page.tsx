@@ -79,36 +79,82 @@ export default function ResultPage() {
 
   const handleDownloadImage = async () => {
     try {
-      const html2canvas = (await import('html2canvas')).default
-      
-      // 結果カード部分を取得
-      const element = document.getElementById('result-card')
-      if (!element) return
+      // Web Share API対応チェック
+      if (navigator.share && navigator.canShare) {
+        const html2canvas = (await import('html2canvas')).default
+        
+        // 結果カード部分を取得
+        const element = document.getElementById('result-card')
+        if (!element) return
 
-      const canvas = await html2canvas(element, {
-        backgroundColor: null,
-        scale: 2, // 高解像度
-        useCORS: true,
-        allowTaint: true
-      })
+        const canvas = await html2canvas(element, {
+          backgroundColor: null,
+          scale: 2,
+          useCORS: true,
+          allowTaint: true
+        })
 
-      // 画像をダウンロード
-      canvas.toBlob((blob) => {
-        if (blob) {
-          const url = URL.createObjectURL(blob)
-          const a = document.createElement('a')
-          a.href = url
-          a.download = `診断結果_${diagramTypes[userType]?.name || userType}.png`
-          document.body.appendChild(a)
-          a.click()
-          document.body.removeChild(a)
-          URL.revokeObjectURL(url)
-        }
-      })
+        // CanvasをBlobに変換
+        canvas.toBlob(async (blob) => {
+          if (blob) {
+            const typeData = diagramTypes[userType]
+            const fileName = `診断結果_${typeData?.name || userType}.png`
+            const file = new File([blob], fileName, { type: 'image/png' })
+            
+            const shareData = {
+              title: `私のダイエットタイプは「${typeData?.name}」`,
+              text: `${typeData?.catchcopy}\n\nダイエットキャラ診断16で診断してみて！`,
+              url: window.location.origin,
+              files: [file]
+            }
+
+            // Web Share APIで共有
+            if (navigator.canShare(shareData)) {
+              await navigator.share(shareData)
+            } else {
+              // ファイル共有非対応の場合は画像ダウンロード
+              const url = URL.createObjectURL(blob)
+              const a = document.createElement('a')
+              a.href = url
+              a.download = fileName
+              document.body.appendChild(a)
+              a.click()
+              document.body.removeChild(a)
+              URL.revokeObjectURL(url)
+            }
+          }
+        })
+      } else {
+        // Web Share API非対応の場合は従来のダウンロード
+        const html2canvas = (await import('html2canvas')).default
+        
+        const element = document.getElementById('result-card')
+        if (!element) return
+
+        const canvas = await html2canvas(element, {
+          backgroundColor: null,
+          scale: 2,
+          useCORS: true,
+          allowTaint: true
+        })
+
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const url = URL.createObjectURL(blob)
+            const a = document.createElement('a')
+            a.href = url
+            a.download = `診断結果_${diagramTypes[userType]?.name || userType}.png`
+            document.body.appendChild(a)
+            a.click()
+            document.body.removeChild(a)
+            URL.revokeObjectURL(url)
+          }
+        })
+      }
 
     } catch (error) {
-      console.error('画像ダウンロードエラー:', error)
-      alert('画像ダウンロードに失敗しました。')
+      console.error('画像共有エラー:', error)
+      alert('画像の共有に失敗しました。')
     }
   }
 
