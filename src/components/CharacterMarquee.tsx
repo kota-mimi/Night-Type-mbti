@@ -6,19 +6,26 @@ import Image from 'next/image'
 interface CharacterMarqueeProps {
   direction?: 'left' | 'right'
   speed?: number
+  row?: 'first' | 'second'
 }
 
 export default function CharacterMarquee({ 
   direction = 'right', 
-  speed = 30 
+  speed = 30,
+  row = 'first'
 }: CharacterMarqueeProps) {
-  // All 16 character types
-  const characterTypes = [
+  // Split 16 character types into two rows
+  const firstRowTypes = [
     'SRFQ', 'SRFL', 'SRCQ', 'SRCL',
-    'SEFQ', 'SEFL', 'SECQ', 'SECL',
+    'SEFQ', 'SEFL', 'SECQ', 'SECL'
+  ]
+  
+  const secondRowTypes = [
     'GRFQ', 'GRFL', 'GRCQ', 'GRCL',
     'GEFQ', 'GEFL', 'GECQ', 'GECL'
   ]
+
+  const characterTypes = row === 'first' ? firstRowTypes : secondRowTypes
 
   // Triple the array to ensure smooth infinite loop with more variety
   const duplicatedTypes = [...characterTypes, ...characterTypes, ...characterTypes]

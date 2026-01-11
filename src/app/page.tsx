@@ -57,11 +57,11 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.5 }}
           className="w-full space-y-6"
         >
-          {/* First row - scrolling right */}
-          <CharacterMarquee direction="right" speed={15} />
+          {/* First row - scrolling right (SR & SE types) */}
+          <CharacterMarquee direction="right" speed={15} row="first" />
           
-          {/* Second row - scrolling left */}
-          <CharacterMarquee direction="left" speed={18} />
+          {/* Second row - scrolling left (GR & GE types) */}
+          <CharacterMarquee direction="left" speed={18} row="second" />
         </motion.div>
       </main>
     </div>
