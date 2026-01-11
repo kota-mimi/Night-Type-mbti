@@ -51,15 +51,15 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/about" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  ダイエットMBTIとは
+                  ダイエット診断16とは
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* お問い合わせ・その他 */}
+          {/* その他 */}
           <div>
-            <h4 className="font-bold mb-4">お問い合わせ</h4>
+            <h4 className="font-bold mb-4">その他</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/contact" className="text-gray-600 hover:text-blue-500 transition-colors">
