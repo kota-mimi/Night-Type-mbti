@@ -9,6 +9,7 @@ import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import { getTypeFromAnswers } from '@/lib/scoring'
 import { diagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
+import CharacterMarquee from '@/components/CharacterMarquee'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -300,17 +301,32 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="space-y-8"
+            className="space-y-8 relative"
           >
-            <h2 className={`text-2xl font-bold text-pink-500 text-center ${zenMaruGothic.className}`}>
+            {/* キャラクター背景 */}
+            <div className="absolute inset-0 overflow-hidden rounded-2xl opacity-10 pointer-events-none">
+              <CharacterMarquee speed={40} />
+            </div>
+            
+            <h2 className={`text-2xl font-bold text-pink-500 text-center relative z-10 ${zenMaruGothic.className}`}>
               相性チェック
             </h2>
             
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 {/* 最高の相性 */}
-                <div className="bg-pink-50 rounded-lg p-6 border border-pink-200">
-                  <div className="text-center space-y-3">
+                <div className="bg-pink-50/90 backdrop-blur-sm rounded-lg p-6 border border-pink-200 relative z-10 overflow-hidden">
+                  {/* 背景キャラクター画像 */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
+                    <Image
+                      src={`/characters/${typeData.compatibility.good.type}_gallery.png`}
+                      alt={`${diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}のキャラクター`}
+                      width={200}
+                      height={240}
+                      className="w-32 h-auto"
+                    />
+                  </div>
+                  <div className="text-center space-y-3 relative z-10">
                     <h3 className="text-lg font-bold text-pink-600">最高の相性</h3>
                     <h4 className="text-lg font-bold text-gray-800">
                       {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
@@ -327,8 +343,18 @@ export default function ResultPage() {
                 </div>
 
                 {/* 要注意 */}
-                <div className="bg-purple-50 rounded-lg p-6 border border-purple-200">
-                  <div className="text-center space-y-3">
+                <div className="bg-purple-50/90 backdrop-blur-sm rounded-lg p-6 border border-purple-200 relative z-10 overflow-hidden">
+                  {/* 背景キャラクター画像 */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
+                    <Image
+                      src={`/characters/${typeData.compatibility.bad.type}_gallery.png`}
+                      alt={`${diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}のキャラクター`}
+                      width={200}
+                      height={240}
+                      className="w-32 h-auto"
+                    />
+                  </div>
+                  <div className="text-center space-y-3 relative z-10">
                     <h3 className="text-lg font-bold text-purple-600">要注意</h3>
                     <h4 className="text-lg font-bold text-gray-800">
                       {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
