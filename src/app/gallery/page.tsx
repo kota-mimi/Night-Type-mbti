@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Home } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
 import { diagramTypes } from '@/data/diagramTypes'
+import { questions } from '@/data/questions'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -135,30 +136,43 @@ export default function GalleryPage() {
                         // 該当タイプの結果を生成するためのスコアを計算
                         const typeCodeStr = String(typeCode)
                         
-                        // スコアリング: 質問1-6(SG軸), 7-12(RE軸), 13-18(FC軸), 19-24(QL軸)
-                        // 正の値なら前者(S,R,F,Q)、負の値なら後者(G,E,C,L)
+                        // 新しいdirection対応スコアリング
                         const answers = Array.from({ length: 24 }, (_, i) => {
                           const questionId = i + 1
-                          let score = 1 // デフォルト値
+                          const question = questions.find(q => q.id === questionId)
                           
-                          // 各軸に対して正しいスコアを設定
+                          if (!question) return { questionId, score: 1 } // 質問が見つからない場合のデフォルト
+                          
+                          let targetScore: number = 0
+                          
+                          // 各軸に対して目標とする方向を決定
                           if (questionId >= 1 && questionId <= 6) {
-                            // SG軸: Sタイプなら正、Gタイプなら負
-                            score = typeCodeStr.startsWith('S') ? 3 : -3
+                            // SG軸: Sタイプなら正方向、Gタイプなら負方向
+                            targetScore = typeCodeStr.startsWith('S') ? 3 : -3
                           } else if (questionId >= 7 && questionId <= 12) {
-                            // RE軸: Rタイプなら正、Eタイプなら負
-                            score = typeCodeStr.charAt(1) === 'R' ? 3 : -3
+                            // RE軸: Rタイプなら正方向、Eタイプなら負方向
+                            targetScore = typeCodeStr.charAt(1) === 'R' ? 3 : -3
                           } else if (questionId >= 13 && questionId <= 18) {
-                            // FC軸: Fタイプなら正、Cタイプなら負
-                            score = typeCodeStr.charAt(2) === 'F' ? 3 : -3
+                            // FC軸: Fタイプなら正方向、Cタイプなら負方向
+                            targetScore = typeCodeStr.charAt(2) === 'F' ? 3 : -3
                           } else if (questionId >= 19 && questionId <= 24) {
-                            // QL軸: Qタイプなら正、Lタイプなら負
-                            score = typeCodeStr.charAt(3) === 'Q' ? 3 : -3
+                            // QL軸: Qタイプなら正方向、Lタイプなら負方向
+                            targetScore = typeCodeStr.charAt(3) === 'Q' ? 3 : -3
+                          }
+                          
+                          // question.directionに基づいて実際の回答値を調整
+                          let answerScore: number
+                          if (question.direction === 'positive') {
+                            // positive質問の場合、目標スコアそのまま
+                            answerScore = targetScore
+                          } else {
+                            // negative質問の場合、目標スコアを逆転
+                            answerScore = -targetScore
                           }
                           
                           return {
                             questionId,
-                            score
+                            score: answerScore
                           }
                         })
                         

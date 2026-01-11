@@ -2,6 +2,7 @@ export interface Question {
   id: number;
   axis: string;
   text: string;
+  direction: 'positive' | 'negative';
 }
 
 export interface DiagramType {
