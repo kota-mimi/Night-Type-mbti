@@ -58,10 +58,10 @@ export default function Home() {
           className="w-full space-y-6"
         >
           {/* First row - scrolling right */}
-          <CharacterMarquee direction="right" speed={40} />
+          <CharacterMarquee direction="right" speed={25} />
           
           {/* Second row - scrolling left */}
-          <CharacterMarquee direction="left" speed={35} />
+          <CharacterMarquee direction="left" speed={28} />
         </motion.div>
       </main>
     </div>
