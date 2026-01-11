@@ -28,6 +28,15 @@ export default function ResultPage() {
   const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
+    // まずローカルストレージから直接タイプを確認
+    const savedType = localStorage.getItem('diet-quiz-result-type')
+    if (savedType && diagramTypes[savedType]) {
+      setUserType(savedType)
+      setIsLoading(false)
+      return
+    }
+
+    // タイプが保存されていない場合は従来の方法で計算
     const savedAnswers = localStorage.getItem('diet-quiz-answers')
     if (!savedAnswers) {
       router.push('/')
@@ -58,11 +67,12 @@ export default function ResultPage() {
       return
     }
 
-    const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${window.location.origin}\n\n#ダイエットタイプ診断`
+    const resultUrl = `${window.location.origin}/result/${userType.toLowerCase()}`
+    const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${resultUrl}\n\n#ダイエットタイプ診断`
     
     const shareUrls = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
-      line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.origin)}&text=${encodeURIComponent(shareText)}`
+      line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(resultUrl)}&text=${encodeURIComponent(shareText)}`
     }
 
     window.open(shareUrls[platform as keyof typeof shareUrls], '_blank')
