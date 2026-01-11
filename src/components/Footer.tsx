@@ -83,7 +83,7 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="https://instagram.com/lovechara64"
+                  href="https://www.instagram.com/diet_chara16?igsh=MXNwOWc2eHM0c3Y5bg%3D%3D&utm_source=qr"
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
