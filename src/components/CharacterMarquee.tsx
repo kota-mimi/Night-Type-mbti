@@ -20,15 +20,15 @@ export default function CharacterMarquee({
     'GEFQ', 'GEFL', 'GECQ', 'GECL'
   ]
 
-  // Duplicate the array to create seamless infinite loop
-  const duplicatedTypes = [...characterTypes, ...characterTypes]
+  // Triple the array to ensure smooth infinite loop with more variety
+  const duplicatedTypes = [...characterTypes, ...characterTypes, ...characterTypes]
 
   return (
     <div className="overflow-hidden whitespace-nowrap">
       <motion.div
-        className="flex gap-6"
+        className="flex gap-3 md:gap-6"
         animate={{
-          x: direction === 'right' ? ['0%', '-50%'] : ['-50%', '0%']
+          x: direction === 'right' ? ['0%', '-33.33%'] : ['-33.33%', '0%']
         }}
         transition={{
           duration: speed,
@@ -39,7 +39,7 @@ export default function CharacterMarquee({
         {duplicatedTypes.map((type, index) => (
           <div
             key={`${type}-${index}`}
-            className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24"
+            className="flex-shrink-0 w-16 h-16 md:w-24 md:h-24"
           >
             <Image
               src={`/characters/${type === 'SRFQ' ? 'SRFQ_gallery.png' : 
