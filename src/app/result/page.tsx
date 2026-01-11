@@ -77,9 +77,39 @@ export default function ResultPage() {
     window.open(lineUrl, '_blank')
   }
 
-  const handleDownloadImage = () => {
-    // 画像ダウンロード機能（将来的に実装）
-    alert('画像ダウンロード機能は近日公開予定です！')
+  const handleDownloadImage = async () => {
+    try {
+      const html2canvas = (await import('html2canvas')).default
+      
+      // 結果カード部分を取得
+      const element = document.getElementById('result-card')
+      if (!element) return
+
+      const canvas = await html2canvas(element, {
+        backgroundColor: null,
+        scale: 2, // 高解像度
+        useCORS: true,
+        allowTaint: true
+      })
+
+      // 画像をダウンロード
+      canvas.toBlob((blob) => {
+        if (blob) {
+          const url = URL.createObjectURL(blob)
+          const a = document.createElement('a')
+          a.href = url
+          a.download = `診断結果_${diagramTypes[userType]?.name || userType}.png`
+          document.body.appendChild(a)
+          a.click()
+          document.body.removeChild(a)
+          URL.revokeObjectURL(url)
+        }
+      })
+
+    } catch (error) {
+      console.error('画像ダウンロードエラー:', error)
+      alert('画像ダウンロードに失敗しました。')
+    }
   }
 
   const handleCopyLink = () => {
@@ -127,6 +157,7 @@ export default function ResultPage() {
         
         {/* メインコンテンツカード */}
         <motion.div
+          id="result-card"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
