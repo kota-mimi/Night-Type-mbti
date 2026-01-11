@@ -24,6 +24,7 @@ export default function Header() {
     { href: '/', label: 'ホーム', key: 'home' },
     { href: '/gallery', label: 'キャラクター一覧', key: 'gallery' },
     { href: '/about', label: 'ダイエットMBTIとは', key: 'about' },
+    { href: '/contact', label: 'お問い合わせ', key: 'contact' },
   ]
 
   return (
@@ -32,9 +33,9 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/">
-            <div className="flex items-center space-x-2">
-              <div className={`text-2xl font-black text-gray-800 ${zenMaruGothic.className}`}>
-                ダイエットキャラ診断
+            <div className="flex items-center">
+              <div className={`text-lg md:text-xl font-bold text-gray-800 ${zenMaruGothic.className} tracking-tight`}>
+                ダイエット診断
               </div>
             </div>
           </Link>
