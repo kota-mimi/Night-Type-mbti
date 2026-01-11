@@ -52,20 +52,20 @@ export default function ResultPage() {
     const typeData = diagramTypes[userType]
     if (!typeData) return
 
+    if (platform === 'instagram') {
+      // Instagramの場合は画像共有機能を使用
+      handleDownloadImage()
+      return
+    }
+
     const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${window.location.origin}\n\n#ダイエットタイプ診断`
     
     const shareUrls = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
-      line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.origin)}&text=${encodeURIComponent(shareText)}`,
-      instagram: shareText
+      line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(window.location.origin)}&text=${encodeURIComponent(shareText)}`
     }
 
-    if (platform === 'instagram') {
-      navigator.clipboard.writeText(shareText)
-      alert('シェア用テキストをコピーしました！Instagramに貼り付けてシェアしてください。')
-    } else {
-      window.open(shareUrls[platform as keyof typeof shareUrls], '_blank')
-    }
+    window.open(shareUrls[platform as keyof typeof shareUrls], '_blank')
   }
 
   const handleLineMenuRequest = () => {
