@@ -9,7 +9,6 @@ import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import { getTypeFromAnswers } from '@/lib/scoring'
 import { diagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
-import CharacterMarquee from '@/components/CharacterMarquee'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -301,32 +300,29 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="space-y-8 relative"
+            className="space-y-8"
           >
-            {/* キャラクター背景 */}
-            <div className="absolute inset-0 overflow-hidden rounded-2xl opacity-10 pointer-events-none">
-              <CharacterMarquee speed={40} />
-            </div>
-            
-            <h2 className={`text-2xl font-bold text-pink-500 text-center relative z-10 ${zenMaruGothic.className}`}>
+            <h2 className={`text-2xl font-bold text-pink-500 text-center ${zenMaruGothic.className}`}>
               相性チェック
             </h2>
             
-            <div className="max-w-4xl mx-auto relative z-10">
+            <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 {/* 最高の相性 */}
-                <div className="bg-pink-50/90 backdrop-blur-sm rounded-lg p-6 border border-pink-200 relative z-10 overflow-hidden">
+                <div className="bg-pink-50/90 backdrop-blur-sm rounded-lg p-6 border border-pink-200 relative overflow-hidden">
                   {/* 背景キャラクター画像 */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
-                    <Image
-                      src={`/characters/${typeData.compatibility.good.type}_gallery.png`}
-                      alt={`${diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}のキャラクター`}
-                      width={200}
-                      height={240}
-                      className="w-32 h-auto"
-                    />
+                    <div className="animate-bounce-slow">
+                      <Image
+                        src={`/characters/${typeData.compatibility.good.type}_gallery.png`}
+                        alt={`${diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}のキャラクター`}
+                        width={200}
+                        height={240}
+                        className="w-32 h-auto"
+                      />
+                    </div>
                   </div>
-                  <div className="text-center space-y-3 relative z-10">
+                  <div className="text-center space-y-3 relative">
                     <h3 className="text-lg font-bold text-pink-600">最高の相性</h3>
                     <h4 className="text-lg font-bold text-gray-800">
                       {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
@@ -343,18 +339,20 @@ export default function ResultPage() {
                 </div>
 
                 {/* 要注意 */}
-                <div className="bg-purple-50/90 backdrop-blur-sm rounded-lg p-6 border border-purple-200 relative z-10 overflow-hidden">
+                <div className="bg-purple-50/90 backdrop-blur-sm rounded-lg p-6 border border-purple-200 relative overflow-hidden">
                   {/* 背景キャラクター画像 */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
-                    <Image
-                      src={`/characters/${typeData.compatibility.bad.type}_gallery.png`}
-                      alt={`${diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}のキャラクター`}
-                      width={200}
-                      height={240}
-                      className="w-32 h-auto"
-                    />
+                    <div className="animate-float">
+                      <Image
+                        src={`/characters/${typeData.compatibility.bad.type}_gallery.png`}
+                        alt={`${diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}のキャラクター`}
+                        width={200}
+                        height={240}
+                        className="w-32 h-auto"
+                      />
+                    </div>
                   </div>
-                  <div className="text-center space-y-3 relative z-10">
+                  <div className="text-center space-y-3 relative">
                     <h3 className="text-lg font-bold text-purple-600">要注意</h3>
                     <h4 className="text-lg font-bold text-gray-800">
                       {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
@@ -377,69 +375,77 @@ export default function ResultPage() {
 
         </motion.div>
 
-        {/* Love Character 64 スタイルボタンスタック */}
+        {/* Share Section */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-6 sm:mt-8 max-w-md mx-auto space-y-3 sm:space-y-4"
+          className="mt-6 sm:mt-8 max-w-md mx-auto space-y-6"
         >
           
+          {/* Share Section */}
+          <div className="space-y-4">
+            <h3 className={`text-center text-gray-600 font-medium ${notoSansJP.className}`}>
+              結果をシェアする
+            </h3>
+            
+            {/* Horizontal Icon Row */}
+            <div className="flex flex-row gap-4 justify-center">
+              {/* Copy Link */}
+              <motion.button
+                onClick={handleCopyLink}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 bg-gray-500 hover:bg-gray-600 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                title="リンクをコピー"
+              >
+                <Copy className="w-5 h-5" />
+              </motion.button>
 
-          {/* リンクをコピー */}
-          <motion.button
-            onClick={handleCopyLink}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className={`w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 ${zenMaruGothic.className}`}
-          >
-            <Copy className="w-5 h-5" />
-            <span className="text-sm sm:text-base">リンクをコピー</span>
-          </motion.button>
+              {/* Instagram */}
+              <motion.button
+                onClick={() => handleShare('instagram')}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 bg-gradient-to-r from-[#E4405F] via-[#C13584] to-[#833AB4] hover:opacity-90 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                title="Instagram Storyにシェア"
+              >
+                <Instagram className="w-5 h-5" />
+              </motion.button>
 
-          {/* Secondary - Instagram Story */}
-          <motion.button
-            onClick={() => handleShare('instagram')}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className={`w-full bg-gradient-to-r from-[#E4405F] via-[#C13584] to-[#833AB4] hover:opacity-90 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 ${zenMaruGothic.className}`}
-          >
-            <Instagram className="w-5 h-5" />
-            <span className="text-sm sm:text-base">Instagram Storyにシェア</span>
-          </motion.button>
+              {/* X (Twitter) */}
+              <motion.button
+                onClick={() => handleShare('twitter')}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                title="X (Twitter) にシェア"
+              >
+                <Twitter className="w-5 h-5" />
+              </motion.button>
 
-          {/* Tertiary - X (Twitter) */}
-          <motion.button
-            onClick={() => handleShare('twitter')}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className={`w-full bg-black hover:bg-gray-800 text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 ${zenMaruGothic.className}`}
-          >
-            <Twitter className="w-5 h-5" />
-            <span className="text-sm sm:text-base">X (Twitter) にシェア</span>
-          </motion.button>
+              {/* Download */}
+              <motion.button
+                onClick={handleDownloadImage}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-12 h-12 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                title="画像をダウンロード"
+              >
+                <Download className="w-5 h-5" />
+              </motion.button>
+            </div>
+          </div>
 
-          {/* Utility - 画像ダウンロード */}
-          <motion.button
-            onClick={handleDownloadImage}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className={`w-full bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-700 font-bold py-4 px-6 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-3 ${zenMaruGothic.className}`}
-          >
-            <Download className="w-5 h-5" />
-            <span className="text-base">画像をダウンロード</span>
-          </motion.button>
-
-          {/* もう一度診断ボタン */}
-          <motion.button
-            onClick={handleRestart}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className={`w-full bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-full shadow-md transition-all duration-300 flex items-center justify-center gap-2 mt-6 ${notoSansJP.className}`}
-          >
-            <Home className="w-4 h-4" />
-            <span className="text-sm">もう一度診断する</span>
-          </motion.button>
+          {/* もう一度診断する - Simple Text Link */}
+          <div className="text-center pt-4">
+            <button
+              onClick={handleRestart}
+              className={`text-gray-500 hover:text-gray-700 underline text-sm transition-colors duration-300 ${notoSansJP.className}`}
+            >
+              もう一度診断する
+            </button>
+          </div>
 
         </motion.div>
         
