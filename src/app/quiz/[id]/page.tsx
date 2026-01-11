@@ -187,7 +187,7 @@ export default function QuizPage() {
                       <div className="space-y-4">
                         {/* ボタン群 - スマホ用サイズ */}
                         <div className="flex justify-center gap-4">
-                          {[2, 1, -1, -2].map((score, scoreIndex) => {
+                          {[3, 1, -1, -3].map((score, scoreIndex) => {
                             const isSelected = answers[question.id] === score
                             const size = scoreIndex === 0 || scoreIndex === 3 ? 'w-12 h-12' : 'w-10 h-10'
                             
@@ -225,7 +225,7 @@ export default function QuizPage() {
                       <div className="space-y-4">
                         <div className="flex items-center justify-center gap-6">
                           <div className="flex items-center gap-3">
-                          {[2, 1, -1, -2].map((score, scoreIndex) => {
+                          {[3, 1, -1, -3].map((score, scoreIndex) => {
                             const isSelected = answers[question.id] === score
                             const size = scoreIndex === 0 ? 'w-16 h-16' :
                                         scoreIndex === 1 ? 'w-12 h-12' :

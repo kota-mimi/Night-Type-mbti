@@ -1,9 +1,9 @@
 import { questions } from '@/data/questions';
 
 export const questionGroups = [
-  questions.slice(0, 7),   // Q1-Q7
-  questions.slice(7, 14),  // Q8-Q14
-  questions.slice(14, 20), // Q15-Q20
+  questions.slice(0, 8),   // Q1-Q8
+  questions.slice(8, 16),  // Q9-Q16
+  questions.slice(16, 24), // Q17-Q24
 ];
 
 export const getQuestionGroupByPage = (page: number) => {

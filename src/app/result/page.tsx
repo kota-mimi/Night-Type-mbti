@@ -35,7 +35,7 @@ export default function ResultPage() {
     }
 
     const answers: Answer[] = JSON.parse(savedAnswers)
-    if (answers.length !== 20) {
+    if (answers.length !== 24) {
       router.push('/')
       return
     }
