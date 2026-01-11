@@ -135,25 +135,25 @@ export default function GalleryPage() {
                         // 該当タイプの結果を生成するためのスコアを計算
                         const typeCodeStr = String(typeCode)
                         
-                        // スコアリング: 質問1-5(SG軸), 6-10(RE軸), 11-15(FC軸), 16-20(QL軸)
+                        // スコアリング: 質問1-6(SG軸), 7-12(RE軸), 13-18(FC軸), 19-24(QL軸)
                         // 正の値なら前者(S,R,F,Q)、負の値なら後者(G,E,C,L)
-                        const answers = Array.from({ length: 20 }, (_, i) => {
+                        const answers = Array.from({ length: 24 }, (_, i) => {
                           const questionId = i + 1
                           let score = 1 // デフォルト値
                           
                           // 各軸に対して正しいスコアを設定
-                          if (questionId >= 1 && questionId <= 5) {
+                          if (questionId >= 1 && questionId <= 6) {
                             // SG軸: Sタイプなら正、Gタイプなら負
-                            score = typeCodeStr.startsWith('S') ? 2 : -2
-                          } else if (questionId >= 6 && questionId <= 10) {
+                            score = typeCodeStr.startsWith('S') ? 3 : -3
+                          } else if (questionId >= 7 && questionId <= 12) {
                             // RE軸: Rタイプなら正、Eタイプなら負
-                            score = typeCodeStr.charAt(1) === 'R' ? 2 : -2
-                          } else if (questionId >= 11 && questionId <= 15) {
+                            score = typeCodeStr.charAt(1) === 'R' ? 3 : -3
+                          } else if (questionId >= 13 && questionId <= 18) {
                             // FC軸: Fタイプなら正、Cタイプなら負
-                            score = typeCodeStr.charAt(2) === 'F' ? 2 : -2
-                          } else if (questionId >= 16 && questionId <= 20) {
+                            score = typeCodeStr.charAt(2) === 'F' ? 3 : -3
+                          } else if (questionId >= 19 && questionId <= 24) {
                             // QL軸: Qタイプなら正、Lタイプなら負
-                            score = typeCodeStr.charAt(3) === 'Q' ? 2 : -2
+                            score = typeCodeStr.charAt(3) === 'Q' ? 3 : -3
                           }
                           
                           return {

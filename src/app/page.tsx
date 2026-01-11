@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
+import CharacterMarquee from '@/components/CharacterMarquee'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -42,11 +43,25 @@ export default function Home() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#2196F3] hover:bg-[#1976D2] text-white font-bold py-4 px-12 rounded-full text-lg md:text-xl shadow-xl transition-all duration-300"
+              className="bg-[#2196F3] hover:bg-[#1976D2] text-white font-bold py-4 px-12 rounded-full text-lg md:text-xl shadow-xl transition-all duration-300 mb-16"
             >
               診断を始める
             </motion.button>
           </Link>
+        </motion.div>
+
+        {/* Character Marquee Section */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="w-full space-y-6"
+        >
+          {/* First row - scrolling right */}
+          <CharacterMarquee direction="right" speed={40} />
+          
+          {/* Second row - scrolling left */}
+          <CharacterMarquee direction="left" speed={35} />
         </motion.div>
       </main>
     </div>
