@@ -30,7 +30,7 @@ export default function Home() {
         >
           {/* タイトル */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            ダイエットキャラ診断
+            ダイエットキャラ診断16
           </h1>
           
           {/* サブタイトル */}

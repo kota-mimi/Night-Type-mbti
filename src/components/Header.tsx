@@ -35,7 +35,7 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center">
               <div className={`text-lg md:text-xl font-bold text-gray-800 ${zenMaruGothic.className} tracking-tight`}>
-                ダイエット診断
+                ダイエット診断16
               </div>
             </div>
           </Link>
