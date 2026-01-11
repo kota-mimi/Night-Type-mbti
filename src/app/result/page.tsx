@@ -85,41 +85,67 @@ export default function ResultPage() {
         return
       }
 
-      // html2canvasを動的インポート
-      const html2canvas = (await import('html2canvas')).default
-      
-      // 要素をキャンバスに変換（色の問題を回避するための設定）
-      const canvas = await html2canvas(element, {
-        backgroundColor: '#ffffff',
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        logging: false,
-        removeContainer: true,
-        ignoreElements: (element) => {
-          // 特定のクラスやタグを無視することで色の問題を回避
-          return element.classList?.contains('ignore-screenshot') || false
-        },
-        onclone: (clonedDoc) => {
-          // クローンした文書の色設定を標準化
-          const allElements = clonedDoc.querySelectorAll('*')
-          allElements.forEach(el => {
-            const computedStyle = window.getComputedStyle(el)
-            // lab()やlch()色を使用している要素があれば標準色に変換
-            if (computedStyle.color.includes('lab(') || computedStyle.backgroundColor.includes('lab(')) {
-              el.style.color = '#333333'
-              el.style.backgroundColor = 'transparent'
-            }
-          })
-        }
-      })
+      // dom-to-imageライブラリを使用してhtml2canvasの色問題を回避
+      try {
+        const domtoimage = await import('dom-to-image')
+        const blob = await domtoimage.toBlob(element, {
+          quality: 0.95,
+          bgcolor: '#ffffff',
+          style: {
+            transform: 'scale(2)',
+            transformOrigin: 'top left',
+            width: element.offsetWidth + 'px',
+            height: element.offsetHeight + 'px'
+          }
+        })
 
-      // Web Share APIをサポートしているかチェック
-      if (navigator.share) {
-        // キャンバスをBlobに変換
-        canvas.toBlob(async (blob) => {
+        if (navigator.share) {
+          // Web Share API使用
+          const typeData = diagramTypes[userType]
+          const fileName = `診断結果_${typeData?.name || userType}.png`
+          const file = new File([blob], fileName, { type: 'image/png' })
+          
+          const shareData = {
+            title: `私のダイエットタイプは「${typeData?.name}」`,
+            text: `${typeData?.catchcopy}\n\nダイエットキャラ診断16で診断してみて！`,
+            files: [file]
+          }
+
+          if (navigator.canShare && navigator.canShare(shareData)) {
+            await navigator.share(shareData)
+            return
+          }
+        }
+
+        // フォールバック: 直接ダウンロード
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `診断結果_${diagramTypes[userType]?.name || userType}.png`
+        document.body.appendChild(a)
+        a.click()
+        document.body.removeChild(a)
+        URL.revokeObjectURL(url)
+        alert('画像をダウンロードしました！')
+        
+      } catch (domError) {
+        console.log('dom-to-image failed, falling back to html2canvas:', domError)
+        
+        // フォールバック: html2canvas（簡易設定）
+        const html2canvas = (await import('html2canvas')).default
+        const canvas = await html2canvas(element, {
+          backgroundColor: '#ffffff',
+          scale: 1, // スケールを下げて処理負荷を軽減
+          useCORS: true,
+          allowTaint: true,
+          logging: false,
+          removeContainer: true
+        })
+
+        canvas.toBlob((blob) => {
           if (blob) {
-            try {
+            if (navigator.share) {
+              // Web Share API試行
               const typeData = diagramTypes[userType]
               const fileName = `診断結果_${typeData?.name || userType}.png`
               const file = new File([blob], fileName, { type: 'image/png' })
@@ -130,11 +156,21 @@ export default function ResultPage() {
                 files: [file]
               }
 
-              // ファイル共有が可能かチェック
               if (navigator.canShare && navigator.canShare(shareData)) {
-                await navigator.share(shareData)
+                navigator.share(shareData).catch(() => {
+                  // 共有失敗時はダウンロード
+                  const url = URL.createObjectURL(blob)
+                  const a = document.createElement('a')
+                  a.href = url
+                  a.download = fileName
+                  document.body.appendChild(a)
+                  a.click()
+                  document.body.removeChild(a)
+                  URL.revokeObjectURL(url)
+                  alert('画像をダウンロードしました！')
+                })
               } else {
-                // ファイル共有ができない場合は画像をダウンロード
+                // ダウンロードのみ
                 const url = URL.createObjectURL(blob)
                 const a = document.createElement('a')
                 a.href = url
@@ -143,13 +179,10 @@ export default function ResultPage() {
                 a.click()
                 document.body.removeChild(a)
                 URL.revokeObjectURL(url)
-                
-                // ユーザーに通知
-                alert('画像をダウンロードしました！SNSアプリで共有してください。')
+                alert('画像をダウンロードしました！')
               }
-            } catch (shareError) {
-              console.error('共有エラー:', shareError)
-              // 共有に失敗した場合はダウンロード
+            } else {
+              // Web Share API非対応時はダウンロード
               const url = URL.createObjectURL(blob)
               const a = document.createElement('a')
               a.href = url
@@ -160,21 +193,6 @@ export default function ResultPage() {
               URL.revokeObjectURL(url)
               alert('画像をダウンロードしました！')
             }
-          }
-        }, 'image/png', 0.95)
-      } else {
-        // Web Share API非対応の場合は直接ダウンロード
-        canvas.toBlob((blob) => {
-          if (blob) {
-            const url = URL.createObjectURL(blob)
-            const a = document.createElement('a')
-            a.href = url
-            a.download = `診断結果_${diagramTypes[userType]?.name || userType}.png`
-            document.body.appendChild(a)
-            a.click()
-            document.body.removeChild(a)
-            URL.revokeObjectURL(url)
-            alert('画像をダウンロードしました！')
           }
         }, 'image/png', 0.95)
       }
