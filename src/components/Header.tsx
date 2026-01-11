@@ -23,7 +23,7 @@ export default function Header() {
   const menuItems = [
     { href: '/', label: 'ホーム', key: 'home' },
     { href: '/gallery', label: 'キャラクター一覧', key: 'gallery' },
-    { href: '/about', label: 'ダイエットMBTIとは', key: 'about' },
+    { href: '/about', label: 'ダイエット診断16とは', key: 'about' },
     { href: '/contact', label: 'お問い合わせ', key: 'contact' },
   ]
 
