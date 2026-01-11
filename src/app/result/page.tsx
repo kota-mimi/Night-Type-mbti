@@ -67,12 +67,12 @@ export default function ResultPage() {
       return
     }
 
-    const resultUrl = `${window.location.origin}/result/${userType.toLowerCase()}`
-    const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${resultUrl}\n\n#ダイエットタイプ診断`
+    const shareUrl = `${window.location.origin}?result=${userType}`
+    const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${shareUrl}\n\n#ダイエットタイプ診断`
     
     const shareUrls = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
-      line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(resultUrl)}&text=${encodeURIComponent(shareText)}`
+      line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`
     }
 
     window.open(shareUrls[platform as keyof typeof shareUrls], '_blank')
@@ -109,9 +109,10 @@ export default function ResultPage() {
 
       // Web Share API対応チェック
       if (navigator.share) {
+        const shareUrl = `${window.location.origin}?result=${userType}`
         const shareData = {
           title: `私のダイエットタイプは「${typeData.name}」`,
-          text: `${typeData.catchcopy}\n\nダイエットキャラ診断16で診断してみて！\n${window.location.origin}`,
+          text: `${typeData.catchcopy}\n\nダイエットキャラ診断16で診断してみて！\n${shareUrl}`,
           files: [file]
         }
 
@@ -140,7 +141,10 @@ export default function ResultPage() {
   }
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href)
+    const typeData = diagramTypes[userType]
+    if (!typeData) return
+    const shareUrl = `${window.location.origin}?result=${userType}`
+    navigator.clipboard.writeText(shareUrl)
     alert('リンクをコピーしました！')
   }
 

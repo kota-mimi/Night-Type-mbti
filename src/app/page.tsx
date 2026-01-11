@@ -4,6 +4,9 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import CharacterMarquee from '@/components/CharacterMarquee'
+import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
+import { diagramTypes } from '@/data/diagramTypes'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -17,6 +20,38 @@ const zenMaruGothic = Zen_Maru_Gothic({
 })
 
 export default function Home() {
+  const searchParams = useSearchParams()
+  const resultType = searchParams.get('result')
+
+  useEffect(() => {
+    // Dynamic meta tag updates for OG images when result parameter is present
+    if (resultType && diagramTypes[resultType]) {
+      const typeData = diagramTypes[resultType]
+      
+      // Update page title
+      document.title = `${typeData.name} | ダイエットタイプ診断`
+      
+      // Update or create OG meta tags
+      const updateMetaTag = (property: string, content: string) => {
+        let meta = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement
+        if (!meta) {
+          meta = document.createElement('meta')
+          meta.setAttribute('property', property)
+          document.head.appendChild(meta)
+        }
+        meta.content = content
+      }
+      
+      updateMetaTag('og:title', `私のダイエットタイプは「${typeData.name}」`)
+      updateMetaTag('og:description', typeData.catchcopy)
+      updateMetaTag('og:image', `${window.location.origin}/characters/${resultType}_new3.png`)
+      updateMetaTag('twitter:card', 'summary_large_image')
+      updateMetaTag('twitter:title', `私のダイエットタイプは「${typeData.name}」`)
+      updateMetaTag('twitter:description', typeData.catchcopy)
+      updateMetaTag('twitter:image', `${window.location.origin}/characters/${resultType}_new3.png`)
+    }
+  }, [resultType])
+
   return (
     <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
       <main className="flex flex-col justify-center items-center min-h-screen text-center px-4">
