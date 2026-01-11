@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import CharacterMarquee from '@/components/CharacterMarquee'
 import { useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { diagramTypes } from '@/data/diagramTypes'
 
 const notoSansJP = Noto_Sans_JP({
@@ -19,7 +19,7 @@ const zenMaruGothic = Zen_Maru_Gothic({
   display: 'swap',
 })
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams()
   const resultType = searchParams.get('result')
 
@@ -100,5 +100,15 @@ export default function Home() {
         </motion.div>
       </main>
     </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-[#2196F3] border-t-transparent rounded-full animate-spin" />
+    </div>}>
+      <HomeContent />
+    </Suspense>
   )
 }
