@@ -46,20 +46,15 @@ export default function ContactPage() {
               </div>
             </section>
 
-            {/* 広告セクション */}
+            {/* LINE広告セクション */}
             <section>
               <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">おすすめサービス</h2>
               <div className="bg-green-50 p-6 rounded-lg text-center border-2 border-green-200">
-                <div className="text-2xl mb-3">🥗</div>
-                <h3 className="font-bold text-lg mb-2 text-green-800">食事管理LINE公式アカウント</h3>
-                <p className="text-gray-600 mb-4 text-sm">
-                  診断結果に合わせた食事管理で理想の体型を目指しませんか？<br/>
-                  プロの栄養士があなたをサポートします
-                </p>
+                <h3 className="font-bold text-lg mb-4 text-green-800">食事管理、もう考えなくていい。<br/>LINEに送るだけで、AIが全部やる。</h3>
                 <div className="space-y-2 text-xs text-gray-500 mb-4">
-                  <p>✓ 個別食事プラン作成</p>
-                  <p>✓ 24時間サポート</p>
-                  <p>✓ 進捗管理・アドバイス</p>
+                  <p>✓ 食事の写真を送るだけ</p>
+                  <p>✓ カロリー・PFCを自動記録</p>
+                  <p>✓ 相談・質問もLINEで即OK</p>
                 </div>
                 <a 
                   href="https://lin.ee/BCYVfcD"
