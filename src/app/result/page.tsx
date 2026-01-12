@@ -67,7 +67,9 @@ export default function ResultPage() {
       return
     }
 
-    const shareUrl = `${window.location.origin}?result=${userType}`
+    // キャッシュバスティング用のタイムスタンプを追加
+    const timestamp = Date.now()
+    const shareUrl = `${window.location.origin}?result=${userType}&t=${timestamp}`
     const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${shareUrl}\n\n#ダイエットタイプ診断`
     
     const shareUrls = {
@@ -109,7 +111,9 @@ export default function ResultPage() {
 
       // Web Share API対応チェック
       if (navigator.share) {
-        const shareUrl = `${window.location.origin}?result=${userType}`
+        // キャッシュバスティング用のタイムスタンプを追加
+        const timestamp = Date.now()
+        const shareUrl = `${window.location.origin}?result=${userType}&t=${timestamp}`
         const shareData = {
           title: `私のダイエットタイプは「${typeData.name}」`,
           text: `${typeData.catchcopy}\n\nダイエットキャラ診断16で診断してみて！\n${shareUrl}`,
@@ -143,7 +147,9 @@ export default function ResultPage() {
   const handleCopyLink = () => {
     const typeData = diagramTypes[userType]
     if (!typeData) return
-    const shareUrl = `${window.location.origin}?result=${userType}`
+    // キャッシュバスティング用のタイムスタンプを追加
+    const timestamp = Date.now()
+    const shareUrl = `${window.location.origin}?result=${userType}&t=${timestamp}`
     navigator.clipboard.writeText(shareUrl)
     alert('リンクをコピーしました！')
   }
