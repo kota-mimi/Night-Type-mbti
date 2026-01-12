@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import FloatingAd from "@/components/FloatingAd";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
+import Analytics from "@/components/Analytics";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code', // Google Search Consoleで取得
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
 };
 
@@ -84,6 +85,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Analytics />
         <FloatingAd 
           imageUrl="/line-ad.png"
           linkUrl="https://lin.ee/BCYVfcD"

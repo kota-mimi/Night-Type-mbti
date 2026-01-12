@@ -23,7 +23,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     const typeData = diagramTypes[resultType]
     console.log('✅ Found matching diagram type:', typeData.name)
     
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dietmbti.vercel.app'
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://diet-type16.com'
     const imageUrl = `${baseUrl}/characters/${resultType}_new3.png`
     
     console.log('🖼️ Generated image URL:', imageUrl)
