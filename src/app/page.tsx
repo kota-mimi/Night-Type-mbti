@@ -5,17 +5,30 @@ import HomeContent from './HomeContent'
 
 
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ result?: string }> }): Promise<Metadata> {
-  const resolvedSearchParams = await searchParams
+  console.log('🚀 generateMetadata function called - START')
+  
+  let resolvedSearchParams
+  try {
+    resolvedSearchParams = await searchParams
+    console.log('📋 Raw searchParams:', resolvedSearchParams)
+  } catch (error) {
+    console.error('❌ Error resolving searchParams:', error)
+    resolvedSearchParams = {}
+  }
+  
   const resultType = resolvedSearchParams.result
-
-  console.log('🔍 generateMetadata called with:', { resultType, searchParams: resolvedSearchParams })
+  console.log('🔍 Extracted resultType:', resultType)
 
   if (resultType && diagramTypes[resultType]) {
-    console.log('✅ Found matching diagram type:', diagramTypes[resultType].name)
     const typeData = diagramTypes[resultType]
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dietmbti.vercel.app'
+    console.log('✅ Found matching diagram type:', typeData.name)
     
-    return {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dietmbti.vercel.app'
+    const imageUrl = `${baseUrl}/characters/${resultType}_new3.png`
+    
+    console.log('🖼️ Generated image URL:', imageUrl)
+    
+    const metadata = {
       title: `私のダイエットタイプは「${typeData.name}」 | ダイエットタイプ診断`,
       description: typeData.catchcopy,
       openGraph: {
@@ -23,25 +36,29 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
         description: typeData.catchcopy,
         images: [
           {
-            url: `${baseUrl}/characters/${resultType}_new3.png`,
+            url: imageUrl,
             width: 640,
             height: 760,
             alt: `${typeData.name}のキャラクター`,
           },
         ],
-        type: 'website',
+        type: 'website' as const,
         siteName: 'ダイエットタイプ診断',
       },
       twitter: {
-        card: 'summary_large_image',
+        card: 'summary_large_image' as const,
         title: `私のダイエットタイプは「${typeData.name}」`,
         description: typeData.catchcopy,
-        images: [`${baseUrl}/characters/${resultType}_new3.png`],
+        images: [imageUrl],
       },
     }
+    
+    console.log('📝 Generated metadata:', JSON.stringify(metadata, null, 2))
+    return metadata
   }
 
   // デフォルトのメタデータ（結果パラメータがない場合）
+  console.log('⚠️ Using default metadata (no result or type not found)')
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dietmbti.vercel.app'
   
   return {
