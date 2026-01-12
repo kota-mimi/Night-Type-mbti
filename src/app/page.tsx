@@ -8,7 +8,10 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   const resolvedSearchParams = await searchParams
   const resultType = resolvedSearchParams.result
 
+  console.log('🔍 generateMetadata called with:', { resultType, searchParams: resolvedSearchParams })
+
   if (resultType && diagramTypes[resultType]) {
+    console.log('✅ Found matching diagram type:', diagramTypes[resultType].name)
     const typeData = diagramTypes[resultType]
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dietmbti.vercel.app'
     
