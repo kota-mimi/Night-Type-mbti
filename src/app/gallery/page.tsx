@@ -18,13 +18,14 @@ const notoSansJP = Noto_Sans_JP({
 function GalleryContent() {
   const typeKeys = Object.keys(diagramTypes) as Array<keyof typeof diagramTypes>
   const searchParams = useSearchParams()
-  const highlightType = searchParams.get('highlight')
+  const rawHighlightType = searchParams.get('highlight')
+  const highlightType = rawHighlightType ? rawHighlightType.trim().toUpperCase() : null
   
   // デバッグログ
-  console.log('🎯 Gallery highlightType:', highlightType, typeof highlightType)
+  console.log('🎯 Gallery rawHighlightType:', rawHighlightType)
+  console.log('🎯 Gallery processed highlightType:', highlightType)
   console.log('📝 Available typeKeys:', typeKeys)
-  console.log('🔍 Is GECL in typeKeys:', typeKeys.includes('GECL' as any))
-  console.log('🔍 highlightType === "GECL":', highlightType === 'GECL')
+  console.log('🔍 All URL params:', Object.fromEntries(searchParams))
   
   return (
     <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
@@ -38,8 +39,8 @@ function GalleryContent() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-bold text-white mb-4"
           >
-            {highlightType && diagramTypes[highlightType] 
-              ? `${diagramTypes[highlightType].name}をシェアされました！`
+            {highlightType && diagramTypes[highlightType as keyof typeof diagramTypes] 
+              ? `${diagramTypes[highlightType as keyof typeof diagramTypes].name}をシェアされました！`
               : '全16タイプ診断結果'
             }
           </motion.h1>
@@ -49,7 +50,7 @@ function GalleryContent() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-white/90"
           >
-            {highlightType && diagramTypes[highlightType]
+            {highlightType && diagramTypes[highlightType as keyof typeof diagramTypes]
               ? 'あなたも同じタイプかも？ 診断してみましょう！'
               : 'あなたはどのタイプに当てはまりますか？'
             }
@@ -65,8 +66,8 @@ function GalleryContent() {
         >
           {typeKeys.map((typeCode, index) => {
             const type = diagramTypes[typeCode]
-            // より厳密な比較
-            const isHighlighted = highlightType !== null && highlightType === String(typeCode)
+            // より厳密な比較（大文字小文字を統一）
+            const isHighlighted = highlightType !== null && highlightType === String(typeCode).toUpperCase()
             
             // デバッグログ
             if (index < 5) { // 最初の5つログ出力
