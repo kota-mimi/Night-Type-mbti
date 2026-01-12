@@ -50,7 +50,7 @@ export default function ContactPage() {
             <section>
               <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">おすすめサービス</h2>
               <div className="bg-green-50 p-6 rounded-lg text-center border-2 border-green-200">
-                <h3 className="font-bold text-lg mb-4 text-green-800">食事管理、もう考えなくていい。<br/>LINEに送るだけで、AIが全部やる。</h3>
+                <h3 className="font-bold text-sm sm:text-base mb-4 text-green-800">食事管理、もう考えなくていい。LINEに送るだけで、AIが全部やる。</h3>
                 <div className="space-y-2 text-xs text-gray-500 mb-4">
                   <p>✓ 食事の写真を送るだけ</p>
                   <p>✓ カロリー・PFCを自動記録</p>
