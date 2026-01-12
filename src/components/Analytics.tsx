@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 declare global {
@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-export default function Analytics() {
+function AnalyticsInner() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -25,21 +25,13 @@ export default function Analytics() {
     }
   }, [pathname, searchParams]);
 
-  // ページビュー追跡
-  const trackPageView = (url: string) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'page_view', {
-        page_location: url,
-      });
-    }
-  };
-
-  // カスタムイベント追跡
-  const trackEvent = (eventName: string, parameters?: object) => {
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', eventName, parameters);
-    }
-  };
-
   return null;
+}
+
+export default function Analytics() {
+  return (
+    <Suspense fallback={null}>
+      <AnalyticsInner />
+    </Suspense>
+  );
 }
