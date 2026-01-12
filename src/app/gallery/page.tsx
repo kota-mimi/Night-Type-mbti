@@ -21,8 +21,10 @@ function GalleryContent() {
   const highlightType = searchParams.get('highlight')
   
   // デバッグログ
-  console.log('🎯 Gallery highlightType:', highlightType)
+  console.log('🎯 Gallery highlightType:', highlightType, typeof highlightType)
   console.log('📝 Available typeKeys:', typeKeys)
+  console.log('🔍 Is GECL in typeKeys:', typeKeys.includes('GECL' as any))
+  console.log('🔍 highlightType === "GECL":', highlightType === 'GECL')
   
   return (
     <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
@@ -63,11 +65,17 @@ function GalleryContent() {
         >
           {typeKeys.map((typeCode, index) => {
             const type = diagramTypes[typeCode]
-            const isHighlighted = highlightType === typeCode
+            // より厳密な比較
+            const isHighlighted = highlightType !== null && highlightType === String(typeCode)
             
             // デバッグログ
-            if (index < 3) { // 最初の3つだけログ出力
-              console.log(`🔍 Checking ${typeCode}: highlightType="${highlightType}", isHighlighted=${isHighlighted}`)
+            if (index < 5) { // 最初の5つログ出力
+              console.log(`🔍 Checking ${typeCode}: highlightType="${highlightType}", String(typeCode)="${String(typeCode)}", isHighlighted=${isHighlighted}`)
+            }
+            
+            // 特定のハイライト対象の場合は詳細ログ
+            if (typeCode === 'GECL' || isHighlighted) {
+              console.log(`🎯 SPECIAL CHECK for ${typeCode}: highlightType="${highlightType}", isHighlighted=${isHighlighted}`)
             }
             
             // カードの背景色とテキスト色を決定
