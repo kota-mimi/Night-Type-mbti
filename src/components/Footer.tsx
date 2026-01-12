@@ -5,7 +5,8 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer className="bg-gray-100 py-8 mt-16">
-      {/* LINEスタンプ宣伝バナー */}
+      {/* LINEスタンプ宣伝バナー - 将来的に使用する場合は以下のコメントアウトを解除 */}
+      {/*
       <div className="bg-green-500 text-white py-4 px-4 mb-6 mx-4 rounded-lg">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -26,6 +27,7 @@ export default function Footer() {
           </Link>
         </div>
       </div>
+      */}
 
       {/* メインフッターコンテンツ */}
       <div className="max-w-4xl mx-auto px-4">
