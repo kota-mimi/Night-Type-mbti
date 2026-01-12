@@ -7,14 +7,18 @@ import { Home } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
 import { diagramTypes } from '@/data/diagramTypes'
 import { questions } from '@/data/questions'
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
   display: 'swap',
 })
 
-export default function GalleryPage() {
+function GalleryContent() {
   const typeKeys = Object.keys(diagramTypes) as Array<keyof typeof diagramTypes>
+  const searchParams = useSearchParams()
+  const highlightType = searchParams.get('highlight')
   
   return (
     <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
@@ -28,7 +32,10 @@ export default function GalleryPage() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-bold text-white mb-4"
           >
-            全16タイプ診断結果
+            {highlightType && diagramTypes[highlightType] 
+              ? `${diagramTypes[highlightType].name}をシェアされました！`
+              : '全16タイプ診断結果'
+            }
           </motion.h1>
           <motion.p
             initial={{ y: 20, opacity: 0 }}
@@ -36,7 +43,10 @@ export default function GalleryPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-white/90"
           >
-            あなたはどのタイプに当てはまりますか？
+            {highlightType && diagramTypes[highlightType]
+              ? 'あなたも同じタイプかも？ 診断してみましょう！'
+              : 'あなたはどのタイプに当てはまりますか？'
+            }
           </motion.p>
         </div>
 
@@ -49,6 +59,7 @@ export default function GalleryPage() {
         >
           {typeKeys.map((typeCode, index) => {
             const type = diagramTypes[typeCode]
+            const isHighlighted = highlightType === typeCode
             
             // カードの背景色とテキスト色を決定
             let cardBgColor = 'bg-blue-200/50' // デフォルト
@@ -68,13 +79,19 @@ export default function GalleryPage() {
               textColor = 'text-blue-600'
             }
             
+            // ハイライト時の特別なスタイル
+            if (isHighlighted) {
+              cardBgColor = 'bg-gradient-to-r from-yellow-200/80 to-orange-200/80' 
+              textColor = 'text-orange-700'
+            }
+            
             return (
               <motion.div
                 key={typeCode}
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl`}
+                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl ${isHighlighted ? 'ring-4 ring-yellow-400 ring-opacity-60 scale-110 shadow-2xl' : ''}`}
               >
                 <div className="bg-white rounded-xl p-4 shadow-sm"
               >
@@ -211,5 +228,17 @@ export default function GalleryPage() {
         </motion.div>
       </div>
     </div>
+  )
+}
+
+export default function GalleryPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#2196F3] border-t-transparent rounded-full animate-spin" />
+      </div>
+    }>
+      <GalleryContent />
+    </Suspense>
   )
 }
