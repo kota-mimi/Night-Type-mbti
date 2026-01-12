@@ -27,27 +27,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: "ダイエットタイプ診断｜あなたの痩せ方、見つかる",
-    description: "16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見。20問・約3分で完了。",
-    url: '/',
     siteName: 'ダイエットタイプ診断',
     locale: 'ja_JP',
     type: 'website',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'ダイエットタイプ診断',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'ダイエットタイプ診断｜あなたの痩せ方、見つかる',
-    description: '16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見。20問・約3分で完了。',
-    images: ['/og-image.png'],
-    creator: '@diet_type_test',
   },
   robots: {
     index: true,

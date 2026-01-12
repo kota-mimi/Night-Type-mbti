@@ -4,8 +4,9 @@ import type { Metadata } from 'next'
 import HomeContent from './HomeContent'
 
 
-export async function generateMetadata({ searchParams }: { searchParams: { result?: string } }): Promise<Metadata> {
-  const resultType = searchParams.result
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ result?: string }> }): Promise<Metadata> {
+  const resolvedSearchParams = await searchParams
+  const resultType = resolvedSearchParams.result
 
   if (resultType && diagramTypes[resultType]) {
     const typeData = diagramTypes[resultType]
@@ -38,9 +39,31 @@ export async function generateMetadata({ searchParams }: { searchParams: { resul
   }
 
   // デフォルトのメタデータ（結果パラメータがない場合）
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dietmbti.vercel.app'
+  
   return {
     title: "ダイエットタイプ診断｜あなたの痩せ方、見つかる",
     description: "16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見。20問・約3分で完了。",
+    openGraph: {
+      title: "ダイエットタイプ診断｜あなたの痩せ方、見つかる",
+      description: "16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見。20問・約3分で完了。",
+      images: [
+        {
+          url: `${baseUrl}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: 'ダイエットタイプ診断',
+        },
+      ],
+      type: 'website',
+      siteName: 'ダイエットタイプ診断',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'ダイエットタイプ診断｜あなたの痩せ方、見つかる',
+      description: '16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見。20問・約3分で完了。',
+      images: [`${baseUrl}/og-image.png`],
+    },
   }
 }
 
