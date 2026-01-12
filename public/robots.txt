@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://diet-mbti.vercel.app/sitemap.xml
+Sitemap: https://diet-type16.com/sitemap.xml
