@@ -60,9 +60,9 @@ export default function ContactPage() {
                   href="https://lin.ee/BCYVfcD"
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-block bg-green-500 text-white px-8 py-3 rounded-full hover:bg-green-600 transition-colors font-bold shadow-lg"
+                  className="inline-block bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition-colors font-bold shadow-lg text-sm"
                 >
-                  今すぐ始める（無料相談）
+                  今すぐ始める
                 </a>
               </div>
             </section>
