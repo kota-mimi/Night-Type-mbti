@@ -29,10 +29,10 @@ export default function ContactPage() {
               <div className="bg-teal-50 p-8 rounded-lg border border-teal-200 mt-8">
                 <h2 className="text-xl font-bold text-teal-800 mb-4">お問い合わせメール</h2>
                 <a 
-                  href="mailto:support@example.com"
+                  href="mailto:diet16.contact@gmail.com"
                   className="text-teal-600 text-lg font-bold hover:text-teal-700 transition-colors"
                 >
-                  support@example.com
+                  diet16.contact@gmail.com
                 </a>
               </div>
               
