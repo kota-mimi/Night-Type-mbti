@@ -20,6 +20,10 @@ function GalleryContent() {
   const searchParams = useSearchParams()
   const highlightType = searchParams.get('highlight')
   
+  // デバッグログ
+  console.log('🎯 Gallery highlightType:', highlightType)
+  console.log('📝 Available typeKeys:', typeKeys)
+  
   return (
     <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8">
@@ -60,6 +64,11 @@ function GalleryContent() {
           {typeKeys.map((typeCode, index) => {
             const type = diagramTypes[typeCode]
             const isHighlighted = highlightType === typeCode
+            
+            // デバッグログ
+            if (index < 3) { // 最初の3つだけログ出力
+              console.log(`🔍 Checking ${typeCode}: highlightType="${highlightType}", isHighlighted=${isHighlighted}`)
+            }
             
             // カードの背景色とテキスト色を決定
             let cardBgColor = 'bg-blue-200/50' // デフォルト
