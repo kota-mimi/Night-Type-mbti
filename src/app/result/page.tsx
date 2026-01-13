@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { Home, Twitter, MessageSquare, Instagram, Download, Copy } from 'lucide-react'
 import Image from 'next/image'
 import Breadcrumbs from '@/components/Breadcrumbs'
@@ -70,9 +71,8 @@ export default function ResultPage() {
       return
     }
 
-    // 個別キャラページに誘導
-    const characterSlug = characterSlugs[userType]
-    const shareUrl = `${window.location.origin}/character/${characterSlug}`
+    // 一時的に診断結果ページに誘導（ドメイン移行中のため）
+    const shareUrl = `${window.location.origin}/result`
     const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${shareUrl}\n\n#ダイエットキャラ診断16`
     
     const shareUrls = {
@@ -114,9 +114,8 @@ export default function ResultPage() {
 
       // Web Share API対応チェック
       if (navigator.share) {
-        // 個別キャラページに誘導
-        const characterSlug = characterSlugs[userType]
-        const shareUrl = `${window.location.origin}/character/${characterSlug}`
+        // 一時的に診断結果ページに誘導（ドメイン移行中のため）
+        const shareUrl = `${window.location.origin}/result`
         const shareData = {
           title: `私のダイエットタイプは「${typeData.name}」`,
           text: `${typeData.catchcopy}\n\nダイエットキャラ診断16で診断してみて！\n${shareUrl}`,
@@ -150,9 +149,8 @@ export default function ResultPage() {
   const handleCopyLink = () => {
     const typeData = diagramTypes[userType]
     if (!typeData) return
-    // 個別キャラページに誘導
-    const characterSlug = characterSlugs[userType]
-    const shareUrl = `${window.location.origin}/character/${characterSlug}`
+    // 一時的に診断結果ページに誘導（ドメイン移行中のため）
+    const shareUrl = `${window.location.origin}/result`
     navigator.clipboard.writeText(shareUrl)
     alert('リンクをコピーしました！')
   }
@@ -508,14 +506,22 @@ export default function ResultPage() {
             </div>
           </div>
 
-          {/* もう一度診断する - Large Button */}
-          <div className="text-center pt-8">
-            <button
-              onClick={handleRestart}
-              className={`inline-block bg-[#2196F3] text-white px-8 py-3 rounded-full hover:bg-[#1976D2] transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
-            >
-              もう一度診断する
-            </button>
+          {/* ボタンエリア */}
+          <div className="text-center pt-8 space-y-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href={`/character/${characterSlugs[userType]}`}
+                className={`inline-block bg-green-500 text-white px-8 py-3 rounded-full hover:bg-green-600 transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
+              >
+                詳細情報を見る
+              </Link>
+              <button
+                onClick={handleRestart}
+                className={`inline-block bg-[#2196F3] text-white px-8 py-3 rounded-full hover:bg-[#1976D2] transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
+              >
+                もう一度診断する
+              </button>
+            </div>
           </div>
 
           {/* A8アフィリエイトバナー */}
