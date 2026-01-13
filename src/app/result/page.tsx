@@ -516,6 +516,27 @@ export default function ResultPage() {
             </button>
           </div>
 
+          {/* A8アフィリエイトバナー */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-8 flex justify-center"
+          >
+            <div className="w-full max-w-md">
+              <div className="bg-gradient-to-r from-orange-400 to-pink-500 rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <div className="p-6 text-center text-white">
+                  <div className="text-2xl font-bold mb-2">🔥 特別オファー 🔥</div>
+                  <div className="text-lg font-semibold mb-3">ダイエットサプリ</div>
+                  <div className="text-sm mb-4">あなたのタイプにぴったり！</div>
+                  <div className="bg-white text-orange-500 font-bold py-2 px-6 rounded-full inline-block">
+                    詳細を見る →
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
         </motion.div>
         
       </div>
