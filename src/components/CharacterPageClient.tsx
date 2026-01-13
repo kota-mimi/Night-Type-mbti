@@ -126,34 +126,21 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
         >
           <div className="bg-white/90 backdrop-blur rounded-2xl p-8 max-w-2xl mx-auto">
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              あなたも{character.name}タイプかも？
+              あなたのダイエットキャラは何かな？
             </h2>
             <p className="text-gray-600 mb-6">
-              無料診断で、あなた専用のダイエット法を見つけましょう！
+              診断してみよう！
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/quiz/1">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-[#2196F3] hover:bg-[#1976D2] text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300"
-                >
-                  診断を始める
-                </motion.button>
-              </Link>
-              
-              <Link href="/gallery">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 bg-white text-[#2196F3] border-2 border-[#2196F3] font-bold py-3 px-8 rounded-full hover:bg-[#2196F3] hover:text-white transition-all duration-300"
-                >
-                  <Home className="w-4 h-4" />
-                  他のキャラも見る
-                </motion.button>
-              </Link>
-            </div>
+            <Link href="/quiz/1">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#2196F3] hover:bg-[#1976D2] text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300"
+              >
+                診断を始める
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>
