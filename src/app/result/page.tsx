@@ -511,7 +511,7 @@ export default function ResultPage() {
           <div className="text-center pt-8">
             <button
               onClick={handleRestart}
-              className={`inline-block bg-green-500 text-white px-8 py-3 rounded-full hover:bg-green-600 transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
+              className={`inline-block bg-[#2196F3] text-white px-8 py-3 rounded-full hover:bg-[#1976D2] transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
             >
               もう一度診断する
             </button>
