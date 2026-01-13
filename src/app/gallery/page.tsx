@@ -7,7 +7,6 @@ import { Home } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
 import { diagramTypes } from '@/data/diagramTypes'
 import { questions } from '@/data/questions'
-import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 import { characterSlugs } from '@/data/characterSlugs'
 
@@ -18,15 +17,6 @@ const notoSansJP = Noto_Sans_JP({
 
 function GalleryContent() {
   const typeKeys = Object.keys(diagramTypes) as Array<keyof typeof diagramTypes>
-  const searchParams = useSearchParams()
-  const rawHighlightType = searchParams.get('highlight')
-  const highlightType = rawHighlightType ? rawHighlightType.trim().toUpperCase() : null
-  
-  // デバッグログ
-  console.log('🎯 Gallery rawHighlightType:', rawHighlightType)
-  console.log('🎯 Gallery processed highlightType:', highlightType)
-  console.log('📝 Available typeKeys:', typeKeys)
-  console.log('🔍 All URL params:', Object.fromEntries(searchParams))
   
   return (
     <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
@@ -40,10 +30,7 @@ function GalleryContent() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-bold text-white mb-4"
           >
-            {highlightType && diagramTypes[highlightType as keyof typeof diagramTypes] 
-              ? `${diagramTypes[highlightType as keyof typeof diagramTypes].name}をシェアされました！`
-              : '全16タイプ診断結果'
-            }
+            全16タイプ診断結果
           </motion.h1>
           <motion.p
             initial={{ y: 20, opacity: 0 }}
@@ -51,10 +38,7 @@ function GalleryContent() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg text-white/90"
           >
-            {highlightType && diagramTypes[highlightType as keyof typeof diagramTypes]
-              ? 'あなたも同じタイプかも？ 診断してみましょう！'
-              : 'あなたはどのタイプに当てはまりますか？'
-            }
+            あなたはどのタイプに当てはまりますか？
           </motion.p>
         </div>
 
@@ -67,18 +51,6 @@ function GalleryContent() {
         >
           {typeKeys.map((typeCode, index) => {
             const type = diagramTypes[typeCode]
-            // より厳密な比較（大文字小文字を統一）
-            const isHighlighted = highlightType !== null && highlightType === String(typeCode).toUpperCase()
-            
-            // デバッグログ
-            if (index < 5) { // 最初の5つログ出力
-              console.log(`🔍 Checking ${typeCode}: highlightType="${highlightType}", String(typeCode)="${String(typeCode)}", isHighlighted=${isHighlighted}`)
-            }
-            
-            // 特定のハイライト対象の場合は詳細ログ
-            if (typeCode === 'GECL' || isHighlighted) {
-              console.log(`🎯 SPECIAL CHECK for ${typeCode}: highlightType="${highlightType}", isHighlighted=${isHighlighted}`)
-            }
             
             // カードの背景色とテキスト色を決定
             let cardBgColor = 'bg-blue-200/50' // デフォルト
@@ -98,19 +70,13 @@ function GalleryContent() {
               textColor = 'text-blue-600'
             }
             
-            // ハイライト時の特別なスタイル
-            if (isHighlighted) {
-              cardBgColor = 'bg-gradient-to-r from-yellow-200/80 to-orange-200/80' 
-              textColor = 'text-orange-700'
-            }
-            
             return (
               <motion.div
                 key={typeCode}
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.1 * index }}
-                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl ${isHighlighted ? 'ring-4 ring-yellow-400 ring-opacity-60 scale-110 shadow-2xl' : ''}`}
+                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl`}
               >
                 <div className="bg-white rounded-xl p-4 shadow-sm"
               >

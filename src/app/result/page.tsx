@@ -11,6 +11,7 @@ import { getTypeFromAnswers } from '@/lib/scoring'
 import { diagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
 import A8AffiliateBanner from '@/components/A8AffiliateBanner'
+import { characterSlugs } from '@/data/characterSlugs'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -69,10 +70,10 @@ export default function ResultPage() {
       return
     }
 
-    // ギャラリーページにハイライトパラメータ付きで誘導
-    const timestamp = Date.now()
-    const shareUrl = `${window.location.origin}/gallery?highlight=${userType}&t=${timestamp}`
-    const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${shareUrl}\n\n#ダイエットタイプ診断`
+    // 個別キャラページに誘導
+    const characterSlug = characterSlugs[userType]
+    const shareUrl = `${window.location.origin}/character/${characterSlug}`
+    const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${shareUrl}\n\n#ダイエットキャラ診断16`
     
     const shareUrls = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
@@ -113,9 +114,9 @@ export default function ResultPage() {
 
       // Web Share API対応チェック
       if (navigator.share) {
-        // ギャラリーページにハイライトパラメータ付きで誘導
-        const timestamp = Date.now()
-        const shareUrl = `${window.location.origin}/gallery?highlight=${userType}&t=${timestamp}`
+        // 個別キャラページに誘導
+        const characterSlug = characterSlugs[userType]
+        const shareUrl = `${window.location.origin}/character/${characterSlug}`
         const shareData = {
           title: `私のダイエットタイプは「${typeData.name}」`,
           text: `${typeData.catchcopy}\n\nダイエットキャラ診断16で診断してみて！\n${shareUrl}`,
@@ -149,9 +150,9 @@ export default function ResultPage() {
   const handleCopyLink = () => {
     const typeData = diagramTypes[userType]
     if (!typeData) return
-    // ギャラリーページにハイライトパラメータ付きで誘導
-    const timestamp = Date.now()
-    const shareUrl = `${window.location.origin}/gallery?highlight=${userType}&t=${timestamp}`
+    // 個別キャラページに誘導
+    const characterSlug = characterSlugs[userType]
+    const shareUrl = `${window.location.origin}/character/${characterSlug}`
     navigator.clipboard.writeText(shareUrl)
     alert('リンクをコピーしました！')
   }
