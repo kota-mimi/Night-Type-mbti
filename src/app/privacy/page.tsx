@@ -80,7 +80,7 @@ export default function PrivacyPage() {
                 プライバシーポリシーに関するお問い合わせは、以下からお願いいたします。
               </p>
               <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <p><strong>メール：</strong> diet16.contact@gmail.com</p>
+                <p><strong>メール：</strong> <a href="mailto:diet16.contact@gmail.com" className="text-blue-600 hover:underline">diet16.contact@gmail.com</a></p>
                 <p><strong>お問い合わせ：</strong> 
                   <a href="/contact" className="text-blue-600 hover:underline ml-1">こちら</a>
                 </p>
