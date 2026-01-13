@@ -139,7 +139,7 @@ function GalleryContent() {
                   </h3>
 
                   {/* 基本生態（3行でキリよく） */}
-                  <p className="text-sm text-[#666666] text-center leading-relaxed">
+                  <p className="text-sm text-[#666666] text-left leading-relaxed">
                     {(() => {
                       const text = type.basicEcology
                       // 3行表示用の文字数制限（約45-60文字で3行）
