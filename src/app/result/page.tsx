@@ -10,6 +10,7 @@ import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import { getTypeFromAnswers } from '@/lib/scoring'
 import { diagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
+import A8AffiliateBanner from '@/components/A8AffiliateBanner'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -523,18 +524,7 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mt-8 flex justify-center"
           >
-            <div className="w-full max-w-md">
-              <div className="bg-gradient-to-r from-orange-400 to-pink-500 rounded-2xl shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                <div className="p-6 text-center text-white">
-                  <div className="text-2xl font-bold mb-2">🔥 特別オファー 🔥</div>
-                  <div className="text-lg font-semibold mb-3">ダイエットサプリ</div>
-                  <div className="text-sm mb-4">あなたのタイプにぴったり！</div>
-                  <div className="bg-white text-orange-500 font-bold py-2 px-6 rounded-full inline-block">
-                    詳細を見る →
-                  </div>
-                </div>
-              </div>
-            </div>
+            <A8AffiliateBanner />
           </motion.div>
 
         </motion.div>
