@@ -71,8 +71,9 @@ export default function ResultPage() {
       return
     }
 
-    // 一時的に診断結果ページに誘導（ドメイン移行中のため）
-    const shareUrl = `${window.location.origin}/result`
+    // キャラクター個別ページのURLを生成
+    const characterSlug = characterSlugs[userType]
+    const shareUrl = `${window.location.origin}/character/${characterSlug}`
     const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${shareUrl}\n\n#ダイエットキャラ診断16`
     
     const shareUrls = {
