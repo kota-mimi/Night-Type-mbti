@@ -510,20 +510,12 @@ export default function ResultPage() {
 
           {/* ボタンエリア */}
           <div className="text-center pt-8 space-y-4">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href={`/character/${characterSlugs[userType]}`}
-                className={`inline-block bg-green-500 text-white px-8 py-3 rounded-full hover:bg-green-600 transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
-              >
-                詳細情報を見る
-              </Link>
-              <button
-                onClick={handleRestart}
-                className={`inline-block bg-[#2196F3] text-white px-8 py-3 rounded-full hover:bg-[#1976D2] transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
-              >
-                もう一度診断する
-              </button>
-            </div>
+            <button
+              onClick={handleRestart}
+              className={`inline-block bg-[#2196F3] text-white px-8 py-3 rounded-full hover:bg-[#1976D2] transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
+            >
+              もう一度診断する
+            </button>
           </div>
 
           {/* A8アフィリエイトバナー */}
