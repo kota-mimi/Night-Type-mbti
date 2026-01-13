@@ -124,11 +124,11 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center space-y-6"
         >
-          <div className="bg-white/90 backdrop-blur rounded-2xl p-8 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              あなたのダイエットキャラは何かな？
+          <div className="bg-white/90 backdrop-blur rounded-2xl p-6 max-w-sm mx-auto">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3">
+              あなたのダイエット<br className="sm:hidden" />キャラは何かな？
             </h2>
-            <p className="text-gray-600 mb-6">
+            <p className="text-sm text-gray-600 mb-4">
               診断してみよう！
             </p>
             
