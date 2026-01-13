@@ -75,7 +75,7 @@ export default function Footer() {
               </li>
               <li>
                 <a 
-                  href="https://x.com/lovechara64" 
+                  href="https://x.com/diet_chara16" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-blue-500 transition-colors"
