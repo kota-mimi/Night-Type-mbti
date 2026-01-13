@@ -93,52 +93,52 @@ export default function AboutPage() {
           className="bg-white rounded-2xl shadow-lg p-8 md:p-10"
         >
           {/* ヘッダー */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-8">
+          <div className="text-center mb-8">
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
               ダイエットMBTIの4つの分析軸
             </h1>
             
             <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-gray-700 leading-relaxed mb-6">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4">
                 なぜ、あの人のダイエット成功法が、あなたには効かないのでしょうか？
               </p>
-              <p className="text-xl text-gray-700 leading-relaxed mb-6">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4">
                 それは「意志の強さ」の違いではなく、<strong className="text-green-600">「脳のクセ（性格）」の違い</strong>です。
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                 本診断では、あなたの行動パターンを4つの指標で分析。全16タイプの中から、あなたが最もストレスなく痩せられる「正解」を導き出します。
               </p>
             </div>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {axes.map((axis, index) => (
-              <div key={index} className="bg-[#E6F3FF] rounded-xl p-6">
+              <div key={index} className="bg-[#E6F3FF] rounded-xl p-4 md:p-6">
                 {/* 軸のタイトル */}
-                <div className="mb-6">
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+                <div className="mb-4">
+                  <h2 className="text-lg md:text-xl font-bold text-gray-800 mb-2">
                     {axis.title}
                   </h2>
-                  <p className="text-lg text-gray-600 font-medium">
+                  <p className="text-sm md:text-base text-gray-600 font-medium">
                     {axis.subtitle}
                   </p>
                 </div>
 
                 {/* 2つのタイプ */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-4">
                   {axis.items.map((item, itemIndex) => (
                     <div
                       key={itemIndex}
-                      className="bg-white rounded-xl p-6 space-y-4"
+                      className="bg-white rounded-xl p-4 space-y-3"
                     >
-                      <h3 className="text-lg font-bold text-gray-800">
+                      <h3 className="text-base font-bold text-gray-800">
                         {item.type}
                       </h3>
-                      <div className="space-y-3">
-                        <p className="text-gray-700 leading-relaxed">
+                      <div className="space-y-2">
+                        <p className="text-sm text-gray-700 leading-relaxed">
                           {item.feature}
                         </p>
-                        <p className="text-gray-600 leading-relaxed text-sm">
+                        <p className="text-xs text-gray-600 leading-relaxed">
                           {item.psychology}
                         </p>
                       </div>
