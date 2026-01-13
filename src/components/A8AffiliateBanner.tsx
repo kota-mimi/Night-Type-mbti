@@ -20,8 +20,17 @@ const affiliateAds: A8AffiliateAd[] = [
 <img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=260113551970&wid=001&eno=01&mid=s00000023140001011000&mc=1"></a>
 <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4AV4WF+G1IHKI+4YJS+60OXD" alt="">`,
     url: 'https://px.a8.net/svt/ejp?a8mat=4AV4WF+G1IHKI+4YJS+61JSH'
+  },
+  {
+    name: 'Campaign2',
+    mobileCode: `<a href="https://px.a8.net/svt/ejp?a8mat=4AV4WG+2XZ6GI+3GKQ+NVHCX" rel="nofollow">
+<img border="0" width="234" height="60" alt="" src="https://www22.a8.net/svt/bgt?aid=260113552178&wid=001&eno=01&mid=s00000016145004010000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4AV4WG+2XZ6GI+3GKQ+NVHCX" alt="">`,
+    desktopCode: `<a href="https://px.a8.net/svt/ejp?a8mat=4AV4WG+2XZ6GI+3GKQ+NV9N5" rel="nofollow">
+<img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=260113552178&wid=001&eno=01&mid=s00000016145004009000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4AV4WG+2XZ6GI+3GKQ+NV9N5" alt="">`,
+    url: 'https://px.a8.net/svt/ejp?a8mat=4AV4WG+2XZ6GI+3GKQ+NVHCX'
   }
-  // 他の案件もここに追加予定
 ]
 
 export default function A8AffiliateBanner() {
@@ -40,17 +49,17 @@ export default function A8AffiliateBanner() {
     checkScreenSize()
     window.addEventListener('resize', checkScreenSize)
 
-    // ローテーション機能（今は1つだけなので無効）
-    // const rotateAd = () => {
-    //   const randomIndex = Math.floor(Math.random() * affiliateAds.length)
-    //   setCurrentAd(affiliateAds[randomIndex])
-    // }
-    // 
-    // const interval = setInterval(rotateAd, 30000) // 30秒ごと
+    // ローテーション機能（30秒ごとにランダム切り替え）
+    const rotateAd = () => {
+      const randomIndex = Math.floor(Math.random() * affiliateAds.length)
+      setCurrentAd(affiliateAds[randomIndex])
+    }
+    
+    const interval = setInterval(rotateAd, 30000) // 30秒ごと
     
     return () => {
       window.removeEventListener('resize', checkScreenSize)
-      // clearInterval(interval)
+      clearInterval(interval)
     }
   }, [])
 
