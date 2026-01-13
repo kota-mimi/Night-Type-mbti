@@ -94,7 +94,7 @@ export default function AboutPage() {
         >
           {/* ヘッダー */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+            <h1 className="text-xl md:text-3xl font-bold text-gray-800 mb-6 whitespace-nowrap">
               ダイエットMBTIの4つの分析軸
             </h1>
             
