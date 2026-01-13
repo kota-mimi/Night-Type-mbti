@@ -34,8 +34,8 @@ export default function Header() {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center">
-              <div className={`text-lg md:text-xl font-bold text-gray-800 ${zenMaruGothic.className} tracking-tight`}>
-                ダイエット診断16
+              <div className={`text-2xl font-black text-gray-800 ${zenMaruGothic.className} tracking-tight`}>
+                ダイエットキャラ診断16
               </div>
             </div>
           </Link>
