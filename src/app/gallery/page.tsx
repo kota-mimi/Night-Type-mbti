@@ -9,6 +9,7 @@ import { diagramTypes } from '@/data/diagramTypes'
 import { questions } from '@/data/questions'
 import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
+import { characterSlugs } from '@/data/characterSlugs'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -165,7 +166,13 @@ function GalleryContent() {
                   </p>
 
                   {/* 詳細ボタン */}
-                  <div className="pt-3">
+                  <div className="pt-3 space-y-2">
+                    <Link 
+                      href={`/character/${characterSlugs[typeCode]}`}
+                      className="block w-full bg-[#2196F3] hover:bg-[#1976D2] text-white text-sm font-medium py-3 px-4 rounded-full transition-colors text-center"
+                    >
+                      詳しく見る
+                    </Link>
                     <button
                       onClick={() => {
                         // 該当タイプの結果を生成するためのスコアを計算
@@ -214,9 +221,9 @@ function GalleryContent() {
                         localStorage.setItem('diet-quiz-answers', JSON.stringify(answers))
                         window.location.href = '/result'
                       }}
-                      className="w-full bg-teal-500 hover:bg-teal-600 text-white text-sm font-medium py-3 px-4 rounded-full transition-colors"
+                      className="w-full bg-teal-500 hover:bg-teal-600 text-white text-sm font-medium py-2 px-4 rounded-full transition-colors"
                     >
-                      詳しく見る
+                      診断結果で見る
                     </button>
                   </div>
                   </div>
