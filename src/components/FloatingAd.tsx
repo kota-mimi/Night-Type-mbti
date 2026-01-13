@@ -18,12 +18,9 @@ export default function FloatingAd({
   onClose,
   closable = true
 }: FloatingAdProps) {
-  console.log("🟡 FloatingAd START, imageUrl:", imageUrl);
   const [isVisible, setIsVisible] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  
-  console.log("🔍 State values:", { isVisible, isScrolled, isMounted });
 
   useEffect(() => {
     setIsMounted(true)
@@ -35,9 +32,13 @@ export default function FloatingAd({
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // サーバーサイドレンダリング時は非表示で表示する（ハイドレーション後に表示）
   if (!isMounted) {
-    console.log("❌ Not mounted, returning null");
-    return null;
+    return (
+      <div style={{ display: 'none' }}>
+        <img src={imageUrl} alt={altText} style={{ display: 'none' }} />
+      </div>
+    );
   }
 
   const handleClose = () => {
@@ -52,11 +53,8 @@ export default function FloatingAd({
   }
 
   if (!isVisible) {
-    console.log("❌ Not visible, returning null");
     return null;
   }
-  
-  console.log("✅ Rendering FloatingAd component");
 
   return (
     <div
@@ -107,13 +105,7 @@ export default function FloatingAd({
             position: 'relative',
             zIndex: 10
           }}
-          onLoad={(e) => {
-            console.log("✅ 画像読み込み成功:", imageUrl);
-            console.log("✅ 画像サイズ:", e.currentTarget.naturalWidth, "x", e.currentTarget.naturalHeight);
-          }}
           onError={(e) => {
-            console.error("❌ 画像読み込み失敗:", imageUrl);
-            console.error("❌ エラー詳細:", e);
             // 画像が読み込めない場合のフォールバック
             const target = e.target as HTMLImageElement
             target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Ccircle cx='70' cy='70' r='65' fill='%23ff0000'/%3E%3Ctext x='70' y='80' text-anchor='middle' fill='white' font-size='14' font-weight='bold'%3EERROR%3C/text%3E%3C/svg%3E"
