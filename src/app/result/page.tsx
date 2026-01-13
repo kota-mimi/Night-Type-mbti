@@ -507,11 +507,11 @@ export default function ResultPage() {
             </div>
           </div>
 
-          {/* もう一度診断する - Simple Text Link */}
-          <div className="text-center pt-4">
+          {/* もう一度診断する - Large Button */}
+          <div className="text-center pt-8">
             <button
               onClick={handleRestart}
-              className={`text-gray-500 hover:text-gray-700 underline text-sm transition-colors duration-300 ${notoSansJP.className}`}
+              className={`inline-block bg-green-500 text-white px-8 py-3 rounded-full hover:bg-green-600 transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
             >
               もう一度診断する
             </button>
