@@ -68,19 +68,17 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
           </div>
         </motion.nav>
 
-        {/* メインコンテンツ */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          
-          {/* 左側: キャラクター画像とタイプ情報 */}
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className={`${cardBgColor} rounded-2xl p-6 shadow-lg h-fit`}
-          >
-            <div className="bg-white rounded-xl p-6 shadow-sm">
+        {/* メインコンテンツ - シンプルなカードデザイン */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-md mx-auto"
+        >
+          <div className={`${cardBgColor} rounded-2xl p-6 shadow-lg`}>
+            <div className="bg-white rounded-xl p-6 shadow-sm text-center">
               {/* タイプコード */}
-              <div className="text-center mb-4">
+              <div className="mb-4">
                 <span className={`text-lg font-bold ${textColor} bg-gray-100 px-3 py-1 rounded-full`}>
                   {typeCode}
                 </span>
@@ -99,7 +97,7 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
               </div>
 
               {/* キャラクター名とキャッチコピー */}
-              <div className="text-center mb-6">
+              <div className="mb-6">
                 <h1 className={`text-2xl md:text-3xl font-bold text-gray-800 mb-2 ${zenMaruGothic.className}`}>
                   {character.name}
                 </h1>
@@ -109,84 +107,15 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
               </div>
 
               {/* 基本生態 */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h3 className="text-lg font-bold text-gray-800 mb-3">基本生態</h3>
+              <div className="bg-gray-50 rounded-lg p-4 text-left">
+                <h3 className="text-lg font-bold text-gray-800 mb-3 text-center">基本生態</h3>
                 <p className="text-gray-700 leading-relaxed">
                   {character.basicEcology}
                 </p>
               </div>
             </div>
-          </motion.div>
-
-          {/* 右側: 詳細情報 */}
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
-          >
-            
-            {/* 詳細生態 */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <h2 className="text-xl font-bold text-gray-800 mb-4">詳細分析</h2>
-              <p className="text-gray-700 leading-relaxed">
-                {character.detailedEcology}
-              </p>
-            </div>
-
-            {/* 太る原因 */}
-            <div className="bg-red-50 rounded-2xl p-6 shadow-lg border border-red-100">
-              <h2 className="text-xl font-bold text-red-600 mb-3">
-                ⚠️ {character.causeTitle}
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                {character.fatCause}
-              </p>
-            </div>
-
-            {/* 解決策 */}
-            <div className="bg-green-50 rounded-2xl p-6 shadow-lg border border-green-100">
-              <h2 className="text-xl font-bold text-green-600 mb-3">
-                ✅ {character.solutionTitle}
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                {character.solution}
-              </p>
-            </div>
-
-            {/* 相性診断 */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg">
-              <h2 className="text-xl font-bold text-gray-800 mb-4">相性診断</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* 良い相性 */}
-                <div className="bg-green-50 rounded-lg p-4 border border-green-100">
-                  <h3 className="font-bold text-green-600 mb-2 flex items-center">
-                    💚 相性◎
-                  </h3>
-                  <p className="text-sm font-medium text-gray-800 mb-2">
-                    {diagramTypes[character.compatibility.good.type as keyof typeof diagramTypes]?.name}
-                  </p>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    {character.compatibility.good.reason}
-                  </p>
-                </div>
-
-                {/* 悪い相性 */}
-                <div className="bg-red-50 rounded-lg p-4 border border-red-100">
-                  <h3 className="font-bold text-red-600 mb-2 flex items-center">
-                    💔 相性✕
-                  </h3>
-                  <p className="text-sm font-medium text-gray-800 mb-2">
-                    {diagramTypes[character.compatibility.bad.type as keyof typeof diagramTypes]?.name}
-                  </p>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    {character.compatibility.bad.reason}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
