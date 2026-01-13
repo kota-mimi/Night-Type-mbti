@@ -37,14 +37,24 @@ const zenMaruGothic = Zen_Maru_Gothic({
 export default function CharacterPage({ params }: Props) {
   const slug = params.slug
   
+  // デバッグログ
+  console.log('🔍 Character page params:', { slug, params })
+  console.log('🔍 Available slugs:', Object.keys(slugToType))
+  
   // スラッグからキャラクタータイプを取得
   const typeCode = slugToType[slug]
+  console.log('🔍 Resolved typeCode:', { slug, typeCode })
+  
   if (!typeCode) {
+    console.log('❌ typeCode not found for slug:', slug)
     notFound()
   }
   
   const character = diagramTypes[typeCode as keyof typeof diagramTypes]
+  console.log('🔍 Resolved character:', { typeCode, character: !!character })
+  
   if (!character) {
+    console.log('❌ character not found for typeCode:', typeCode)
     notFound()
   }
 
