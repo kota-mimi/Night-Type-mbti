@@ -54,12 +54,16 @@ const affiliateAds: A8AffiliateAd[] = [
 ]
 
 export default function A8AffiliateBanner() {
-  const [currentAd, setCurrentAd] = useState<A8AffiliateAd>(affiliateAds[0])
+  const [currentAdIndex, setCurrentAdIndex] = useState<number>(0)
   const [isMobile, setIsMobile] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
     setIsMounted(true)
+    
+    // 初期表示をランダムに設定
+    const initialRandomIndex = Math.floor(Math.random() * affiliateAds.length)
+    setCurrentAdIndex(initialRandomIndex)
     
     // 画面サイズ判定
     const checkScreenSize = () => {
@@ -69,13 +73,12 @@ export default function A8AffiliateBanner() {
     checkScreenSize()
     window.addEventListener('resize', checkScreenSize)
 
-    // ローテーション機能（30秒ごとにランダム切り替え）
+    // ローテーション機能（15秒ごとに順次切り替え）
     const rotateAd = () => {
-      const randomIndex = Math.floor(Math.random() * affiliateAds.length)
-      setCurrentAd(affiliateAds[randomIndex])
+      setCurrentAdIndex((prevIndex) => (prevIndex + 1) % affiliateAds.length)
     }
     
-    const interval = setInterval(rotateAd, 30000) // 30秒ごと
+    const interval = setInterval(rotateAd, 15000) // 15秒ごと
     
     return () => {
       window.removeEventListener('resize', checkScreenSize)
@@ -86,6 +89,8 @@ export default function A8AffiliateBanner() {
   if (!isMounted) {
     return null
   }
+
+  const currentAd = affiliateAds[currentAdIndex]
 
   return (
     <div className="w-full flex justify-center">
