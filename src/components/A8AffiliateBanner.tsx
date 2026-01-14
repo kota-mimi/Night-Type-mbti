@@ -12,14 +12,14 @@ interface A8AffiliateAd {
 // A8広告データ
 const affiliateAds: A8AffiliateAd[] = [
   {
-    name: 'Myprotein',
-    mobileCode: `<a href="https://px.a8.net/svt/ejp?a8mat=4AV4WF+G1IHKI+4YJS+61JSH" rel="nofollow">
-<img border="0" width="234" height="60" alt="" src="https://www26.a8.net/svt/bgt?aid=260113551970&wid=001&eno=01&mid=s00000023140001015000&mc=1"></a>
-<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4AV4WF+G1IHKI+4YJS+61JSH" alt="">`,
-    desktopCode: `<a href="https://px.a8.net/svt/ejp?a8mat=4AV4WF+G1IHKI+4YJS+60OXD" rel="nofollow">
-<img border="0" width="300" height="250" alt="" src="https://www22.a8.net/svt/bgt?aid=260113551970&wid=001&eno=01&mid=s00000023140001011000&mc=1"></a>
-<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4AV4WF+G1IHKI+4YJS+60OXD" alt="">`,
-    url: 'https://px.a8.net/svt/ejp?a8mat=4AV4WF+G1IHKI+4YJS+61JSH'
+    name: 'New Campaign',
+    mobileCode: `<a href="https://px.a8.net/svt/ejp?a8mat=45K5P3+4V1GMQ+45DI+609HT" rel="nofollow">
+<img border="0" width="234" height="60" alt="" src="https://www24.a8.net/svt/bgt?aid=251203287294&wid=001&eno=01&mid=s00000019359001009000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=45K5P3+4V1GMQ+45DI+609HT" alt="">`,
+    desktopCode: `<a href="https://px.a8.net/svt/ejp?a8mat=45K5P3+4V1GMQ+45DI+609HT" rel="nofollow">
+<img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=251203287294&wid=001&eno=01&mid=s00000019359001009000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=45K5P3+4V1GMQ+45DI+609HT" alt="">`,
+    url: 'https://px.a8.net/svt/ejp?a8mat=45K5P3+4V1GMQ+45DI+609HT'
   },
   {
     name: 'Campaign2',
