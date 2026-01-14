@@ -50,6 +50,16 @@ const affiliateAds: A8AffiliateAd[] = [
 <img border="0" width="300" height="250" alt="" src="https://www26.a8.net/svt/bgt?aid=260113552311&wid=001&eno=01&mid=s00000027151001005000&mc=1"></a>
 <img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4AV4WG+555TWY+5THY+5ZEMP" alt="">`,
     url: 'https://px.a8.net/svt/ejp?a8mat=4AV4WG+555TWY+5THY+5ZU29'
+  },
+  {
+    name: 'SOELU',
+    mobileCode: `<a href="https://px.a8.net/svt/ejp?a8mat=4AV6G9+8SQMLU+4EPM+63OY9" rel="nofollow">
+<img border="0" width="234" height="60" alt="" src="https://www24.a8.net/svt/bgt?aid=260115561532&wid=001&eno=01&mid=s00000020569001025000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4AV6G9+8SQMLU+4EPM+63OY9" alt="">`,
+    desktopCode: `<a href="https://px.a8.net/svt/ejp?a8mat=4AV6G9+8SQMLU+4EPM+63OY9" rel="nofollow">
+<img border="0" width="300" height="250" alt="" src="https://www24.a8.net/svt/bgt?aid=260115561532&wid=001&eno=01&mid=s00000020569001025000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4AV6G9+8SQMLU+4EPM+63OY9" alt="">`,
+    url: 'https://px.a8.net/svt/ejp?a8mat=4AV6G9+8SQMLU+4EPM+63OY9'
   }
 ]
 
