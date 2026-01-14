@@ -63,9 +63,9 @@ const affiliateAds: A8AffiliateAd[] = [
   },
   {
     name: 'ClassPass',
-    mobileCode: `<a href="https://px.a8.net/svt/ejp?a8mat=4AV6G9+8VPSMQ+5S3O+5YZ75" rel="nofollow">
-<img border="0" width="234" height="60" alt="" src="https://www20.a8.net/svt/bgt?aid=260115561537&wid=001&eno=01&mid=s00000026970001003000&mc=1"></a>
-<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4AV6G9+8VPSMQ+5S3O+5YZ75" alt="">`,
+    mobileCode: `<a href="https://px.a8.net/svt/ejp?a8mat=4AV6G9+8VPSMQ+5S3O+5Z6WX" rel="nofollow">
+<img border="0" width="120" height="60" alt="" src="https://www29.a8.net/svt/bgt?aid=260115561537&wid=001&eno=01&mid=s00000026970001004000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4AV6G9+8VPSMQ+5S3O+5Z6WX" alt="">`,
     desktopCode: `<a href="https://px.a8.net/svt/ejp?a8mat=4AV6G9+8VPSMQ+5S3O+5YZ75" rel="nofollow">
 <img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=260115561537&wid=001&eno=01&mid=s00000026970001003000&mc=1"></a>
 <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4AV6G9+8VPSMQ+5S3O+5YZ75" alt="">`,
