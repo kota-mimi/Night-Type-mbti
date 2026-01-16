@@ -295,10 +295,8 @@ export default function QuizPage() {
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mx-auto"
                   />
-                ) : pageNumber < totalPages ? (
-                  '次へ'
                 ) : (
-                  '診断結果を見る'
+                  pageNumber < totalPages ? '次へ' : '次へ'
                 )}
               </motion.button>
 
