@@ -13,6 +13,7 @@ const notoSansJP = Noto_Sans_JP({
 export default function GenderSelectionPage() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
+  const [selectedGender, setSelectedGender] = useState<'male' | 'female' | null>(null)
 
   useEffect(() => {
     // 24問の回答が完了しているかチェック
@@ -30,10 +31,13 @@ export default function GenderSelectionPage() {
   }, [router])
 
   const handleGenderSelect = (gender: 'male' | 'female') => {
-    setIsLoading(true)
-    
+    setSelectedGender(gender)
     // 性別情報を保存
     localStorage.setItem('user-gender', gender)
+  }
+
+  const handleViewResults = () => {
+    setIsLoading(true)
     
     // 結果ページに遷移
     setTimeout(() => {
@@ -69,7 +73,11 @@ export default function GenderSelectionPage() {
               disabled={isLoading}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-4 px-6 bg-blue-500 hover:bg-blue-600 text-white text-xl font-bold rounded-full shadow-lg transition-all duration-300 disabled:opacity-50"
+              className={`w-full py-4 px-6 text-xl font-bold rounded-full shadow-lg transition-all duration-300 disabled:opacity-50 ${
+                selectedGender === 'male' 
+                  ? 'bg-blue-600 text-white' 
+                  : 'bg-blue-500 hover:bg-blue-600 text-white'
+              }`}
             >
               👨 男性
             </motion.button>
@@ -79,11 +87,35 @@ export default function GenderSelectionPage() {
               disabled={isLoading}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full py-4 px-6 bg-pink-500 hover:bg-pink-600 text-white text-xl font-bold rounded-full shadow-lg transition-all duration-300 disabled:opacity-50"
+              className={`w-full py-4 px-6 text-xl font-bold rounded-full shadow-lg transition-all duration-300 disabled:opacity-50 ${
+                selectedGender === 'female' 
+                  ? 'bg-pink-600 text-white' 
+                  : 'bg-pink-500 hover:bg-pink-600 text-white'
+              }`}
             >
               👩 女性
             </motion.button>
           </div>
+
+          {/* 診断を見るボタン */}
+          {selectedGender && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mt-8"
+            >
+              <motion.button
+                onClick={handleViewResults}
+                disabled={isLoading}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full py-4 px-6 bg-green-500 hover:bg-green-600 text-white text-xl font-bold rounded-full shadow-lg transition-all duration-300 disabled:opacity-50"
+              >
+                診断を見る
+              </motion.button>
+            </motion.div>
+          )}
 
           {isLoading && (
             <div className="text-center mt-6">
