@@ -23,7 +23,7 @@ export default function Header() {
   const menuItems = [
     { href: '/', label: 'ホーム', key: 'home' },
     { href: '/gallery', label: 'キャラクター一覧', key: 'gallery' },
-    { href: '/about', label: 'ダイエット診断16とは', key: 'about' },
+    { href: '/about', label: 'Night Typeとは', key: 'about' },
     { href: '/contact', label: 'お問い合わせ', key: 'contact' },
   ]
 
@@ -35,7 +35,7 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center">
               <div className={`text-2xl font-black text-gray-800 ${zenMaruGothic.className} tracking-tight`}>
-                ダイエットキャラ診断16
+                Night Type
               </div>
             </div>
           </Link>

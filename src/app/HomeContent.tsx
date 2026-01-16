@@ -18,7 +18,7 @@ const zenMaruGothic = Zen_Maru_Gothic({
 
 export default function HomeContent() {
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
       <main className="flex flex-col justify-center items-center min-h-screen text-center px-4">
         
         {/* メインコンテンツ */}
@@ -29,13 +29,13 @@ export default function HomeContent() {
           className="text-center"
         >
           {/* タイトル */}
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            ダイエットキャラ診断16
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-rose-800 mb-6">
+            Night Type
           </h1>
           
           {/* サブタイトル */}
-          <h2 className="text-xl md:text-2xl text-white/90 mb-12">
-            あなたの性格と、痩せ方が見つかる。
+          <h2 className="text-xl md:text-2xl text-rose-700 mb-12">
+            あなたの性格と、夜の過ごし方が見つかる。
           </h2>
           
           {/* 診断ボタン */}
@@ -43,7 +43,7 @@ export default function HomeContent() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#2196F3] hover:bg-[#1976D2] text-white font-bold py-4 px-12 rounded-full text-lg md:text-xl shadow-xl transition-all duration-300 mb-16"
+              className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 px-12 rounded-full text-lg md:text-xl shadow-xl transition-all duration-300 mb-16"
             >
               診断を始める
             </motion.button>

@@ -88,8 +88,8 @@ export default function QuizPage() {
       if (pageNumber < totalPages) {
         router.push(`/quiz/${pageNumber + 1}`)
       } else {
-        // 診断完了、結果ページへ
-        router.push('/result')
+        // 診断完了、性別選択ページへ
+        router.push('/gender-selection')
       }
     }, 500)
   }, [answers, questionGroup, savedAnswers, pageNumber, totalPages, router])
@@ -135,11 +135,11 @@ export default function QuizPage() {
   const allAnswered = questionGroup.every(q => answers[q.id] !== undefined)
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
       {/* プログレスバー */}
       <div className="w-full bg-gray-100 h-2">
         <motion.div
-          className="h-full bg-[#87CEEB]"
+          className="h-full bg-pink-200"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.3 }}
@@ -285,7 +285,7 @@ export default function QuizPage() {
                 whileTap={allAnswered ? { scale: 0.98 } : {}}
                 className={`w-full py-3 rounded-lg font-medium text-base transition-all duration-300 ${
                   allAnswered
-                    ? 'bg-[#87CEEB] hover:bg-[#7BB5E0] text-white'
+                    ? 'bg-pink-500 hover:bg-pink-600 text-white'
                     : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                 }`}
               >

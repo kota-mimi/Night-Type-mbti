@@ -15,6 +15,12 @@ export interface DiagramType {
   solution: string;
   causeTitle: string;
   solutionTitle: string;
+  // Night Type用の新しい項目
+  nightEcologyReport?: string;
+  yourSexiness?: string;
+  instinctChart?: string;
+  nightPhrase?: string;
+  afterTime?: string;
   compatibility: {
     good: {
       type: string;
@@ -31,14 +37,19 @@ export interface DiagramTypes {
   [key: string]: DiagramType;
 }
 
+export interface GenderedDiagramTypes {
+  male: DiagramTypes;
+  female: DiagramTypes;
+}
+
 export interface Answer {
   questionId: number;
   score: number;
 }
 
 export interface Score {
-  SG: number;
-  RE: number;
-  FC: number;
-  QL: number;
+  AP: number;
+  PB: number;
+  TE: number;
+  NC: number;
 }

@@ -2,12 +2,11 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
 import { Home } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
-import { diagramTypes } from '@/data/diagramTypes'
+import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { questions } from '@/data/questions'
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import { characterSlugs } from '@/data/characterSlugs'
 
 const notoSansJP = Noto_Sans_JP({
@@ -16,10 +15,11 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 function GalleryContent() {
-  const typeKeys = Object.keys(diagramTypes) as Array<keyof typeof diagramTypes>
+  const [selectedGender, setSelectedGender] = useState<'male' | 'female'>('male')
+  const typeKeys = Object.keys(genderedDiagramTypes.male) as Array<keyof typeof genderedDiagramTypes.male>
   
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8">
         
         {/* ヘッダー */}
@@ -42,6 +42,39 @@ function GalleryContent() {
           </motion.p>
         </div>
 
+        {/* 男女選択タブ */}
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex justify-center mb-8"
+        >
+          <div className="bg-white rounded-full p-1 shadow-lg">
+            <div className="flex">
+              <button
+                onClick={() => setSelectedGender('male')}
+                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
+                  selectedGender === 'male'
+                    ? 'bg-blue-500 text-white shadow-md'
+                    : 'text-blue-500 hover:bg-blue-50'
+                }`}
+              >
+                👨 男性版
+              </button>
+              <button
+                onClick={() => setSelectedGender('female')}
+                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
+                  selectedGender === 'female'
+                    ? 'bg-pink-500 text-white shadow-md'
+                    : 'text-pink-500 hover:bg-pink-50'
+                }`}
+              >
+                👩 女性版
+              </button>
+            </div>
+          </div>
+        </motion.div>
+
         {/* タイプ一覧グリッド */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
@@ -50,7 +83,7 @@ function GalleryContent() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8"
         >
           {typeKeys.map((typeCode, index) => {
-            const type = diagramTypes[typeCode]
+            const type = genderedDiagramTypes[selectedGender][typeCode]
             
             // カードの背景色とテキスト色を決定
             let cardBgColor = 'bg-blue-200/50' // デフォルト
@@ -87,16 +120,19 @@ function GalleryContent() {
                   </h2>
                 </div>
 
-                {/* キャラクター画像 - 大きく中央に */}
+                {/* キャラクター絵文字 - 大きく中央に */}
                 <div className="flex justify-center pb-4">
-                  <Image
-                    src={`/characters/${typeCode === 'SRFQ' ? 'SRFQ_gallery.png' : typeCode === 'SECQ' ? 'SECQ_gallery.png' : typeCode === 'SEFL' ? 'SEFL_gallery.png' : typeCode === 'SRCL' ? 'SRCL_gallery.png' : typeCode === 'GEFQ' ? 'GEFQ_gallery.png' : typeCode === 'SRFL' ? 'SRFL_gallery.png' : typeCode === 'GRCQ' ? 'GRCQ_gallery.png' : typeCode === 'GEFL' ? 'GEFL_gallery.png' : typeCode === 'GECL' ? 'GECL_gallery.png' : typeCode === 'GECQ' ? 'GECQ_gallery.png' : typeCode === 'SRCQ' ? 'SRCQ_gallery.png' : typeCode === 'SEFQ' ? 'SEFQ_gallery.png' : typeCode === 'GRCL' ? 'GRCL_gallery.png' : typeCode === 'GRFQ' ? 'GRFQ_gallery.png' : typeCode === 'SECL' ? 'SECL_gallery.png' : typeCode === 'GRFL' ? 'GRFL_gallery.png' : typeCode + '_new3.png'}`}
-                    alt={`${type.name}のキャラクター`}
-                    width={160}
-                    height={180}
-                    className="w-36 h-auto"
-                    quality={95}
-                  />
+                  <motion.div
+                    key={`${typeCode}-${selectedGender}`}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-32 h-32 bg-gradient-to-br from-pink-100 to-rose-200 rounded-2xl flex items-center justify-center shadow-lg"
+                  >
+                    <span className="text-5xl">
+                      {type.emoji}
+                    </span>
+                  </motion.div>
                 </div>
 
                 <div className="px-4 pb-6 space-y-3">
@@ -105,16 +141,16 @@ function GalleryContent() {
                     {type.name}
                   </h3>
 
-                  {/* 基本生態（3行でキリよく） */}
-                  <p className="text-sm text-[#666666] text-left leading-relaxed">
+                  {/* 基本生態（4行でキリよく） */}
+                  <p className="text-sm text-[#666666] text-left leading-relaxed h-[6.5rem]">
                     {(() => {
                       const text = type.basicEcology
-                      // 3行表示用の文字数制限（約45-60文字で3行）
-                      if (text.length <= 60) return text
+                      // 4行表示用の文字数制限（約60-80文字で4行）
+                      if (text.length <= 80) return text
                       
-                      // 「です」「ます」「。」で終わる位置を探す（45-60文字の範囲）
+                      // 「です」「ます」「。」で終わる位置を探す（60-80文字の範囲）
                       const cutPoints = []
-                      for (let i = 45; i < Math.min(text.length, 60); i++) {
+                      for (let i = 60; i < Math.min(text.length, 80); i++) {
                         if (text.substring(i, i + 2) === 'です' || 
                             text.substring(i, i + 2) === 'ます' || 
                             text.charAt(i) === '。') {
@@ -126,8 +162,8 @@ function GalleryContent() {
                         return text.substring(0, cutPoints[0])
                       }
                       
-                      // 見つからない場合は55文字で切って「。」を追加
-                      return text.substring(0, 55) + '。'
+                      // 見つからない場合は75文字で切って「。」を追加
+                      return text.substring(0, 75) + '。'
                     })()}
                   </p>
 
@@ -179,6 +215,8 @@ function GalleryContent() {
                         })
                         
                         localStorage.setItem('diet-quiz-answers', JSON.stringify(answers))
+                        localStorage.setItem('user-gender', selectedGender)
+                        localStorage.setItem('diet-quiz-result-type', String(typeCode))
                         window.location.href = '/result'
                       }}
                       className="w-full bg-teal-500 hover:bg-teal-600 text-white text-sm font-medium py-3 px-4 rounded-full transition-colors"
@@ -219,7 +257,7 @@ function GalleryContent() {
 export default function GalleryPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-[#2196F3] border-t-transparent rounded-full animate-spin" />
       </div>
     }>

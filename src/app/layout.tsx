@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import Header from "@/components/Header";
-import FloatingAd from "@/components/FloatingAd";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 import Analytics from "@/components/Analytics";
@@ -13,13 +12,13 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "ダイエットタイプ診断｜あなたの痩せ方、見つかる",
-  description: "16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見。20問・約3分で完了。科学的根拠に基づいた継続可能なアプローチをご提案します。",
-  keywords: "ダイエット,診断,MBTI,性格,痩せる,減量,健康,フィットネス",
+  title: "Night Type｜あなたの夜の性格、見つかる",
+  description: "16タイプの夜の性格診断で、あなたに最適な夜の過ごし方を発見。20問・約3分で完了。科学的根拠に基づいた継続可能なアプローチをご提案します。",
+  keywords: "夜,性格,診断,MBTI,ライフスタイル,夜型,深夜",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://diet-type16.com'),
-  authors: [{ name: "ダイエットタイプ診断" }],
-  creator: "ダイエットタイプ診断",
-  publisher: "ダイエットタイプ診断",
+  authors: [{ name: "Night Type" }],
+  creator: "Night Type",
+  publisher: "Night Type",
   formatDetection: {
     email: false,
     address: false,
@@ -29,24 +28,24 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    siteName: 'ダイエットタイプ診断',
+    siteName: 'Night Type',
     locale: 'ja_JP',
     type: 'website',
-    title: "ダイエットタイプ診断｜あなたの痩せ方、見つかる",
-    description: "16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見。20問・約3分で完了。",
+    title: "Night Type｜あなたの夜の性格、見つかる",
+    description: "16タイプの夜の性格診断で、あなたに最適な夜の過ごし方を発見。20問・約3分で完了。",
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'ダイエットタイプ診断',
+        alt: 'Night Type',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "ダイエットタイプ診断｜あなたの痩せ方、見つかる",
-    description: "16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見。20問・約3分で完了。",
+    title: "Night Type｜あなたの夜の性格、見つかる",
+    description: "16タイプの夜の性格診断で、あなたに最適な夜の過ごし方を発見。20問・約3分で完了。",
     images: ['/og-image.png'],
   },
   robots: {
@@ -88,12 +87,6 @@ export default function RootLayout({
         {children}
         <Footer />
         <Analytics />
-        <FloatingAd 
-          imageUrl="/line-ad.png"
-          linkUrl="https://lin.ee/BCYVfcD"
-          altText="LINE公式アカウント"
-          closable={true}
-        />
         
         {/* Google Analytics */}
         {process.env.NODE_ENV === 'production' && (

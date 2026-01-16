@@ -1,155 +1,153 @@
 import { Question } from '@/types';
 
 export const questions: Question[] = [
-  // SG軸（Solo vs Group）Q1〜Q6 → S寄り3問、G寄り3問
+  // Page 1: 基本スタンス
   {
     id: 1,
-    axis: 'SG',
-    text: 'ジムに行く時、知り合いがいると気を遣ってしまうので避けたい。',
-    direction: 'positive'
+    axis: 'AP',
+    direction: 'positive',
+    text: 'ベッドの上では、相手に主導権を握られるより、自分が相手をコントロールして攻めたい。'
   },
   {
     id: 2,
-    axis: 'SG',
-    text: '友達と一緒に運動する方が、楽しくて頑張れる。',
-    direction: 'negative'
+    axis: 'AP',
+    direction: 'negative',
+    text: '相手に少し強引に服を脱がされたり、無理やりリードされる瞬間にゾクゾクする。'
   },
   {
     id: 3,
-    axis: 'SG',
-    text: 'ダイエットのことを家族や友達によく相談する。',
-    direction: 'negative'
+    axis: 'PB',
+    direction: 'positive',
+    text: '雰囲気やムードよりも、相手の「肌の感触」「匂い」「体温」など、物理的な刺激で興奮する。'
   },
   {
     id: 4,
-    axis: 'SG',
-    text: 'ダイエット中であることを、なるべく人に知られたくない。',
-    direction: 'positive'
+    axis: 'PB',
+    direction: 'negative',
+    text: '「今、禁断のことをしている」というシチュエーションや、背徳感（いけないこと）があるほど燃える。'
   },
   {
     id: 5,
-    axis: 'SG',
-    text: 'みんなでワイワイしながら運動する方が、一人より続く。',
-    direction: 'negative'
+    axis: 'TE',
+    direction: 'positive',
+    text: '極論、「好き」という感情がなくても、体の相性が最高ならセックスは楽しめる。'
   },
   {
     id: 6,
-    axis: 'SG',
-    text: '人に見られていると、本気でトレーニングしにくい。',
-    direction: 'positive'
+    axis: 'TE',
+    direction: 'negative',
+    text: 'キスやハグ、終わった後のピロートークがないと、どんなに気持ちよくても虚しくなる。'
   },
-  
-  // RE軸（Routine vs Emotion）Q7〜Q12 → R寄り3問、E寄り3問
   {
     id: 7,
-    axis: 'RE',
-    text: '今日は何を食べようかな、と毎回考えるのが楽しい。',
-    direction: 'negative'
+    axis: 'NC',
+    direction: 'positive',
+    text: 'アクロバティックなことはせず、いつもの手順・いつもの場所で、安心して楽しみたい。'
   },
   {
     id: 8,
-    axis: 'RE',
-    text: '毎日同じ運動だと、すぐに飽きてやめたくなる。',
-    direction: 'negative'
+    axis: 'NC',
+    direction: 'negative',
+    text: 'マンネリは敵だ。新しいおもちゃ、新しい場所など、常に「変化と刺激」を取り入れたい。'
   },
+  
+  // Page 2: 深層心理・フェチ
   {
     id: 9,
-    axis: 'RE',
-    text: '毎日同じ時間に同じことをする方が、習慣になって楽。',
-    direction: 'positive'
+    axis: 'AP',
+    direction: 'positive',
+    text: '部屋の電気はつけて、お互いのイッている顔や、乱れた姿をしっかり見たい（見せたい）。'
   },
   {
     id: 10,
-    axis: 'RE',
-    text: '急な飲み会に誘われたら、ダイエットは一旦忘れて楽しむ。',
-    direction: 'negative'
+    axis: 'AP',
+    direction: 'negative',
+    text: '視覚的な情報よりも、耳元での囁きや、見えない状態で触れられるような「想像力を掻き立てられる状況」に弱い。'
   },
   {
     id: 11,
-    axis: 'RE',
-    text: '毎日の食事メニューを事前に決めておく方が安心。',
-    direction: 'positive'
+    axis: 'PB',
+    direction: 'positive',
+    text: '甘い言葉よりも、首筋を噛まれたり、強く抱きしめられる「痛み」の方が本能に響く。'
   },
   {
     id: 12,
-    axis: 'RE',
-    text: 'ダイエット中は、決めたルールを必ず守ることが大切だと思う。',
-    direction: 'positive'
+    axis: 'PB',
+    direction: 'negative',
+    text: '「汚れてるよ」などの言葉攻めや、理性が溶けるような恥ずかしい言葉を言われるとスイッチが入る。'
   },
-
-  // FC軸（Food Quality vs Calorie）Q13〜Q18 → F寄り3問、C寄り3問
   {
     id: 13,
-    axis: 'FC',
-    text: 'スーパーで食材を買う時、値段が少し高くてもオーガニックや無添加のものを選ぶ。',
-    direction: 'positive'
+    axis: 'TE',
+    direction: 'positive',
+    text: '行為中は「ここをこうしたら感じるかな」と、冷静に相手や自分を分析している瞬間がある。'
   },
   {
     id: 14,
-    axis: 'FC',
-    text: 'コンビニで何か買う時、まずはカロリー表示をチェックしてから決める。',
-    direction: 'negative'
+    axis: 'TE',
+    direction: 'negative',
+    text: '相手が気持ちよさそうにしている顔を見ると、愛おしすぎて泣きそうになることがある。'
   },
   {
     id: 15,
-    axis: 'FC',
-    text: '外食する時、値段よりも食材の質や安全性を重視して店を選ぶ。',
-    direction: 'positive'
+    axis: 'NC',
+    direction: 'negative',
+    text: '「計画通りに進む夜」よりも、勢いやアクシデントで何かが起きてしまう「無計画な夜」の方に惹かれる。'
   },
   {
     id: 16,
-    axis: 'FC',
-    text: '食事の記録をつける時、カロリー計算アプリを使って数字で管理している。',
-    direction: 'negative'
+    axis: 'NC',
+    direction: 'negative',
+    text: '誰かに見られるかもしれないスリルや、日常とは違う環境ですることに興味がある。'
   },
+
+  // Page 3: 価値観・本性
   {
     id: 17,
-    axis: 'FC',
-    text: '冷凍食品よりも、手間がかかっても新鮮な野菜や肉を使って料理したい。',
-    direction: 'positive'
+    axis: 'AP',
+    direction: 'positive',
+    text: '自分の声や喘ぎ声は、相手に聞かせたい。（または我慢できずに自然と大きくなる）'
   },
   {
     id: 18,
-    axis: 'FC',
-    text: '同じ味なら、普通の商品より低カロリー・ゼロカロリー商品を選ぶ。',
-    direction: 'negative'
+    axis: 'AP',
+    direction: 'negative',
+    text: '恥ずかしいので、あまり声は聞かれたくないし、自分の絶頂顔も見られたくない。'
   },
-
-  // QL軸（Quick vs Long）Q19〜Q24 → Q寄り3問、L寄り3問
   {
     id: 19,
-    axis: 'QL',
-    text: '1〜2週間で体重が減らないと、この方法は効果ないと思ってやめてしまう。',
-    direction: 'positive'
+    axis: 'PB',
+    direction: 'positive',
+    text: '言葉やムード作りよりも、お互いの「体温」や「鼓動」を直接肌で感じ合う時間が一番満たされる。'
   },
   {
     id: 20,
-    axis: 'QL',
-    text: '体重の変化が少なくても、1年後を考えてゆっくりと続けることができる。',
-    direction: 'negative'
+    axis: 'PB',
+    direction: 'negative',
+    text: '電車やカフェなど、何気ない日常の空間でも、ふと「性的な視点」で相手や周りを見てしまうことがある。'
   },
   {
     id: 21,
-    axis: 'QL',
-    text: 'ダイエットを始めたら、1ヶ月以内に見た目の変化が欲しい。',
-    direction: 'positive'
+    axis: 'TE',
+    direction: 'positive',
+    text: '正直、セックスは「スポーツ」や「ストレス発散」の一種だと思うときがある。'
   },
   {
     id: 22,
-    axis: 'QL',
-    text: '短期間で痩せるよりも、太りにくい体質になる方が大切だと思う。',
-    direction: 'negative'
+    axis: 'TE',
+    direction: 'negative',
+    text: 'セックスは「心の繋がり」を確認するための、神聖な儀式だと思う。'
   },
   {
     id: 23,
-    axis: 'QL',
-    text: '夏までに痩せたいなど、具体的な期限がある方がやる気が出る。',
-    direction: 'positive'
+    axis: 'NC',
+    direction: 'positive',
+    text: '「SかMか」などの役割はお互いに固定して、安定したプレイを楽しみたい。'
   },
   {
     id: 24,
-    axis: 'QL',
-    text: '無理して早く痩せるより、健康を保ちながら少しずつ痩せたい。',
-    direction: 'negative'
+    axis: 'NC',
+    direction: 'negative',
+    text: 'その日の気分でSになったりMになったり、予測不能な展開を楽しみたい。'
   }
 ];

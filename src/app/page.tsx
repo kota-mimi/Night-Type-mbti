@@ -90,8 +90,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
 
 export default function Home() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-[#2196F3] border-t-transparent rounded-full animate-spin" />
+    <Suspense fallback={<div className="min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-pink-500 border-t-transparent rounded-full animate-spin" />
     </div>}>
       <HomeContent />
     </Suspense>

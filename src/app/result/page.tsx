@@ -5,13 +5,11 @@ import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Home, Twitter, MessageSquare, Instagram, Download, Copy } from 'lucide-react'
-import Image from 'next/image'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import { getTypeFromAnswers } from '@/lib/scoring'
-import { diagramTypes } from '@/data/diagramTypes'
+import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
-import A8AffiliateBanner from '@/components/A8AffiliateBanner'
 import { characterSlugs } from '@/data/characterSlugs'
 
 const notoSansJP = Noto_Sans_JP({
@@ -28,13 +26,19 @@ const zenMaruGothic = Zen_Maru_Gothic({
 export default function ResultPage() {
   const router = useRouter()
   const [userType, setUserType] = useState<string>('')
+  const [userGender, setUserGender] = useState<'male' | 'female'>('male')
   const [isLoading, setIsLoading] = useState(true)
-  const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
+    // 性別情報を取得
+    const savedGender = localStorage.getItem('user-gender') as 'male' | 'female'
+    if (savedGender) {
+      setUserGender(savedGender)
+    }
+
     // まずローカルストレージから直接タイプを確認
     const savedType = localStorage.getItem('diet-quiz-result-type')
-    if (savedType && diagramTypes[savedType]) {
+    if (savedType && genderedDiagramTypes[savedGender || 'male'][savedType]) {
       setUserType(savedType)
       setIsLoading(false)
       return
@@ -62,7 +66,7 @@ export default function ResultPage() {
   }, [router])
 
   const handleShare = (platform: string) => {
-    const typeData = diagramTypes[userType]
+    const typeData = genderedDiagramTypes[userGender][userType]
     if (!typeData) return
 
     if (platform === 'instagram') {
@@ -85,7 +89,7 @@ export default function ResultPage() {
   }
 
   const handleLineMenuRequest = () => {
-    const typeData = diagramTypes[userType]
+    const typeData = genderedDiagramTypes[userGender][userType]
     if (!typeData) return
 
     const menuText = `【${typeData.name}専用】ヘルシーくん利用希望\n\n診断結果：${userType}\nキャッチコピー：${typeData.catchcopy}\n\nLINEで使えるヘルシーくんを利用したいです！\n専用メニュー・記録機能について詳しく教えてください。`
@@ -95,7 +99,7 @@ export default function ResultPage() {
 
   const handleDownloadImage = async () => {
     try {
-      const typeData = diagramTypes[userType]
+      const typeData = genderedDiagramTypes[userGender][userType]
       if (!typeData) {
         alert('エラー: 診断結果が見つかりません。')
         return
@@ -148,7 +152,7 @@ export default function ResultPage() {
   }
 
   const handleCopyLink = () => {
-    const typeData = diagramTypes[userType]
+    const typeData = genderedDiagramTypes[userGender][userType]
     if (!typeData) return
     // キャラクター個別ページのURLを生成
     const characterSlug = characterSlugs[userType]
@@ -164,7 +168,7 @@ export default function ResultPage() {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] flex items-center justify-center ${notoSansJP.className}`}>
+      <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 flex items-center justify-center ${notoSansJP.className}`}>
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -174,10 +178,10 @@ export default function ResultPage() {
     )
   }
 
-  const typeData = diagramTypes[userType]
+  const typeData = genderedDiagramTypes[userGender][userType]
   if (!typeData) {
     return (
-      <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] flex items-center justify-center ${notoSansJP.className}`}>
+      <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 flex items-center justify-center ${notoSansJP.className}`}>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-[#333333] mb-4">エラーが発生しました</h1>
           <button
@@ -192,7 +196,7 @@ export default function ResultPage() {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-[#87CEEB] to-[#B0E0E6] ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8 max-w-4xl">
         
         {/* メインコンテンツカード */}
@@ -206,171 +210,150 @@ export default function ResultPage() {
           
           {/* キャラクター画像とタイトル */}
           <div className="mb-16">
-            {/* キャラクター画像を中央配置 */}
+            {/* キャラクター絵文字を中央配置 */}
             <div className="flex justify-center items-center">
-              {/* キャラクター画像 */}
               <div className="text-center">
-                {!imageError ? (
-                  <Image
-                    src={`/characters/${userType}_new3.png`}
-                    alt={`${typeData.name}のキャラクター`}
-                    width={640}
-                    height={760}
-                    className="w-full max-w-lg h-auto rounded-2xl"
-                    quality={95}
-                    onError={() => setImageError(true)}
-                    priority
-                  />
-                ) : (
-                  <div className="text-6xl drop-shadow-xl sm:text-7xl md:text-8xl">{typeData.emoji}</div>
-                )}
+                <div className="w-48 h-48 bg-gradient-to-br from-pink-100 to-rose-200 rounded-full flex items-center justify-center shadow-lg mb-6">
+                  <span className="text-8xl">{typeData.emoji}</span>
+                </div>
+                {/* キャラクター名 */}
+                <motion.h1
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className={`text-3xl md:text-4xl font-bold text-gray-800 mb-4 ${zenMaruGothic.className}`}
+                >
+                  {typeData.name}
+                </motion.h1>
+                {/* キャッチコピー */}
+                <motion.p
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="text-lg md:text-xl text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed"
+                >
+                  {typeData.catchcopy}
+                </motion.p>
               </div>
-              
             </div>
 
-            {/* 広告バナーエリア */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex justify-center mt-8"
-            >
-              <div className="w-full max-w-lg">
-                {/* 広告画像をここに配置 */}
-                <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                  <Image
-                    src="/ads/line-app-ad.png" // 作成予定の広告画像
-                    alt="LINEアプリ広告"
-                    width={500}
-                    height={300}
-                    className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
-                    onClick={() => {
-                      // LINE公式アカウントへ誘導
-                      window.open('https://lin.ee/BCYVfcD', '_blank')
-                    }}
-                    quality={95}
-                  />
-                </div>
-              </div>
-            </motion.div>
           </div>
 
           {/* セクションごとの直接配置 */}
           <div className="space-y-10">
           
-          {/* 基本生態セクション */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-6"
-          >
-            <h2 className={`text-2xl font-bold text-gray-800 text-center ${zenMaruGothic.className}`}>
-              基本生態
-            </h2>
-            <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
-              {typeData.detailedEcology.split('。').map((sentence, index, array) => (
-                <p key={index} className="mb-4">
-                  {sentence.trim()}
-                  {index < array.length - 1 && sentence.trim() && '。'}
-                </p>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* 太る原因セクション */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="space-y-6"
-          >
-            <h2 className={`text-2xl font-bold text-red-600 text-center ${zenMaruGothic.className}`}>
-              太る原因
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-4 md:space-y-6">
-                <h3 className="text-base md:text-lg font-bold text-red-700 text-center">
-                  {
-                    userType === 'SRFQ' ? '目標達成後の爆発（リバウンド）' :
-                    userType === 'SRFL' ? 'ストレスの抱え込みすぎ' :
-                    userType === 'SRCQ' ? '『ヘルシーなもの』の食べすぎ' :
-                    userType === 'SRCL' ? '停滞期への過剰反応' :
-                    userType === 'SEFQ' ? '買ったことで満足症候群' :
-                    userType === 'SEFL' ? '『体にいいもの』なら太らないという誤解' :
-                    userType === 'SECQ' ? '『明日からやる』の無限ループ' :
-                    userType === 'SECL' ? '『最適な方法』を探しすぎて動けない' :
-                    userType === 'GRFQ' ? '『付き合い』での飲み食い' :
-                    userType === 'GRFL' ? '『ご褒美』の頻度が高い' :
-                    userType === 'GRCQ' ? '無理な減量による反動' :
-                    userType === 'GRCL' ? '『監督』ポジションへの安住' :
-                    userType === 'GEFQ' ? '『やってみた動画』で満足' :
-                    userType === 'GEFL' ? '『ご褒美スタバ』の常習化' :
-                    userType === 'GECQ' ? '『頭でっかち』による行動不全' :
-                    '自分への甘さが糖度120%'
-                  }
-                </h3>
-                <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 text-left">
-                  {typeData.fatCause.split('。').map((sentence, index, array) => (
-                    <p key={index} className="mb-4">
-                      {sentence.trim()}
-                      {index < array.length - 1 && sentence.trim() && '。'}
-                    </p>
-                  ))}
-                </div>
+          {/* 夜の生態レポートセクション */}
+          {typeData.nightEcologyReport && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="space-y-6"
+            >
+              <h2 className={`text-2xl font-bold text-gray-800 text-center ${zenMaruGothic.className}`}>
+                夜の生態レポート
+              </h2>
+              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+                <p className="mb-4">{typeData.nightEcologyReport}</p>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
 
-          {/* あなただけの痩せ方セクション */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="space-y-6"
-          >
-            <h2 className={`text-2xl font-bold text-green-600 text-center ${zenMaruGothic.className}`}>
-              あなただけの痩せ方
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-4 md:space-y-6">
-                <h3 className="text-base md:text-lg font-bold text-green-700 text-center">
-                  {
-                    userType === 'SRFQ' ? 'チートデイの『義務化』' :
-                    userType === 'SRFL' ? '匿名アカウントでの発散' :
-                    userType === 'SRCQ' ? '『ヘルシーくん』への完全服従' :
-                    userType === 'SRCL' ? '『ヘルシーくん』での記録習慣' :
-                    userType === 'SEFQ' ? '飽きる前提の『味変』戦略' :
-                    userType === 'SEFL' ? '『見た目』の変化を楽しむ' :
-                    userType === 'SECQ' ? '『夜だけ』管理法' :
-                    userType === 'SECL' ? '『思考停止』の実践' :
-                    userType === 'GRFQ' ? '『宣言』による退路遮断' :
-                    userType === 'GRFL' ? '『料理教室』や『サークル』へ参加' :
-                    userType === 'GRCQ' ? '『賭け』の要素を取り入れる' :
-                    userType === 'GRCL' ? '『プレイヤー』に戻る宣言' :
-                    userType === 'GEFQ' ? '『次々と乗り換える』サーキット' :
-                    userType === 'GEFL' ? '『憧れの服』を先に買う' :
-                    userType === 'GECQ' ? '『誰かに教える』ために実践する' :
-                    '『ハードルを地面に埋める』'
-                  }
-                </h3>
-                <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 text-left">
-                  {typeData.solution.split('。').map((sentence, index, array) => (
-                    <p key={index} className="mb-4">
-                      {sentence.trim()}
-                      {index < array.length - 1 && sentence.trim() && '。'}
-                    </p>
-                  ))}
-                </div>
+          {/* あなたのエロさの正体セクション */}
+          {typeData.yourSexiness && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="space-y-6"
+            >
+              <h2 className={`text-2xl font-bold text-pink-600 text-center ${zenMaruGothic.className}`}>
+                あなたのエロさの正体
+              </h2>
+              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+                <p className="mb-4">{typeData.yourSexiness}</p>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
+
+          {/* 閲覧注意：本能のカルテセクション */}
+          {typeData.instinctChart && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="space-y-6"
+            >
+              <h2 className={`text-2xl font-bold text-red-600 text-center ${zenMaruGothic.className}`}>
+                閲覧注意：本能のカルテ
+              </h2>
+              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+                <p className="mb-4">{typeData.instinctChart}</p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* 夜の口癖・脳内セクション */}
+          {typeData.nightPhrase && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="space-y-6"
+            >
+              <h2 className={`text-2xl font-bold text-purple-600 text-center ${zenMaruGothic.className}`}>
+                夜の口癖・脳内
+              </h2>
+              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-center">
+                <p className="mb-4 font-medium text-purple-800">{typeData.nightPhrase}</p>
+              </div>
+            </motion.div>
+          )}
+
+          {/* 事後の賢者タイムセクション */}
+          {typeData.afterTime && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="space-y-6"
+            >
+              <h2 className={`text-2xl font-bold text-blue-600 text-center ${zenMaruGothic.className}`}>
+                事後の賢者タイム
+              </h2>
+              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+                <p className="mb-4">{typeData.afterTime}</p>
+              </div>
+            </motion.div>
+          )}
+          
+          {/* フォールバック：基本生態セクション（Night Type項目がない場合） */}
+          {!typeData.nightEcologyReport && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="space-y-6"
+            >
+              <h2 className={`text-2xl font-bold text-gray-800 text-center ${zenMaruGothic.className}`}>
+                基本生態
+              </h2>
+              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+                {typeData.detailedEcology.split('。').map((sentence, index, array) => (
+                  <p key={index} className="mb-4">
+                    {sentence.trim()}
+                    {index < array.length - 1 && sentence.trim() && '。'}
+                  </p>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* 相性チェックセクション */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.6, delay: 0.9 }}
             className="space-y-8"
           >
             <h2 className={`text-2xl font-bold text-pink-500 text-center ${zenMaruGothic.className}`}>
@@ -379,24 +362,20 @@ export default function ResultPage() {
             
             <div className="max-w-4xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                {/* 最高の相性 */}
+                {/* 最高のパートナー */}
                 <div className="bg-pink-50/90 backdrop-blur-sm rounded-lg p-6 border border-pink-200 relative overflow-hidden">
-                  {/* 背景キャラクター画像 */}
+                  {/* 背景絵文字 */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                     <div className="animate-bounce-slow">
-                      <Image
-                        src={`/characters/${typeData.compatibility.good.type}_gallery.png`}
-                        alt={`${diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}のキャラクター`}
-                        width={200}
-                        height={240}
-                        className="w-32 h-auto"
-                      />
+                      <span className="text-6xl">
+                        {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.good.type]?.emoji || '💕'}
+                      </span>
                     </div>
                   </div>
                   <div className="text-center space-y-3 relative">
-                    <h3 className="text-lg font-bold text-pink-600">最高の相性</h3>
+                    <h3 className="text-lg font-bold text-pink-600">最高のパートナー</h3>
                     <h4 className="text-lg font-bold text-gray-800">
-                      {diagramTypes[typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
+                      {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
                     </h4>
                   </div>
                   <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
@@ -409,24 +388,20 @@ export default function ResultPage() {
                   </div>
                 </div>
 
-                {/* 要注意 */}
-                <div className="bg-purple-50/90 backdrop-blur-sm rounded-lg p-6 border border-purple-200 relative overflow-hidden">
+                {/* 最悪の天敵 */}
+                <div className="bg-red-50/90 backdrop-blur-sm rounded-lg p-6 border border-red-200 relative overflow-hidden">
                   {/* 背景キャラクター画像 */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                     <div className="animate-float">
-                      <Image
-                        src={`/characters/${typeData.compatibility.bad.type}_gallery.png`}
-                        alt={`${diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}のキャラクター`}
-                        width={200}
-                        height={240}
-                        className="w-32 h-auto"
-                      />
+                      <span className="text-6xl">
+                        {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.bad.type]?.emoji || '⚠️'}
+                      </span>
                     </div>
                   </div>
                   <div className="text-center space-y-3 relative">
-                    <h3 className="text-lg font-bold text-purple-600">要注意</h3>
+                    <h3 className="text-lg font-bold text-red-600">最悪の天敵</h3>
                     <h4 className="text-lg font-bold text-gray-800">
-                      {diagramTypes[typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
+                      {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
                     </h4>
                   </div>
                   <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
@@ -525,7 +500,6 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="mt-8 flex justify-center"
           >
-            <A8AffiliateBanner />
           </motion.div>
 
         </motion.div>

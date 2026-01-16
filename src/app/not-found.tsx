@@ -12,7 +12,7 @@ const notoSansJP = Noto_Sans_JP({
 
 export default function NotFound() {
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-[#F5F9F5] to-[#E8F5E8] ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8 flex flex-col justify-center items-center min-h-screen text-center">
         
         {/* アニメーション付きアイコン */}
