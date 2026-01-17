@@ -1,24 +1,24 @@
 import { Question } from '@/types';
 
 export const questions: Question[] = [
-  // Page 1: 恋愛スタンス
+  // Page 1: 基本スタンス
   {
     id: 1,
     axis: 'AP',
     direction: 'positive',
-    text: '好きな人ができたら、相手の出方を待つより、自分から仕掛けて落としに行きたい。'
+    text: 'ベッドでは相手に主導権を握られるより、自分がコントロールしたい。'
   },
   {
     id: 2,
     axis: 'AP',
     direction: 'negative',
-    text: '自分で決めるより、相手に「こうして」と強引にリードされる方がドキッとする。'
+    text: '相手に少し強引に服を脱がされたり、無理やりリードされるとゾクゾクする。'
   },
   {
     id: 3,
     axis: 'PB',
     direction: 'positive',
-    text: '遠回しな言葉の駆け引きより、手を繋いだりくっついたりする直接的なスキンシップの方が愛情を感じる。'
+    text: '雰囲気よりも、相手の「肌の感触」「匂い」「体の締まり」で興奮する。'
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ export const questions: Question[] = [
     id: 8,
     axis: 'NC',
     direction: 'negative',
-    text: '安定した関係は退屈だ。常に新しい場所に行ったり、新しい刺激がないと冷めてしまう。'
+    text: 'マンネリは敵だ。新しいおもちゃ、新しい場所など「変化」が欲しい。'
   },
   
   // Page 2: フェチ・深層心理
@@ -56,7 +56,7 @@ export const questions: Question[] = [
     id: 9,
     axis: 'AP',
     direction: 'positive',
-    text: '相手が恥ずかしがったり、自分のせいで乱れている姿を見ると、ゾクゾクする（征服感がある）。'
+    text: '相手が恥ずかしがったり、自分のせいで乱れている姿を見ると、ゾクゾクする。'
   },
   {
     id: 10,
@@ -80,7 +80,7 @@ export const questions: Question[] = [
     id: 13,
     axis: 'TE',
     direction: 'positive',
-    text: '行為中もどこか冷静で、「今のよかったかな？」「次どうしよう」と頭で考えてしまう自分がいる。'
+    text: '行為中もどこか冷静で、「今のよかったかな？」「次どうしよう」と頭で考えてしまう。'
   },
   {
     id: 14,
@@ -98,7 +98,7 @@ export const questions: Question[] = [
     id: 16,
     axis: 'NC',
     direction: 'negative',
-    text: '完璧な計画デートよりも、ハプニングが起きたり、行き当たりばったりで進む夜の方がワクワクする。'
+    text: '野外や車の中など、スリルのある環境ですることに興味がある。'
   },
 
   // Page 3: 本能・価値観
@@ -130,7 +130,7 @@ export const questions: Question[] = [
     id: 21,
     axis: 'TE',
     direction: 'positive',
-    text: 'セックスは、お互いが気持ちよくなるための「コミュニケーション・ツール（遊び）」と割り切れる。'
+    text: 'セックスは「スポーツ」や「ストレス発散」の一種だと思う。'
   },
   {
     id: 22,
@@ -142,7 +142,7 @@ export const questions: Question[] = [
     id: 23,
     axis: 'NC',
     direction: 'positive',
-    text: '「SかMか」「攻めか受けか」などの役割はお互いに固定して、安心して楽しみたい。'
+    text: '「SかMか」などの役割はお互いに固定して、安定したプレイを楽しみたい。'
   },
   {
     id: 24,
