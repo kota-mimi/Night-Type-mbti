@@ -334,19 +334,21 @@ export default function ResultPage() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="space-y-3 border border-rose-300 rounded-lg p-4"
+              className="space-y-3"
             >
               <h2 className={`text-xl font-bold text-rose-600 text-center ${zenMaruGothic.className}`}>
                 SM診断
               </h2>
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div>
-                  <h3 className="text-sm font-medium text-rose-700 mb-1">脳内ドS度</h3>
-                  <div className="text-2xl font-bold text-rose-600">{typeData.sm_diagnosis.mind_s}%</div>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-rose-700 mb-1">肉体ドM度</h3>
-                  <div className="text-2xl font-bold text-rose-600">{typeData.sm_diagnosis.body_m}%</div>
+              <div className="border border-rose-300 rounded-lg p-4">
+                <div className="grid grid-cols-2 gap-4 text-center">
+                  <div>
+                    <h3 className="text-sm font-medium text-rose-700 mb-1">脳内ドS度</h3>
+                    <div className="text-2xl font-bold text-rose-600">{typeData.sm_diagnosis.mind_s}%</div>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-rose-700 mb-1">肉体ドM度</h3>
+                    <div className="text-2xl font-bold text-rose-600">{typeData.sm_diagnosis.body_m}%</div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -358,23 +360,25 @@ export default function ResultPage() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="space-y-3 border border-pink-300 rounded-lg p-4"
+              className="space-y-3"
             >
               <h2 className={`text-xl font-bold text-pink-600 text-center ${zenMaruGothic.className}`}>
                 ステータス
               </h2>
-              <div className="grid grid-cols-3 gap-3 text-center">
-                <div>
-                  <h3 className="text-xs font-medium text-pink-700 mb-1">性欲</h3>
-                  <div className="text-lg font-bold text-pink-600">{typeData.stats.libido}</div>
-                </div>
-                <div>
-                  <h3 className="text-xs font-medium text-pink-700 mb-1">変態度</h3>
-                  <div className="text-lg font-bold text-pink-600">{typeData.stats.hentai}</div>
-                </div>
-                <div>
-                  <h3 className="text-xs font-medium text-pink-700 mb-1">むっつり度</h3>
-                  <div className="text-lg font-bold text-pink-600">{typeData.stats.muttsuri}</div>
+              <div className="border border-pink-300 rounded-lg p-4">
+                <div className="grid grid-cols-3 gap-3 text-center">
+                  <div>
+                    <h3 className="text-xs font-medium text-pink-700 mb-1">性欲</h3>
+                    <div className="text-lg font-bold text-pink-600">{typeData.stats.libido}</div>
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-medium text-pink-700 mb-1">変態度</h3>
+                    <div className="text-lg font-bold text-pink-600">{typeData.stats.hentai}</div>
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-medium text-pink-700 mb-1">むっつり度</h3>
+                    <div className="text-lg font-bold text-pink-600">{typeData.stats.muttsuri}</div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -386,17 +390,19 @@ export default function ResultPage() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.1 }}
-              className="space-y-3 border border-rose-300 rounded-lg p-4"
+              className="space-y-3"
             >
               <h2 className={`text-xl font-bold text-rose-600 text-center ${zenMaruGothic.className}`}>
                 浮気分析
               </h2>
-              <div className="text-center mb-3">
-                <div className="text-2xl font-bold text-rose-600 mb-1">{typeData.uwaki.percent}</div>
-                <div className="text-sm font-medium text-rose-700">{typeData.uwaki.type}</div>
-              </div>
-              <div className="text-xs leading-relaxed text-gray-600 text-center max-w-md mx-auto">
-                <p>{typeData.uwaki.text}</p>
+              <div className="border border-rose-300 rounded-lg p-4">
+                <div className="text-center mb-3">
+                  <div className="text-2xl font-bold text-rose-600 mb-1">{typeData.uwaki.percent}</div>
+                  <div className="text-sm font-medium text-rose-700">{typeData.uwaki.type}</div>
+                </div>
+                <div className="text-xs leading-relaxed text-gray-600 text-center max-w-md mx-auto">
+                  <p>{typeData.uwaki.text}</p>
+                </div>
               </div>
             </motion.div>
           )}
