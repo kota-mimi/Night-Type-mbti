@@ -35,6 +35,28 @@ export interface DiagramType {
     type: string;
     text: string;
   };
+  premium?: {
+    deep_profile: {
+      潜在性癖: string;
+      脳内麻薬: string;
+      夜の適職: string;
+      NG行動: string;
+    };
+    ranking: {
+      best3: Array<{
+        rank: number;
+        type: string;
+        title: string;
+        strategy: string;
+      }>;
+      worst3: Array<{
+        rank: number;
+        type: string;
+        title: string;
+        reason: string;
+      }>;
+    };
+  };
   compatibility: {
     good: {
       type: string;

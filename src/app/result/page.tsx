@@ -28,6 +28,8 @@ export default function ResultPage() {
   const [userType, setUserType] = useState<string>('')
   const [userGender, setUserGender] = useState<'male' | 'female'>('male')
   const [isLoading, setIsLoading] = useState(true)
+  const [isPremiumUnlocked, setIsPremiumUnlocked] = useState(false)
+  const [isUnlocking, setIsUnlocking] = useState(false)
 
   useEffect(() => {
     // 性別情報を取得
@@ -176,6 +178,24 @@ export default function ResultPage() {
         />
       </div>
     )
+  }
+
+  const handleUnlockPremium = async () => {
+    setIsUnlocking(true)
+    
+    // 3秒間のローディング
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    
+    setIsUnlocking(false)
+    setIsPremiumUnlocked(true)
+    
+    // プレミアムエリアまでスクロール
+    setTimeout(() => {
+      const premiumElement = document.getElementById('premium-section')
+      if (premiumElement) {
+        premiumElement.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100)
   }
 
   const typeData = genderedDiagramTypes[userGender][userType]
@@ -491,6 +511,122 @@ export default function ResultPage() {
           </motion.div>
 
           </div>
+
+          {/* プレミアムセクション */}
+          <motion.div
+            id="premium-section"
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="space-y-6 mt-8"
+          >
+            {!isPremiumUnlocked ? (
+              /* ロック状態 */
+              <div className="relative">
+                {/* 仮のプレミアムコンテンツ（ぼかし） */}
+                <div className="bg-gradient-to-br from-black to-gray-900 rounded-2xl p-8 relative overflow-hidden">
+                  {/* ぼかしコンテンツ */}
+                  <div className="filter blur-sm select-none pointer-events-none space-y-6">
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-bold text-yellow-400">🔍 深層心理プロファイル</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-yellow-300 font-bold mb-2">潜在性癖</h4>
+                          <p className="text-gray-300 text-sm">あなたの奥底に眠る本当の願望...</p>
+                        </div>
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-yellow-300 font-bold mb-2">脳内麻薬</h4>
+                          <p className="text-gray-300 text-sm">快楽を感じる瞬間の分析...</p>
+                        </div>
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-yellow-300 font-bold mb-2">夜の適職</h4>
+                          <p className="text-gray-300 text-sm">あなたにぴったりの役割...</p>
+                        </div>
+                        <div className="bg-gray-800 p-4 rounded-lg">
+                          <h4 className="text-yellow-300 font-bold mb-2">NG行動</h4>
+                          <p className="text-gray-300 text-sm">絶対にしてはいけないこと...</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-bold text-yellow-400">👑 運命の攻略ランキング</h3>
+                      <div className="space-y-3">
+                        <div className="bg-gradient-to-r from-yellow-600 to-yellow-500 p-4 rounded-lg">
+                          <h4 className="text-white font-bold">🥇 1位: 最高の相手</h4>
+                          <p className="text-yellow-100 text-sm">完全攻略法が記載...</p>
+                        </div>
+                        <div className="bg-gradient-to-r from-gray-600 to-gray-500 p-4 rounded-lg">
+                          <h4 className="text-white font-bold">🥈 2位: 良好な相手</h4>
+                          <p className="text-gray-200 text-sm">上手なアプローチ方法...</p>
+                        </div>
+                        <div className="bg-gradient-to-r from-orange-600 to-orange-500 p-4 rounded-lg">
+                          <h4 className="text-white font-bold">🥉 3位: 相性良い相手</h4>
+                          <p className="text-orange-100 text-sm">効果的な戦略...</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* オーバーレイ */}
+                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                    <div className="text-center text-white space-y-6 max-w-md">
+                      <div className="text-6xl">🔒</div>
+                      <h2 className={`text-2xl font-bold text-yellow-400 ${zenMaruGothic.className}`}>
+                        裏・性癖カルテ & 運命の攻略書
+                      </h2>
+                      <p className="text-lg font-medium">Premium</p>
+                      <p className="text-red-300 text-sm bg-red-900 bg-opacity-50 rounded-lg px-4 py-2">
+                        ⚠️ 閲覧注意：ここから先は、あなたの歪んだ本能が記述されています
+                      </p>
+                      
+                      {!isUnlocking ? (
+                        <motion.button
+                          onClick={handleUnlockPremium}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg"
+                        >
+                          🗝️ 鍵を開けて本性を暴く
+                        </motion.button>
+                      ) : (
+                        <div className="flex flex-col items-center space-y-4">
+                          <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                            className="w-8 h-8 border-2 border-yellow-500 border-t-transparent rounded-full"
+                          />
+                          <p className="text-yellow-300 font-medium">本能を解析中...</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* アンロック状態 */
+              <div className="bg-gradient-to-br from-black to-gray-900 rounded-2xl p-8 border-2 border-yellow-500">
+                <div className="space-y-8">
+                  <div className="text-center">
+                    <h2 className={`text-3xl font-bold text-yellow-400 mb-2 ${zenMaruGothic.className}`}>
+                      🔓 裏・性癖カルテ & 運命の攻略書
+                    </h2>
+                    <p className="text-yellow-300">Premium Unlocked</p>
+                  </div>
+
+                  {/* プレミアムコンテンツが実装されるまでの仮表示 */}
+                  <div className="text-center text-gray-300 py-12 border-2 border-dashed border-gray-600 rounded-lg">
+                    <div className="text-4xl mb-4">🚧</div>
+                    <h3 className="text-xl font-bold mb-2">プレミアムデータ準備中</h3>
+                    <p className="text-sm">
+                      深層プロファイルと攻略ランキングの詳細データを準備しています。<br/>
+                      次のステップでデータを追加予定です。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </motion.div>
 
         </motion.div>
 
