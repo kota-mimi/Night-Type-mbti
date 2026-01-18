@@ -59,7 +59,7 @@ function GalleryContent() {
                     : 'text-blue-500 hover:bg-blue-50'
                 }`}
               >
-                👨 男性版
+                男性版
               </button>
               <button
                 onClick={() => setSelectedGender('female')}
@@ -69,7 +69,7 @@ function GalleryContent() {
                     : 'text-pink-500 hover:bg-pink-50'
                 }`}
               >
-                👩 女性版
+                女性版
               </button>
             </div>
           </div>

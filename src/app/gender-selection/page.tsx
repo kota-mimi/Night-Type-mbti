@@ -79,7 +79,7 @@ export default function GenderSelectionPage() {
                   : 'bg-blue-500 hover:bg-blue-600 text-white'
               }`}
             >
-              👨 男性
+              男性
             </motion.button>
 
             <motion.button
@@ -93,7 +93,7 @@ export default function GenderSelectionPage() {
                   : 'bg-pink-500 hover:bg-pink-600 text-white'
               }`}
             >
-              👩 女性
+              女性
             </motion.button>
           </div>
 
