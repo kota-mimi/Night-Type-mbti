@@ -1,7 +1,7 @@
 import { DiagramTypes, GenderedDiagramTypes } from '@/types';
 
 const maleTypes: DiagramTypes = {
-  ESTJ: {
+  APTN: { // Active, Physical, Technical, Normal = 肉食ハンター（絶対君主）
     name: '絶対君主（キング）',
     emoji: '👑',
     catchcopy: '俺のルールが絶対だ。黙ってついてくれば、最高の夜を約束する。',
@@ -91,7 +91,7 @@ const maleTypes: DiagramTypes = {
       }
     }
   },
-  ENTJ: {
+  ABTN: { // Active, Brain, Technical, Normal = 夜のCEO
     name: '夜のCEO',
     emoji: '💼',
     catchcopy: '君の乱れた顔も、吐息も、すべて俺のシナリオ通り。',

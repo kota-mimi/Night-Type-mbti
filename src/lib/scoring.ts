@@ -1,41 +1,19 @@
 /**
- * 【修正版】Night Code診断ロジック
+ * 【Night Type診断】アダルト性格診断（夜のMBTI）
  * 
- * ■ 新しいスコア計算方式:
- * - positive question + 正の回答 → 左側タイプ（A, R, T, N）に加点
- * - negative question + 正の回答 → 右側タイプ（P, F, E, C）に加点
- * - 相殺問題を完全に解決
+ * ■ 4つの分析軸:
+ * 1. AP軸: Active (攻め) vs Passive (受け)
+ * 2. PB軸: Physical (肉体/リアル) vs Brain (脳内/ファンタジー)
+ * 3. TE軸: Technical (機能/技術) vs Emotional (感情/情緒)
+ * 4. NC軸: Normal (安定/王道) vs Chaos (刺激/カオス)
+ * 
+ * ■ Night Code直接使用:
+ * - 4軸の組み合わせで16種のNight Code生成（例: ARTN, AFTN, PREC等）
+ * - Night Code自体がキャラクターIDとなる
  */
 
 import { Answer, Score } from '@/types';
 import { questions } from '@/data/questions';
-
-// Night Code → MBTI タイプマッピング
-const nightCodeToMBTI: Record<string, string> = {
-  // 支配・リード系 (E, S/N, T/F, J)
-  'ARTN': 'ESTJ', // Active, Real, Tech, Normal = 絶対君主
-  'AFTN': 'ENTJ', // Active, Fantasy, Tech, Normal = 夜のCEO
-  'AREN': 'ESFJ', // Active, Real, Emo, Normal = 過保護なパトロン
-  'AFEN': 'ENFJ', // Active, Fantasy, Emo, Normal = 愛の教祖
-
-  // 衝動・本能系 (E, S/N, T/F, P)
-  'ARTC': 'ESTP', // Active, Real, Tech, Chaos = 暴走ダンプカー
-  'AFTC': 'ENTP', // Active, Fantasy, Tech, Chaos = 夜のジョーカー
-  'AREC': 'ESFP', // Active, Real, Emo, Chaos = 自意識過剰なスター
-  'AFEC': 'ENFP', // Active, Fantasy, Emo, Chaos = 気まぐれピーターパン
-
-  // 職人・マイペース系 (I, S/N, T/F, J)
-  'PRTN': 'ISTJ', // Passive, Real, Tech, Normal = 生真面目な公務員
-  'PFTN': 'INTJ', // Passive, Fantasy, Tech, Normal = ソロプレイヤー
-  'PRTC': 'ISTP', // Passive, Real, Tech, Chaos = 無口なスナイパー
-  'PFTC': 'INTP', // Passive, Fantasy, Tech, Chaos = 性癖研究員
-
-  // 没入・尽くす系
-  'PREN': 'ISFJ', // Passive, Real, Emo, Normal = 忠実な番犬
-  'PFEN': 'INFJ', // Passive, Fantasy, Emo, Normal = 愛の執行人
-  'PREC': 'ISFP', // Passive, Real, Emo, Chaos = 感度3000倍のオス猫
-  'PFEC': 'INFP'  // Passive, Fantasy, Emo, Chaos = 夢見る詩人
-};
 
 export function calculateScore(answers: Answer[]): Score {
   const scores: Score = {
@@ -70,39 +48,32 @@ export function calculateScore(answers: Answer[]): Score {
 }
 
 export function determineType(scores: Score): string {
-  // Night Codeを生成
+  // Night Codeを生成（これがキャラクターIDになる）
   let nightCode = '';
 
   // 各軸の判定（0を境界とした判定）
-  // AP軸: Active vs Passive
+  // AP軸: Active (攻め) vs Passive (受け)
   nightCode += scores.AP >= 0 ? 'A' : 'P';
-  // PB軸: Physical(Real) vs Brain(Fantasy) ※現在の質問はPB軸だがRF軸として解釈
-  nightCode += scores.PB >= 0 ? 'R' : 'F';
-  // TE軸: Technical vs Emotional
+  // PB軸: Physical (肉体/リアル) vs Brain (脳内/ファンタジー)
+  nightCode += scores.PB >= 0 ? 'P' : 'B';
+  // TE軸: Technical (機能/技術) vs Emotional (感情/情緒)
   nightCode += scores.TE >= 0 ? 'T' : 'E';
-  // NC軸: Normal vs Chaos
+  // NC軸: Normal (安定/王道) vs Chaos (刺激/カオス)
   nightCode += scores.NC >= 0 ? 'N' : 'C';
 
-  // Night Code → MBTI ID変換
-  const mbtiType = nightCodeToMBTI[nightCode];
-  
-  if (!mbtiType) {
-    console.error(`Unknown Night Code: ${nightCode}`);
-    return 'ESTJ'; // フォールバック
-  }
-
-  return mbtiType;
+  // Night Code自体をキャラクターIDとして返す
+  return nightCode;
 }
 
 export function getTypeFromAnswers(answers: Answer[]): string {
   const scores = calculateScore(answers);
-  const mbtiType = determineType(scores);
+  const nightCode = determineType(scores);
   
   // デバッグ情報（本番では削除可能）
   if (process.env.NODE_ENV === 'development') {
     console.log('Debug - Scores:', scores);
-    console.log('Debug - Determined Type:', mbtiType);
+    console.log('Debug - Night Code:', nightCode);
   }
   
-  return mbtiType;
+  return nightCode;
 }
