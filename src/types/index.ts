@@ -21,6 +21,20 @@ export interface DiagramType {
   instinctChart?: string;
   nightPhrase?: string;
   afterTime?: string;
+  sm_diagnosis?: {
+    mind_s: number;
+    body_m: number;
+  };
+  stats?: {
+    libido: string;
+    hentai: string;
+    muttsuri: string;
+  };
+  uwaki?: {
+    percent: string;
+    type: string;
+    text: string;
+  };
   compatibility: {
     good: {
       type: string;
