@@ -333,7 +333,7 @@ export default function ResultPage() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="space-y-3"
+              className="space-y-3 border border-rose-300 rounded-lg p-4"
             >
               <h2 className={`text-xl font-bold text-rose-600 text-center ${zenMaruGothic.className}`}>
                 SM診断
@@ -357,7 +357,7 @@ export default function ResultPage() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="space-y-3"
+              className="space-y-3 border border-pink-300 rounded-lg p-4"
             >
               <h2 className={`text-xl font-bold text-pink-600 text-center ${zenMaruGothic.className}`}>
                 ステータス
@@ -385,7 +385,7 @@ export default function ResultPage() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.1 }}
-              className="space-y-3"
+              className="space-y-3 border border-rose-300 rounded-lg p-4"
             >
               <h2 className={`text-xl font-bold text-rose-600 text-center ${zenMaruGothic.className}`}>
                 浮気分析
