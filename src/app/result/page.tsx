@@ -614,15 +614,129 @@ export default function ResultPage() {
                     <p className="text-yellow-300">Premium Unlocked</p>
                   </div>
 
-                  {/* プレミアムコンテンツが実装されるまでの仮表示 */}
-                  <div className="text-center text-gray-300 py-12 border-2 border-dashed border-gray-600 rounded-lg">
-                    <div className="text-4xl mb-4">🚧</div>
-                    <h3 className="text-xl font-bold mb-2">プレミアムデータ準備中</h3>
-                    <p className="text-sm">
-                      深層プロファイルと攻略ランキングの詳細データを準備しています。<br/>
-                      次のステップでデータを追加予定です。
-                    </p>
-                  </div>
+                  {/* プレミアムコンテンツ */}
+                  {typeData.premium ? (
+                    <div className="space-y-8">
+                      {/* PART 1: 深層心理プロファイル */}
+                      <div className="space-y-6">
+                        <h3 className="text-xl font-bold text-yellow-400 mb-4 text-center">
+                          🔍 PART 1：あなたの本性（Deep Profile）
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="bg-gray-800 p-6 rounded-lg border border-red-500">
+                            <h4 className="text-red-400 font-bold mb-3 flex items-center">
+                              ⚠️ 禁断の「潜在的性癖」
+                            </h4>
+                            <p className="text-gray-300 text-sm leading-relaxed">
+                              {typeData.premium.deep_profile.潜在性癖}
+                            </p>
+                          </div>
+                          <div className="bg-gray-800 p-6 rounded-lg border border-purple-500">
+                            <h4 className="text-purple-400 font-bold mb-3 flex items-center">
+                              💊 脳内麻薬（ドーパミン）スイッチ
+                            </h4>
+                            <p className="text-gray-300 text-sm leading-relaxed">
+                              {typeData.premium.deep_profile.脳内麻薬}
+                            </p>
+                          </div>
+                          <div className="bg-gray-800 p-6 rounded-lg border border-green-500">
+                            <h4 className="text-green-400 font-bold mb-3 flex items-center">
+                              🔞 あなたが輝く「夜の適職」
+                            </h4>
+                            <p className="text-gray-300 text-sm leading-relaxed">
+                              {typeData.premium.deep_profile.夜の適職}
+                            </p>
+                          </div>
+                          <div className="bg-gray-800 p-6 rounded-lg border border-red-500">
+                            <h4 className="text-red-400 font-bold mb-3 flex items-center">
+                              📉 あなたが「不能」になる瞬間
+                            </h4>
+                            <p className="text-gray-300 text-sm leading-relaxed">
+                              {typeData.premium.deep_profile.NG行動}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* PART 2: 運命の相手 & 攻略法（Best 3）*/}
+                      <div className="space-y-6">
+                        <h3 className="text-xl font-bold text-yellow-400 mb-4 text-center">
+                          👑 PART 2：運命の相手 & 攻略法（Best 3）
+                        </h3>
+                        <div className="space-y-4">
+                          {typeData.premium.ranking.best3.map((item, index) => {
+                            const bgColors = [
+                              'bg-gradient-to-r from-yellow-600 to-yellow-500',
+                              'bg-gradient-to-r from-gray-600 to-gray-500',
+                              'bg-gradient-to-r from-orange-600 to-orange-500'
+                            ];
+                            const medals = ['🥇', '🥈', '🥉'];
+                            const oppositeGender = userGender === 'male' ? 'female' : 'male';
+                            const targetData = genderedDiagramTypes[oppositeGender][item.type];
+                            return (
+                              <div key={item.rank} className={`${bgColors[index]} p-6 rounded-lg`}>
+                                <div className="flex items-center justify-between mb-3">
+                                  <h4 className="text-white font-bold text-lg">
+                                    {medals[index]} 第{item.rank}位：{item.title}
+                                  </h4>
+                                  <div className="text-2xl">
+                                    {targetData?.emoji || '💖'}
+                                  </div>
+                                </div>
+                                <div className="text-white text-sm leading-relaxed">
+                                  <div className="mb-3">
+                                    <span className="font-bold">【{targetData?.name || item.title}】</span>
+                                  </div>
+                                  <p>{item.strategy}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+
+                      {/* PART 3: 地雷・天敵リスト（Worst 3）*/}
+                      <div className="space-y-6">
+                        <h3 className="text-xl font-bold text-yellow-400 mb-4 text-center">
+                          💀 PART 3：地雷・天敵リスト（Worst 3）
+                        </h3>
+                        <div className="space-y-4">
+                          {typeData.premium.ranking.worst3.map((item, index) => {
+                            const oppositeGender = userGender === 'male' ? 'female' : 'male';
+                            const targetData = genderedDiagramTypes[oppositeGender][item.type];
+                            return (
+                              <div key={item.rank} className="bg-red-900/50 border border-red-500 p-6 rounded-lg">
+                                <div className="flex items-center justify-between mb-3">
+                                  <h4 className="text-red-400 font-bold text-lg">
+                                    💀 ワースト{item.rank}位：{item.title}
+                                  </h4>
+                                  <div className="text-2xl">
+                                    {targetData?.emoji || '⚠️'}
+                                  </div>
+                                </div>
+                                <div className="text-red-100 text-sm leading-relaxed">
+                                  <div className="mb-3">
+                                    <span className="font-bold">【{targetData?.name || item.title}】</span>
+                                  </div>
+                                  <p>{item.reason}</p>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    /* プレミアムデータがない場合の表示 */
+                    <div className="text-center text-gray-300 py-12 border-2 border-dashed border-gray-600 rounded-lg">
+                      <div className="text-4xl mb-4">🚧</div>
+                      <h3 className="text-xl font-bold mb-2">プレミアムデータ準備中</h3>
+                      <p className="text-sm">
+                        このキャラクターの深層プロファイルと攻略ランキングデータを準備しています。<br/>
+                        近日追加予定です。
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
