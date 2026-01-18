@@ -335,17 +335,17 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.9 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-red-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-xl font-bold text-rose-600 text-center ${zenMaruGothic.className}`}>
                 SM診断
               </h2>
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
-                  <h3 className="text-sm font-medium text-red-700 mb-1">脳内ドS度</h3>
-                  <div className="text-2xl font-bold text-red-600">{typeData.sm_diagnosis.mind_s}%</div>
+                  <h3 className="text-sm font-medium text-rose-700 mb-1">脳内ドS度</h3>
+                  <div className="text-2xl font-bold text-rose-600">{typeData.sm_diagnosis.mind_s}%</div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-pink-700 mb-1">肉体ドM度</h3>
-                  <div className="text-2xl font-bold text-pink-600">{typeData.sm_diagnosis.body_m}%</div>
+                  <h3 className="text-sm font-medium text-rose-700 mb-1">肉体ドM度</h3>
+                  <div className="text-2xl font-bold text-rose-600">{typeData.sm_diagnosis.body_m}%</div>
                 </div>
               </div>
             </motion.div>
@@ -359,21 +359,21 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 1.0 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-orange-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-xl font-bold text-pink-600 text-center ${zenMaruGothic.className}`}>
                 ステータス
               </h2>
               <div className="grid grid-cols-3 gap-3 text-center">
                 <div>
-                  <h3 className="text-xs font-medium text-orange-700 mb-1">性欲</h3>
-                  <div className="text-lg font-bold text-orange-600">{typeData.stats.libido}</div>
+                  <h3 className="text-xs font-medium text-pink-700 mb-1">性欲</h3>
+                  <div className="text-lg font-bold text-pink-600">{typeData.stats.libido}</div>
                 </div>
                 <div>
-                  <h3 className="text-xs font-medium text-purple-700 mb-1">変態度</h3>
-                  <div className="text-lg font-bold text-purple-600">{typeData.stats.hentai}</div>
+                  <h3 className="text-xs font-medium text-pink-700 mb-1">変態度</h3>
+                  <div className="text-lg font-bold text-pink-600">{typeData.stats.hentai}</div>
                 </div>
                 <div>
-                  <h3 className="text-xs font-medium text-blue-700 mb-1">むっつり度</h3>
-                  <div className="text-lg font-bold text-blue-600">{typeData.stats.muttsuri}</div>
+                  <h3 className="text-xs font-medium text-pink-700 mb-1">むっつり度</h3>
+                  <div className="text-lg font-bold text-pink-600">{typeData.stats.muttsuri}</div>
                 </div>
               </div>
             </motion.div>
@@ -387,12 +387,12 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 1.1 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-yellow-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-xl font-bold text-rose-600 text-center ${zenMaruGothic.className}`}>
                 浮気分析
               </h2>
               <div className="text-center mb-3">
-                <div className="text-2xl font-bold text-yellow-600 mb-1">{typeData.uwaki.percent}</div>
-                <div className="text-sm font-medium text-yellow-700">{typeData.uwaki.type}</div>
+                <div className="text-2xl font-bold text-rose-600 mb-1">{typeData.uwaki.percent}</div>
+                <div className="text-sm font-medium text-rose-700">{typeData.uwaki.type}</div>
               </div>
               <div className="text-xs leading-relaxed text-gray-600 text-center max-w-md mx-auto">
                 <p>{typeData.uwaki.text}</p>
