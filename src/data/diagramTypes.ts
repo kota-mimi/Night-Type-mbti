@@ -731,16 +731,16 @@ const femaleTypes: DiagramTypes = {
     solutionTitle: '素直になる勇気',
     compatibility: {
       good: {
-        type: 'PFEC',
+        type: 'PFEN',
         reason: '彼はM気質で、強い女性に憧れを持っています。あなたの冷たい態度や命令を「高貴で美しい」と脳内で美化し、喜んで下僕になってくれます。あなたが何を言っても傷つかず、むしろ詩的な言葉で賛美してくれるので、あなたの自尊心も満たされます。'
       },
       bad: {
-        type: 'PFTC',
+        type: 'PFTN',
         reason: '彼は理屈っぽく、あなたの権威に屈しません。あなたが命令しても、「なぜそうする必要があるの？」「効率が悪いよ」と論理的に反論してきます。あなたのプライドは傷つけられ、ムードも最悪に。「理屈っぽい男は嫌い」と、あなたは即座に彼を切り捨てるでしょう。'
       }
     }
   },
-  ABTN: {
+  AFTC: {
     name: '氷の美貌（ビューティー）',
     emoji: '💄',
     catchcopy: '触れていないのに、視線だけで濡らす。',
@@ -780,7 +780,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  APEN: {
+  AREN: {
     name: '過保護なママ',
     emoji: '🤱',
     catchcopy: 'いい子ね。全部受け止めてあげる。',
@@ -820,7 +820,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  ABEN: {
+  AFEC: {
     name: '魔性の聖女',
     emoji: '😇',
     catchcopy: '私なしじゃ生きられない体に、作り変えてあげる。',
@@ -860,7 +860,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  APTC: {
+  ARTC: {
     name: '肉食系ハンター',
     emoji: '🐆',
     catchcopy: '欲しいものは奪う。草食男子はすっこんでて。',
@@ -900,7 +900,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  ABTC: {
+  AFTN: {
     name: '小悪魔な発明家',
     emoji: '🎭',
     catchcopy: 'ねえ、こんなことしてみない？退屈なんてさせないわ。',
@@ -940,7 +940,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  APEC: {
+  AREC: {
     name: 'スポットライト女優',
     emoji: '🌟',
     catchcopy: 'ベッドは私のステージ。一番可愛くイカせてね。',
@@ -980,7 +980,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  ABEC: {
+  AFEN: {
     name: '無邪気なティンカーベル',
     emoji: '🧚',
     catchcopy: '捕まえてごらん？でも、束縛はキライよ。',
@@ -1020,7 +1020,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  PPTN: {
+  PRTN: {
     name: '鉄壁のガードマン',
     emoji: '🌹',
     catchcopy: '乱れるのはルール違反。でも、あなただけは特別。',
@@ -1060,7 +1060,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  PBTN: {
+  PFTN: {
     name: '冷めた脚本家',
     emoji: '🔮',
     catchcopy: '男なんて単純。私のシナリオ通りに動くだけ。',
@@ -1100,7 +1100,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  PPTC: {
+  PRTC: {
     name: '無口なテクニシャン',
     emoji: '❄️',
     catchcopy: '言葉はいらない。体で教えてあげる。',
@@ -1140,7 +1140,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  PBTC: {
+  PFTC: {
     name: '変態リケジョ',
     emoji: '🧪',
     catchcopy: 'その仕組み、興味あるわ。もっと詳しく教えて？',
@@ -1180,7 +1180,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  PPEN: {
+  PREN: {
     name: '従順な夜の秘書',
     emoji: '😇',
     catchcopy: 'あなた色に染めて。「私」なんていらないから。',
@@ -1220,7 +1220,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  PBEN: {
+  PFEN: {
     name: '心中ロマンチスト',
     emoji: '🖤',
     catchcopy: 'あなたとなら死ねる。重い愛で溺れさせて。',
@@ -1260,7 +1260,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  PPEC: {
+  PREC: {
     name: 'とろける猫',
     emoji: '🐱',
     catchcopy: '理屈はいらない。撫でて、可愛がって、溶かして。',
@@ -1300,7 +1300,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  PBEC: {
+  PFEC: {
     name: '悲劇のヒロイン',
     emoji: '🌸',
     catchcopy: '私なんて…。そう言って、守ってくれるのを待ってる。',
