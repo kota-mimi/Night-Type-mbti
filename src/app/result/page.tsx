@@ -11,6 +11,7 @@ import { getTypeFromAnswers } from '@/lib/scoring'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
 import { characterSlugs } from '@/data/characterSlugs'
+import { getCharacterIdByCode, getCharacterById, getCompatibility } from '@/lib/characterMapping'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -454,83 +455,63 @@ export default function ResultPage() {
             </h2>
             
             <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                {/* 最高のパートナー */}
-                <div className="bg-pink-50/90 backdrop-blur-sm rounded-lg p-6 border border-pink-200 relative overflow-hidden">
-                  {/* 背景絵文字 */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
-                    <div className="animate-bounce-slow">
-                      <span className="text-6xl">
-                        {(() => {
-                          const oppositeGender = userGender === 'male' ? 'female' : 'male';
-                          const goodType = typeData.compatibility.good.type;
-                          return genderedDiagramTypes[oppositeGender]?.[goodType]?.emoji || 
-                                 genderedDiagramTypes[userGender]?.[goodType]?.emoji || 
-                                 '💕';
-                        })()}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="text-center space-y-3 relative">
-                    <h3 className="text-lg font-bold text-pink-600">最高のパートナー</h3>
-                    <h4 className="text-lg font-bold text-gray-800">
-                      {(() => {
-                        const oppositeGender = userGender === 'male' ? 'female' : 'male';
-                        const goodType = typeData.compatibility.good.type;
-                        return genderedDiagramTypes[oppositeGender]?.[goodType]?.name || 
-                               genderedDiagramTypes[userGender]?.[goodType]?.name || 
-                               '相性の良いタイプ';
-                      })()}
-                    </h4>
-                  </div>
-                  <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
-                    {typeData.compatibility.good.reason.split('。').map((sentence, index, array) => (
-                      <p key={index} className={index < array.length - 1 ? 'mb-2' : ''}>
-                        {sentence.trim()}
-                        {index < array.length - 1 && sentence.trim() && '。'}
-                      </p>
-                    ))}
-                  </div>
-                </div>
+              {(() => {
+                // 新しいマスター相性システムを使用
+                const compatibility = getCompatibility(userType);
+                if (!compatibility) {
+                  return <div className="text-center text-gray-500">相性データを取得できませんでした</div>;
+                }
 
-                {/* 最悪の天敵 */}
-                <div className="bg-red-50/90 backdrop-blur-sm rounded-lg p-6 border border-red-200 relative overflow-hidden">
-                  {/* 背景キャラクター画像 */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
-                    <div className="animate-float">
-                      <span className="text-6xl">
-                        {(() => {
-                          const oppositeGender = userGender === 'male' ? 'female' : 'male';
-                          const badType = typeData.compatibility.bad.type;
-                          return genderedDiagramTypes[oppositeGender]?.[badType]?.emoji || 
-                                 genderedDiagramTypes[userGender]?.[badType]?.emoji || 
-                                 '⚠️';
-                        })()}
-                      </span>
+                const targetGender = userGender === 'male' ? 'female' : 'male';
+                const bestPartner = getCharacterById(compatibility.best, targetGender);
+                const worstEnemy = getCharacterById(compatibility.worst, targetGender);
+
+                return (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    {/* 最高のパートナー */}
+                    <div className="bg-pink-50/90 backdrop-blur-sm rounded-lg p-6 border border-pink-200 relative overflow-hidden">
+                      {/* 背景絵文字 */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
+                        <div className="animate-bounce-slow">
+                          <span className="text-6xl">
+                            {bestPartner ? (genderedDiagramTypes[targetGender]?.[bestPartner.code]?.emoji || '💕') : '💕'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="text-center space-y-3 relative">
+                        <h3 className="text-lg font-bold text-pink-600">最高のパートナー</h3>
+                        <h4 className="text-lg font-bold text-gray-800">
+                          {bestPartner?.name || '相性の良いタイプ'}
+                        </h4>
+                      </div>
+                      <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
+                        <p>このタイプとの相性は抜群です。お互いの特性が補完し合い、素晴らしい関係を築くことができます。</p>
+                      </div>
+                    </div>
+
+                    {/* 最悪の天敵 */}
+                    <div className="bg-red-50/90 backdrop-blur-sm rounded-lg p-6 border border-red-200 relative overflow-hidden">
+                      {/* 背景キャラクター画像 */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
+                        <div className="animate-float">
+                          <span className="text-6xl">
+                            {worstEnemy ? (genderedDiagramTypes[targetGender]?.[worstEnemy.code]?.emoji || '⚠️') : '⚠️'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="text-center space-y-3 relative">
+                        <h3 className="text-lg font-bold text-red-600">最悪の天敵</h3>
+                        <h4 className="text-lg font-bold text-gray-800">
+                          {worstEnemy?.name || '相性の悪いタイプ'}
+                        </h4>
+                      </div>
+                      <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
+                        <p>このタイプとは価値観や行動パターンが大きく異なるため、理解し合うのが難しい関係です。</p>
+                      </div>
                     </div>
                   </div>
-                  <div className="text-center space-y-3 relative">
-                    <h3 className="text-lg font-bold text-red-600">最悪の天敵</h3>
-                    <h4 className="text-lg font-bold text-gray-800">
-                      {(() => {
-                        const oppositeGender = userGender === 'male' ? 'female' : 'male';
-                        const badType = typeData.compatibility.bad.type;
-                        return genderedDiagramTypes[oppositeGender]?.[badType]?.name || 
-                               genderedDiagramTypes[userGender]?.[badType]?.name || 
-                               '相性の悪いタイプ';
-                      })()}
-                    </h4>
-                  </div>
-                  <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
-                    {typeData.compatibility.bad.reason.split('。').map((sentence, index, array) => (
-                      <p key={index} className={index < array.length - 1 ? 'mb-2' : ''}>
-                        {sentence.trim()}
-                        {index < array.length - 1 && sentence.trim() && '。'}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                );
+              })()}
             </div>
           </motion.div>
 
