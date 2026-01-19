@@ -179,11 +179,8 @@ export default function ResultPage() {
   }
 
 
-  // 女性版に該当データがない場合は男性版をfallbackとして使用
-  let typeData = genderedDiagramTypes[userGender][userType]
-  if (!typeData && userGender === 'female') {
-    typeData = genderedDiagramTypes.male[userType]
-  }
+  // 適切な性別のデータを使用
+  const typeData = genderedDiagramTypes[userGender][userType]
   
   if (!typeData) {
     return (
