@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Crown } from 'lucide-react'
 import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 
 const notoSansJP = Noto_Sans_JP({
@@ -26,6 +26,8 @@ export default function Header() {
     { href: '/about', label: 'Night Typeとは', key: 'about' },
     { href: '/contact', label: 'お問い合わせ', key: 'contact' },
   ]
+
+  const premiumItem = { href: '/premium', label: 'プレミアム', key: 'premium' }
 
   return (
     <header className={`sticky top-0 z-50 bg-white border-b border-gray-100 ${notoSansJP.className}`}>
@@ -51,6 +53,15 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
+            
+            {/* Premium Link */}
+            <Link
+              href={premiumItem.href}
+              className="inline-flex items-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-4 py-2 rounded-full hover:from-pink-600 hover:to-rose-600 font-medium transition-all transform hover:scale-105 shadow-lg"
+            >
+              <Crown className="w-4 h-4 mr-1" />
+              {premiumItem.label}
+            </Link>
           </nav>
 
           {/* Mobile Hamburger Menu */}
@@ -108,6 +119,16 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
+            
+            {/* Mobile Premium Link */}
+            <Link
+              href={premiumItem.href}
+              className="inline-flex items-center bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-3 rounded-full hover:from-pink-600 hover:to-rose-600 font-medium transition-all text-lg shadow-lg"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Crown className="w-5 h-5 mr-2" />
+              {premiumItem.label}
+            </Link>
           </nav>
         </div>
       </motion.div>
