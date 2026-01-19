@@ -1,19 +1,51 @@
+// ==========================================
+// Night Type Diagnosis Logic (Final Version)
+// ==========================================
+
 /**
- * 【Night Type診断】アダルト性格診断（夜のMBTI）
+ * ■ Night Type診断ロジック
+ * 軸(axis): 
+ *   - AP: Active(攻め) vs Passive(受け)
+ *   - RF: Real(リアル) vs Fantasy(妄想)
+ *   - TE: Tech(機能) vs Emo(情緒)
+ *   - NC: Normal(安定) vs Chaos(刺激)
  * 
- * ■ 4つの分析軸:
- * 1. AP軸: Active (攻め) vs Passive (受け)
- * 2. RF軸: Real (肉体/リアル) vs Fantasy (脳内/ファンタジー)
- * 3. TE軸: Technical (機能/技術) vs Emotional (感情/情緒)
- * 4. NC軸: Normal (安定/王道) vs Chaos (刺激/カオス)
- * 
- * ■ Night Code直接使用:
- * - 4軸の組み合わせで16種のNight Code生成（例: ARTN, AFTN, PREC等）
- * - Night Code自体がキャラクターIDとなる
+ * 方向(direction):
+ *   - positive: 左側の性質(A, R, T, N)に加点
+ *   - negative: 右側の性質(P, F, E, C)に加点
  */
 
 import { Answer, Score } from '@/types';
 import { questions } from '@/data/questions';
+
+/**
+ * ■ Night Code -> MBTI ID マッピング
+ */
+const typeMapping: { [key: string]: string } = {
+  // 👑 支配・リード系 (Active, ???, ???, ???)
+  'ARTN': 'ESTJ', // 絶対君主
+  'AFTN': 'ENTJ', // 夜のCEO
+  'AREN': 'ESFJ', // 過保護なパトロン
+  'AFEN': 'ENFJ', // 愛の教祖
+
+  // 🦁 衝動・本能系 (Active, ???, ???, Chaos)
+  'ARTC': 'ESTP', // 暴走ダンプカー
+  'AFTC': 'ENTP', // 夜のジョーカー
+  'AREC': 'ESFP', // 自意識過剰なスター
+  'AFEC': 'ENFP', // 気まぐれピーターパン
+
+  // 🔬 職人・マイペース系 (Passive, ???, ???, Normal)
+  'PRTN': 'ISTJ', // 生真面目な公務員
+  'PFTN': 'INTJ', // ソロプレイヤー
+  'PREN': 'ISFJ', // 忠実な番犬
+  'PFEN': 'INFJ', // 愛の執行人
+
+  // 🥀 没入・尽くす系 (Passive, ???, ???, Chaos 含む)
+  'PRTC': 'ISTP', // 無口なスナイパー
+  'PFTC': 'INTP', // 性癖研究員
+  'PREC': 'ISFP', // 感度3000倍のオス猫
+  'PFEC': 'INFP'  // 夢見る詩人
+};
 
 export function calculateScore(answers: Answer[]): Score {
   const scores: Score = {
@@ -27,53 +59,38 @@ export function calculateScore(answers: Answer[]): Score {
     const question = questions.find(q => q.id === answer.questionId);
     if (!question) return;
     
-    // 【修正版】正しいスコア計算ロジック
-    // 各質問のdirectionに関係なく、回答内容に基づいてスコアを振り分ける
-    let scoreContribution = 0;
-    
+    // positiveなら加算、negativeなら減算（反転）
     if (question.direction === 'positive') {
-      // positive質問: そう思う(+) → 左側に加点、そう思わない(-) → 右側に加点
-      scoreContribution = answer.score;
+      scores[question.axis as keyof Score] += answer.score;
     } else {
-      // negative質問: そう思う(+) → 右側に加点、そう思わない(-) → 左側に加点
-      // つまり、positive質問とは逆の扱いをする
-      scoreContribution = -answer.score;
+      scores[question.axis as keyof Score] -= answer.score;
     }
-
-    // 軸別にスコア加算
-    scores[question.axis as keyof Score] += scoreContribution;
   });
 
   return scores;
 }
 
 export function determineType(scores: Score): string {
-  // Night Codeを生成（これがキャラクターIDになる）
+  // Night Codeを生成
   let nightCode = '';
-
-  // 各軸の判定（0を境界とした判定）
-  // AP軸: Active (攻め) vs Passive (受け)
   nightCode += scores.AP >= 0 ? 'A' : 'P';
-  // RF軸: Real (肉体/リアル) vs Fantasy (脳内/ファンタジー)
   nightCode += scores.RF >= 0 ? 'R' : 'F';
-  // TE軸: Technical (機能/技術) vs Emotional (感情/情緒)
   nightCode += scores.TE >= 0 ? 'T' : 'E';
-  // NC軸: Normal (安定/王道) vs Chaos (刺激/カオス)
   nightCode += scores.NC >= 0 ? 'N' : 'C';
 
-  // Night Code自体をキャラクターIDとして返す
-  return nightCode;
+  // Night Code を MBTI ID に変換
+  return typeMapping[nightCode] || 'ESTJ';
 }
 
 export function getTypeFromAnswers(answers: Answer[]): string {
   const scores = calculateScore(answers);
-  const nightCode = determineType(scores);
+  const mbtiType = determineType(scores);
   
-  // デバッグ情報（本番では削除可能）
+  // デバッグ情報
   if (process.env.NODE_ENV === 'development') {
     console.log('Debug - Scores:', scores);
-    console.log('Debug - Night Code:', nightCode);
+    console.log('Debug - MBTI Type:', mbtiType);
   }
   
-  return nightCode;
+  return mbtiType;
 }
