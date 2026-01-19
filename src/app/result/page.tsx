@@ -46,18 +46,29 @@ export default function ResultPage() {
 
     // タイプが保存されていない場合は従来の方法で計算
     const savedAnswers = localStorage.getItem('diet-quiz-answers')
+    console.log("=== DEBUG: Result Page ===");
+    console.log("savedAnswers (raw):", savedAnswers);
+    
     if (!savedAnswers) {
+      console.log("No saved answers found, redirecting to home");
       router.push('/')
       return
     }
 
     const answers: Answer[] = JSON.parse(savedAnswers)
+    console.log("Parsed answers:", answers);
+    console.log("Answers length:", answers.length);
+    
     if (answers.length !== 24) {
+      console.log("Invalid answers length, redirecting to home");
       router.push('/')
       return
     }
 
+    console.log("Calling getTypeFromAnswers...");
     const typeCode = getTypeFromAnswers(answers)
+    console.log("Received typeCode:", typeCode);
+    
     // Use setTimeout to avoid synchronous state update
     setTimeout(() => {
       setUserType(typeCode)

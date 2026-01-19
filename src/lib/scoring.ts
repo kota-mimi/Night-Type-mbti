@@ -19,42 +19,69 @@ import { Answer, Score } from '@/types';
 import { questions } from '@/data/questions';
 
 
+/**
+ * ⚠️ 重要：診断ロジックと計算方法の再定義
+ * 
+ * ■ 判定軸 (Night Code System)
+ * AP軸: Active (+) vs Passive (-)
+ * RF軸: Real (+) vs Fantasy (-)
+ * TE軸: Tech (+) vs Emo (-)
+ * NC軸: Normal (+) vs Chaos (-)
+ * 
+ * ■ スコアリングのルール
+ * 回答値: +3(とてもそう思う) 〜 -3(全くそう思わない)
+ * direction: 'positive'なら加算、'negative'なら減算（反転）
+ */
 export function calculateScore(answers: Answer[]): Score {
-  const scores: Score = {
-    AP: 0,
-    RF: 0,
-    TE: 0,
-    NC: 0
-  };
+  // 1. スコア初期化
+  let scores: Score = { AP: 0, RF: 0, TE: 0, NC: 0 };
 
-  answers.forEach((answer) => {
-    const question = questions.find(q => q.id === answer.questionId);
-    if (!question) return;
-    
-    // 正しいロジック: 
-    // positive質問: 高スコア = その軸のpositive側を支持
-    // negative質問: 高スコア = その軸のnegative側を支持（つまり反転）
-    if (question.direction === 'positive') {
-      scores[question.axis as keyof Score] += answer.score;
+  // 2. デバッグ用ログ（必ず実装！）
+  console.log("=== DEBUG: calculateScore (NEW LOGIC) ===");
+  console.log("Input Answers:", answers); 
+  console.log("Total answers received:", answers.length);
+
+  // 3. 集計処理
+  questions.forEach(q => {
+    // 回答がない場合は 0 (どちらでもない)
+    const answerObj = answers.find(a => a.questionId === q.id);
+    const userValue = answerObj !== undefined ? answerObj.score : 0;
+
+    console.log(`Q${q.id}: axis=${q.axis}, direction=${q.direction}, userScore=${userValue}`);
+
+    if (q.direction === 'positive') {
+      scores[q.axis as keyof Score] += userValue;
+      console.log(`  → ${q.axis} += ${userValue} = ${scores[q.axis as keyof Score]}`);
     } else {
-      // negative質問の場合は符号を反転
-      scores[question.axis as keyof Score] -= answer.score;
+      scores[q.axis as keyof Score] -= userValue; // negativeは反転
+      console.log(`  → ${q.axis} -= ${userValue} = ${scores[q.axis as keyof Score]}`);
     }
   });
 
+  console.log("Calculated Scores:", scores);
   return scores;
 }
 
 export function determineType(scores: Score): string {
-  // Night Codeを生成
-  let nightCode = '';
-  nightCode += scores.AP >= 0 ? 'A' : 'P';
-  nightCode += scores.RF >= 0 ? 'R' : 'F';
-  nightCode += scores.TE >= 0 ? 'T' : 'E';
-  nightCode += scores.NC >= 0 ? 'N' : 'C';
+  console.log("=== DEBUG: determineType (NEW LOGIC) ===");
+  console.log("Input Scores:", scores);
+  
+  // 4. タイプ判定 (0以上なら左、未満なら右)
+  let typeCode = '';
+  typeCode += scores.AP >= 0 ? 'A' : 'P';
+  console.log(`AP: ${scores.AP} >= 0 ? A : P → ${scores.AP >= 0 ? 'A' : 'P'}`);
+  
+  typeCode += scores.RF >= 0 ? 'R' : 'F';
+  console.log(`RF: ${scores.RF} >= 0 ? R : F → ${scores.RF >= 0 ? 'R' : 'F'}`);
+  
+  typeCode += scores.TE >= 0 ? 'T' : 'E';
+  console.log(`TE: ${scores.TE} >= 0 ? T : E → ${scores.TE >= 0 ? 'T' : 'E'}`);
+  
+  typeCode += scores.NC >= 0 ? 'N' : 'C';
+  console.log(`NC: ${scores.NC} >= 0 ? N : C → ${scores.NC >= 0 ? 'N' : 'C'}`);
 
-  // Night Code を直接返す（diagramTypesはNight Codeでキー化されているため）
-  return nightCode || 'ARTN';
+  console.log("Final TypeCode:", typeCode);
+  return typeCode;
 }
 
 export function getTypeFromAnswers(answers: Answer[]): string {

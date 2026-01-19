@@ -77,11 +77,18 @@ export default function QuizPage() {
       questionId: q.id,
       score: answers[q.id]
     }))
+    
+    console.log("=== DEBUG: Quiz Page ===");
+    console.log("Page:", pageNumber);
+    console.log("Current answers for this page:", answers);
+    console.log("New answers:", newAnswers);
+    console.log("Existing saved answers:", savedAnswers);
 
     const updatedAnswers = [
       ...savedAnswers.filter(a => !questionGroup.find(q => q.id === a.questionId)),
       ...newAnswers
     ]
+    console.log("Updated answers:", updatedAnswers);
     setSavedAnswers(updatedAnswers)
 
     setTimeout(() => {
