@@ -24,94 +24,57 @@ function GalleryContent() {
         
         {/* ヘッダー */}
         <div className="text-center mb-8">
-          <motion.h1
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
-          >
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
             全16タイプ診断結果
-          </motion.h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-white/90"
-          >
+          </h1>
+          <p className="text-lg text-gray-600">
             あなたはどのタイプに当てはまりますか？
-          </motion.p>
+          </p>
         </div>
 
         {/* 男女選択タブ */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex justify-center mb-8"
-        >
+        <div className="flex justify-center mb-8">
           <div className="bg-white rounded-full p-1 shadow-lg">
             <div className="flex">
               <button
                 onClick={() => setSelectedGender('male')}
-                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
+                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
                   selectedGender === 'male'
-                    ? 'bg-blue-500 text-white shadow-md'
-                    : 'text-blue-500 hover:bg-blue-50'
+                    ? 'bg-rose-500 text-white shadow-md'
+                    : 'text-rose-500 hover:bg-rose-50'
                 }`}
               >
                 男性版
               </button>
               <button
                 onClick={() => setSelectedGender('female')}
-                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
+                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
                   selectedGender === 'female'
-                    ? 'bg-pink-500 text-white shadow-md'
-                    : 'text-pink-500 hover:bg-pink-50'
+                    ? 'bg-rose-500 text-white shadow-md'
+                    : 'text-rose-500 hover:bg-rose-50'
                 }`}
               >
                 女性版
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* タイプ一覧グリッド */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
           {typeKeys.map((typeCode, index) => {
             const type = genderedDiagramTypes[selectedGender][typeCode]
             
-            // カードの背景色とテキスト色を決定（Night Code対応）
-            let cardBgColor = 'bg-blue-200/50' // デフォルト
-            let textColor = 'text-blue-600' // デフォルト
-            const typeCodeStr = String(typeCode)
-            if (typeCodeStr.startsWith('AR')) {
-              cardBgColor = 'bg-green-200/50' // AR系統（緑）
-              textColor = 'text-green-600'
-            } else if (typeCodeStr.startsWith('AF')) {
-              cardBgColor = 'bg-purple-200/50' // AF系統（紫）
-              textColor = 'text-purple-600'
-            } else if (typeCodeStr.startsWith('PR')) {
-              cardBgColor = 'bg-red-400/60' // PR系統（赤）
-              textColor = 'text-red-600'
-            } else if (typeCodeStr.startsWith('PF')) {
-              cardBgColor = 'bg-blue-200/50' // PF系統（青）
-              textColor = 'text-blue-600'
-            }
+            // 統一感のあるカードデザイン
+            const cardBgColor = 'bg-gradient-to-br from-pink-50 to-rose-50'
+            const textColor = 'text-rose-600'
             
             return (
               <motion.div
                 key={typeCode}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.1 * index }}
-                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl`}
+                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl border border-pink-100`}
               >
-                <div className="bg-white rounded-xl p-4 shadow-sm">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm">
                 {/* タイプコード - 小さく上部に表示 */}
                 <div className="text-center pt-4 pb-2">
                   <h2 className={`text-lg font-bold ${textColor}`}>
@@ -121,17 +84,11 @@ function GalleryContent() {
 
                 {/* キャラクター絵文字 - 大きく中央に */}
                 <div className="flex justify-center pb-4">
-                  <motion.div
-                    key={`${typeCode}-${selectedGender}`}
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-32 h-32 bg-gradient-to-br from-pink-100 to-rose-200 rounded-2xl flex items-center justify-center shadow-lg"
-                  >
+                  <div className="w-32 h-32 bg-gradient-to-br from-pink-100 to-rose-200 rounded-2xl flex items-center justify-center shadow-lg">
                     <span className="text-5xl">
                       {type.emoji}
                     </span>
-                  </motion.div>
+                  </div>
                 </div>
 
                 <div className="px-4 pb-6 space-y-3">
@@ -216,7 +173,7 @@ function GalleryContent() {
                         localStorage.setItem('diet-quiz-result-type', String(typeCode))
                         window.location.href = '/result'
                       }}
-                      className="w-full bg-teal-500 hover:bg-teal-600 text-white text-sm font-medium py-3 px-4 rounded-full transition-colors"
+                      className="w-full bg-rose-500 hover:bg-rose-600 text-white text-sm font-medium py-3 px-4 rounded-full transition-colors duration-200"
                     >
                       詳しく見る
                     </button>
@@ -226,26 +183,17 @@ function GalleryContent() {
               </motion.div>
             )
           })}
-        </motion.div>
+        </div>
 
         {/* ホームに戻るボタン */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center"
-        >
+        <div className="text-center">
           <Link href="/quiz/1">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 bg-white text-[#2196F3] font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-            >
+            <button className="inline-flex items-center gap-2 bg-white text-rose-600 font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-200">
               <Home className="w-5 h-5" />
               診断を始める
-            </motion.button>
+            </button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </div>
   )
