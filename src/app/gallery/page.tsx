@@ -16,7 +16,7 @@ const notoSansJP = Noto_Sans_JP({
 
 function GalleryContent() {
   const [selectedGender, setSelectedGender] = useState<'male' | 'female'>('male')
-  const typeKeys = Object.keys(genderedDiagramTypes.male) as Array<keyof typeof genderedDiagramTypes.male>
+  const typeKeys = Object.keys(genderedDiagramTypes[selectedGender])
   
   return (
     <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
@@ -85,21 +85,21 @@ function GalleryContent() {
           {typeKeys.map((typeCode, index) => {
             const type = genderedDiagramTypes[selectedGender][typeCode]
             
-            // カードの背景色とテキスト色を決定
+            // カードの背景色とテキスト色を決定（Night Code対応）
             let cardBgColor = 'bg-blue-200/50' // デフォルト
             let textColor = 'text-blue-600' // デフォルト
             const typeCodeStr = String(typeCode)
-            if (typeCodeStr.startsWith('SR')) {
-              cardBgColor = 'bg-green-200/50' // SR系統（緑）
+            if (typeCodeStr.startsWith('AR')) {
+              cardBgColor = 'bg-green-200/50' // AR系統（緑）
               textColor = 'text-green-600'
-            } else if (typeCodeStr.startsWith('SE')) {
-              cardBgColor = 'bg-purple-200/50' // SE系統（紫）
+            } else if (typeCodeStr.startsWith('AF')) {
+              cardBgColor = 'bg-purple-200/50' // AF系統（紫）
               textColor = 'text-purple-600'
-            } else if (typeCodeStr.startsWith('GR')) {
-              cardBgColor = 'bg-red-400/60' // GR系統（赤）
+            } else if (typeCodeStr.startsWith('PR')) {
+              cardBgColor = 'bg-red-400/60' // PR系統（赤）
               textColor = 'text-red-600'
-            } else if (typeCodeStr.startsWith('GE')) {
-              cardBgColor = 'bg-blue-200/50' // GE系統（青）
+            } else if (typeCodeStr.startsWith('PF')) {
+              cardBgColor = 'bg-blue-200/50' // PF系統（青）
               textColor = 'text-blue-600'
             }
             
@@ -111,8 +111,7 @@ function GalleryContent() {
                 transition={{ duration: 0.6, delay: 0.1 * index }}
                 className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-2xl`}
               >
-                <div className="bg-white rounded-xl p-4 shadow-sm"
-              >
+                <div className="bg-white rounded-xl p-4 shadow-sm">
                 {/* タイプコード - 小さく上部に表示 */}
                 <div className="text-center pt-4 pb-2">
                   <h2 className={`text-lg font-bold ${textColor}`}>
@@ -174,37 +173,35 @@ function GalleryContent() {
                         // 該当タイプの結果を生成するためのスコアを計算
                         const typeCodeStr = String(typeCode)
                         
-                        // 新しいdirection対応スコアリング
+                        // Night Code対応スコアリング
                         const answers = Array.from({ length: 24 }, (_, i) => {
                           const questionId = i + 1
                           const question = questions.find(q => q.id === questionId)
                           
-                          if (!question) return { questionId, score: 1 } // 質問が見つからない場合のデフォルト
+                          if (!question) return { questionId, score: 1 }
                           
                           let targetScore: number = 0
                           
-                          // 各軸に対して目標とする方向を決定
-                          if (questionId >= 1 && questionId <= 6) {
-                            // SG軸: Sタイプなら正方向、Gタイプなら負方向
-                            targetScore = typeCodeStr.startsWith('S') ? 3 : -3
-                          } else if (questionId >= 7 && questionId <= 12) {
-                            // RE軸: Rタイプなら正方向、Eタイプなら負方向
+                          // Night Code軸に対応した目標スコア設定
+                          if (question.axis === 'AP') {
+                            // AP軸: Aタイプなら正方向、Pタイプなら負方向
+                            targetScore = typeCodeStr.charAt(0) === 'A' ? 3 : -3
+                          } else if (question.axis === 'RF') {
+                            // RF軸: Rタイプなら正方向、Fタイプなら負方向
                             targetScore = typeCodeStr.charAt(1) === 'R' ? 3 : -3
-                          } else if (questionId >= 13 && questionId <= 18) {
-                            // FC軸: Fタイプなら正方向、Cタイプなら負方向
-                            targetScore = typeCodeStr.charAt(2) === 'F' ? 3 : -3
-                          } else if (questionId >= 19 && questionId <= 24) {
-                            // QL軸: Qタイプなら正方向、Lタイプなら負方向
-                            targetScore = typeCodeStr.charAt(3) === 'Q' ? 3 : -3
+                          } else if (question.axis === 'TE') {
+                            // TE軸: Tタイプなら正方向、Eタイプなら負方向
+                            targetScore = typeCodeStr.charAt(2) === 'T' ? 3 : -3
+                          } else if (question.axis === 'NC') {
+                            // NC軸: Nタイプなら正方向、Cタイプなら負方向
+                            targetScore = typeCodeStr.charAt(3) === 'N' ? 3 : -3
                           }
                           
                           // question.directionに基づいて実際の回答値を調整
                           let answerScore: number
                           if (question.direction === 'positive') {
-                            // positive質問の場合、目標スコアそのまま
                             answerScore = targetScore
                           } else {
-                            // negative質問の場合、目標スコアを逆転
                             answerScore = -targetScore
                           }
                           
