@@ -16,7 +16,10 @@ const notoSansJP = Noto_Sans_JP({
 
 function GalleryContent() {
   const [selectedGender, setSelectedGender] = useState<'male' | 'female'>('male')
-  const typeKeys = Object.keys(genderedDiagramTypes[selectedGender])
+  // 女性版の場合は男性版のキーを使用（Night Code対応）
+  const typeKeys = selectedGender === 'female' 
+    ? Object.keys(genderedDiagramTypes.male) 
+    : Object.keys(genderedDiagramTypes[selectedGender])
   
   return (
     <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
@@ -63,7 +66,8 @@ function GalleryContent() {
         {/* タイプ一覧グリッド */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
           {typeKeys.map((typeCode, index) => {
-            const type = genderedDiagramTypes[selectedGender][typeCode]
+            // 女性版の場合も男性版のデータを使用（fallback）
+            const type = genderedDiagramTypes[selectedGender][typeCode] || genderedDiagramTypes.male[typeCode]
             
             // 統一感のあるカードデザイン
             const cardBgColor = 'bg-gradient-to-br from-pink-50 to-rose-50'

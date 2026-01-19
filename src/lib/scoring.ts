@@ -31,10 +31,13 @@ export function calculateScore(answers: Answer[]): Score {
     const question = questions.find(q => q.id === answer.questionId);
     if (!question) return;
     
-    // positiveなら加算、negativeなら減算（反転）
+    // 正しいロジック: 
+    // positive質問: 高スコア = その軸のpositive側を支持
+    // negative質問: 高スコア = その軸のnegative側を支持（つまり反転）
     if (question.direction === 'positive') {
       scores[question.axis as keyof Score] += answer.score;
     } else {
+      // negative質問の場合は符号を反転
       scores[question.axis as keyof Score] -= answer.score;
     }
   });

@@ -179,7 +179,12 @@ export default function ResultPage() {
   }
 
 
-  const typeData = genderedDiagramTypes[userGender][userType]
+  // 女性版に該当データがない場合は男性版をfallbackとして使用
+  let typeData = genderedDiagramTypes[userGender][userType]
+  if (!typeData && userGender === 'female') {
+    typeData = genderedDiagramTypes.male[userType]
+  }
+  
   if (!typeData) {
     return (
       <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 flex items-center justify-center ${notoSansJP.className}`}>
