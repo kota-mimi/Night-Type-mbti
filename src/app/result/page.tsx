@@ -468,7 +468,9 @@ export default function ResultPage() {
                   <div className="text-center space-y-3 relative">
                     <h3 className="text-lg font-bold text-pink-600">最高のパートナー</h3>
                     <h4 className="text-lg font-bold text-gray-800">
-                      {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.good.type]?.name || typeData.compatibility.good.type}
+                      {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.good.type]?.name || 
+                       genderedDiagramTypes[userGender][typeData.compatibility.good.type]?.name ||
+                       '相性の良いタイプ'}
                     </h4>
                   </div>
                   <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
@@ -494,7 +496,9 @@ export default function ResultPage() {
                   <div className="text-center space-y-3 relative">
                     <h3 className="text-lg font-bold text-red-600">最悪の天敵</h3>
                     <h4 className="text-lg font-bold text-gray-800">
-                      {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.bad.type]?.name || typeData.compatibility.bad.type}
+                      {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.bad.type]?.name || 
+                       genderedDiagramTypes[userGender][typeData.compatibility.bad.type]?.name ||
+                       '相性の悪いタイプ'}
                     </h4>
                   </div>
                   <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
