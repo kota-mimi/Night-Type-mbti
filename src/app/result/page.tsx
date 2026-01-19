@@ -461,16 +461,26 @@ export default function ResultPage() {
                   <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                     <div className="animate-bounce-slow">
                       <span className="text-6xl">
-                        {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.good.type]?.emoji || '💕'}
+                        {(() => {
+                          const oppositeGender = userGender === 'male' ? 'female' : 'male';
+                          const goodType = typeData.compatibility.good.type;
+                          return genderedDiagramTypes[oppositeGender]?.[goodType]?.emoji || 
+                                 genderedDiagramTypes[userGender]?.[goodType]?.emoji || 
+                                 '💕';
+                        })()}
                       </span>
                     </div>
                   </div>
                   <div className="text-center space-y-3 relative">
                     <h3 className="text-lg font-bold text-pink-600">最高のパートナー</h3>
                     <h4 className="text-lg font-bold text-gray-800">
-                      {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.good.type]?.name || 
-                       genderedDiagramTypes[userGender][typeData.compatibility.good.type]?.name ||
-                       '相性の良いタイプ'}
+                      {(() => {
+                        const oppositeGender = userGender === 'male' ? 'female' : 'male';
+                        const goodType = typeData.compatibility.good.type;
+                        return genderedDiagramTypes[oppositeGender]?.[goodType]?.name || 
+                               genderedDiagramTypes[userGender]?.[goodType]?.name || 
+                               '相性の良いタイプ';
+                      })()}
                     </h4>
                   </div>
                   <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
@@ -489,16 +499,26 @@ export default function ResultPage() {
                   <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                     <div className="animate-float">
                       <span className="text-6xl">
-                        {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.bad.type]?.emoji || '⚠️'}
+                        {(() => {
+                          const oppositeGender = userGender === 'male' ? 'female' : 'male';
+                          const badType = typeData.compatibility.bad.type;
+                          return genderedDiagramTypes[oppositeGender]?.[badType]?.emoji || 
+                                 genderedDiagramTypes[userGender]?.[badType]?.emoji || 
+                                 '⚠️';
+                        })()}
                       </span>
                     </div>
                   </div>
                   <div className="text-center space-y-3 relative">
                     <h3 className="text-lg font-bold text-red-600">最悪の天敵</h3>
                     <h4 className="text-lg font-bold text-gray-800">
-                      {genderedDiagramTypes[userGender === 'male' ? 'female' : 'male'][typeData.compatibility.bad.type]?.name || 
-                       genderedDiagramTypes[userGender][typeData.compatibility.bad.type]?.name ||
-                       '相性の悪いタイプ'}
+                      {(() => {
+                        const oppositeGender = userGender === 'male' ? 'female' : 'male';
+                        const badType = typeData.compatibility.bad.type;
+                        return genderedDiagramTypes[oppositeGender]?.[badType]?.name || 
+                               genderedDiagramTypes[userGender]?.[badType]?.name || 
+                               '相性の悪いタイプ';
+                      })()}
                     </h4>
                   </div>
                   <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
