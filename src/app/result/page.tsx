@@ -11,7 +11,7 @@ import { getTypeFromAnswers } from '@/lib/scoring'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
 import { characterSlugs } from '@/data/characterSlugs'
-import { getCharacterIdByCode, getCharacterById, getCompatibility } from '@/lib/characterMapping'
+import { getCharacterIdByCode, getCharacterById, getCompatibility, getDetailedCompatibilityReason } from '@/lib/characterMapping'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -460,6 +460,10 @@ export default function ResultPage() {
                 const targetGender = userGender === 'male' ? 'female' : 'male';
                 const bestPartner = getCharacterById(compatibility.best, targetGender);
                 const worstEnemy = getCharacterById(compatibility.worst, targetGender);
+                
+                // 詳細な相性説明を取得
+                const bestReason = getDetailedCompatibilityReason(userType, userGender, 'best');
+                const worstReason = getDetailedCompatibilityReason(userType, userGender, 'worst');
 
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
@@ -480,7 +484,7 @@ export default function ResultPage() {
                         </h4>
                       </div>
                       <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
-                        <p>このタイプとの相性は抜群です。お互いの特性が補完し合い、素晴らしい関係を築くことができます。</p>
+                        <p>{bestReason || 'このタイプとの相性は抜群です。お互いの特性が補完し合い、素晴らしい関係を築くことができます。'}</p>
                       </div>
                     </div>
 
@@ -501,7 +505,7 @@ export default function ResultPage() {
                         </h4>
                       </div>
                       <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
-                        <p>このタイプとは価値観や行動パターンが大きく異なるため、理解し合うのが難しい関係です。</p>
+                        <p>{worstReason || 'このタイプとは価値観や行動パターンが大きく異なるため、理解し合うのが難しい関係です。'}</p>
                       </div>
                     </div>
                   </div>
