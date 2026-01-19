@@ -61,7 +61,7 @@ export const questions: Question[] = [
   {
     id: 10,
     axis: 'AP',
-    direction: 'negative',
+    direction: 'positive',
     text: '目隠しをされたり、手を押さえられたりして「自由を奪われる」ことに、少し興味がある。'
   },
   {
@@ -73,7 +73,7 @@ export const questions: Question[] = [
   {
     id: 12,
     axis: 'RF',
-    direction: 'negative',
+    direction: 'positive',
     text: '耳元で囁かれる言葉や、ちょっと意地悪な言葉攻めに弱い。'
   },
   {
@@ -85,7 +85,7 @@ export const questions: Question[] = [
   {
     id: 14,
     axis: 'TE',
-    direction: 'negative',
+    direction: 'positive',
     text: '好きな相手となら、ただ触れ合っているだけで泣きそうになるくらい幸せを感じる。'
   },
   {
@@ -97,7 +97,7 @@ export const questions: Question[] = [
   {
     id: 16,
     axis: 'NC',
-    direction: 'negative',
+    direction: 'positive',
     text: '野外や車の中など、スリルのある環境ですることに興味がある。'
   },
 
