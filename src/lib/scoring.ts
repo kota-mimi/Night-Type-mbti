@@ -3,7 +3,7 @@
  * 
  * ■ 4つの分析軸:
  * 1. AP軸: Active (攻め) vs Passive (受け)
- * 2. PB軸: Physical (肉体/リアル) vs Brain (脳内/ファンタジー)
+ * 2. RF軸: Real (肉体/リアル) vs Fantasy (脳内/ファンタジー)
  * 3. TE軸: Technical (機能/技術) vs Emotional (感情/情緒)
  * 4. NC軸: Normal (安定/王道) vs Chaos (刺激/カオス)
  * 
@@ -18,7 +18,7 @@ import { questions } from '@/data/questions';
 export function calculateScore(answers: Answer[]): Score {
   const scores: Score = {
     AP: 0,
-    PB: 0,
+    RF: 0,
     TE: 0,
     NC: 0
   };
@@ -54,8 +54,8 @@ export function determineType(scores: Score): string {
   // 各軸の判定（0を境界とした判定）
   // AP軸: Active (攻め) vs Passive (受け)
   nightCode += scores.AP >= 0 ? 'A' : 'P';
-  // PB軸: Physical (肉体/リアル) vs Brain (脳内/ファンタジー)
-  nightCode += scores.PB >= 0 ? 'P' : 'B';
+  // RF軸: Real (肉体/リアル) vs Fantasy (脳内/ファンタジー)
+  nightCode += scores.RF >= 0 ? 'R' : 'F';
   // TE軸: Technical (機能/技術) vs Emotional (感情/情緒)
   nightCode += scores.TE >= 0 ? 'T' : 'E';
   // NC軸: Normal (安定/王道) vs Chaos (刺激/カオス)

@@ -16,13 +16,13 @@ export const questions: Question[] = [
   },
   {
     id: 3,
-    axis: 'PB',
+    axis: 'RF',
     direction: 'positive',
     text: '雰囲気よりも、相手の「肌の感触」「匂い」「体の締まり」で興奮する。'
   },
   {
     id: 4,
-    axis: 'PB',
+    axis: 'RF',
     direction: 'negative',
     text: '「今、誰かに見られているかも」といった、スリルやシチュエーションだけで興奮できる。'
   },
@@ -66,13 +66,13 @@ export const questions: Question[] = [
   },
   {
     id: 11,
-    axis: 'PB',
+    axis: 'RF',
     direction: 'positive',
     text: '優しいだけのセックスより、少し乱暴に求められたり、痕（あと）が残るくらい激しい方が燃える。'
   },
   {
     id: 12,
-    axis: 'PB',
+    axis: 'RF',
     direction: 'negative',
     text: '耳元で囁かれる言葉や、ちょっと意地悪な言葉攻めに弱い。'
   },
@@ -116,13 +116,13 @@ export const questions: Question[] = [
   },
   {
     id: 19,
-    axis: 'PB',
+    axis: 'RF',
     direction: 'positive',
     text: 'ぶっちゃけ、複雑なムード作りよりも「回数」や「頻度」が多い方が愛されてると感じる。'
   },
   {
     id: 20,
-    axis: 'PB',
+    axis: 'RF',
     direction: 'negative',
     text: '日常生活の中で、ふとした時に「あの人とシたらどうなるか」などエッチな妄想をしてしまう。'
   },

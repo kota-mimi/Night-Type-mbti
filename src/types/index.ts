@@ -85,7 +85,7 @@ export interface Answer {
 
 export interface Score {
   AP: number;
-  PB: number;
+  RF: number;
   TE: number;
   NC: number;
 }
