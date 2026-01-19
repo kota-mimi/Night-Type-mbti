@@ -37,13 +37,8 @@ export default function ResultPage() {
       setUserGender(savedGender)
     }
 
-    // まずローカルストレージから直接タイプを確認
-    const savedType = localStorage.getItem('diet-quiz-result-type')
-    if (savedType && genderedDiagramTypes[savedGender || 'male'][savedType]) {
-      setUserType(savedType)
-      setIsLoading(false)
-      return
-    }
+    // 新しい診断の場合は前回の結果をクリア
+    localStorage.removeItem('diet-quiz-result-type')
 
     // タイプが保存されていない場合は従来の方法で計算
     const savedAnswers = localStorage.getItem('diet-quiz-answers')

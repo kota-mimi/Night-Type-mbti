@@ -29,17 +29,19 @@ import { questions } from '@/data/questions';
  * NC軸: Normal (+) vs Chaos (-)
  * 
  * ■ スコアリングのルール
- * 回答値: +3(とてもそう思う) 〜 -3(全くそう思わない)
+ * 回答値: +2(とてもそう思う) 〜 -2(全くそう思わない)
  * direction: 'positive'なら加算、'negative'なら減算（反転）
  */
 export function calculateScore(answers: Answer[]): Score {
   // 1. スコア初期化
   let scores: Score = { AP: 0, RF: 0, TE: 0, NC: 0 };
 
-  // 2. デバッグ用ログ（必ず実装！）
-  console.log("=== DEBUG: calculateScore (NEW LOGIC) ===");
-  console.log("Input Answers:", answers); 
-  console.log("Total answers received:", answers.length);
+  // 2. デバッグ用ログ（開発環境のみ）
+  if (process.env.NODE_ENV === 'development') {
+    console.log("=== DEBUG: calculateScore (NEW LOGIC) ===");
+    console.log("Input Answers:", answers); 
+    console.log("Total answers received:", answers.length);
+  }
 
   // 3. 集計処理
   questions.forEach(q => {
@@ -47,40 +49,60 @@ export function calculateScore(answers: Answer[]): Score {
     const answerObj = answers.find(a => a.questionId === q.id);
     const userValue = answerObj !== undefined ? answerObj.score : 0;
 
-    console.log(`Q${q.id}: axis=${q.axis}, direction=${q.direction}, userScore=${userValue}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Q${q.id}: axis=${q.axis}, direction=${q.direction}, userScore=${userValue}`);
+    }
 
     if (q.direction === 'positive') {
       scores[q.axis as keyof Score] += userValue;
-      console.log(`  → ${q.axis} += ${userValue} = ${scores[q.axis as keyof Score]}`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`  → ${q.axis} += ${userValue} = ${scores[q.axis as keyof Score]}`);
+      }
     } else {
       scores[q.axis as keyof Score] -= userValue; // negativeは反転
-      console.log(`  → ${q.axis} -= ${userValue} = ${scores[q.axis as keyof Score]}`);
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`  → ${q.axis} -= ${userValue} = ${scores[q.axis as keyof Score]}`);
+      }
     }
   });
 
-  console.log("Calculated Scores:", scores);
+  if (process.env.NODE_ENV === 'development') {
+    console.log("Calculated Scores:", scores);
+  }
   return scores;
 }
 
 export function determineType(scores: Score): string {
-  console.log("=== DEBUG: determineType (NEW LOGIC) ===");
-  console.log("Input Scores:", scores);
+  if (process.env.NODE_ENV === 'development') {
+    console.log("=== DEBUG: determineType (NEW LOGIC) ===");
+    console.log("Input Scores:", scores);
+  }
   
   // 4. タイプ判定 (0以上なら左、未満なら右)
   let typeCode = '';
   typeCode += scores.AP >= 0 ? 'A' : 'P';
-  console.log(`AP: ${scores.AP} >= 0 ? A : P → ${scores.AP >= 0 ? 'A' : 'P'}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`AP: ${scores.AP} >= 0 ? A : P → ${scores.AP >= 0 ? 'A' : 'P'}`);
+  }
   
   typeCode += scores.RF >= 0 ? 'R' : 'F';
-  console.log(`RF: ${scores.RF} >= 0 ? R : F → ${scores.RF >= 0 ? 'R' : 'F'}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`RF: ${scores.RF} >= 0 ? R : F → ${scores.RF >= 0 ? 'R' : 'F'}`);
+  }
   
   typeCode += scores.TE >= 0 ? 'T' : 'E';
-  console.log(`TE: ${scores.TE} >= 0 ? T : E → ${scores.TE >= 0 ? 'T' : 'E'}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`TE: ${scores.TE} >= 0 ? T : E → ${scores.TE >= 0 ? 'T' : 'E'}`);
+  }
   
   typeCode += scores.NC >= 0 ? 'N' : 'C';
-  console.log(`NC: ${scores.NC} >= 0 ? N : C → ${scores.NC >= 0 ? 'N' : 'C'}`);
+  if (process.env.NODE_ENV === 'development') {
+    console.log(`NC: ${scores.NC} >= 0 ? N : C → ${scores.NC >= 0 ? 'N' : 'C'}`);
+  }
 
-  console.log("Final TypeCode:", typeCode);
+  if (process.env.NODE_ENV === 'development') {
+    console.log("Final TypeCode:", typeCode);
+  }
   return typeCode;
 }
 
