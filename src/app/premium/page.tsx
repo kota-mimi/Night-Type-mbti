@@ -59,7 +59,10 @@ export default function PremiumPage() {
       const data = genderedDiagramTypes[gender]?.[type]
       
       if (data) {
-        const isPurchased = localStorage.getItem(`premium_${code}`) === 'true'
+        // サーバーサイドでは常にfalse、クライアントサイドで更新
+        const isPurchased = typeof window !== 'undefined' 
+          ? localStorage.getItem(`premium_${code}`) === 'true' 
+          : false
         characters.push({
           code,
           slug,
@@ -74,7 +77,12 @@ export default function PremiumPage() {
     return characters
   }
 
-  const allCharacters = getAllCharacters()
+  const [allCharacters, setAllCharacters] = useState(getAllCharacters())
+
+  useEffect(() => {
+    // クライアントサイドで購入状況を更新
+    setAllCharacters(getAllCharacters())
+  }, [])
 
   if (isPurchased) {
     return (
