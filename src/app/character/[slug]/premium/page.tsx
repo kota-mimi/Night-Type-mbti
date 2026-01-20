@@ -221,7 +221,7 @@ export default function CharacterPremiumPage() {
           
           <div className="mb-8">
             <div className="text-5xl md:text-6xl font-bold mb-2">
-              ¥980
+              ¥300
             </div>
             <div className="text-lg opacity-80">
               キャラクター専用（永続利用）
@@ -256,13 +256,13 @@ export default function CharacterPremiumPage() {
           </p>
           <div className="flex justify-center items-center space-x-4 mb-6">
             <div className="text-center">
-              <div className="text-2xl font-bold text-gray-400 line-through">¥15,680</div>
+              <div className="text-2xl font-bold text-gray-400 line-through">¥9,600</div>
               <div className="text-sm text-gray-500">個別購入時</div>
             </div>
             <div className="text-4xl text-pink-500">→</div>
             <div className="text-center">
               <div className="text-3xl font-bold text-pink-600">¥2,980</div>
-              <div className="text-sm text-green-600 font-bold">約81%OFF！</div>
+              <div className="text-sm text-green-600 font-bold">約69%OFF！</div>
             </div>
           </div>
           <a

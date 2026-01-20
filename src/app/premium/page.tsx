@@ -173,7 +173,7 @@ export default function PremiumPage() {
                   </div>
                 )}
                 
-                <div className="text-xs font-bold text-pink-600 mb-2">¥980</div>
+                <div className="text-xs font-bold text-pink-600 mb-2">¥300</div>
                 
                 {character.isPurchased ? (
                   <a
@@ -214,13 +214,13 @@ export default function PremiumPage() {
             <p className="text-lg font-bold mb-2">🎯 32キャラクター分まとめて</p>
             <div className="flex justify-center items-center space-x-4">
               <div className="text-center">
-                <div className="text-xl text-white/80 line-through">¥31,360</div>
+                <div className="text-xl text-white/80 line-through">¥9,600</div>
                 <div className="text-sm text-white/70">個別購入時</div>
               </div>
               <div className="text-2xl">→</div>
               <div className="text-center">
                 <div className="text-3xl font-bold">¥2,980</div>
-                <div className="text-sm font-bold bg-yellow-400 text-gray-800 px-2 py-1 rounded">約91%OFF！</div>
+                <div className="text-sm font-bold bg-yellow-400 text-gray-800 px-2 py-1 rounded">約69%OFF！</div>
               </div>
             </div>
           </div>
