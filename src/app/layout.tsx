@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
   openGraph: {
     siteName: 'Night Type',
     locale: 'ja_JP',
