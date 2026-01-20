@@ -167,10 +167,22 @@ export default function PremiumPage() {
             一度の購入で、すべての攻略法が永続的にご利用いただけます
           </p>
           
-          <div className="mb-8">
-            <div className="text-5xl md:text-6xl font-bold mb-2">
-              ¥2,980
+          <div className="bg-white/20 rounded-lg p-4 mb-6">
+            <p className="text-lg font-bold mb-2">🎯 16キャラクター分まとめて</p>
+            <div className="flex justify-center items-center space-x-4">
+              <div className="text-center">
+                <div className="text-xl text-white/80 line-through">¥15,680</div>
+                <div className="text-sm text-white/70">個別購入時</div>
+              </div>
+              <div className="text-2xl">→</div>
+              <div className="text-center">
+                <div className="text-3xl font-bold">¥2,980</div>
+                <div className="text-sm font-bold bg-yellow-400 text-gray-800 px-2 py-1 rounded">約81%OFF！</div>
+              </div>
             </div>
+          </div>
+          
+          <div className="mb-8">
             <div className="text-lg opacity-80">
               買い切り（永続利用）
             </div>
