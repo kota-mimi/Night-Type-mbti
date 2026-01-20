@@ -41,8 +41,8 @@ function GalleryContent() {
                 onClick={() => setSelectedGender('male')}
                 className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
                   selectedGender === 'male'
-                    ? 'bg-rose-500 text-white shadow-md'
-                    : 'text-rose-500 hover:bg-rose-50'
+                    ? 'bg-blue-500 text-white shadow-md'
+                    : 'text-blue-500 hover:bg-blue-50'
                 }`}
               >
                 男性版
@@ -67,14 +67,21 @@ function GalleryContent() {
             // 選択された性別のキャラクターデータを使用
             const type = genderedDiagramTypes[selectedGender][typeCode]
             
-            // 統一感のあるカードデザイン
-            const cardBgColor = 'bg-gradient-to-br from-pink-50 to-rose-50'
-            const textColor = 'text-rose-600'
+            // 性別に応じたカードデザイン
+            const cardBgColor = selectedGender === 'male' 
+              ? 'bg-gradient-to-br from-blue-50 to-sky-50' 
+              : 'bg-gradient-to-br from-pink-50 to-rose-50'
+            const textColor = selectedGender === 'male' 
+              ? 'text-blue-600' 
+              : 'text-rose-600'
+            const borderColor = selectedGender === 'male' 
+              ? 'border-blue-100' 
+              : 'border-pink-100'
             
             return (
               <motion.div
                 key={typeCode}
-                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl border border-pink-100`}
+                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl border ${borderColor}`}
               >
                 <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm">
                 {/* タイプコード - 小さく上部に表示 */}
@@ -86,7 +93,7 @@ function GalleryContent() {
 
                 {/* キャラクター絵文字 - 大きく中央に */}
                 <div className="flex justify-center pb-4">
-                  <div className="w-32 h-32 bg-gradient-to-br from-pink-100 to-rose-200 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className={`w-32 h-32 ${selectedGender === 'male' ? 'bg-gradient-to-br from-blue-100 to-sky-200' : 'bg-gradient-to-br from-pink-100 to-rose-200'} rounded-2xl flex items-center justify-center shadow-lg`}>
                     <span className="text-5xl">
                       {type.emoji}
                     </span>
@@ -175,7 +182,7 @@ function GalleryContent() {
                         localStorage.setItem('diet-quiz-result-type', String(typeCode))
                         window.location.href = '/result'
                       }}
-                      className="w-full bg-rose-500 hover:bg-rose-600 text-white text-sm font-medium py-3 px-4 rounded-full transition-colors duration-200"
+                      className={`w-full ${selectedGender === 'male' ? 'bg-blue-500 hover:bg-blue-600' : 'bg-rose-500 hover:bg-rose-600'} text-white text-sm font-medium py-3 px-4 rounded-full transition-colors duration-200`}
                     >
                       詳しく見る
                     </button>
@@ -190,7 +197,7 @@ function GalleryContent() {
         {/* ホームに戻るボタン */}
         <div className="text-center">
           <Link href="/quiz/1">
-            <button className="inline-flex items-center gap-2 bg-white text-rose-600 font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-200">
+            <button className={`inline-flex items-center gap-2 bg-white ${selectedGender === 'male' ? 'text-blue-600' : 'text-rose-600'} font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-200`}>
               <Home className="w-5 h-5" />
               診断を始める
             </button>
