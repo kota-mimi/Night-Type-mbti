@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Home, ArrowRight, Crown, Lock } from 'lucide-react'
+import { Home, ArrowRight } from 'lucide-react'
 import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
 import { diagramTypes } from '@/data/diagramTypes'
 
@@ -303,58 +303,6 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
           </div>
         </motion.div>
 
-        {/* 専用攻略法CTA */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-8 flex justify-center"
-        >
-          <div className="bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl p-6 max-w-md w-full text-center text-white shadow-lg">
-            <div className="mb-4">
-              <Crown className="w-12 h-12 mx-auto mb-3" />
-              <h3 className={`text-xl font-bold mb-2 ${zenMaruGothic.className}`}>
-                {character.name}専用攻略法
-              </h3>
-              <p className="text-sm opacity-90">
-                さらに詳しい裏性格・攻略テクニック・相性分析を見る
-              </p>
-            </div>
-            
-            <div className="bg-white/20 rounded-lg p-3 mb-4">
-              <div className="flex items-center justify-center space-x-4 text-sm">
-                <div className="flex items-center">
-                  <Lock className="w-4 h-4 mr-1" />
-                  <span>裏性格解析</span>
-                </div>
-                <div className="flex items-center">
-                  <Lock className="w-4 h-4 mr-1" />
-                  <span>専用テクニック</span>
-                </div>
-                <div className="flex items-center">
-                  <Lock className="w-4 h-4 mr-1" />
-                  <span>相性詳細</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-4">
-              <div className="text-2xl font-bold">¥980</div>
-              <div className="text-xs opacity-80">永続利用</div>
-            </div>
-
-            <Link href={`/character/${slug}/premium`}>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-pink-600 font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 w-full"
-              >
-                <Crown className="w-5 h-5 mr-2 inline" />
-                専用攻略法を解禁する
-              </motion.button>
-            </Link>
-          </div>
-        </motion.div>
       </div>
     </div>
   )
