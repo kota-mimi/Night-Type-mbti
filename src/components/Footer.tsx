@@ -53,7 +53,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/about" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  ダイエット診断16とは
+                  Night Typeとは
                 </Link>
               </li>
             </ul>

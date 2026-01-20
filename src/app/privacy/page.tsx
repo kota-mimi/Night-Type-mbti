@@ -6,8 +6,8 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 export const metadata = {
-  title: 'プライバシーポリシー | ダイエット診断16',
-  description: 'ダイエット診断16のプライバシーポリシー・個人情報の取り扱いについて',
+  title: 'プライバシーポリシー | Night Type',
+  description: 'Night Typeのプライバシーポリシー・個人情報の取り扱いについて',
 }
 
 export default function PrivacyPage() {
@@ -24,7 +24,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-lg font-bold mb-2 text-gray-800">個人情報の取り扱いについて</h2>
               <p className="mb-3">
-                ダイエット診断16（以下「当サービス」）では、ユーザーのプライバシーを尊重し、
+                Night Type（以下「当サービス」）では、ユーザーのプライバシーを尊重し、
                 個人情報の保護に努めております。
               </p>
             </section>
