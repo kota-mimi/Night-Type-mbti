@@ -6,11 +6,11 @@ import { genderedDiagramTypes } from '@/data/diagramTypes';
 // 全キャラクターのslugを生成
 const getAllCharacterSlugs = () => {
   const slugs: string[] = [];
-  Object.entries(genderedDiagramTypes.male).forEach(([key, char]) => {
-    slugs.push(`male-${key.toLowerCase().replace(/[^a-z0-9]/g, '-')}`);
+  Object.keys(genderedDiagramTypes.male).forEach((key) => {
+    slugs.push(`male-${key.toLowerCase()}`);
   });
-  Object.entries(genderedDiagramTypes.female).forEach(([key, char]) => {
-    slugs.push(`female-${key.toLowerCase().replace(/[^a-z0-9]/g, '-')}`);
+  Object.keys(genderedDiagramTypes.female).forEach((key) => {
+    slugs.push(`female-${key.toLowerCase()}`);
   });
   return slugs;
 };
@@ -79,55 +79,44 @@ export default async function CharacterPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-300 via-teal-200 to-blue-300">
       <div className="container mx-auto px-4 py-8">
-        {/* ヘッダー */}
-        <div className="text-center mb-8">
-          <div className="text-6xl mb-4">{character.emoji}</div>
-          <h1 className="text-4xl font-bold text-white mb-2">{character.name}</h1>
-          <p className="text-xl text-purple-200 font-medium">{character.catchcopy}</p>
-        </div>
-
-        {/* メインコンテンツ */}
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-8">
-            <h2 className="text-2xl font-bold text-white mb-4">基本的な生態</h2>
-            <p className="text-lg text-gray-200 mb-6">{character.basicEcology}</p>
-            
-            <h2 className="text-2xl font-bold text-white mb-4">詳しい解説</h2>
-            <p className="text-lg text-gray-200 mb-6">{character.detailedEcology}</p>
-          </div>
-
-          {/* 診断へのCTA */}
-          <div className="text-center">
-            <div className="bg-gradient-to-r from-pink-500 to-purple-600 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                あなたはこのタイプ？
-              </h3>
-              <p className="text-lg text-purple-100 mb-6">
-                無料の診断で、あなたの夜の性格タイプを発見しましょう
-              </p>
-              <Link
-                href="/gender-selection"
-                className="inline-block bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-purple-100 transition-colors"
-              >
-                診断を始める
-              </Link>
+        {/* メインキャラクターカード */}
+        <div className="flex justify-center items-center min-h-[70vh]">
+          <div className="max-w-md mx-auto">
+            <div className="bg-white rounded-3xl shadow-xl p-8 text-center">
+              {/* キャラクター絵文字 */}
+              <div className="text-8xl mb-4">{character.emoji}</div>
+              
+              {/* キャラクター名 */}
+              <h1 className="text-2xl font-bold text-gray-800 mb-2">{character.name}</h1>
+              
+              {/* キャッチコピー */}
+              <p className="text-sm text-gray-600 mb-6">{character.catchcopy}</p>
+              
+              {/* 基本生態 */}
+              <div className="mb-6">
+                <h2 className="text-lg font-bold text-gray-800 mb-3">基本生態</h2>
+                <p className="text-sm text-gray-600 leading-relaxed">{character.basicEcology}</p>
+              </div>
             </div>
-          </div>
-
-          {/* 他のキャラクター */}
-          <div className="mt-12">
-            <h3 className="text-2xl font-bold text-white text-center mb-8">
-              他のキャラクタータイプも見る
-            </h3>
-            <div className="text-center">
-              <Link
-                href="/gallery"
-                className="inline-block bg-white/10 backdrop-blur-md text-white px-6 py-3 rounded-full hover:bg-white/20 transition-colors"
-              >
-                全キャラクター一覧を見る
-              </Link>
+            
+            {/* 診断CTA */}
+            <div className="mt-8">
+              <div className="bg-white rounded-2xl shadow-lg p-6 text-center">
+                <h3 className="text-lg font-bold text-gray-800 mb-2">
+                  あなたの夜タイプは何？
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  診断してみよう！
+                </p>
+                <Link
+                  href="/gender-selection"
+                  className="inline-block bg-blue-500 text-white px-6 py-3 rounded-full font-bold hover:bg-blue-600 transition-colors"
+                >
+                  診断を始める
+                </Link>
+              </div>
             </div>
           </div>
         </div>
