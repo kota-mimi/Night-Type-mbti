@@ -2,32 +2,26 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { genderedDiagramTypes } from '@/data/diagramTypes';
-
-// 全キャラクターのslugを生成
-const getAllCharacterSlugs = () => {
-  const slugs: string[] = [];
-  Object.keys(genderedDiagramTypes.male).forEach((key) => {
-    slugs.push(`male-${key.toLowerCase()}`);
-  });
-  Object.keys(genderedDiagramTypes.female).forEach((key) => {
-    slugs.push(`female-${key.toLowerCase()}`);
-  });
-  return slugs;
-};
+import { characterSlugs, slugToType } from '@/data/characterSlugs';
 
 // slugからキャラクター情報を取得
 const getCharacterBySlug = (slug: string) => {
   if (!slug || typeof slug !== 'string') return null;
   
-  if (slug.startsWith('male-')) {
-    const key = slug.replace('male-', '').toUpperCase();
-    const char = genderedDiagramTypes.male[key as keyof typeof genderedDiagramTypes.male];
+  // 既存のslugToTypeマッピングを使用
+  const typeKey = slugToType[slug];
+  if (!typeKey) return null;
+  
+  // male-XXXX または female-XXXX の形式
+  if (typeKey.startsWith('male-')) {
+    const key = typeKey.replace('male-', '') as keyof typeof genderedDiagramTypes.male;
+    const char = genderedDiagramTypes.male[key];
     return char ? { type: key, gender: 'male' as const, ...char } : null;
   }
   
-  if (slug.startsWith('female-')) {
-    const key = slug.replace('female-', '').toUpperCase();
-    const char = genderedDiagramTypes.female[key as keyof typeof genderedDiagramTypes.female];
+  if (typeKey.startsWith('female-')) {
+    const key = typeKey.replace('female-', '') as keyof typeof genderedDiagramTypes.female;
+    const char = genderedDiagramTypes.female[key];
     return char ? { type: key, gender: 'female' as const, ...char } : null;
   }
   
@@ -65,7 +59,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
-  return getAllCharacterSlugs().map((slug) => ({
+  return Object.values(characterSlugs).map((slug) => ({
     slug,
   }));
 }
