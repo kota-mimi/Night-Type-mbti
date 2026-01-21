@@ -7,24 +7,30 @@ import { genderedDiagramTypes } from '@/data/diagramTypes';
 const getAllCharacterSlugs = () => {
   const slugs: string[] = [];
   Object.entries(genderedDiagramTypes.male).forEach(([key, char]) => {
-    slugs.push(key.toLowerCase().replace(/[^a-z0-9]/g, '-'));
+    slugs.push(`male-${key.toLowerCase().replace(/[^a-z0-9]/g, '-')}`);
   });
   Object.entries(genderedDiagramTypes.female).forEach(([key, char]) => {
-    slugs.push(key.toLowerCase().replace(/[^a-z0-9]/g, '-'));
+    slugs.push(`female-${key.toLowerCase().replace(/[^a-z0-9]/g, '-')}`);
   });
   return slugs;
 };
 
 // slugからキャラクター情報を取得
 const getCharacterBySlug = (slug: string) => {
-  const allChars = { ...genderedDiagramTypes.male, ...genderedDiagramTypes.female };
+  if (!slug || typeof slug !== 'string') return null;
   
-  for (const [key, char] of Object.entries(allChars)) {
-    const charSlug = key.toLowerCase().replace(/[^a-z0-9]/g, '-');
-    if (charSlug === slug) {
-      return { type: key, ...char };
-    }
+  if (slug.startsWith('male-')) {
+    const key = slug.replace('male-', '').toUpperCase();
+    const char = genderedDiagramTypes.male[key as keyof typeof genderedDiagramTypes.male];
+    return char ? { type: key, gender: 'male' as const, ...char } : null;
   }
+  
+  if (slug.startsWith('female-')) {
+    const key = slug.replace('female-', '').toUpperCase();
+    const char = genderedDiagramTypes.female[key as keyof typeof genderedDiagramTypes.female];
+    return char ? { type: key, gender: 'female' as const, ...char } : null;
+  }
+  
   return null;
 };
 
@@ -33,7 +39,8 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const character = getCharacterBySlug(params.slug);
+  const slug = await params.slug;
+  const character = getCharacterBySlug(slug);
   
   if (!character) {
     return {
@@ -63,8 +70,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function CharacterPage({ params }: PageProps) {
-  const character = getCharacterBySlug(params.slug);
+export default async function CharacterPage({ params }: PageProps) {
+  const slug = await params.slug;
+  const character = getCharacterBySlug(slug);
 
   if (!character) {
     notFound();
