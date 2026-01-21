@@ -29,11 +29,11 @@ const getCharacterBySlug = (slug: string) => {
 };
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const slug = await params.slug;
+  const { slug } = await params;
   const character = getCharacterBySlug(slug);
   
   if (!character) {
@@ -65,7 +65,7 @@ export async function generateStaticParams() {
 }
 
 export default async function CharacterPage({ params }: PageProps) {
-  const slug = await params.slug;
+  const { slug } = await params;
   const character = getCharacterBySlug(slug);
 
   if (!character) {

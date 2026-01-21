@@ -20,11 +20,11 @@ export const characterSlugs: Record<string, string> = {
 
   // Female Night Code characters
   'female-ARTN': 'cold-empress',         // 冷徹な女帝（クイーン）
-  'female-AFTN': 'ice-beauty',           // 氷の美貌（ビューティー）
+  'female-AFTN': 'little-devil-inventor',// 小悪魔な発明家
   'female-AREN': 'overprotective-mama',  // 過保護なママ
   'female-AFEN': 'magical-saint',        // 魔性の聖女
   'female-ARTC': 'carnivorous-hunter',   // 肉食系ハンター
-  'female-AFTC': 'little-devil-inventor',// 小悪魔な発明家
+  'female-AFTC': 'ice-beauty',           // 氷の美貌（ビューティー）
   'female-AREC': 'spotlight-actress',    // スポットライト女優
   'female-AFEC': 'innocent-tinkerbell',  // 無邪気なティンカーベル
   'female-PRTN': 'iron-wall-guard',      // 鉄壁のガードマン
