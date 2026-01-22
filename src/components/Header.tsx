@@ -116,11 +116,11 @@ export default function Header() {
         initial={{ x: '100%' }}
         animate={{ x: isMenuOpen ? 0 : '100%' }}
         transition={{ type: 'tween', duration: 0.3 }}
-        className="fixed top-0 right-0 h-full w-80 z-50 md:hidden"
+        className="fixed top-0 right-0 h-full w-[85vw] max-w-sm z-50 md:hidden"
         style={{
           background: 'rgba(5, 5, 16, 0.95)',
           backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)',
+          webkitBackdropFilter: 'blur(10px)',
           borderLeft: '1px solid rgba(255, 255, 255, 0.1)'
         }}
       >
