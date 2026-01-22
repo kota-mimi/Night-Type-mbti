@@ -488,12 +488,21 @@ export default function ResultPage() {
                     <div className="glass-card p-6 border border-green-500/30 relative overflow-hidden" style={{
                       boxShadow: '0 0 20px rgba(34, 197, 94, 0.2)'
                     }}>
-                      {/* 背景絵文字 */}
+                      {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-bounce-slow">
-                          <span className="text-6xl">
-                            {bestPartner ? (genderedDiagramTypes[targetGender]?.[bestPartner.code]?.emoji || '💕') : '💕'}
-                          </span>
+                          {/* 男性ユーザーでbestPartnerがARTN（冷徹な女帝）の場合はイラストを表示 */}
+                          {userGender === 'male' && bestPartner?.code === 'ARTN' ? (
+                            <img 
+                              src="/characters/queen_character.png" 
+                              alt="冷徹な女帝" 
+                              className="w-24 h-24 object-contain"
+                            />
+                          ) : (
+                            <span className="text-6xl">
+                              {bestPartner ? (genderedDiagramTypes[targetGender]?.[bestPartner.code]?.emoji || '💕') : '💕'}
+                            </span>
+                          )}
                         </div>
                       </div>
                       <div className="text-center space-y-3 relative">
@@ -516,9 +525,18 @@ export default function ResultPage() {
                       {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-float">
-                          <span className="text-6xl">
-                            {worstEnemy ? (genderedDiagramTypes[targetGender]?.[worstEnemy.code]?.emoji || '⚠️') : '⚠️'}
-                          </span>
+                          {/* 男性ユーザーでworstEnemyがARTN（冷徹な女帝）の場合はイラストを表示 */}
+                          {userGender === 'male' && worstEnemy?.code === 'ARTN' ? (
+                            <img 
+                              src="/characters/queen_character.png" 
+                              alt="冷徹な女帝" 
+                              className="w-24 h-24 object-contain"
+                            />
+                          ) : (
+                            <span className="text-6xl">
+                              {worstEnemy ? (genderedDiagramTypes[targetGender]?.[worstEnemy.code]?.emoji || '⚠️') : '⚠️'}
+                            </span>
+                          )}
                         </div>
                       </div>
                       <div className="text-center space-y-3 relative">
