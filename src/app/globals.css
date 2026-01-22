@@ -77,33 +77,27 @@ body::before {
   will-change: transform;
 }
 
-/* Glassmorphism Components */
-.glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 20px;
-  /* GPU hack for Chrome rendering bug fix */
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  will-change: transform, opacity;
-}
-
-.glass-button {
-  background: rgba(255, 255, 255, 0.08);
+/* Solid Dark Components */
+.dark-card {
+  background-color: #0a0a12;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
-  /* GPU hack for Chrome rendering bug fix */
+  border-radius: 20px;
+  /* GPU optimized for smooth rendering */
   transform: translateZ(0);
   backface-visibility: hidden;
-  will-change: transform, opacity;
 }
 
-.glass-button:hover {
-  background: rgba(255, 255, 255, 0.12);
+.dark-button {
+  background-color: rgba(10, 10, 18, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  /* GPU optimized for smooth rendering */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.dark-button:hover {
+  background-color: rgba(20, 20, 30, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.25);
   transform: translateY(-2px);
 }
@@ -124,19 +118,17 @@ body::before {
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
-/* Luxury Button Styles */
+/* Luxury Button Styles - Solid Version */
 .luxury-button {
-  background: linear-gradient(135deg, rgba(255, 0, 127, 0.2) 0%, rgba(123, 44, 191, 0.2) 100%);
-  border: 1px solid rgba(255, 0, 127, 0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.3) 0%, rgba(123, 44, 191, 0.3) 100%);
+  background-color: #0a0a12;
+  border: 1px solid rgba(255, 0, 127, 0.4);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  /* GPU hack for Chrome rendering bug fix */
+  /* GPU optimized for smooth rendering */
   transform: translateZ(0);
   backface-visibility: hidden;
-  will-change: transform, opacity;
 }
 
 .luxury-button::before {
@@ -189,25 +181,19 @@ body::before {
   animation: orb-float 12s ease-in-out infinite;
 }
 
-/* Chrome fallback for backdrop-filter rendering issues */
-@supports (-webkit-backdrop-filter: blur(1px)) {
-  @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    .glass-card-chrome-fallback {
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      background: rgba(0, 0, 0, 0.85) !important;
-    }
-    
-    .glass-button-chrome-fallback {
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      background: rgba(255, 255, 255, 0.15) !important;
-    }
-    
-    .luxury-button-chrome-fallback {
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      background: linear-gradient(135deg, rgba(255, 0, 127, 0.4) 0%, rgba(123, 44, 191, 0.4) 100%) !important;
-    }
-  }
+/* Solid Dark Design - No Chrome fallbacks needed */
+.dark-card-enhanced {
+  background-color: #0a0a12;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dark-button-enhanced {
+  background-color: rgba(10, 10, 18, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.luxury-button-enhanced {
+  background: linear-gradient(135deg, #0a0a12 0%, rgba(123, 44, 191, 0.2) 100%);
+  border: 1px solid rgba(255, 0, 127, 0.5);
 }

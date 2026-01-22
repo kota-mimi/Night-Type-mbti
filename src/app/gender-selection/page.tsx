@@ -57,7 +57,7 @@ export default function GenderSelectionPage() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="glass-card p-8 md:p-12 max-w-lg w-full"
+          className="dark-card p-8 md:p-12 max-w-lg w-full"
         >
           
           {/* ヘッダー */}

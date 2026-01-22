@@ -32,14 +32,11 @@ export default function Header() {
     <header 
       className={`sticky top-0 z-50 ${notoSansJP.className}`}
       style={{
-        background: 'rgba(0, 0, 0, 0.7)',
-        backdropFilter: 'blur(10px)',
-        WebkitBackdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-        // GPU hack for Chrome rendering bug fix
+        backgroundColor: '#0a0a12',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+        // GPU optimized for smooth rendering
         transform: 'translateZ(0)',
-        backfaceVisibility: 'hidden',
-        willChange: 'transform, opacity'
+        backfaceVisibility: 'hidden'
       }}
     >
       <div className="container mx-auto px-4">
@@ -112,13 +109,10 @@ export default function Header() {
           transition={{ duration: 0.3, ease: 'easeOut' }}
           className="fixed inset-0 w-screen h-screen z-[9999] md:hidden flex flex-col justify-center items-center"
           style={{
-            background: 'rgba(5, 5, 16, 0.95)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-            // GPU hack for Chrome rendering bug fix
+            backgroundColor: 'rgba(10, 10, 18, 0.98)',
+            // GPU optimized for smooth rendering
             transform: 'translateZ(0)',
-            backfaceVisibility: 'hidden',
-            willChange: 'transform, opacity'
+            backfaceVisibility: 'hidden'
           }}
           onClick={() => setIsMenuOpen(false)}
         >

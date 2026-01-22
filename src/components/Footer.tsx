@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-[#050510] to-[#0a0a18] py-8 mt-16 border-t border-gray-800/30">
+    <footer className="py-8 mt-16 border-t border-gray-800/30" style={{ backgroundColor: '#0a0a12' }}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center space-y-6">
           
