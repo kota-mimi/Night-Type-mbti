@@ -485,8 +485,8 @@ export default function ResultPage() {
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {/* 最高のパートナー */}
-                    <div className="glass-card p-6 border border-neon-cyan-500/30 relative overflow-hidden" style={{
-                      boxShadow: '0 0 20px rgba(0, 255, 255, 0.2)'
+                    <div className="glass-card p-6 border border-green-500/30 relative overflow-hidden" style={{
+                      boxShadow: '0 0 20px rgba(34, 197, 94, 0.2)'
                     }}>
                       {/* 背景絵文字 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
@@ -497,7 +497,9 @@ export default function ResultPage() {
                         </div>
                       </div>
                       <div className="text-center space-y-3 relative">
-                        <h3 className="text-lg font-bold neon-cyan">最高のパートナー</h3>
+                        <h3 className="text-lg font-bold text-green-400" style={{
+                          textShadow: '0 0 10px rgba(34, 197, 94, 0.5)'
+                        }}>最高のパートナー</h3>
                         <h4 className="text-lg font-bold text-gray-200">
                           {bestPartner?.name || '相性の良いタイプ'}
                         </h4>
@@ -508,8 +510,8 @@ export default function ResultPage() {
                     </div>
 
                     {/* 最悪の天敵 */}
-                    <div className="glass-card p-6 border border-neon-pink-500/30 relative overflow-hidden" style={{
-                      boxShadow: '0 0 20px rgba(255, 0, 127, 0.2)'
+                    <div className="glass-card p-6 border border-red-500/30 relative overflow-hidden" style={{
+                      boxShadow: '0 0 20px rgba(239, 68, 68, 0.2)'
                     }}>
                       {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
@@ -520,7 +522,9 @@ export default function ResultPage() {
                         </div>
                       </div>
                       <div className="text-center space-y-3 relative">
-                        <h3 className="text-lg font-bold neon-pink">最悪の天敵</h3>
+                        <h3 className="text-lg font-bold text-red-400" style={{
+                          textShadow: '0 0 10px rgba(239, 68, 68, 0.5)'
+                        }}>最悪の天敵</h3>
                         <h4 className="text-lg font-bold text-gray-200">
                           {worstEnemy?.name || '相性の悪いタイプ'}
                         </h4>
