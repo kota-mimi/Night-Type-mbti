@@ -499,7 +499,8 @@ export default function ResultPage() {
                               className="w-32 h-32 object-contain"
                               onError={(e) => {
                                 e.currentTarget.style.display = 'none';
-                                e.currentTarget.nextElementSibling.style.display = 'block';
+                                const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
+                                if (nextElement) nextElement.style.display = 'block';
                               }}
                             />
                           ) : null}
@@ -536,7 +537,8 @@ export default function ResultPage() {
                               className="w-32 h-32 object-contain"
                               onError={(e) => {
                                 e.currentTarget.style.display = 'none';
-                                e.currentTarget.nextElementSibling.style.display = 'block';
+                                const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
+                                if (nextElement) nextElement.style.display = 'block';
                               }}
                             />
                           ) : null}
