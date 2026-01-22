@@ -32,8 +32,8 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-pink-500 border-t-transparent rounded-full animate-spin" />
+    <Suspense fallback={<div className="min-h-screen bg-midnight-900 flex items-center justify-center">
+      <div className="w-8 h-8 border-2 border-neon-pink-500 border-t-transparent rounded-full animate-spin animate-glow-pulse" />
     </div>}>
       <HomeContent />
     </Suspense>
