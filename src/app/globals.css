@@ -67,10 +67,14 @@ body::before {
 
 .animate-float {
   animation: float 2.5s ease-in-out infinite;
+  /* GPU optimization for animations */
+  will-change: transform;
 }
 
 .animate-bounce-slow {
   animation: bounce-slow 2s ease-in-out infinite;
+  /* GPU optimization for animations */
+  will-change: transform;
 }
 
 /* Glassmorphism Components */
@@ -80,6 +84,10 @@ body::before {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 20px;
+  /* GPU hack for Chrome rendering bug fix */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .glass-button {
@@ -88,6 +96,10 @@ body::before {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: all 0.3s ease;
+  /* GPU hack for Chrome rendering bug fix */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .glass-button:hover {
@@ -121,6 +133,10 @@ body::before {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  /* GPU hack for Chrome rendering bug fix */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
 }
 
 .luxury-button::before {
@@ -152,6 +168,10 @@ body::before {
   border-radius: 50%;
   pointer-events: none;
   z-index: -1;
+  /* GPU optimization for animations */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .orb-pink {
@@ -167,4 +187,27 @@ body::before {
 .orb-purple {
   background: radial-gradient(circle, rgba(123, 44, 191, 0.1) 0%, transparent 70%);
   animation: orb-float 12s ease-in-out infinite;
+}
+
+/* Chrome fallback for backdrop-filter rendering issues */
+@supports (-webkit-backdrop-filter: blur(1px)) {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .glass-card-chrome-fallback {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: rgba(0, 0, 0, 0.85) !important;
+    }
+    
+    .glass-button-chrome-fallback {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
+    
+    .luxury-button-chrome-fallback {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      background: linear-gradient(135deg, rgba(255, 0, 127, 0.4) 0%, rgba(123, 44, 191, 0.4) 100%) !important;
+    }
+  }
 }

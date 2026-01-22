@@ -35,7 +35,11 @@ export default function Header() {
         background: 'rgba(0, 0, 0, 0.7)',
         backdropFilter: 'blur(10px)',
         WebkitBackdropFilter: 'blur(10px)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        // GPU hack for Chrome rendering bug fix
+        transform: 'translateZ(0)',
+        backfaceVisibility: 'hidden',
+        willChange: 'transform, opacity'
       }}
     >
       <div className="container mx-auto px-4">
@@ -110,7 +114,11 @@ export default function Header() {
           style={{
             background: 'rgba(5, 5, 16, 0.95)',
             backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)'
+            WebkitBackdropFilter: 'blur(10px)',
+            // GPU hack for Chrome rendering bug fix
+            transform: 'translateZ(0)',
+            backfaceVisibility: 'hidden',
+            willChange: 'transform, opacity'
           }}
           onClick={() => setIsMenuOpen(false)}
         >
