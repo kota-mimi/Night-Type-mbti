@@ -69,16 +69,18 @@ export default function Header() {
                   transition: 'all 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)'
-                  e.target.style.WebkitBackgroundClip = 'text'
-                  e.target.style.WebkitTextFillColor = 'transparent'
-                  e.target.style.textShadow = '0 0 8px rgba(255, 0, 127, 0.5)'
+                  const target = e.target as HTMLElement
+                  target.style.background = 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)'
+                  target.style.webkitBackgroundClip = 'text'
+                  target.style.webkitTextFillColor = 'transparent'
+                  target.style.textShadow = '0 0 8px rgba(255, 0, 127, 0.5)'
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.background = 'none'
-                  e.target.style.WebkitBackgroundClip = 'unset'
-                  e.target.style.WebkitTextFillColor = 'unset'
-                  e.target.style.textShadow = 'none'
+                  const target = e.target as HTMLElement
+                  target.style.background = 'none'
+                  target.style.webkitBackgroundClip = 'unset'
+                  target.style.webkitTextFillColor = 'unset'
+                  target.style.textShadow = 'none'
                 }}
               >
                 {item.label}
@@ -144,16 +146,18 @@ export default function Header() {
                 className="block text-xl font-medium text-gray-300 hover:text-transparent transition-all duration-300"
                 onClick={() => setIsMenuOpen(false)}
                 onMouseEnter={(e) => {
-                  e.target.style.background = 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)'
-                  e.target.style.WebkitBackgroundClip = 'text'
-                  e.target.style.WebkitTextFillColor = 'transparent'
-                  e.target.style.textShadow = '0 0 8px rgba(255, 0, 127, 0.5)'
+                  const target = e.target as HTMLElement
+                  target.style.background = 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)'
+                  target.style.webkitBackgroundClip = 'text'
+                  target.style.webkitTextFillColor = 'transparent'
+                  target.style.textShadow = '0 0 8px rgba(255, 0, 127, 0.5)'
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.background = 'none'
-                  e.target.style.WebkitBackgroundClip = 'unset'
-                  e.target.style.WebkitTextFillColor = 'unset'
-                  e.target.style.textShadow = 'none'
+                  const target = e.target as HTMLElement
+                  target.style.background = 'none'
+                  target.style.webkitBackgroundClip = 'unset'
+                  target.style.webkitTextFillColor = 'unset'
+                  target.style.textShadow = 'none'
                 }}
               >
                 {item.label}
