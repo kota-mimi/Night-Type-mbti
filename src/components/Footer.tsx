@@ -42,12 +42,6 @@ export default function Footer() {
             </Link>
           </div>
 
-          {/* コピーライト */}
-          <div className="pt-2 border-t border-gray-800/30">
-            <p className="text-gray-600 text-xs">
-              © 2024 Night Type. All rights reserved.
-            </p>
-          </div>
         </div>
       </div>
     </footer>

@@ -106,22 +106,6 @@ export default function HomeContent() {
           </div>
         </motion.div>
         
-        {/* Bottom CTA Section */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-gray-500 text-sm mb-8">
-            ✨ 無料・匿名・3分で完了 ✨
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 text-xs text-gray-600">
-            <span>🔒 プライバシー保護</span>
-            <span>📱 スマホ対応</span>
-            <span>🎯 高精度診断</span>
-          </div>
-        </motion.div>
       </main>
     </div>
   )
