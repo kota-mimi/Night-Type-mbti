@@ -64,23 +64,23 @@ export default function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-gray-300 hover:text-transparent font-medium transition-all duration-300"
+                className="font-medium transition-all duration-300"
                 style={{
+                  background: 'linear-gradient(to right, #FF007F, #00FFFF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  textShadow: '0 0 10px rgba(255, 0, 127, 0.3), 0 0 15px rgba(0, 255, 255, 0.2)',
                   transition: 'all 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
                   const target = e.target as HTMLElement
-                  target.style.background = 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)'
-                  target.style.webkitBackgroundClip = 'text'
-                  target.style.webkitTextFillColor = 'transparent'
-                  target.style.textShadow = '0 0 8px rgba(255, 0, 127, 0.5)'
+                  target.style.textShadow = '0 0 15px rgba(255, 0, 127, 0.6), 0 0 25px rgba(0, 255, 255, 0.4)'
+                  target.style.transform = 'scale(1.05)'
                 }}
                 onMouseLeave={(e) => {
                   const target = e.target as HTMLElement
-                  target.style.background = 'none'
-                  target.style.webkitBackgroundClip = 'unset'
-                  target.style.webkitTextFillColor = 'unset'
-                  target.style.textShadow = 'none'
+                  target.style.textShadow = '0 0 10px rgba(255, 0, 127, 0.3), 0 0 15px rgba(0, 255, 255, 0.2)'
+                  target.style.transform = 'scale(1)'
                 }}
               >
                 {item.label}
@@ -143,21 +143,24 @@ export default function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="block text-xl font-medium text-gray-300 hover:text-transparent transition-all duration-300"
+                className="block text-xl font-medium transition-all duration-300"
                 onClick={() => setIsMenuOpen(false)}
+                style={{
+                  background: 'linear-gradient(to right, #FF007F, #00FFFF)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  textShadow: '0 0 10px rgba(255, 0, 127, 0.3), 0 0 15px rgba(0, 255, 255, 0.2)',
+                  transition: 'all 0.3s ease'
+                }}
                 onMouseEnter={(e) => {
                   const target = e.target as HTMLElement
-                  target.style.background = 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)'
-                  target.style.webkitBackgroundClip = 'text'
-                  target.style.webkitTextFillColor = 'transparent'
-                  target.style.textShadow = '0 0 8px rgba(255, 0, 127, 0.5)'
+                  target.style.textShadow = '0 0 15px rgba(255, 0, 127, 0.6), 0 0 25px rgba(0, 255, 255, 0.4)'
+                  target.style.transform = 'scale(1.05)'
                 }}
                 onMouseLeave={(e) => {
                   const target = e.target as HTMLElement
-                  target.style.background = 'none'
-                  target.style.webkitBackgroundClip = 'unset'
-                  target.style.webkitTextFillColor = 'unset'
-                  target.style.textShadow = 'none'
+                  target.style.textShadow = '0 0 10px rgba(255, 0, 127, 0.3), 0 0 15px rgba(0, 255, 255, 0.2)'
+                  target.style.transform = 'scale(1)'
                 }}
               >
                 {item.label}
