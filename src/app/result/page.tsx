@@ -175,11 +175,14 @@ export default function ResultPage() {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 flex items-center justify-center ${notoSansJP.className}`}>
+      <div className={`min-h-screen bg-midnight-900 flex items-center justify-center ${notoSansJP.className}`}>
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-8 h-8 border-2 border-[#2196F3] border-t-transparent rounded-full"
+          className="w-8 h-8 border-2 border-neon-pink-500 border-t-transparent rounded-full"
+          style={{
+            boxShadow: '0 0 10px rgba(255, 0, 127, 0.5)'
+          }}
         />
       </div>
     )
@@ -191,12 +194,12 @@ export default function ResultPage() {
   
   if (!typeData) {
     return (
-      <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 flex items-center justify-center ${notoSansJP.className}`}>
+      <div className={`min-h-screen bg-midnight-900 flex items-center justify-center ${notoSansJP.className}`}>
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-[#333333] mb-4">エラーが発生しました</h1>
+          <h1 className="text-2xl font-bold text-gray-200 mb-4">エラーが発生しました</h1>
           <button
             onClick={handleRestart}
-            className="bg-[#2196F3] text-white px-6 py-3 rounded-full font-bold hover:bg-[#1976D2] transition-colors"
+            className="luxury-button text-white px-6 py-3 rounded-full font-bold transition-all"
           >
             最初からやり直す
           </button>
@@ -206,8 +209,13 @@ export default function ResultPage() {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
+    <div className={`min-h-screen bg-midnight-900 relative overflow-hidden ${notoSansJP.className}`}>
+      {/* Background Floating Orbs */}
+      <div className="floating-orb orb-pink w-64 h-64 top-20 left-10" style={{animationDelay: '0s'}} />
+      <div className="floating-orb orb-cyan w-48 h-48 top-1/2 right-20" style={{animationDelay: '4s'}} />
+      <div className="floating-orb orb-purple w-56 h-56 bottom-20 left-1/3" style={{animationDelay: '8s'}} />
+      <div className="floating-orb orb-pink w-40 h-40 top-1/3 right-1/4" style={{animationDelay: '12s'}} />
+      <div className="container mx-auto px-4 py-8 max-w-4xl relative z-10">
         
         {/* メインコンテンツカード */}
         <motion.div
@@ -215,7 +223,7 @@ export default function ResultPage() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="bg-white rounded-3xl shadow-2xl p-8 md:p-12"
+          className="glass-card p-8 md:p-12"
         >
           
           {/* キャラクター画像とタイトル */}
@@ -223,15 +231,18 @@ export default function ResultPage() {
             {/* キャラクター絵文字を中央配置 */}
             <div className="flex justify-center items-center">
               <div className="text-center">
-                <div className="w-48 h-48 bg-gradient-to-br from-pink-100 to-rose-200 rounded-full flex items-center justify-center shadow-lg mb-6">
-                  <span className="text-8xl">{typeData.emoji}</span>
+                <div className="w-48 h-48 bg-gradient-to-br from-midnight-700 to-midnight-800 rounded-full flex items-center justify-center shadow-lg mb-6 border border-gray-600">
+                  <span className="text-8xl animate-float">{typeData.emoji}</span>
                 </div>
                 {/* キャラクター名 */}
                 <motion.h1
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className={`text-3xl md:text-4xl font-bold text-gray-800 mb-4 ${zenMaruGothic.className}`}
+                  className={`text-3xl md:text-4xl font-bold text-gray-200 mb-4 ${zenMaruGothic.className}`}
+                  style={{
+                    textShadow: '0 0 10px rgba(255, 215, 0, 0.3)'
+                  }}
                 >
                   {typeData.name}
                 </motion.h1>
@@ -240,7 +251,7 @@ export default function ResultPage() {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-lg md:text-xl text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed"
+                  className="text-lg md:text-xl text-gray-400 font-medium max-w-2xl mx-auto leading-relaxed"
                 >
                   {typeData.catchcopy}
                 </motion.p>
@@ -260,10 +271,10 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-gray-800 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold neon-cyan text-center ${zenMaruGothic.className}`}>
                 夜の生態レポート
               </h2>
-              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+              <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
                 <p className="mb-4">{typeData.nightEcologyReport}</p>
               </div>
             </motion.div>
@@ -277,10 +288,10 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-pink-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold neon-pink text-center ${zenMaruGothic.className}`}>
                 あなたのエロさの正体
               </h2>
-              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+              <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
                 <p className="mb-4">{typeData.yourSexiness}</p>
               </div>
             </motion.div>
@@ -294,10 +305,12 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-red-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold text-red-400 text-center ${zenMaruGothic.className}`} style={{
+                textShadow: '0 0 10px rgba(239, 68, 68, 0.5)'
+              }}>
                 閲覧注意：本能のカルテ
               </h2>
-              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+              <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
                 <p className="mb-4">{typeData.instinctChart}</p>
               </div>
             </motion.div>
@@ -311,11 +324,13 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-purple-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold text-electric-purple-400 text-center ${zenMaruGothic.className}`} style={{
+                textShadow: '0 0 10px rgba(168, 85, 247, 0.5)'
+              }}>
                 夜の口癖・脳内
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-center">
-                <p className="mb-4 font-medium text-purple-800">{typeData.nightPhrase}</p>
+                <p className="mb-4 font-medium text-electric-purple-300">{typeData.nightPhrase}</p>
               </div>
             </motion.div>
           )}
@@ -328,10 +343,10 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-blue-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold neon-gold text-center ${zenMaruGothic.className}`}>
                 事後の賢者タイム
               </h2>
-              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+              <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
                 <p className="mb-4">{typeData.afterTime}</p>
               </div>
             </motion.div>
@@ -345,18 +360,18 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.9 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-rose-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-xl font-bold neon-pink text-center ${zenMaruGothic.className}`}>
                 SM診断
               </h2>
-              <div className="border border-rose-300 rounded-lg p-4">
+              <div className="glass-card p-4 border border-pink-500/30">
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
-                    <h3 className="text-sm font-medium text-rose-700 mb-1">脳内ドS度</h3>
-                    <div className="text-2xl font-bold text-rose-600">{typeData.sm_diagnosis.mind_s}%</div>
+                    <h3 className="text-sm font-medium text-neon-pink-300 mb-1">脳内ドS度</h3>
+                    <div className="text-2xl font-bold neon-pink">{typeData.sm_diagnosis.mind_s}%</div>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-rose-700 mb-1">肉体ドM度</h3>
-                    <div className="text-2xl font-bold text-rose-600">{typeData.sm_diagnosis.body_m}%</div>
+                    <h3 className="text-sm font-medium text-neon-pink-300 mb-1">肉体ドM度</h3>
+                    <div className="text-2xl font-bold neon-pink">{typeData.sm_diagnosis.body_m}%</div>
                   </div>
                 </div>
               </div>
@@ -371,22 +386,22 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 1.0 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-pink-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-xl font-bold neon-cyan text-center ${zenMaruGothic.className}`}>
                 ステータス
               </h2>
-              <div className="border border-pink-300 rounded-lg p-4">
+              <div className="glass-card p-4 border border-cyan-500/30">
                 <div className="grid grid-cols-3 gap-3 text-center">
                   <div>
-                    <h3 className="text-xs font-medium text-pink-700 mb-1">性欲</h3>
-                    <div className="text-lg font-bold text-pink-600">{typeData.stats.libido}</div>
+                    <h3 className="text-xs font-medium text-neon-cyan-300 mb-1">性欲</h3>
+                    <div className="text-lg font-bold neon-cyan">{typeData.stats.libido}</div>
                   </div>
                   <div>
-                    <h3 className="text-xs font-medium text-pink-700 mb-1">変態度</h3>
-                    <div className="text-lg font-bold text-pink-600">{typeData.stats.hentai}</div>
+                    <h3 className="text-xs font-medium text-neon-cyan-300 mb-1">変態度</h3>
+                    <div className="text-lg font-bold neon-cyan">{typeData.stats.hentai}</div>
                   </div>
                   <div>
-                    <h3 className="text-xs font-medium text-pink-700 mb-1">むっつり度</h3>
-                    <div className="text-lg font-bold text-pink-600">{typeData.stats.muttsuri}</div>
+                    <h3 className="text-xs font-medium text-neon-cyan-300 mb-1">むっつり度</h3>
+                    <div className="text-lg font-bold neon-cyan">{typeData.stats.muttsuri}</div>
                   </div>
                 </div>
               </div>
@@ -401,15 +416,17 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 1.1 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-rose-600 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-xl font-bold text-electric-purple-400 text-center ${zenMaruGothic.className}`} style={{
+                textShadow: '0 0 10px rgba(168, 85, 247, 0.5)'
+              }}>
                 浮気分析
               </h2>
-              <div className="border border-rose-300 rounded-lg p-4">
+              <div className="glass-card p-4 border border-purple-500/30">
                 <div className="text-center mb-3">
-                  <div className="text-2xl font-bold text-rose-600 mb-1">{typeData.uwaki.percent}</div>
-                  <div className="text-sm font-medium text-rose-700">{typeData.uwaki.type}</div>
+                  <div className="text-2xl font-bold text-electric-purple-300 mb-1">{typeData.uwaki.percent}</div>
+                  <div className="text-sm font-medium text-electric-purple-400">{typeData.uwaki.type}</div>
                 </div>
-                <div className="text-xs leading-relaxed text-gray-600 text-center max-w-md mx-auto">
+                <div className="text-xs leading-relaxed text-gray-400 text-center max-w-md mx-auto">
                   <p>{typeData.uwaki.text}</p>
                 </div>
               </div>
@@ -424,10 +441,10 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-gray-800 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold text-gray-300 text-center ${zenMaruGothic.className}`}>
                 基本生態
               </h2>
-              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-left">
+              <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
                 {typeData.detailedEcology.split('。').map((sentence, index, array) => (
                   <p key={index} className="mb-4">
                     {sentence.trim()}
@@ -445,7 +462,7 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 1.2 }}
             className="space-y-8"
           >
-            <h2 className={`text-2xl font-bold text-pink-500 text-center ${zenMaruGothic.className}`}>
+            <h2 className={`text-2xl font-bold neon-gold text-center ${zenMaruGothic.className}`}>
               相性チェック
             </h2>
             
@@ -468,7 +485,9 @@ export default function ResultPage() {
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {/* 最高のパートナー */}
-                    <div className="bg-pink-50/90 backdrop-blur-sm rounded-lg p-6 border border-pink-200 relative overflow-hidden">
+                    <div className="glass-card p-6 border border-neon-cyan-500/30 relative overflow-hidden" style={{
+                      boxShadow: '0 0 20px rgba(0, 255, 255, 0.2)'
+                    }}>
                       {/* 背景絵文字 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-bounce-slow">
@@ -478,18 +497,20 @@ export default function ResultPage() {
                         </div>
                       </div>
                       <div className="text-center space-y-3 relative">
-                        <h3 className="text-lg font-bold text-pink-600">最高のパートナー</h3>
-                        <h4 className="text-lg font-bold text-gray-800">
+                        <h3 className="text-lg font-bold neon-cyan">最高のパートナー</h3>
+                        <h4 className="text-lg font-bold text-gray-200">
                           {bestPartner?.name || '相性の良いタイプ'}
                         </h4>
                       </div>
-                      <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
+                      <div className="text-sm leading-relaxed text-gray-300 mt-4 text-left">
                         <p>{bestReason || 'このタイプとの相性は抜群です。お互いの特性が補完し合い、素晴らしい関係を築くことができます。'}</p>
                       </div>
                     </div>
 
                     {/* 最悪の天敵 */}
-                    <div className="bg-red-50/90 backdrop-blur-sm rounded-lg p-6 border border-red-200 relative overflow-hidden">
+                    <div className="glass-card p-6 border border-neon-pink-500/30 relative overflow-hidden" style={{
+                      boxShadow: '0 0 20px rgba(255, 0, 127, 0.2)'
+                    }}>
                       {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-float">
@@ -499,12 +520,12 @@ export default function ResultPage() {
                         </div>
                       </div>
                       <div className="text-center space-y-3 relative">
-                        <h3 className="text-lg font-bold text-red-600">最悪の天敵</h3>
-                        <h4 className="text-lg font-bold text-gray-800">
+                        <h3 className="text-lg font-bold neon-pink">最悪の天敵</h3>
+                        <h4 className="text-lg font-bold text-gray-200">
                           {worstEnemy?.name || '相性の悪いタイプ'}
                         </h4>
                       </div>
-                      <div className="text-sm leading-relaxed text-gray-700 mt-4 text-left">
+                      <div className="text-sm leading-relaxed text-gray-300 mt-4 text-left">
                         <p>{worstReason || 'このタイプとは価値観や行動パターンが大きく異なるため、理解し合うのが難しい関係です。'}</p>
                       </div>
                     </div>
@@ -529,7 +550,7 @@ export default function ResultPage() {
           
           {/* Share Section */}
           <div className="space-y-4">
-            <h3 className={`text-center text-gray-600 font-medium ${notoSansJP.className}`}>
+            <h3 className={`text-center text-gray-400 font-medium ${notoSansJP.className}`}>
               結果をシェアする
             </h3>
             
@@ -540,7 +561,7 @@ export default function ResultPage() {
                 onClick={handleCopyLink}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-gray-500 hover:bg-gray-600 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                className="w-12 h-12 glass-button text-gray-300 hover:text-white rounded-full transition-all duration-300 flex items-center justify-center"
                 title="リンクをコピー"
               >
                 <Copy className="w-5 h-5" />
@@ -573,7 +594,7 @@ export default function ResultPage() {
                 onClick={handleDownloadImage}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-white border-2 border-gray-300 hover:border-gray-400 text-gray-700 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                className="w-12 h-12 glass-button text-gray-300 hover:text-white rounded-full transition-all duration-300 flex items-center justify-center"
                 title="画像をダウンロード"
               >
                 <Download className="w-5 h-5" />
@@ -585,7 +606,7 @@ export default function ResultPage() {
           <div className="text-center pt-8 space-y-4">
             <button
               onClick={handleRestart}
-              className={`inline-block bg-[#2196F3] text-white px-8 py-3 rounded-full hover:bg-[#1976D2] transition-colors font-bold shadow-lg text-lg ${notoSansJP.className}`}
+              className={`inline-block luxury-button text-white px-8 py-3 rounded-full transition-all font-bold text-lg ${notoSansJP.className}`}
             >
               もう一度診断する
             </button>
