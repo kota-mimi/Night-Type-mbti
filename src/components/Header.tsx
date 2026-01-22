@@ -46,10 +46,12 @@ export default function Header() {
               <div 
                 className={`text-2xl font-black ${notoSerifJP.className} tracking-tight`}
                 style={{
-                  background: 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)',
+                  background: 'linear-gradient(to right, #FF007F, #00FFFF)',
                   WebkitBackgroundClip: 'text',
+                  webkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 10px rgba(255, 0, 127, 0.3), 0 0 20px rgba(255, 215, 0, 0.2)',
+                  webkitTextFillColor: 'transparent',
+                  textShadow: '0 0 10px rgba(255, 0, 127, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)',
                   filter: 'drop-shadow(0 0 8px rgba(255, 0, 127, 0.4))'
                 }}
               >
