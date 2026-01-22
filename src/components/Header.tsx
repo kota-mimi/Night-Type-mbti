@@ -118,10 +118,11 @@ export default function Header() {
         transition={{ type: 'tween', duration: 0.3 }}
         className="fixed top-0 right-0 h-full w-[85vw] max-w-sm z-50 md:hidden"
         style={{
-          background: 'rgba(5, 5, 16, 0.95)',
-          backdropFilter: 'blur(10px)',
-          webkitBackdropFilter: 'blur(10px)',
-          borderLeft: '1px solid rgba(255, 255, 255, 0.1)'
+          background: 'linear-gradient(135deg, rgba(5, 5, 16, 0.98), rgba(10, 10, 25, 0.95))',
+          backdropFilter: 'blur(20px)',
+          webkitBackdropFilter: 'blur(20px)',
+          borderLeft: '2px solid rgba(255, 0, 127, 0.3)',
+          boxShadow: '-5px 0 25px rgba(0, 0, 0, 0.5), inset 1px 0 0 rgba(255, 255, 255, 0.1)'
         }}
       >
         {/* Close Button */}

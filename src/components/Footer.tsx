@@ -4,42 +4,62 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#050510] py-6 mt-16 border-t border-gray-800/50">
-      {/* メインフッターコンテンツ - ミニマルデザイン */}
-      <div className="max-w-4xl mx-auto px-4">
-        {/* 中央配置のシンプルレイアウト */}
-        <div className="text-center space-y-4">
+    <footer className="bg-gradient-to-t from-[#050510] to-[#0a0a18] py-8 mt-16 border-t border-gray-800/30">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="text-center space-y-6">
           
-          {/* SNSリンク - モバイル対応 */}
-          <div className="flex flex-wrap justify-center items-center gap-3 md:gap-6">
-            <a 
-              href="https://x.com/diet_chara16" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-400 transition-colors text-sm px-3 py-2 rounded-md"
-            >
-              X (Twitter)
-            </a>
-            <a 
-              href="https://www.instagram.com/diet_chara16?igsh=MXNwOWc2eHM0c3Y5bg%3D%3D&utm_source=qr"
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-400 transition-colors text-sm px-3 py-2 rounded-md"
-            >
-              Instagram
-            </a>
-            <Link 
-              href="/privacy" 
-              className="text-gray-500 hover:text-gray-400 transition-colors text-sm px-3 py-2 rounded-md"
-            >
-              プライバシーポリシー
-            </Link>
-            <Link 
-              href="/contact" 
-              className="text-gray-500 hover:text-gray-400 transition-colors text-sm px-3 py-2 rounded-md"
-            >
-              お問い合わせ
-            </Link>
+          {/* SNSセクション */}
+          <div className="space-y-4">
+            <h3 className="text-gray-400 text-sm font-medium tracking-wider uppercase">
+              Follow Us
+            </h3>
+            <div className="flex justify-center items-center gap-6">
+              <a 
+                href="https://x.com/diet_chara16" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-gray-500 hover:text-blue-400 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-gray-800/30"
+              >
+                <span className="text-sm font-medium">X (Twitter)</span>
+              </a>
+              <a 
+                href="https://www.instagram.com/diet_chara16?igsh=MXNwOWc2eHM0c3Y5bg%3D%3D&utm_source=qr"
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 text-gray-500 hover:text-pink-400 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-gray-800/30"
+              >
+                <span className="text-sm font-medium">Instagram</span>
+              </a>
+            </div>
+          </div>
+
+          {/* 区切り線 */}
+          <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
+
+          {/* リーガルリンクセクション */}
+          <div className="space-y-4">
+            <h3 className="text-gray-400 text-sm font-medium tracking-wider uppercase">
+              Information
+            </h3>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8">
+              <Link 
+                href="/privacy" 
+                className="group text-gray-500 hover:text-cyan-400 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-gray-800/30 text-sm font-medium"
+              >
+                プライバシーポリシー
+              </Link>
+              <Link 
+                href="/contact" 
+                className="group text-gray-500 hover:text-emerald-400 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-gray-800/30 text-sm font-medium"
+              >
+                お問い合わせ
+              </Link>
+            </div>
+          </div>
+
+          {/* コピーライト */}
+          <div className="pt-4 text-xs text-gray-600">
+            © 2024 Night Type. All rights reserved.
           </div>
 
         </div>
