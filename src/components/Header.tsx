@@ -48,9 +48,7 @@ export default function Header() {
                 style={{
                   background: 'linear-gradient(to right, #FF007F, #00FFFF)',
                   WebkitBackgroundClip: 'text',
-                  webkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
-                  webkitTextFillColor: 'transparent',
                   textShadow: '0 0 10px rgba(255, 0, 127, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)',
                   filter: 'drop-shadow(0 0 8px rgba(255, 0, 127, 0.4))'
                 }}
