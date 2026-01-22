@@ -496,7 +496,7 @@ export default function ResultPage() {
                             <img 
                               src="/characters/queen_character.png" 
                               alt="冷徹な女帝" 
-                              className="w-24 h-24 object-contain"
+                              className="w-32 h-32 object-contain"
                             />
                           ) : (
                             <span className="text-6xl">
@@ -530,7 +530,7 @@ export default function ResultPage() {
                             <img 
                               src="/characters/queen_character.png" 
                               alt="冷徹な女帝" 
-                              className="w-24 h-24 object-contain"
+                              className="w-32 h-32 object-contain"
                             />
                           ) : (
                             <span className="text-6xl">
