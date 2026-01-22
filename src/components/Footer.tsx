@@ -10,13 +10,13 @@ export default function Footer() {
         {/* 中央配置のシンプルレイアウト */}
         <div className="text-center space-y-4">
           
-          {/* SNSリンク */}
-          <div className="flex justify-center items-center space-x-6">
+          {/* SNSリンク - モバイル対応 */}
+          <div className="flex flex-wrap justify-center items-center gap-3 md:gap-6">
             <a 
               href="https://x.com/diet_chara16" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-400 transition-colors text-sm"
+              className="text-gray-500 hover:text-gray-400 transition-colors text-sm px-3 py-2 rounded-md"
             >
               X (Twitter)
             </a>
@@ -24,19 +24,19 @@ export default function Footer() {
               href="https://www.instagram.com/diet_chara16?igsh=MXNwOWc2eHM0c3Y5bg%3D%3D&utm_source=qr"
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-400 transition-colors text-sm"
+              className="text-gray-500 hover:text-gray-400 transition-colors text-sm px-3 py-2 rounded-md"
             >
               Instagram
             </a>
             <Link 
               href="/privacy" 
-              className="text-gray-500 hover:text-gray-400 transition-colors text-sm"
+              className="text-gray-500 hover:text-gray-400 transition-colors text-sm px-3 py-2 rounded-md"
             >
               プライバシーポリシー
             </Link>
             <Link 
               href="/contact" 
-              className="text-gray-500 hover:text-gray-400 transition-colors text-sm"
+              className="text-gray-500 hover:text-gray-400 transition-colors text-sm px-3 py-2 rounded-md"
             >
               お問い合わせ
             </Link>
