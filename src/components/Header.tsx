@@ -4,14 +4,14 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
-import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
+import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
   display: 'swap',
 })
 
-const zenMaruGothic = Zen_Maru_Gothic({
+const notoSerifJP = Noto_Serif_JP({
   weight: ['400', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
@@ -29,13 +29,30 @@ export default function Header() {
 
 
   return (
-    <header className={`sticky top-0 z-50 bg-white border-b border-gray-100 ${notoSansJP.className}`}>
+    <header 
+      className={`sticky top-0 z-50 ${notoSansJP.className}`}
+      style={{
+        background: 'rgba(0, 0, 0, 0.7)',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+      }}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center">
-              <div className={`text-2xl font-black text-gray-800 ${zenMaruGothic.className} tracking-tight`}>
+              <div 
+                className={`text-2xl font-black ${notoSerifJP.className} tracking-tight`}
+                style={{
+                  background: 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  textShadow: '0 0 10px rgba(255, 0, 127, 0.3), 0 0 20px rgba(255, 215, 0, 0.2)',
+                  filter: 'drop-shadow(0 0 8px rgba(255, 0, 127, 0.4))'
+                }}
+              >
                 Night Type
               </div>
             </div>
@@ -47,7 +64,22 @@ export default function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
+                className="text-gray-300 hover:text-transparent font-medium transition-all duration-300"
+                style={{
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)'
+                  e.target.style.WebkitBackgroundClip = 'text'
+                  e.target.style.WebkitTextFillColor = 'transparent'
+                  e.target.style.textShadow = '0 0 8px rgba(255, 0, 127, 0.5)'
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'none'
+                  e.target.style.WebkitBackgroundClip = 'unset'
+                  e.target.style.WebkitTextFillColor = 'unset'
+                  e.target.style.textShadow = 'none'
+                }}
               >
                 {item.label}
               </Link>
@@ -60,9 +92,9 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
+              <X className="w-6 h-6 text-gray-300" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
+              <Menu className="w-6 h-6 text-gray-300" />
             )}
           </button>
         </div>
@@ -75,7 +107,7 @@ export default function Header() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-80 z-40 md:hidden"
           onClick={() => setIsMenuOpen(false)}
         />
       )}
@@ -85,7 +117,13 @@ export default function Header() {
         initial={{ x: '100%' }}
         animate={{ x: isMenuOpen ? 0 : '100%' }}
         transition={{ type: 'tween', duration: 0.3 }}
-        className="fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-50 md:hidden"
+        className="fixed top-0 right-0 h-full w-80 z-50 md:hidden"
+        style={{
+          background: 'rgba(5, 5, 16, 0.95)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          borderLeft: '1px solid rgba(255, 255, 255, 0.1)'
+        }}
       >
         {/* Close Button */}
         <div className="flex justify-end p-4">
@@ -93,7 +131,7 @@ export default function Header() {
             onClick={() => setIsMenuOpen(false)}
             className="p-2"
           >
-            <X className="w-6 h-6 text-gray-700" />
+            <X className="w-6 h-6 text-gray-300" />
           </button>
         </div>
         
@@ -103,8 +141,20 @@ export default function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="block text-xl font-medium text-gray-700 hover:text-gray-900 transition-colors"
+                className="block text-xl font-medium text-gray-300 hover:text-transparent transition-all duration-300"
                 onClick={() => setIsMenuOpen(false)}
+                onMouseEnter={(e) => {
+                  e.target.style.background = 'linear-gradient(135deg, #FF007F 0%, #FFD700 100%)'
+                  e.target.style.WebkitBackgroundClip = 'text'
+                  e.target.style.WebkitTextFillColor = 'transparent'
+                  e.target.style.textShadow = '0 0 8px rgba(255, 0, 127, 0.5)'
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.background = 'none'
+                  e.target.style.WebkitBackgroundClip = 'unset'
+                  e.target.style.WebkitTextFillColor = 'unset'
+                  e.target.style.textShadow = 'none'
+                }}
               >
                 {item.label}
               </Link>

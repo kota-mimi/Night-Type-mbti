@@ -4,99 +4,51 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 py-8 mt-16">
-      {/* LINEスタンプ宣伝バナー - 将来的に使用する場合は以下のコメントアウトを解除 */}
-      {/*
-      <div className="bg-green-500 text-white py-4 px-4 mb-6 mx-4 rounded-lg">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <div className="text-sm font-bold">
-              LINEスタンプ発売中！
-            </div>
-            <div className="text-xs">
-              診断キャラクターのスタンプをゲットしよう
-            </div>
-          </div>
-          <Link 
-            href="https://store.line.me/stickershop/product/your-sticker-id"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white text-green-500 px-4 py-2 rounded-full text-sm font-bold hover:bg-gray-100 transition-colors"
-          >
-            今すぐチェック
-          </Link>
-        </div>
-      </div>
-      */}
-
-      {/* メインフッターコンテンツ */}
+    <footer className="bg-[#050510] py-6 mt-16 border-t border-gray-800/50">
+      {/* メインフッターコンテンツ - ミニマルデザイン */}
       <div className="max-w-4xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* 中央配置のシンプルレイアウト */}
+        <div className="text-center space-y-4">
           
-          {/* サイト情報 */}
-          <div>
+          {/* SNSリンク */}
+          <div className="flex justify-center items-center space-x-6">
+            <a 
+              href="https://x.com/diet_chara16" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-gray-400 transition-colors text-sm"
+            >
+              X (Twitter)
+            </a>
+            <a 
+              href="https://www.instagram.com/diet_chara16?igsh=MXNwOWc2eHM0c3Y5bg%3D%3D&utm_source=qr"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-gray-400 transition-colors text-sm"
+            >
+              Instagram
+            </a>
+            <Link 
+              href="/privacy" 
+              className="text-gray-500 hover:text-gray-400 transition-colors text-sm"
+            >
+              プライバシーポリシー
+            </Link>
+            <Link 
+              href="/contact" 
+              className="text-gray-500 hover:text-gray-400 transition-colors text-sm"
+            >
+              お問い合わせ
+            </Link>
           </div>
 
-          {/* ナビゲーション */}
-          <div>
-            <h4 className="font-bold mb-4">コンテンツ</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  診断を始める
-                </Link>
-              </li>
-              <li>
-                <Link href="/gallery" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  キャラクター一覧
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  Night Typeとは
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* その他 */}
-          <div>
-            <h4 className="font-bold mb-4">その他</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/contact" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  お問い合わせ
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="text-gray-600 hover:text-blue-500 transition-colors">
-                  プライバシーポリシー
-                </Link>
-              </li>
-              <li>
-                <a 
-                  href="https://x.com/diet_chara16" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
-                >
-                  X (Twitter)
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://www.instagram.com/diet_chara16?igsh=MXNwOWc2eHM0c3Y5bg%3D%3D&utm_source=qr"
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-500 transition-colors"
-                >
-                  Instagram
-                </a>
-              </li>
-            </ul>
+          {/* コピーライト */}
+          <div className="pt-2 border-t border-gray-800/30">
+            <p className="text-gray-600 text-xs">
+              © 2024 Night Type. All rights reserved.
+            </p>
           </div>
         </div>
-
       </div>
     </footer>
   )
