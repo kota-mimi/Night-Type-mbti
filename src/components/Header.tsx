@@ -120,7 +120,7 @@ export default function Header() {
         style={{
           background: 'linear-gradient(135deg, rgba(5, 5, 16, 0.98), rgba(10, 10, 25, 0.95))',
           backdropFilter: 'blur(20px)',
-          webkitBackdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
           borderLeft: '2px solid rgba(255, 0, 127, 0.3)',
           boxShadow: '-5px 0 25px rgba(0, 0, 0, 0.5), inset 1px 0 0 rgba(255, 255, 255, 0.1)'
         }}
