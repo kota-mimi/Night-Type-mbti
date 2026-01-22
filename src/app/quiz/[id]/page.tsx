@@ -147,30 +147,37 @@ export default function QuizPage() {
   const allAnswered = questionGroup.every(q => answers[q.id] !== undefined)
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-midnight-900 relative overflow-hidden ${notoSansJP.className}`}>
+      {/* Background Floating Orbs */}
+      <div className="floating-orb orb-pink w-32 h-32 top-10 right-10" style={{animationDelay: '0s'}} />
+      <div className="floating-orb orb-cyan w-24 h-24 top-1/3 left-20" style={{animationDelay: '2s'}} />
+      <div className="floating-orb orb-purple w-28 h-28 bottom-20 right-1/3" style={{animationDelay: '4s'}} />
       {/* プログレスバー */}
-      <div className="w-full bg-gray-100 h-2">
+      <div className="w-full bg-midnight-800 h-3 relative">
         <motion.div
-          className="h-full bg-pink-200"
+          className="h-full bg-gradient-to-r from-neon-pink-500 to-neon-cyan-500"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.3 }}
+          style={{
+            boxShadow: '0 0 10px rgba(255, 0, 127, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)'
+          }}
         />
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 relative z-10">
         {/* ヘッダー */}
         <div className="flex items-center justify-between mb-8">
           <motion.button
             onClick={handleBack}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all"
+            className="glass-button p-2 rounded-full transition-all"
           >
-            <ArrowLeft className="w-6 h-6 text-[#333333]" />
+            <ArrowLeft className="w-6 h-6 text-gray-300" />
           </motion.button>
           
-          <span className="text-[#666666] font-medium">
+          <span className="text-gray-400 font-medium">
             ページ {pageNumber} / {totalPages}
           </span>
         </div>
@@ -185,10 +192,10 @@ export default function QuizPage() {
             className="max-w-4xl mx-auto space-y-8"
           >
             {/* 質問リスト */}
-            <div className="bg-white border border-gray-200 rounded-xl p-8 space-y-8">
+            <div className="glass-card p-8 space-y-8">
               {questionGroup.map((question, index) => (
                 <div key={question.id} id={`question-${question.id}`} className="space-y-4 scroll-mt-20">
-                  <h3 className="text-base md:text-lg font-medium text-[#333333] text-left leading-relaxed">
+                  <h3 className="text-base md:text-lg font-medium text-gray-200 text-left leading-relaxed">
                     {question.text}
                   </h3>
 
@@ -204,11 +211,13 @@ export default function QuizPage() {
                             const size = scoreIndex === 0 || scoreIndex === 3 ? 'w-12 h-12' : 'w-10 h-10'
                             
                             const colorStyle = scoreIndex <= 1 ? {
-                              borderColor: isSelected ? '#87CEEB' : '#87CEEB',
-                              backgroundColor: isSelected ? '#87CEEB' : 'transparent'
+                              borderColor: isSelected ? '#00FFFF' : '#00FFFF',
+                              backgroundColor: isSelected ? '#00FFFF' : 'rgba(0, 255, 255, 0.1)',
+                              boxShadow: isSelected ? '0 0 15px rgba(0, 255, 255, 0.6)' : '0 0 5px rgba(0, 255, 255, 0.3)'
                             } : {
-                              borderColor: isSelected ? '#FFB366' : '#FFB366', 
-                              backgroundColor: isSelected ? '#FFB366' : 'transparent'
+                              borderColor: isSelected ? '#FF007F' : '#FF007F', 
+                              backgroundColor: isSelected ? '#FF007F' : 'rgba(255, 0, 127, 0.1)',
+                              boxShadow: isSelected ? '0 0 15px rgba(255, 0, 127, 0.6)' : '0 0 5px rgba(255, 0, 127, 0.3)'
                             }
                             
                             return (
@@ -226,8 +235,8 @@ export default function QuizPage() {
                         
                         {/* ラベル */}
                         <div className="flex justify-between text-xs px-2">
-                          <span className="text-black font-medium">そう思う</span>
-                          <span className="text-black font-medium">そう思わない</span>
+                          <span className="neon-cyan font-medium">そう思う</span>
+                          <span className="neon-pink font-medium">そう思わない</span>
                         </div>
                       </div>
                     </div>
@@ -245,11 +254,13 @@ export default function QuizPage() {
                                         'w-16 h-16'
                             
                             const colorStyle = scoreIndex <= 1 ? {
-                              borderColor: isSelected ? '#87CEEB' : '#87CEEB',
-                              backgroundColor: isSelected ? '#87CEEB' : 'transparent'
+                              borderColor: isSelected ? '#00FFFF' : '#00FFFF',
+                              backgroundColor: isSelected ? '#00FFFF' : 'rgba(0, 255, 255, 0.1)',
+                              boxShadow: isSelected ? '0 0 20px rgba(0, 255, 255, 0.6)' : '0 0 8px rgba(0, 255, 255, 0.3)'
                             } : {
-                              borderColor: isSelected ? '#FFB366' : '#FFB366', 
-                              backgroundColor: isSelected ? '#FFB366' : 'transparent'
+                              borderColor: isSelected ? '#FF007F' : '#FF007F', 
+                              backgroundColor: isSelected ? '#FF007F' : 'rgba(255, 0, 127, 0.1)',
+                              boxShadow: isSelected ? '0 0 20px rgba(255, 0, 127, 0.6)' : '0 0 8px rgba(255, 0, 127, 0.3)'
                             }
                             
                             return (
@@ -267,24 +278,24 @@ export default function QuizPage() {
                         </div>
                         
                         <div className="flex justify-between text-sm px-8">
-                          <span className="text-black font-medium">そう思う</span>
-                          <span className="text-black font-medium">そう思わない</span>
+                          <span className="neon-cyan font-medium">そう思う</span>
+                          <span className="neon-pink font-medium">そう思わない</span>
                         </div>
                       </div>
                     </div>
                   </div>
 
                   {index < questionGroup.length - 1 && (
-                    <hr className="border-gray-200 my-6" />
+                    <hr className="border-gray-600 my-6" />
                   )}
                 </div>
               ))}
             </div>
 
             {/* 進捗インジケーター */}
-            <div className="bg-white border border-gray-200 rounded-lg p-4 text-center">
+            <div className="glass-card p-4 text-center">
               <div className="mb-3">
-                <span className="text-[#666666] text-sm">
+                <span className="text-gray-400 text-sm">
                   {Object.keys(answers).length} / {questionGroup.length}
                 </span>
               </div>
@@ -297,8 +308,8 @@ export default function QuizPage() {
                 whileTap={allAnswered ? { scale: 0.98 } : {}}
                 className={`w-full py-3 rounded-lg font-medium text-base transition-all duration-300 ${
                   allAnswered
-                    ? 'bg-pink-500 hover:bg-pink-600 text-white'
-                    : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                    ? 'luxury-button text-white'
+                    : 'bg-gray-700 text-gray-500 cursor-not-allowed'
                 }`}
               >
                 {isLoading ? (
@@ -313,7 +324,7 @@ export default function QuizPage() {
               </motion.button>
 
               {!allAnswered && (
-                <div className="text-[#999999] text-xs mt-2">
+                <div className="text-gray-500 text-xs mt-2">
                   全ての質問に回答してください
                 </div>
               )}
