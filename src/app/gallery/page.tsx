@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Home } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
@@ -13,6 +14,39 @@ const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
   display: 'swap',
 })
+
+function CharacterImageWithFallback({ typeCode, name, index }: { typeCode: string; name: string; index: number }) {
+  const [imageError, setImageError] = useState(false)
+  
+  if (imageError) {
+    return (
+      <div className="w-24 h-24 bg-gradient-to-br from-midnight-700 to-midnight-800 rounded-full flex items-center justify-center shadow-lg border border-gray-600 mx-auto mt-20">
+        <span className="text-4xl animate-float">👑</span>
+      </div>
+    )
+  }
+  
+  return (
+    <div className="relative w-full h-[300px] flex justify-center">
+      <Image 
+        src={`/characters/${typeCode}_gallery.png`}
+        alt={name}
+        width={500}
+        height={500}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-contain transition-all duration-300 group-hover:scale-105"
+        style={{
+          filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.6))',
+          marginTop: '-20px',
+          maxHeight: '300px',
+          width: 'auto'
+        }}
+        onError={() => setImageError(true)}
+        priority={index < 4}
+      />
+    </div>
+  )
+}
 
 function GalleryContent() {
   const [selectedGender, setSelectedGender] = useState<'male' | 'female'>('male')
@@ -105,19 +139,32 @@ function GalleryContent() {
                   boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)'
                 }}
               >
-                <div className="relative">
+                <div className="relative overflow-visible">
+                
+                {/* キャラクター画像 - 高画質ゲーム選択画面風 */}
+                <div className="relative min-h-[320px] mb-4 overflow-visible">
+                  {selectedGender === 'female' ? (
+                    <div className="relative h-full flex items-end justify-center">
+                      <CharacterImageWithFallback 
+                        typeCode={typeCode}
+                        name={type.name}
+                        index={index}
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-full flex items-center justify-center">
+                      <div className="w-24 h-24 bg-gradient-to-br from-midnight-700 to-midnight-800 rounded-full flex items-center justify-center shadow-lg border border-gray-600 group-hover:border-neon-cyan-500/50 transition-all duration-300">
+                        <span className="text-4xl animate-float">{type.emoji}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
                 {/* タイプコード */}
                 <div className="text-center mb-4">
                   <h2 className="text-lg font-bold neon-gold mb-2">
                     {typeCode}
                   </h2>
-                </div>
-
-                {/* キャラクター絵文字 */}
-                <div className="flex justify-center mb-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-midnight-700 to-midnight-800 rounded-full flex items-center justify-center shadow-lg border border-gray-600 group-hover:border-neon-cyan-500/50 transition-all duration-300">
-                    <span className="text-4xl animate-float">{type.emoji}</span>
-                  </div>
                 </div>
 
                 <div className="space-y-4">
