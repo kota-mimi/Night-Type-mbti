@@ -202,7 +202,11 @@ function GalleryContent() {
                         localStorage.setItem('diet-quiz-result-type', String(typeCode))
                         window.location.href = '/result'
                       }}
-                      className="w-full luxury-button text-white text-sm font-medium py-3 px-4 rounded-full transition-all duration-300 group-hover:scale-105"
+                      className={`w-full text-white text-sm font-medium py-3 px-4 rounded-full transition-all duration-300 group-hover:scale-105 ${
+                        selectedGender === 'male' 
+                          ? 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 shadow-lg hover:shadow-xl'
+                          : 'bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 shadow-lg hover:shadow-xl'
+                      }`}
                     >
                       詳しく見る
                     </button>
