@@ -96,7 +96,7 @@ export default function AboutPage() {
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="dark-card p-8 md:p-10"
+          className="neon-card p-8 md:p-10"
         >
           {/* ヘッダー */}
           <div className="text-center mb-8">
@@ -122,7 +122,7 @@ export default function AboutPage() {
 
           <div className="space-y-6">
             {axes.map((axis, index) => (
-              <div key={index} className="dark-card border border-gray-600/30 p-4 md:p-6">
+              <div key={index} className="neon-card border border-gray-600/30 p-4 md:p-6">
                 {/* 軸のタイトル */}
                 <div className="mb-4">
                   <h2 className="text-lg md:text-xl font-bold neon-cyan mb-2">
@@ -138,7 +138,7 @@ export default function AboutPage() {
                   {axis.items.map((item, itemIndex) => (
                     <div
                       key={itemIndex}
-                      className="dark-card border border-gray-700/40 p-4 space-y-3"
+                      className="neon-card border border-gray-700/40 p-4 space-y-3"
                     >
                       <h3 className="text-base font-bold text-gray-200">
                         {item.type}

@@ -192,7 +192,7 @@ export default function QuizPage() {
             className="max-w-4xl mx-auto space-y-8"
           >
             {/* 質問リスト */}
-            <div className="dark-card p-8 space-y-8">
+            <div className="neon-card p-8 space-y-8">
               {questionGroup.map((question, index) => (
                 <div key={question.id} id={`question-${question.id}`} className="space-y-4 scroll-mt-20">
                   <h3 className="text-base md:text-lg font-medium text-gray-200 text-left leading-relaxed">
@@ -293,7 +293,7 @@ export default function QuizPage() {
             </div>
 
             {/* 進捗インジケーター */}
-            <div className="dark-card p-4 text-center">
+            <div className="neon-card p-4 text-center">
               <div className="mb-3">
                 <span className="text-gray-400 text-sm">
                   {Object.keys(answers).length} / {questionGroup.length}

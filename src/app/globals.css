@@ -17,11 +17,16 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--background) 0%, var(--background-secondary) 100%);
+  background: 
+    radial-gradient(circle at top right, rgba(74,0,224,0.3), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(142,45,226,0.2), transparent 40%),
+    #050505;
   color: var(--foreground);
   font-family: 'Noto Sans JP', 'Inter', sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
+  /* Fixed background for better performance */
+  background-attachment: fixed;
 }
 
 /* Night Type Background Effects */
@@ -77,28 +82,54 @@ body::before {
   will-change: transform;
 }
 
-/* Solid Dark Components */
-.dark-card {
-  background-color: #0a0a12;
+/* Neon Noir Components */
+.neon-card {
+  background-color: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
+  transition: all 0.3s ease;
   /* GPU optimized for smooth rendering */
   transform: translateZ(0);
   backface-visibility: hidden;
+  /* Subtle inner glow */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.dark-button {
-  background-color: rgba(10, 10, 18, 0.95);
+/* Neon Glow Hover Effects */
+.neon-card:hover {
+  border-color: rgba(255, 0, 127, 0.6);
+  box-shadow: 
+    0 0 20px rgba(255, 0, 127, 0.3),
+    0 0 40px rgba(255, 0, 127, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.neon-card-cyan:hover {
+  border-color: rgba(0, 255, 255, 0.6);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.3),
+    0 0 40px rgba(0, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.neon-button {
+  background-color: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: all 0.3s ease;
   /* GPU optimized for smooth rendering */
   transform: translateZ(0);
   backface-visibility: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.dark-button:hover {
-  background-color: rgba(20, 20, 30, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+.neon-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 0, 127, 0.6);
+  box-shadow: 
+    0 0 15px rgba(255, 0, 127, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
@@ -118,10 +149,10 @@ body::before {
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
-/* Luxury Button Styles - Solid Version */
+/* Luxury Button Styles - Neon Noir Version */
 .luxury-button {
-  background: linear-gradient(135deg, rgba(255, 0, 127, 0.3) 0%, rgba(123, 44, 191, 0.3) 100%);
-  background-color: #0a0a12;
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.2) 0%, rgba(123, 44, 191, 0.2) 100%);
+  background-color: rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(255, 0, 127, 0.4);
   transition: all 0.3s ease;
   position: relative;
@@ -129,6 +160,9 @@ body::before {
   /* GPU optimized for smooth rendering */
   transform: translateZ(0);
   backface-visibility: hidden;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .luxury-button::before {
@@ -181,19 +215,33 @@ body::before {
   animation: orb-float 12s ease-in-out infinite;
 }
 
-/* Solid Dark Design - No Chrome fallbacks needed */
-.dark-card-enhanced {
-  background-color: #0a0a12;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+/* Character Pop-out Effect */
+.character-popout {
+  margin-top: -40px;
+  position: relative;
+  z-index: 10;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  transition: all 0.3s ease;
 }
 
-.dark-button-enhanced {
-  background-color: rgba(10, 10, 18, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.character-popout:hover {
+  transform: scale(1.05) translateY(-5px);
+  filter: drop-shadow(0 15px 30px rgba(255, 0, 127, 0.3));
 }
 
-.luxury-button-enhanced {
-  background: linear-gradient(135deg, #0a0a12 0%, rgba(123, 44, 191, 0.2) 100%);
-  border: 1px solid rgba(255, 0, 127, 0.5);
+/* Enhanced Cards */
+.neon-card-enhanced {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.neon-button-enhanced {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 2px 10px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }

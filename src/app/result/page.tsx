@@ -223,7 +223,7 @@ export default function ResultPage() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="dark-card p-8 md:p-12"
+          className="neon-card p-8 md:p-12"
         >
           
           {/* キャラクター画像とタイトル */}
@@ -363,7 +363,7 @@ export default function ResultPage() {
               <h2 className={`text-xl font-bold neon-pink text-center ${zenMaruGothic.className}`}>
                 SM診断
               </h2>
-              <div className="dark-card p-4 border border-pink-500/30">
+              <div className="neon-card p-4 border border-pink-500/30">
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
                     <h3 className="text-sm font-medium text-neon-pink-300 mb-1">脳内ドS度</h3>
@@ -389,7 +389,7 @@ export default function ResultPage() {
               <h2 className={`text-xl font-bold neon-cyan text-center ${zenMaruGothic.className}`}>
                 ステータス
               </h2>
-              <div className="dark-card p-4 border border-cyan-500/30">
+              <div className="neon-card p-4 border border-cyan-500/30">
                 <div className="grid grid-cols-3 gap-3 text-center">
                   <div>
                     <h3 className="text-xs font-medium text-neon-cyan-300 mb-1">性欲</h3>
@@ -421,7 +421,7 @@ export default function ResultPage() {
               }}>
                 浮気分析
               </h2>
-              <div className="dark-card p-4 border border-purple-500/30">
+              <div className="neon-card p-4 border border-purple-500/30">
                 <div className="text-center mb-3">
                   <div className="text-2xl font-bold text-electric-purple-300 mb-1">{typeData.uwaki.percent}</div>
                   <div className="text-sm font-medium text-electric-purple-400">{typeData.uwaki.type}</div>
@@ -485,7 +485,7 @@ export default function ResultPage() {
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {/* 最高のパートナー */}
-                    <div className="dark-card p-6 border border-green-500/30 relative overflow-hidden" style={{
+                    <div className="neon-card p-6 border border-green-500/30 relative overflow-hidden" style={{
                       boxShadow: '0 0 20px rgba(34, 197, 94, 0.2)'
                     }}>
                       {/* 背景キャラクター画像 */}
@@ -523,7 +523,7 @@ export default function ResultPage() {
                     </div>
 
                     {/* 最悪の天敵 */}
-                    <div className="dark-card p-6 border border-red-500/30 relative overflow-hidden" style={{
+                    <div className="neon-card p-6 border border-red-500/30 relative overflow-hidden" style={{
                       boxShadow: '0 0 20px rgba(239, 68, 68, 0.2)'
                     }}>
                       {/* 背景キャラクター画像 */}

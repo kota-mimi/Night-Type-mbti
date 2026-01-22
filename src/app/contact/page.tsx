@@ -20,7 +20,7 @@ export default function ContactPage() {
       <div className="floating-orb orb-pink w-40 h-40 top-1/3 right-1/4" style={{animationDelay: '12s'}} />
       
       <div className="max-w-4xl mx-auto px-4 py-12 relative z-10">
-        <div className="dark-card p-8">
+        <div className="neon-card p-8">
           <h1 className="text-3xl font-bold neon-gold mb-8 text-center">
             お問い合わせ
           </h1>
@@ -32,7 +32,7 @@ export default function ContactPage() {
                 あなたからのメッセージを楽しみにしております。
               </p>
               
-              <div className="dark-card border border-neon-cyan-500/30 p-8 mt-8">
+              <div className="neon-card border border-neon-cyan-500/30 p-8 mt-8">
                 <h2 className="text-xl font-bold neon-cyan mb-4">お問い合わせメール</h2>
                 <a 
                   href="mailto:nighttype.contact@gmail.com"

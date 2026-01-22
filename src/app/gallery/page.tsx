@@ -27,18 +27,16 @@ function CharacterImageWithFallback({ typeCode, name, index }: { typeCode: strin
   }
   
   return (
-    <div className="relative w-full h-[300px] flex justify-center">
+    <div className="relative w-full h-[260px] flex justify-center overflow-visible">
       <Image 
         src={`/characters/${typeCode}_gallery.png`}
         alt={name}
         width={500}
         height={500}
         sizes="(max-width: 768px) 100vw, 50vw"
-        className="object-contain transition-all duration-300 group-hover:scale-105"
+        className="object-contain transition-all duration-300 character-popout"
         style={{
-          filter: 'drop-shadow(0 15px 30px rgba(0,0,0,0.6))',
-          marginTop: '-20px',
-          maxHeight: '300px',
+          maxHeight: '340px',
           width: 'auto'
         }}
         onError={() => setImageError(true)}
@@ -142,8 +140,8 @@ function GalleryContent() {
               >
                 <div className="relative overflow-visible">
                 
-                {/* キャラクター画像 - 高画質ゲーム選択画面風 */}
-                <div className="relative min-h-[320px] mb-1 overflow-visible">
+                {/* キャラクター画像 - ポップアウト効果 */}
+                <div className="relative min-h-[280px] mb-1 overflow-visible">
                   {selectedGender === 'female' ? (
                     <div className="relative h-full flex items-end justify-center">
                       <CharacterImageWithFallback 
