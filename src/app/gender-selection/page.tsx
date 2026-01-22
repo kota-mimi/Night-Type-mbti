@@ -46,22 +46,26 @@ export default function GenderSelectionPage() {
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
-      <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen">
+    <div className={`min-h-screen bg-midnight-900 relative overflow-hidden ${notoSansJP.className}`}>
+      {/* Background Floating Orbs */}
+      <div className="floating-orb orb-pink w-48 h-48 top-20 left-10" style={{animationDelay: '0s'}} />
+      <div className="floating-orb orb-cyan w-32 h-32 top-1/3 right-20" style={{animationDelay: '3s'}} />
+      <div className="floating-orb orb-purple w-40 h-40 bottom-20 left-1/3" style={{animationDelay: '6s'}} />
+      <div className="container mx-auto px-4 py-8 flex items-center justify-center min-h-screen relative z-10">
         
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 max-w-lg w-full"
+          className="glass-card p-8 md:p-12 max-w-lg w-full"
         >
           
           {/* ヘッダー */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
-              最後の質問です
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-200 mb-4">
+              <span className="neon-gold">最後</span>の質問です
             </h1>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-400 leading-relaxed">
               あなたの性別を教えてください
             </p>
           </div>
@@ -73,11 +77,14 @@ export default function GenderSelectionPage() {
               disabled={isLoading}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`w-full py-4 px-6 text-xl font-bold rounded-full shadow-lg transition-all duration-300 disabled:opacity-50 ${
+              className={`w-full py-4 px-6 text-xl font-bold rounded-full transition-all duration-300 disabled:opacity-50 ${
                 selectedGender === 'male' 
-                  ? 'bg-blue-600 text-white' 
-                  : 'bg-blue-500 hover:bg-blue-600 text-white'
+                  ? 'bg-neon-cyan-500 text-midnight-900 shadow-lg'
+                  : 'glass-button text-neon-cyan-500 hover:bg-neon-cyan-500 hover:text-midnight-900'
               }`}
+              style={selectedGender === 'male' ? {
+                boxShadow: '0 0 20px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.3)'
+              } : {}}
             >
               男性
             </motion.button>
@@ -87,11 +94,14 @@ export default function GenderSelectionPage() {
               disabled={isLoading}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`w-full py-4 px-6 text-xl font-bold rounded-full shadow-lg transition-all duration-300 disabled:opacity-50 ${
+              className={`w-full py-4 px-6 text-xl font-bold rounded-full transition-all duration-300 disabled:opacity-50 ${
                 selectedGender === 'female' 
-                  ? 'bg-pink-600 text-white' 
-                  : 'bg-pink-500 hover:bg-pink-600 text-white'
+                  ? 'bg-neon-pink-500 text-white shadow-lg'
+                  : 'glass-button text-neon-pink-500 hover:bg-neon-pink-500 hover:text-white'
               }`}
+              style={selectedGender === 'female' ? {
+                boxShadow: '0 0 20px rgba(255, 0, 127, 0.6), 0 0 40px rgba(255, 0, 127, 0.3)'
+              } : {}}
             >
               女性
             </motion.button>
@@ -110,7 +120,7 @@ export default function GenderSelectionPage() {
                 disabled={isLoading}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full py-4 px-6 bg-green-500 hover:bg-green-600 text-white text-xl font-bold rounded-full shadow-lg transition-all duration-300 disabled:opacity-50"
+                className="w-full py-4 px-6 luxury-button text-white text-xl font-bold rounded-full transition-all duration-300 disabled:opacity-50"
               >
                 診断を見る
               </motion.button>
@@ -122,9 +132,12 @@ export default function GenderSelectionPage() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="w-6 h-6 border-2 border-pink-500 border-t-transparent rounded-full mx-auto"
+                className="w-6 h-6 border-2 border-neon-pink-500 border-t-transparent rounded-full mx-auto"
+                style={{
+                  boxShadow: '0 0 10px rgba(255, 0, 127, 0.5)'
+                }}
               />
-              <p className="text-gray-600 mt-2">診断結果を生成中...</p>
+              <p className="text-gray-400 mt-2">診断結果を生成中...</p>
             </div>
           )}
 
