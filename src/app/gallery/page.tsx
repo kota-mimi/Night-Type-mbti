@@ -167,40 +167,19 @@ function GalleryContent() {
                   </h2>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-3 flex flex-col h-full">
                   {/* タイプ名 */}
                   <h3 className="text-base font-bold text-gray-200 text-center leading-tight group-hover:text-neon-cyan-300 transition-colors duration-300">
                     {type.name}
                   </h3>
 
                   {/* 基本生態 */}
-                  <p className="text-sm text-gray-400 text-left leading-relaxed h-[5rem] overflow-hidden group-hover:text-gray-300 transition-colors duration-300">
-                    {(() => {
-                      const text = type.basicEcology
-                      // 4行表示用の文字数制限（約60-80文字で4行）
-                      if (text.length <= 80) return text
-                      
-                      // 「です」「ます」「。」で終わる位置を探す（60-80文字の範囲）
-                      const cutPoints = []
-                      for (let i = 60; i < Math.min(text.length, 80); i++) {
-                        if (text.substring(i, i + 2) === 'です' || 
-                            text.substring(i, i + 2) === 'ます' || 
-                            text.charAt(i) === '。') {
-                          cutPoints.push(text.charAt(i) === '。' ? i + 1 : i + 2)
-                        }
-                      }
-                      
-                      if (cutPoints.length > 0) {
-                        return text.substring(0, cutPoints[0])
-                      }
-                      
-                      // 見つからない場合は75文字で切って「。」を追加
-                      return text.substring(0, 75) + '。'
-                    })()}
+                  <p className="text-sm text-gray-400 text-left leading-relaxed line-clamp-3 overflow-hidden group-hover:text-gray-300 transition-colors duration-300 mb-4">
+                    {type.basicEcology}
                   </p>
 
                   {/* 詳細ボタン */}
-                  <div className="pt-1">
+                  <div className="mt-auto pt-3">
                     <button
                       onClick={() => {
                         // 該当タイプの結果を生成するためのスコアを計算
@@ -251,12 +230,13 @@ function GalleryContent() {
                       }}
                       className={`w-full text-white text-sm font-medium py-3 px-4 rounded-full transition-all duration-300 relative overflow-hidden ${
                         selectedGender === 'male' 
-                          ? 'bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-400/30 backdrop-blur-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:-translate-y-1'
-                          : 'bg-gradient-to-r from-pink-500/20 to-rose-500/20 border border-pink-400/30 backdrop-blur-sm hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:-translate-y-1'
+                          ? 'border border-blue-400/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:-translate-y-1'
+                          : 'border border-pink-400/30 hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:-translate-y-1'
                       }`}
                       style={{
-                        backdropFilter: 'blur(10px)',
-                        WebkitBackdropFilter: 'blur(10px)'
+                        background: selectedGender === 'male' 
+                          ? 'rgba(10, 30, 50, 0.9)' 
+                          : 'rgba(40, 10, 30, 0.9)'
                       }}
                     >
                       詳しく見る
