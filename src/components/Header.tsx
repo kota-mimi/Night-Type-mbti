@@ -99,71 +99,94 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Full Screen Overlay Menu */}
       {isMenuOpen && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 bg-black bg-opacity-80 z-40 md:hidden"
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          className="fixed inset-0 w-screen h-screen z-[9999] md:hidden flex flex-col justify-center items-center"
+          style={{
+            background: 'rgba(5, 5, 16, 0.95)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)'
+          }}
           onClick={() => setIsMenuOpen(false)}
-        />
-      )}
-
-      {/* Mobile Slide-out Menu */}
-      <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: isMenuOpen ? 0 : '100%' }}
-        transition={{ type: 'tween', duration: 0.3 }}
-        className="fixed top-0 right-0 h-full w-[85vw] max-w-sm z-50 md:hidden"
-        style={{
-          background: 'linear-gradient(135deg, rgba(5, 5, 16, 0.98), rgba(10, 10, 25, 0.95))',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderLeft: '2px solid rgba(255, 0, 127, 0.3)',
-          boxShadow: '-5px 0 25px rgba(0, 0, 0, 0.5), inset 1px 0 0 rgba(255, 255, 255, 0.1)'
-        }}
-      >
-        {/* Close Button */}
-        <div className="flex justify-end p-4">
+        >
+          {/* Close Button */}
           <button
             onClick={() => setIsMenuOpen(false)}
-            className="p-2"
+            className="absolute top-8 right-8 p-3 rounded-full hover:bg-white/10 transition-all duration-300"
           >
-            <X className="w-6 h-6 text-gray-300" />
+            <X className="w-8 h-8 text-gray-300" />
           </button>
-        </div>
-        
-        <div className="p-6">
-          <nav className="space-y-6">
-            {menuItems.map((item) => (
-              <Link
+
+          {/* Menu Items */}
+          <nav className="flex flex-col items-center space-y-8">
+            {menuItems.map((item, index) => (
+              <motion.div
                 key={item.key}
-                href={item.href}
-                className="block text-xl font-medium text-gray-300 transition-all duration-300"
-                onClick={() => setIsMenuOpen(false)}
-                onMouseEnter={(e) => {
-                  const target = e.target as HTMLElement
-                  target.style.background = 'linear-gradient(to right, #FF007F, #00FFFF)'
-                  target.style.webkitBackgroundClip = 'text'
-                  target.style.webkitTextFillColor = 'transparent'
-                  target.style.textShadow = '0 0 15px rgba(255, 0, 127, 0.6), 0 0 25px rgba(0, 255, 255, 0.4)'
-                }}
-                onMouseLeave={(e) => {
-                  const target = e.target as HTMLElement
-                  target.style.background = 'none'
-                  target.style.webkitBackgroundClip = 'unset'
-                  target.style.webkitTextFillColor = 'unset'
-                  target.style.textShadow = 'none'
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: 0.1 + index * 0.1,
+                  ease: 'easeOut'
                 }}
               >
-                {item.label}
-              </Link>
+                <Link
+                  href={item.href}
+                  className="block text-3xl font-medium text-gray-300 transition-all duration-300 py-4 px-8 rounded-xl hover:bg-white/5"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setIsMenuOpen(false)
+                  }}
+                  onMouseEnter={(e) => {
+                    const target = e.target as HTMLElement
+                    target.style.background = 'linear-gradient(to right, #FF007F, #00FFFF)'
+                    target.style.webkitBackgroundClip = 'text'
+                    target.style.webkitTextFillColor = 'transparent'
+                    target.style.textShadow = '0 0 20px rgba(255, 0, 127, 0.8), 0 0 30px rgba(0, 255, 255, 0.5)'
+                    target.style.transform = 'scale(1.05)'
+                  }}
+                  onMouseLeave={(e) => {
+                    const target = e.target as HTMLElement
+                    target.style.background = 'none'
+                    target.style.webkitBackgroundClip = 'unset'
+                    target.style.webkitTextFillColor = 'unset'
+                    target.style.textShadow = 'none'
+                    target.style.transform = 'scale(1)'
+                  }}
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
             ))}
           </nav>
-        </div>
-      </motion.div>
+
+          {/* Decorative Elements */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="absolute bottom-16 text-center"
+          >
+            <div 
+              className={`text-xl font-black ${notoSerifJP.className} tracking-tight`}
+              style={{
+                background: 'linear-gradient(to right, #FF007F, #00FFFF)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: '0 0 10px rgba(255, 0, 127, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)',
+                filter: 'drop-shadow(0 0 8px rgba(255, 0, 127, 0.4))'
+              }}
+            >
+              Night Type
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </header>
   )
 }
