@@ -87,7 +87,7 @@ function GalleryContent() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center mb-10"
         >
-          <div className="glass-card p-2 border border-gray-600/30">
+          <div className="p-2 border border-gray-600/30 rounded-xl" style={{ backgroundColor: 'rgba(10, 10, 18, 0.95)' }}>
             <div className="flex">
               <button
                 onClick={() => setSelectedGender('male')}
@@ -134,9 +134,10 @@ function GalleryContent() {
                   scale: 1.05,
                   transition: { duration: 0.2 }
                 }}
-                className="glass-card p-4 border border-gray-600/30 hover:border-neon-cyan-500/50 transition-all duration-300 group"
+                className="p-4 border border-gray-600/30 hover:border-neon-cyan-500/50 transition-all duration-300 group"
                 style={{
-                  boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)'
+                  backgroundColor: 'rgba(10, 10, 18, 0.95)',
+                  borderRadius: '20px'
                 }}
               >
                 <div className="relative overflow-visible">
