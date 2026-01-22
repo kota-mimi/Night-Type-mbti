@@ -68,15 +68,15 @@ export default function Header() {
                 onMouseEnter={(e) => {
                   const target = e.target as HTMLElement
                   target.style.background = 'linear-gradient(to right, #FF007F, #00FFFF)'
-                  target.style.WebkitBackgroundClip = 'text'
-                  target.style.WebkitTextFillColor = 'transparent'
+                  target.style.webkitBackgroundClip = 'text'
+                  target.style.webkitTextFillColor = 'transparent'
                   target.style.textShadow = '0 0 15px rgba(255, 0, 127, 0.6), 0 0 25px rgba(0, 255, 255, 0.4)'
                 }}
                 onMouseLeave={(e) => {
                   const target = e.target as HTMLElement
                   target.style.background = 'none'
-                  target.style.WebkitBackgroundClip = 'unset'
-                  target.style.WebkitTextFillColor = 'unset'
+                  target.style.webkitBackgroundClip = 'unset'
+                  target.style.webkitTextFillColor = 'unset'
                   target.style.textShadow = 'none'
                 }}
               >
@@ -145,15 +145,15 @@ export default function Header() {
                 onMouseEnter={(e) => {
                   const target = e.target as HTMLElement
                   target.style.background = 'linear-gradient(to right, #FF007F, #00FFFF)'
-                  target.style.WebkitBackgroundClip = 'text'
-                  target.style.WebkitTextFillColor = 'transparent'
+                  target.style.webkitBackgroundClip = 'text'
+                  target.style.webkitTextFillColor = 'transparent'
                   target.style.textShadow = '0 0 15px rgba(255, 0, 127, 0.6), 0 0 25px rgba(0, 255, 255, 0.4)'
                 }}
                 onMouseLeave={(e) => {
                   const target = e.target as HTMLElement
                   target.style.background = 'none'
-                  target.style.WebkitBackgroundClip = 'unset'
-                  target.style.WebkitTextFillColor = 'unset'
+                  target.style.webkitBackgroundClip = 'unset'
+                  target.style.webkitTextFillColor = 'unset'
                   target.style.textShadow = 'none'
                 }}
               >
