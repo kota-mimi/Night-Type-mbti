@@ -20,94 +20,114 @@ function GalleryContent() {
   const typeKeys = Object.keys(genderedDiagramTypes[selectedGender])
   
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
-      <div className="container mx-auto px-4 py-8">
+    <div className={`min-h-screen bg-midnight-900 relative overflow-hidden ${notoSansJP.className}`}>
+      {/* Background Floating Orbs */}
+      <div className="floating-orb orb-pink w-64 h-64 top-20 left-10" style={{animationDelay: '0s'}} />
+      <div className="floating-orb orb-cyan w-48 h-48 top-1/2 right-20" style={{animationDelay: '4s'}} />
+      <div className="floating-orb orb-purple w-56 h-56 bottom-20 left-1/3" style={{animationDelay: '8s'}} />
+      <div className="floating-orb orb-pink w-40 h-40 top-1/3 right-1/4" style={{animationDelay: '12s'}} />
+      
+      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
         
         {/* ヘッダー */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-200 mb-4" style={{
+            textShadow: '0 0 10px rgba(255, 215, 0, 0.3)'
+          }}>
             全16タイプ診断結果
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-400">
             あなたはどのタイプに当てはまりますか？
           </p>
-        </div>
+        </motion.div>
 
         {/* 男女選択タブ */}
-        <div className="flex justify-center mb-8">
-          <div className="bg-white rounded-full p-1 shadow-lg">
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex justify-center mb-10"
+        >
+          <div className="glass-card p-2 border border-gray-600/30">
             <div className="flex">
               <button
                 onClick={() => setSelectedGender('male')}
-                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
+                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
                   selectedGender === 'male'
-                    ? 'bg-blue-500 text-white shadow-md'
-                    : 'text-blue-500 hover:bg-blue-50'
+                    ? 'luxury-button text-white'
+                    : 'text-neon-cyan-400 hover:bg-cyan-500/10 hover:text-neon-cyan-300'
                 }`}
               >
                 男性版
               </button>
               <button
                 onClick={() => setSelectedGender('female')}
-                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-200 ${
+                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
                   selectedGender === 'female'
-                    ? 'bg-rose-500 text-white shadow-md'
-                    : 'text-rose-500 hover:bg-rose-50'
+                    ? 'luxury-button text-white'
+                    : 'text-neon-pink-400 hover:bg-pink-500/10 hover:text-neon-pink-300'
                 }`}
               >
                 女性版
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* タイプ一覧グリッド */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+        <motion.div
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12"
+        >
           {typeKeys.map((typeCode, index) => {
             // 選択された性別のキャラクターデータを使用
             const type = genderedDiagramTypes[selectedGender][typeCode]
             
-            // 性別に応じたカードデザイン
-            const cardBgColor = selectedGender === 'male' 
-              ? 'bg-gradient-to-br from-blue-50 to-sky-50' 
-              : 'bg-gradient-to-br from-pink-50 to-rose-50'
-            const textColor = selectedGender === 'male' 
-              ? 'text-blue-600' 
-              : 'text-rose-600'
-            const borderColor = selectedGender === 'male' 
-              ? 'border-blue-100' 
-              : 'border-pink-100'
-            
             return (
               <motion.div
                 key={typeCode}
-                className={`${cardBgColor} rounded-2xl p-4 shadow-lg transition-transform duration-200 hover:scale-105 hover:shadow-xl border ${borderColor}`}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.6 + index * 0.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
+                }}
+                className="glass-card p-6 border border-gray-600/30 hover:border-neon-cyan-500/50 transition-all duration-300 group"
+                style={{
+                  boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)'
+                }}
               >
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-sm">
-                {/* タイプコード - 小さく上部に表示 */}
-                <div className="text-center pt-4 pb-2">
-                  <h2 className={`text-lg font-bold ${textColor}`}>
+                <div className="relative">
+                {/* タイプコード */}
+                <div className="text-center mb-4">
+                  <h2 className="text-lg font-bold neon-gold mb-2">
                     {typeCode}
                   </h2>
                 </div>
 
-                {/* キャラクター絵文字 - 大きく中央に */}
-                <div className="flex justify-center pb-4">
-                  <div className={`w-32 h-32 ${selectedGender === 'male' ? 'bg-gradient-to-br from-blue-100 to-sky-200' : 'bg-gradient-to-br from-pink-100 to-rose-200'} rounded-2xl flex items-center justify-center shadow-lg`}>
-                    <span className="text-5xl">
-                      {type.emoji}
-                    </span>
+                {/* キャラクター絵文字 */}
+                <div className="flex justify-center mb-6">
+                  <div className="w-24 h-24 bg-gradient-to-br from-midnight-700 to-midnight-800 rounded-full flex items-center justify-center shadow-lg border border-gray-600 group-hover:border-neon-cyan-500/50 transition-all duration-300">
+                    <span className="text-4xl animate-float">{type.emoji}</span>
                   </div>
                 </div>
 
-                <div className="px-4 pb-6 space-y-3">
+                <div className="space-y-4">
                   {/* タイプ名 */}
-                  <h3 className="text-sm font-bold text-[#333333] text-center leading-tight">
+                  <h3 className="text-base font-bold text-gray-200 text-center leading-tight group-hover:text-neon-cyan-300 transition-colors duration-300">
                     {type.name}
                   </h3>
 
-                  {/* 基本生態（4行でキリよく） */}
-                  <p className="text-sm text-[#666666] text-left leading-relaxed h-[6.5rem]">
+                  {/* 基本生態 */}
+                  <p className="text-sm text-gray-400 text-left leading-relaxed h-[5.5rem] overflow-hidden group-hover:text-gray-300 transition-colors duration-300">
                     {(() => {
                       const text = type.basicEcology
                       // 4行表示用の文字数制限（約60-80文字で4行）
@@ -133,7 +153,7 @@ function GalleryContent() {
                   </p>
 
                   {/* 詳細ボタン */}
-                  <div className="pt-3">
+                  <div className="pt-2">
                     <button
                       onClick={() => {
                         // 該当タイプの結果を生成するためのスコアを計算
@@ -182,7 +202,7 @@ function GalleryContent() {
                         localStorage.setItem('diet-quiz-result-type', String(typeCode))
                         window.location.href = '/result'
                       }}
-                      className={`w-full ${selectedGender === 'male' ? 'bg-blue-500 hover:bg-blue-600' : 'bg-rose-500 hover:bg-rose-600'} text-white text-sm font-medium py-3 px-4 rounded-full transition-colors duration-200`}
+                      className="w-full luxury-button text-white text-sm font-medium py-3 px-4 rounded-full transition-all duration-300 group-hover:scale-105"
                     >
                       詳しく見る
                     </button>
@@ -192,17 +212,22 @@ function GalleryContent() {
               </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* ホームに戻るボタン */}
-        <div className="text-center">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
+          className="text-center"
+        >
           <Link href="/quiz/1">
-            <button className={`inline-flex items-center gap-2 bg-white ${selectedGender === 'male' ? 'text-blue-600' : 'text-rose-600'} font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-200`}>
+            <button className="inline-flex items-center gap-2 luxury-button text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover:scale-105">
               <Home className="w-5 h-5" />
               診断を始める
             </button>
           </Link>
-        </div>
+        </motion.div>
       </div>
     </div>
   )
@@ -211,8 +236,15 @@ function GalleryContent() {
 export default function GalleryPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-[#2196F3] border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen bg-midnight-900 flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          className="w-8 h-8 border-2 border-neon-pink-500 border-t-transparent rounded-full"
+          style={{
+            boxShadow: '0 0 10px rgba(255, 0, 127, 0.5)'
+          }}
+        />
       </div>
     }>
       <GalleryContent />

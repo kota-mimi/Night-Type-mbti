@@ -329,8 +329,8 @@ export default function ResultPage() {
               }}>
                 夜の口癖・脳内
               </h2>
-              <div className="text-sm md:text-base leading-relaxed text-gray-700 space-y-4 max-w-4xl mx-auto text-center">
-                <p className="mb-4 font-medium text-electric-purple-300">{typeData.nightPhrase}</p>
+              <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
+                <p className="mb-4">{typeData.nightPhrase}</p>
               </div>
             </motion.div>
           )}
