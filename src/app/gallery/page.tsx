@@ -174,7 +174,7 @@ function GalleryContent() {
                   </h3>
 
                   {/* 基本生態 */}
-                  <p className="text-sm text-gray-400 text-left leading-relaxed line-clamp-3 overflow-hidden group-hover:text-gray-300 transition-colors duration-300 mb-4">
+                  <p className="text-sm text-gray-400 text-left leading-relaxed group-hover:text-gray-300 transition-colors duration-300 mb-4">
                     {type.basicEcology}
                   </p>
 
