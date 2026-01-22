@@ -491,18 +491,21 @@ export default function ResultPage() {
                       {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-bounce-slow">
-                          {/* 男性ユーザーでbestPartnerがARTN（冷徹な女帝）の場合はイラストを表示 */}
-                          {userGender === 'male' && bestPartner?.code === 'ARTN' ? (
+                          {/* 男性ユーザーで女性キャラクターの場合はイラストを表示 */}
+                          {userGender === 'male' && bestPartner?.code ? (
                             <img 
-                              src="/characters/queen_character.png" 
-                              alt="冷徹な女帝" 
+                              src={`/characters/${bestPartner.code}_character.png`} 
+                              alt={bestPartner.name} 
                               className="w-32 h-32 object-contain"
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none';
+                                e.currentTarget.nextElementSibling.style.display = 'block';
+                              }}
                             />
-                          ) : (
-                            <span className="text-6xl">
-                              {bestPartner ? (genderedDiagramTypes[targetGender]?.[bestPartner.code]?.emoji || '💕') : '💕'}
-                            </span>
-                          )}
+                          ) : null}
+                          <span className="text-6xl" style={{display: userGender === 'male' && bestPartner?.code ? 'none' : 'block'}}>
+                            {bestPartner ? (genderedDiagramTypes[targetGender]?.[bestPartner.code]?.emoji || '💕') : '💕'}
+                          </span>
                         </div>
                       </div>
                       <div className="text-center space-y-3 relative">
@@ -525,18 +528,21 @@ export default function ResultPage() {
                       {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-float">
-                          {/* 男性ユーザーでworstEnemyがARTN（冷徹な女帝）の場合はイラストを表示 */}
-                          {userGender === 'male' && worstEnemy?.code === 'ARTN' ? (
+                          {/* 男性ユーザーで女性キャラクターの場合はイラストを表示 */}
+                          {userGender === 'male' && worstEnemy?.code ? (
                             <img 
-                              src="/characters/queen_character.png" 
-                              alt="冷徹な女帝" 
+                              src={`/characters/${worstEnemy.code}_character.png`} 
+                              alt={worstEnemy.name} 
                               className="w-32 h-32 object-contain"
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none';
+                                e.currentTarget.nextElementSibling.style.display = 'block';
+                              }}
                             />
-                          ) : (
-                            <span className="text-6xl">
-                              {worstEnemy ? (genderedDiagramTypes[targetGender]?.[worstEnemy.code]?.emoji || '⚠️') : '⚠️'}
-                            </span>
-                          )}
+                          ) : null}
+                          <span className="text-6xl" style={{display: userGender === 'male' && worstEnemy?.code ? 'none' : 'block'}}>
+                            {worstEnemy ? (genderedDiagramTypes[targetGender]?.[worstEnemy.code]?.emoji || '⚠️') : '⚠️'}
+                          </span>
                         </div>
                       </div>
                       <div className="text-center space-y-3 relative">
