@@ -134,7 +134,7 @@ function GalleryContent() {
                   scale: 1.05,
                   transition: { duration: 0.2 }
                 }}
-                className="glass-card p-6 border border-gray-600/30 hover:border-neon-cyan-500/50 transition-all duration-300 group"
+                className="glass-card p-4 border border-gray-600/30 hover:border-neon-cyan-500/50 transition-all duration-300 group"
                 style={{
                   boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)'
                 }}
@@ -142,7 +142,7 @@ function GalleryContent() {
                 <div className="relative overflow-visible">
                 
                 {/* キャラクター画像 - 高画質ゲーム選択画面風 */}
-                <div className="relative min-h-[320px] mb-4 overflow-visible">
+                <div className="relative min-h-[320px] mb-1 overflow-visible">
                   {selectedGender === 'female' ? (
                     <div className="relative h-full flex items-end justify-center">
                       <CharacterImageWithFallback 
@@ -161,20 +161,20 @@ function GalleryContent() {
                 </div>
 
                 {/* タイプコード */}
-                <div className="text-center mb-4">
-                  <h2 className="text-lg font-bold neon-gold mb-2">
+                <div className="text-center mb-1">
+                  <h2 className="text-xl font-bold neon-gold mb-1">
                     {typeCode}
                   </h2>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {/* タイプ名 */}
                   <h3 className="text-base font-bold text-gray-200 text-center leading-tight group-hover:text-neon-cyan-300 transition-colors duration-300">
                     {type.name}
                   </h3>
 
                   {/* 基本生態 */}
-                  <p className="text-sm text-gray-400 text-left leading-relaxed h-[5.5rem] overflow-hidden group-hover:text-gray-300 transition-colors duration-300">
+                  <p className="text-sm text-gray-400 text-left leading-relaxed h-[5rem] overflow-hidden group-hover:text-gray-300 transition-colors duration-300">
                     {(() => {
                       const text = type.basicEcology
                       // 4行表示用の文字数制限（約60-80文字で4行）
@@ -200,7 +200,7 @@ function GalleryContent() {
                   </p>
 
                   {/* 詳細ボタン */}
-                  <div className="pt-2">
+                  <div className="pt-1">
                     <button
                       onClick={() => {
                         // 該当タイプの結果を生成するためのスコアを計算
