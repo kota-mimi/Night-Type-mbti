@@ -21,53 +21,53 @@ module.exports = {
           800: '#1a1a2e',
           900: '#050510',
         },
-        'neon-pink': {
-          50: '#fff0f5',
-          100: '#ffe1eb',
-          200: '#ffc2d7',
-          300: '#ff94b3',
-          400: '#ff5588',
-          500: '#FF007F',
-          600: '#e6006b',
-          700: '#cc0057',
-          800: '#b30043',
-          900: '#990030',
+        'amber': {
+          50: '#fff8f0',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          300: '#fdba74',
+          400: '#fb923c',
+          500: '#FF8C42',
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
         },
-        'neon-cyan': {
-          50: '#f0fffe',
-          100: '#ccfffe',
-          200: '#99fffe',
-          300: '#5cfffe',
-          400: '#22d3ee',
-          500: '#00FFFF',
-          600: '#00e6e6',
-          700: '#00cccc',
-          800: '#00b3b3',
-          900: '#009999',
+        'wine-red': {
+          50: '#fdf2f2',
+          100: '#fce8e6',
+          200: '#f8d4d3',
+          300: '#f3b2b0',
+          400: '#eb8481',
+          500: '#dc5b57',
+          600: '#c63d38',
+          700: '#78281F',
+          800: '#7f1d1d',
+          900: '#651e1e',
         },
-        'electric-purple': {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7B2CBF',
-          800: '#6b21a8',
-          900: '#581c87',
+        'warm-gold': {
+          50: '#fefce8',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#D4A574',
+          600: '#d97706',
+          700: '#b45309',
+          800: '#92400e',
+          900: '#78350f',
         },
-        'gold': {
-          50: '#fffdf7',
-          100: '#fffaeb',
-          200: '#fff3c4',
-          300: '#ffe888',
-          400: '#ffd43b',
-          500: '#FFD700',
-          600: '#e6c200',
-          700: '#ccad00',
-          800: '#b39900',
-          900: '#998500',
+        'deep-red': {
+          50: '#fdf2f2',
+          100: '#fde6e6',
+          200: '#fbcfcf',
+          300: '#f7a8a8',
+          400: '#f07373',
+          500: '#e53e3e',
+          600: '#8B2635',
+          700: '#c53030',
+          800: '#9b2c2c',
+          900: '#742a2a',
         }
       },
       keyframes: {
@@ -81,20 +81,20 @@ module.exports = {
           '0%, 100%': { transform: 'translateY(0px) scale(1)' },
           '50%': { transform: 'translateY(-18px) scale(1.05)' },
         },
-        'glow-pulse': {
+        'warm-glow-pulse': {
           '0%, 100%': { 
-            boxShadow: '0 0 20px rgba(255, 0, 127, 0.5), 0 0 40px rgba(255, 0, 127, 0.3), 0 0 60px rgba(255, 0, 127, 0.1)'
+            boxShadow: '0 0 25px rgba(255, 140, 66, 0.3), 0 0 45px rgba(255, 140, 66, 0.2), 0 0 65px rgba(255, 140, 66, 0.08)'
           },
           '50%': { 
-            boxShadow: '0 0 30px rgba(255, 0, 127, 0.8), 0 0 60px rgba(255, 0, 127, 0.5), 0 0 90px rgba(255, 0, 127, 0.2)'
+            boxShadow: '0 0 35px rgba(255, 140, 66, 0.5), 0 0 65px rgba(255, 140, 66, 0.3), 0 0 95px rgba(255, 140, 66, 0.15)'
           },
         },
-        'glow-cyan': {
+        'wine-glow': {
           '0%, 100%': { 
-            boxShadow: '0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3)'
+            boxShadow: '0 0 20px rgba(120, 40, 31, 0.4), 0 0 40px rgba(120, 40, 31, 0.2)'
           },
           '50%': { 
-            boxShadow: '0 0 30px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.5)'
+            boxShadow: '0 0 30px rgba(120, 40, 31, 0.6), 0 0 60px rgba(120, 40, 31, 0.3)'
           },
         },
         'smoke': {
@@ -115,8 +115,8 @@ module.exports = {
       animation: {
         float: 'float 2.5s ease-in-out infinite',
         'bounce-slow': 'bounce-slow 2s ease-in-out infinite',
-        'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
-        'glow-cyan': 'glow-cyan 2s ease-in-out infinite',
+        'warm-glow-pulse': 'warm-glow-pulse 2s ease-in-out infinite',
+        'wine-glow': 'wine-glow 2s ease-in-out infinite',
         'smoke': 'smoke 8s ease-out infinite',
         'orb-float': 'orb-float 6s ease-in-out infinite',
         'fade-in-up': 'fade-in-up 0.8s ease-out',
