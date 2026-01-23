@@ -491,10 +491,12 @@ export default function ResultPage() {
                       {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-bounce-slow">
-                          {/* 男性ユーザーで女性キャラクターの場合はイラストを表示 */}
-                          {userGender === 'male' && bestPartner?.code ? (
+                          {/* 性別に応じてキャラクター画像を表示 */}
+                          {bestPartner?.code ? (
                             <img 
-                              src={`/characters/${bestPartner.code}_character.png`} 
+                              src={userGender === 'male' 
+                                ? `/characters/${bestPartner.code}_character.png`
+                                : `/characters/${bestPartner.code}_male_character.png`}
                               alt={bestPartner.name} 
                               className="w-32 h-32 object-contain"
                               onError={(e) => {
@@ -504,7 +506,7 @@ export default function ResultPage() {
                               }}
                             />
                           ) : null}
-                          <span className="text-6xl" style={{display: userGender === 'male' && bestPartner?.code ? 'none' : 'block'}}>
+                          <span className="text-6xl" style={{display: bestPartner?.code ? 'none' : 'block'}}>
                             {bestPartner ? (genderedDiagramTypes[targetGender]?.[bestPartner.code]?.emoji || '💕') : '💕'}
                           </span>
                         </div>
@@ -529,10 +531,12 @@ export default function ResultPage() {
                       {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-float">
-                          {/* 男性ユーザーで女性キャラクターの場合はイラストを表示 */}
-                          {userGender === 'male' && worstEnemy?.code ? (
+                          {/* 性別に応じてキャラクター画像を表示 */}
+                          {worstEnemy?.code ? (
                             <img 
-                              src={`/characters/${worstEnemy.code}_character.png`} 
+                              src={userGender === 'male' 
+                                ? `/characters/${worstEnemy.code}_character.png`
+                                : `/characters/${worstEnemy.code}_male_character.png`}
                               alt={worstEnemy.name} 
                               className="w-32 h-32 object-contain"
                               onError={(e) => {
@@ -542,7 +546,7 @@ export default function ResultPage() {
                               }}
                             />
                           ) : null}
-                          <span className="text-6xl" style={{display: userGender === 'male' && worstEnemy?.code ? 'none' : 'block'}}>
+                          <span className="text-6xl" style={{display: worstEnemy?.code ? 'none' : 'block'}}>{worstEnemy ? (genderedDiagramTypes[targetGender]?.[worstEnemy.code]?.emoji || '⚠️') : '⚠️'}
                             {worstEnemy ? (genderedDiagramTypes[targetGender]?.[worstEnemy.code]?.emoji || '⚠️') : '⚠️'}
                           </span>
                         </div>
