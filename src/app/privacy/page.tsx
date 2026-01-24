@@ -12,10 +12,10 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-[#111111] ${notoSansJP.className}`}>
       <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6 text-center">
+        <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-8">
+          <h1 className="text-xl md:text-2xl font-bold text-[#FFFFFF] mb-6 text-center">
             プライバシーポリシー
           </h1>
 

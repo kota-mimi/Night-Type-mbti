@@ -69,8 +69,7 @@ export default function HomeContent() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
               whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 0 30px rgba(255, 0, 127, 0.6), 0 0 60px rgba(255, 0, 127, 0.3)" 
+                scale: 1.05
               }}
               whileTap={{ scale: 0.98 }}
               className="luxury-button text-white font-bold py-4 px-16 rounded-full text-lg md:text-xl mb-16 relative"
@@ -95,13 +94,11 @@ export default function HomeContent() {
           
           {/* First row - scrolling right */}
           <div className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-midnight-900 via-transparent to-midnight-900 pointer-events-none z-10" />
             <CharacterMarquee direction="right" speed={15} row="first" />
           </div>
           
           {/* Second row - scrolling left */}
           <div className="relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-midnight-900 via-transparent to-midnight-900 pointer-events-none z-10" />
             <CharacterMarquee direction="left" speed={18} row="second" />
           </div>
         </motion.div>

@@ -69,7 +69,7 @@ export default function FloatingAd({
       <div 
         onClick={handleClick}
         className={`
-          relative bg-transparent rounded-full shadow-lg overflow-hidden
+          relative bg-transparent rounded-full border border-[#333333] overflow-hidden
           ${linkUrl && linkUrl !== "#" ? 'cursor-pointer' : 'cursor-default'}
           transform hover:scale-125 transition-transform duration-300 ease-out
           w-full h-full

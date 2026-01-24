@@ -20,7 +20,7 @@ function CharacterImageWithFallback({ typeCode, name, index }: { typeCode: strin
   
   if (imageError) {
     return (
-      <div className="w-24 h-24 bg-gradient-to-br from-midnight-700 to-midnight-800 rounded-full flex items-center justify-center shadow-lg border border-gray-600 mx-auto mt-20">
+      <div className="w-24 h-24 bg-[#1A1A1A] rounded-full flex items-center justify-center border border-[#333333] mx-auto mt-20">
         <span className="text-4xl animate-float">👑</span>
       </div>
     )
@@ -144,7 +144,7 @@ function GalleryContent() {
                     </div>
                   ) : (
                     <div className="h-full flex items-center justify-center">
-                      <div className="w-24 h-24 bg-gradient-to-br from-midnight-700 to-midnight-800 rounded-full flex items-center justify-center shadow-lg border border-gray-600 group-hover:border-neon-cyan-500/50 transition-all duration-300">
+                      <div className="w-24 h-24 bg-[#1A1A1A] rounded-full flex items-center justify-center border border-[#333333] group-hover:border-[#00FFFF] transition-all duration-300">
                         <span className="text-4xl animate-float">{type.emoji}</span>
                       </div>
                     </div>
@@ -221,8 +221,8 @@ function GalleryContent() {
                       }}
                       className={`w-full text-white text-sm font-medium py-3 px-4 rounded-full transition-all duration-300 relative overflow-hidden ${
                         selectedGender === 'male' 
-                          ? 'border border-blue-400/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] hover:-translate-y-1'
-                          : 'border border-pink-400/30 hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] hover:-translate-y-1'
+                          ? 'border border-[#00FFFF] hover:bg-[#222222] hover:-translate-y-1'
+                          : 'border border-[#FF007F] hover:bg-[#222222] hover:-translate-y-1'
                       }`}
                       style={{
                         background: selectedGender === 'male' 
@@ -267,9 +267,6 @@ export default function GalleryPage() {
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           className="w-8 h-8 border-2 border-neon-pink-500 border-t-transparent rounded-full"
-          style={{
-            boxShadow: '0 0 10px rgba(255, 0, 127, 0.5)'
-          }}
         />
       </div>
     }>

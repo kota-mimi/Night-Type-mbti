@@ -155,13 +155,10 @@ export default function QuizPage() {
       {/* プログレスバー */}
       <div className="w-full bg-midnight-800 h-3 relative">
         <motion.div
-          className="h-full bg-gradient-to-r from-neon-pink-500 to-neon-cyan-500"
+          className="h-full bg-[#FF007F]"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.3 }}
-          style={{
-            boxShadow: '0 0 10px rgba(255, 0, 127, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)'
-          }}
         />
       </div>
 
@@ -212,12 +209,12 @@ export default function QuizPage() {
                             
                             const colorStyle = scoreIndex <= 1 ? {
                               borderColor: isSelected ? '#00FFFF' : '#00FFFF',
-                              backgroundColor: isSelected ? '#00FFFF' : 'rgba(0, 255, 255, 0.1)',
-                              boxShadow: isSelected ? '0 0 15px rgba(0, 255, 255, 0.6)' : '0 0 5px rgba(0, 255, 255, 0.3)'
+                              backgroundColor: isSelected ? '#00FFFF' : '#1A1A1A',
+                              border: `1px solid ${isSelected ? '#00FFFF' : '#333333'}`
                             } : {
                               borderColor: isSelected ? '#FF007F' : '#FF007F', 
-                              backgroundColor: isSelected ? '#FF007F' : 'rgba(255, 0, 127, 0.1)',
-                              boxShadow: isSelected ? '0 0 15px rgba(255, 0, 127, 0.6)' : '0 0 5px rgba(255, 0, 127, 0.3)'
+                              backgroundColor: isSelected ? '#FF007F' : '#1A1A1A',
+                              border: `1px solid ${isSelected ? '#FF007F' : '#333333'}`
                             }
                             
                             return (
@@ -255,12 +252,12 @@ export default function QuizPage() {
                             
                             const colorStyle = scoreIndex <= 1 ? {
                               borderColor: isSelected ? '#00FFFF' : '#00FFFF',
-                              backgroundColor: isSelected ? '#00FFFF' : 'rgba(0, 255, 255, 0.1)',
-                              boxShadow: isSelected ? '0 0 20px rgba(0, 255, 255, 0.6)' : '0 0 8px rgba(0, 255, 255, 0.3)'
+                              backgroundColor: isSelected ? '#00FFFF' : '#1A1A1A',
+                              border: `1px solid ${isSelected ? '#00FFFF' : '#333333'}`
                             } : {
                               borderColor: isSelected ? '#FF007F' : '#FF007F', 
-                              backgroundColor: isSelected ? '#FF007F' : 'rgba(255, 0, 127, 0.1)',
-                              boxShadow: isSelected ? '0 0 20px rgba(255, 0, 127, 0.6)' : '0 0 8px rgba(255, 0, 127, 0.3)'
+                              backgroundColor: isSelected ? '#FF007F' : '#1A1A1A',
+                              border: `1px solid ${isSelected ? '#FF007F' : '#333333'}`
                             }
                             
                             return (

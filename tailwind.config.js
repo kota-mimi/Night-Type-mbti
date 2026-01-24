@@ -71,58 +71,13 @@ module.exports = {
         }
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '25%': { transform: 'translateY(-15px) rotate(2deg)' },
-          '50%': { transform: 'translateY(-20px) rotate(0deg)' },
-          '75%': { transform: 'translateY(-15px) rotate(-2deg)' },
-        },
-        'bounce-slow': {
-          '0%, 100%': { transform: 'translateY(0px) scale(1)' },
-          '50%': { transform: 'translateY(-18px) scale(1.05)' },
-        },
-        'warm-glow-pulse': {
-          '0%, 100%': { 
-            boxShadow: '0 0 25px rgba(255, 140, 66, 0.3), 0 0 45px rgba(255, 140, 66, 0.2), 0 0 65px rgba(255, 140, 66, 0.08)'
-          },
-          '50%': { 
-            boxShadow: '0 0 35px rgba(255, 140, 66, 0.5), 0 0 65px rgba(255, 140, 66, 0.3), 0 0 95px rgba(255, 140, 66, 0.15)'
-          },
-        },
-        'wine-glow': {
-          '0%, 100%': { 
-            boxShadow: '0 0 20px rgba(120, 40, 31, 0.4), 0 0 40px rgba(120, 40, 31, 0.2)'
-          },
-          '50%': { 
-            boxShadow: '0 0 30px rgba(120, 40, 31, 0.6), 0 0 60px rgba(120, 40, 31, 0.3)'
-          },
-        },
-        'smoke': {
-          '0%': { transform: 'translateY(0) scale(1) rotate(0deg)', opacity: '0.1' },
-          '50%': { transform: 'translateY(-50px) scale(1.1) rotate(180deg)', opacity: '0.3' },
-          '100%': { transform: 'translateY(-100px) scale(1.2) rotate(360deg)', opacity: '0' },
-        },
-        'orb-float': {
-          '0%, 100%': { transform: 'translateX(0) translateY(0) scale(1)' },
-          '33%': { transform: 'translateX(30px) translateY(-20px) scale(1.1)' },
-          '66%': { transform: 'translateX(-20px) translateY(10px) scale(0.9)' },
-        },
         'fade-in-up': {
           '0%': { opacity: '0', transform: 'translateY(30px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
       animation: {
-        float: 'float 2.5s ease-in-out infinite',
-        'bounce-slow': 'bounce-slow 2s ease-in-out infinite',
-        'warm-glow-pulse': 'warm-glow-pulse 2s ease-in-out infinite',
-        'wine-glow': 'wine-glow 2s ease-in-out infinite',
-        'smoke': 'smoke 8s ease-out infinite',
-        'orb-float': 'orb-float 6s ease-in-out infinite',
         'fade-in-up': 'fade-in-up 0.8s ease-out',
-      },
-      backdropBlur: {
-        '3xl': '64px',
       },
       fontFamily: {
         'serif': ['Shippori Mincho', 'Playfair Display', 'serif'],

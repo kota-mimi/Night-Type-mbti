@@ -180,9 +180,6 @@ export default function ResultPage() {
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           className="w-8 h-8 border-2 border-neon-pink-500 border-t-transparent rounded-full"
-          style={{
-            boxShadow: '0 0 10px rgba(255, 0, 127, 0.5)'
-          }}
         />
       </div>
     )
@@ -231,7 +228,7 @@ export default function ResultPage() {
             {/* キャラクター絵文字を中央配置 */}
             <div className="flex justify-center items-center">
               <div className="text-center">
-                <div className="w-48 h-48 bg-gradient-to-br from-midnight-700 to-midnight-800 rounded-full flex items-center justify-center shadow-lg mb-6 border border-gray-600">
+                <div className="w-48 h-48 bg-[#1A1A1A] rounded-full flex items-center justify-center mb-6 border border-[#333333]">
                   <span className="text-8xl animate-float">{typeData.emoji}</span>
                 </div>
                 {/* キャラクター名 */}
@@ -485,9 +482,7 @@ export default function ResultPage() {
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {/* 最高のパートナー */}
-                    <div className="neon-card p-6 border border-green-500/30 relative overflow-hidden" style={{
-                      boxShadow: '0 0 20px rgba(34, 197, 94, 0.2)'
-                    }}>
+                    <div className="bg-[#1A1A1A] border border-green-500/30 rounded-lg p-6 relative overflow-hidden">
                       {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-bounce-slow">
@@ -525,9 +520,7 @@ export default function ResultPage() {
                     </div>
 
                     {/* 最悪の天敵 */}
-                    <div className="neon-card p-6 border border-red-500/30 relative overflow-hidden" style={{
-                      boxShadow: '0 0 20px rgba(239, 68, 68, 0.2)'
-                    }}>
+                    <div className="bg-[#1A1A1A] border border-red-500/30 rounded-lg p-6 relative overflow-hidden">
                       {/* 背景キャラクター画像 */}
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-float">
@@ -606,7 +599,7 @@ export default function ResultPage() {
                 onClick={() => handleShare('instagram')}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 bg-gradient-to-r from-[#E4405F] via-[#C13584] to-[#833AB4] hover:opacity-90 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+                className="w-12 h-12 bg-[#E4405F] hover:bg-[#C13584] text-white rounded-full border border-[#333333] transition-all duration-300 flex items-center justify-center"
                 title="Instagram Storyにシェア"
               >
                 <Instagram className="w-5 h-5" />

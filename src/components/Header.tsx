@@ -45,14 +45,7 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center">
               <div 
-                className={`text-2xl font-black ${notoSerifJP.className} tracking-tight`}
-                style={{
-                  background: 'linear-gradient(to right, #FF007F, #00FFFF)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 10px rgba(255, 0, 127, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)',
-                  filter: 'drop-shadow(0 0 8px rgba(255, 0, 127, 0.4))'
-                }}
+                className={`text-2xl font-black ${notoSerifJP.className} tracking-tight text-[#FF007F]`}
               >
                 Night Type
               </div>
@@ -65,21 +58,7 @@ export default function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-gray-300 font-medium transition-all duration-300"
-                onMouseEnter={(e) => {
-                  const target = e.target as HTMLElement
-                  target.style.background = 'linear-gradient(to right, #FF007F, #00FFFF)'
-                  target.style.webkitBackgroundClip = 'text'
-                  target.style.webkitTextFillColor = 'transparent'
-                  target.style.textShadow = '0 0 15px rgba(255, 0, 127, 0.6), 0 0 25px rgba(0, 255, 255, 0.4)'
-                }}
-                onMouseLeave={(e) => {
-                  const target = e.target as HTMLElement
-                  target.style.background = 'none'
-                  target.style.webkitBackgroundClip = 'unset'
-                  target.style.webkitTextFillColor = 'unset'
-                  target.style.textShadow = 'none'
-                }}
+                className="text-[#AAAAAA] hover:text-[#FF007F] font-medium transition-colors duration-300"
               >
                 {item.label}
               </Link>
@@ -139,26 +118,10 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="block text-3xl font-medium text-gray-300 transition-all duration-300 py-4 px-8 rounded-xl hover:bg-white/5"
+                  className="block text-3xl font-medium text-[#AAAAAA] hover:text-[#FF007F] transition-colors duration-300 py-4 px-8 rounded-xl hover:bg-[#1A1A1A]"
                   onClick={(e) => {
                     e.stopPropagation()
                     setIsMenuOpen(false)
-                  }}
-                  onMouseEnter={(e) => {
-                    const target = e.target as HTMLElement
-                    target.style.background = 'linear-gradient(to right, #FF007F, #00FFFF)'
-                    target.style.webkitBackgroundClip = 'text'
-                    target.style.webkitTextFillColor = 'transparent'
-                    target.style.textShadow = '0 0 20px rgba(255, 0, 127, 0.8), 0 0 30px rgba(0, 255, 255, 0.5)'
-                    target.style.transform = 'scale(1.05)'
-                  }}
-                  onMouseLeave={(e) => {
-                    const target = e.target as HTMLElement
-                    target.style.background = 'none'
-                    target.style.webkitBackgroundClip = 'unset'
-                    target.style.webkitTextFillColor = 'unset'
-                    target.style.textShadow = 'none'
-                    target.style.transform = 'scale(1)'
                   }}
                 >
                   {item.label}
@@ -175,14 +138,7 @@ export default function Header() {
             className="absolute bottom-16 text-center"
           >
             <div 
-              className={`text-xl font-black ${notoSerifJP.className} tracking-tight`}
-              style={{
-                background: 'linear-gradient(to right, #FF007F, #00FFFF)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 0 10px rgba(255, 0, 127, 0.5), 0 0 20px rgba(0, 255, 255, 0.3)',
-                filter: 'drop-shadow(0 0 8px rgba(255, 0, 127, 0.4))'
-              }}
+              className={`text-xl font-black ${notoSerifJP.className} tracking-tight text-[#FF007F]`}
             >
               Night Type
             </div>

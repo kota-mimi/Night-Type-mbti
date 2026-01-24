@@ -73,12 +73,12 @@ export default async function CharacterPage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-cyan-300 via-teal-200 to-blue-300">
+    <div className="min-h-screen bg-[#111111]">
       <div className="container mx-auto px-4 py-8">
         {/* メインキャラクターカード */}
         <div className="flex justify-center items-center min-h-[70vh]">
           <div className="max-w-md mx-auto">
-            <div className="bg-white rounded-3xl shadow-xl p-8 text-center">
+            <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-8 text-center">
               {/* キャラクター絵文字 */}
               <div className="text-8xl mb-4">{character.emoji}</div>
               
@@ -97,7 +97,7 @@ export default async function CharacterPage({ params }: PageProps) {
             
             {/* 診断CTA */}
             <div className="mt-8">
-              <div className="bg-white rounded-2xl shadow-lg p-6 text-center">
+              <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-6 text-center">
                 <h3 className="text-lg font-bold text-gray-800 mb-2">
                   あなたの夜タイプは何？
                 </h3>

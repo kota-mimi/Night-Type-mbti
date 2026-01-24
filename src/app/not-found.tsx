@@ -12,7 +12,7 @@ const notoSansJP = Noto_Sans_JP({
 
 export default function NotFound() {
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-[#111111] ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8 flex flex-col justify-center items-center min-h-screen text-center">
         
         {/* アニメーション付きアイコン */}
@@ -32,7 +32,7 @@ export default function NotFound() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 bg-[#FF7043] rounded-full flex items-center justify-center shadow-lg"
+            className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 bg-[#FF007F] rounded-full flex items-center justify-center border border-[#333333]"
           >
             <Salad className="w-12 h-12 md:w-16 md:h-16 text-white" />
           </motion.div>
@@ -45,13 +45,13 @@ export default function NotFound() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-8"
         >
-          <h1 className="text-6xl md:text-8xl font-bold text-[#FF7043] mb-4">
+          <h1 className="text-6xl md:text-8xl font-bold text-[#FF007F] mb-4">
             404
           </h1>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#333333] mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#FFFFFF] mb-4">
             ページが見つかりません
           </h2>
-          <p className="text-lg text-[#666666] max-w-md mx-auto">
+          <p className="text-lg text-[#AAAAAA] max-w-md mx-auto">
             お探しのページは存在しないか、移動した可能性があります。<br />
             URLをご確認いただくか、トップページに戻ってください。
           </p>
@@ -66,9 +66,9 @@ export default function NotFound() {
         >
           <Link href="/">
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(76, 175, 80, 0.3)" }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-[#4CAF50] hover:bg-[#45A049] text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transition-all duration-300"
+              className="flex items-center gap-2 bg-[#1A1A1A] hover:bg-[#222222] text-white font-bold py-4 px-8 rounded-lg border border-[#333333] hover:border-[#FF007F] text-lg transition-all duration-300"
             >
               <Home className="w-5 h-5" />
               トップページに戻る
@@ -77,9 +77,9 @@ export default function NotFound() {
           
           <motion.button
             onClick={() => window.history.back()}
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(102, 102, 102, 0.3)" }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 bg-[#666666] hover:bg-[#555555] text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transition-all duration-300"
+            className="flex items-center gap-2 bg-[#1A1A1A] hover:bg-[#222222] text-white font-bold py-4 px-8 rounded-lg border border-[#333333] hover:border-[#00FFFF] text-lg transition-all duration-300"
           >
             <ArrowLeft className="w-5 h-5" />
             前のページに戻る
@@ -100,17 +100,17 @@ export default function NotFound() {
           ].map((item, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
+              whileHover={{ y: -2 }}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-              className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300"
+              className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-6 transition-all duration-300"
             >
               <Link href={item.link}>
-                <h3 className="font-bold text-[#333333] mb-2 hover:text-[#4CAF50] transition-colors">
+                <h3 className="font-bold text-[#FFFFFF] mb-2 hover:text-[#FF007F] transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-[#666666] text-sm">
+                <p className="text-[#AAAAAA] text-sm">
                   {item.desc}
                 </p>
               </Link>

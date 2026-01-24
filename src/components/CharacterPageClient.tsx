@@ -49,7 +49,7 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
   }
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b from-pink-100 to-rose-100 ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-[#111111] ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8">
         
         {/* パンくずナビ */}
@@ -75,8 +75,8 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
           transition={{ duration: 0.6 }}
           className="max-w-md mx-auto"
         >
-          <div className={`${cardBgColor} rounded-2xl p-6 shadow-lg`}>
-            <div className="bg-white rounded-xl p-6 shadow-sm text-center">
+          <div className={`${cardBgColor} rounded-lg p-6 border border-[#333333]`}>
+            <div className="bg-[#1A1A1A] rounded-lg p-6 border border-[#333333] text-center">
               {/* タイプコード */}
               <div className="mb-4">
                 <span className={`text-lg font-bold ${textColor} bg-gray-100 px-3 py-1 rounded-full`}>
@@ -283,11 +283,11 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center space-y-6"
         >
-          <div className="bg-white/90 backdrop-blur rounded-2xl p-6 max-w-sm mx-auto">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-3">
+          <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-6 max-w-sm mx-auto">
+            <h2 className="text-lg sm:text-xl font-bold text-[#FFFFFF] mb-3">
               あなたの夜の性格は<br className="sm:hidden" />何タイプかな？
             </h2>
-            <p className="text-sm text-gray-600 mb-4">
+            <p className="text-sm text-[#AAAAAA] mb-4">
               診断してみよう！
             </p>
             
@@ -295,7 +295,7 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#2196F3] hover:bg-[#1976D2] text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300"
+                className="bg-[#2196F3] hover:bg-[#1976D2] text-white font-bold py-3 px-8 rounded-lg border border-[#333333] transition-all duration-300"
               >
                 診断を始める
               </motion.button>

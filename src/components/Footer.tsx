@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
 
           {/* 区切り線 */}
-          <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent"></div>
+          <div className="h-px bg-[#333333]"></div>
 
           {/* リーガルリンクセクション */}
           <div className="space-y-4">
