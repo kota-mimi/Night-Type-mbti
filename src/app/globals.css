@@ -218,13 +218,21 @@ body::before {
   animation: orb-float 12s ease-in-out infinite;
 }
 
-/* Character Pop-out Effect */
+/* Character Pop-out Effect - PC only */
 .character-popout {
-  margin-top: -40px;
+  margin-top: -20px;
   position: relative;
   z-index: 10;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
   transition: all 0.3s ease;
+}
+
+/* Mobile: No pop-out effect */
+@media (max-width: 768px) {
+  .character-popout {
+    margin-top: 0;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+  }
 }
 
 .character-popout:hover {
