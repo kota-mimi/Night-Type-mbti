@@ -128,11 +128,7 @@ function GalleryContent() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 + index * 0.05 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  transition: { duration: 0.2 }
-                }}
-                className="p-4 border border-gray-600/30 hover:border-neon-cyan-500/50 transition-all duration-300 group"
+                className="p-4 border border-gray-600/30 transition-all duration-300 group"
                 style={{
                   backgroundColor: 'rgba(10, 10, 18, 0.95)',
                   borderRadius: '20px'
@@ -168,12 +164,12 @@ function GalleryContent() {
 
                 <div className="space-y-3 flex flex-col h-full">
                   {/* タイプ名 */}
-                  <h3 className="text-base font-bold text-gray-200 text-center leading-tight group-hover:text-neon-cyan-300 transition-colors duration-300">
+                  <h3 className="text-base font-bold text-gray-200 text-center leading-tight transition-colors duration-300">
                     {type.name}
                   </h3>
 
                   {/* 基本生態 */}
-                  <p className="text-sm text-gray-400 text-left leading-relaxed group-hover:text-gray-300 transition-colors duration-300 mb-4">
+                  <p className="text-sm text-gray-400 text-left leading-relaxed transition-colors duration-300 mb-4">
                     {type.basicEcology}
                   </p>
 
