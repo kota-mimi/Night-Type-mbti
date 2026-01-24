@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Home, Twitter, MessageSquare, Instagram, Download, Copy } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import { Noto_Sans_JP } from 'next/font/google'
@@ -219,8 +220,15 @@ export default function ResultPage() {
             {/* キャラクター絵文字を中央配置 */}
             <div className="flex justify-center items-center">
               <div className="text-center">
-                <div className="w-48 h-48 bg-[#1A1A1A] rounded-full flex items-center justify-center mb-6 border border-[#333333]">
-                  <span className="text-8xl animate-float">{typeData.emoji}</span>
+                <div className="mb-6">
+                  <Image 
+                    src="/test_banner.png"
+                    alt="Test Banner"
+                    width={600}
+                    height={200}
+                    className="border border-[#333333]"
+                    priority
+                  />
                 </div>
                 {/* キャラクター名 */}
                 <motion.h1
