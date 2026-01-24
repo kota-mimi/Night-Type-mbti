@@ -149,7 +149,11 @@ function GalleryContent() {
 
                 {/* タイプコード */}
                 <div className="text-center mb-1">
-                  <h2 className="text-xl font-bold text-[#FF007F] mb-1">
+                  <h2 className={`text-xl font-bold mb-1 ${
+                    selectedGender === 'male' 
+                      ? 'text-[#00FFFF]' 
+                      : 'text-[#FF007F]'
+                  }`}>
                     {typeCode}
                   </h2>
                 </div>
