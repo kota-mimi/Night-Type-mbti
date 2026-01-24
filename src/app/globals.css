@@ -227,11 +227,13 @@ body::before {
   transition: all 0.3s ease;
 }
 
-/* Mobile: No pop-out effect */
+/* Mobile: No pop-out effect + Full width display */
 @media (max-width: 768px) {
   .character-popout {
     margin-top: 0;
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
 

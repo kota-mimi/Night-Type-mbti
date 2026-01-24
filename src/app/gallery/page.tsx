@@ -27,18 +27,19 @@ function CharacterImageWithFallback({ typeCode, name, index }: { typeCode: strin
   }
   
   return (
-    <div className="relative w-full h-[40vh] md:h-[450px] flex justify-center items-end overflow-hidden">
-      <div className="w-full h-full flex items-end justify-center pt-5 md:pt-0">
+    <div className="relative w-full h-[45vh] md:h-[450px] flex justify-center items-end overflow-hidden p-0">
+      <div className="w-full h-full flex items-end justify-center p-0">
         <Image 
           src={`/characters/${typeCode}_gallery.png`}
           alt={name}
           width={500}
           height={500}
-          sizes="(max-width: 768px) 280px, 350px"
-          className="object-contain transition-all duration-300 md:character-popout"
+          sizes="(max-width: 768px) 100vw, 350px"
+          className="object-contain transition-all duration-300 md:character-popout w-full md:w-auto"
           style={{
-            maxHeight: '90%',
-            width: 'auto',
+            maxHeight: '100%',
+            width: '100%',
+            height: 'auto',
             objectPosition: 'bottom center'
           }}
           onError={() => setImageError(true)}
@@ -140,7 +141,7 @@ function GalleryContent() {
                 <div className="relative overflow-hidden">
                 
                 {/* キャラクター画像 - ポップアウト効果 */}
-                <div className="relative min-h-[60vh] md:min-h-[500px] mb-1 overflow-hidden">
+                <div className="relative min-h-[65vh] md:min-h-[500px] mb-1 overflow-hidden">
                   {selectedGender === 'female' ? (
                     <div className="relative h-full flex items-end justify-center">
                       <CharacterImageWithFallback 
