@@ -19,10 +19,10 @@ export default function PrivacyPage() {
             プライバシーポリシー
           </h1>
 
-          <div className="space-y-4 text-gray-700 leading-relaxed text-sm">
+          <div className="space-y-4 text-gray-300 leading-relaxed text-sm">
             
             <section>
-              <h2 className="text-lg font-bold mb-2 text-gray-800">個人情報の取り扱いについて</h2>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">個人情報の取り扱いについて</h2>
               <p className="mb-3">
                 Night Type（以下「当サービス」）では、ユーザーのプライバシーを尊重し、
                 個人情報の保護に努めております。
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold mb-2 text-gray-800">収集する情報</h2>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">収集する情報</h2>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>診断結果に関する情報</li>
                 <li>アクセス解析のためのGoogle Analytics情報</li>
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold mb-2 text-gray-800">情報の利用目的</h2>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">情報の利用目的</h2>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>サービスの提供・運営</li>
                 <li>サービスの改善・開発</li>
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold mb-2 text-gray-800">第三者への提供</h2>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">第三者への提供</h2>
               <p>
                 個人情報は、法令に基づく場合を除き、第三者に提供することはありません。
                 ただし、統計情報として個人を特定できない形での情報は、
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold mb-2 text-gray-800">Cookie（クッキー）について</h2>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">Cookie（クッキー）について</h2>
               <p className="mb-3">
                 当サービスでは、Google Analyticsを使用してアクセス解析を行っています。
                 Cookieを無効にしても当サービスをご利用いただけますが、
@@ -67,7 +67,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold mb-2 text-gray-800">プライバシーポリシーの変更</h2>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">プライバシーポリシーの変更</h2>
               <p>
                 本プライバシーポリシーは、必要に応じて変更する場合があります。
                 変更後のプライバシーポリシーは、本ページに掲載した時点で効力を生じるものとします。
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
             </section>
 
             <section>
-              <h2 className="text-lg font-bold mb-2 text-gray-800">お問い合わせ</h2>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">お問い合わせ</h2>
               <p className="mb-3">
                 プライバシーポリシーに関するお問い合わせは、以下からお願いいたします。
               </p>
