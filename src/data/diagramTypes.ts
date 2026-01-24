@@ -814,7 +814,7 @@ const femaleTypes: DiagramTypes = {
       }
     }
   },
-  AFEC: {
+  AFEC: { // 修正: 正しい女性版キャラクター名
     name: '魔性の聖女',
     emoji: '😇',
     catchcopy: '私なしじゃ生きられない体に、作り変えてあげる。',
