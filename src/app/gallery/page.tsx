@@ -83,7 +83,7 @@ function GalleryContent() {
                 onClick={() => setSelectedGender('male')}
                 className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
                   selectedGender === 'male'
-                    ? 'luxury-button text-white'
+                    ? 'bg-[#00FFFF] text-[#111111] border border-[#00FFFF]'
                     : 'text-[#00FFFF] hover:bg-[#1A1A1A] hover:text-[#66FFFF]'
                 }`}
               >
@@ -93,7 +93,7 @@ function GalleryContent() {
                 onClick={() => setSelectedGender('female')}
                 className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
                   selectedGender === 'female'
-                    ? 'luxury-button text-white'
+                    ? 'bg-[#FF007F] text-white border border-[#FF007F]'
                     : 'text-[#FF007F] hover:bg-[#1A1A1A] hover:text-[#FF66B3]'
                 }`}
               >
