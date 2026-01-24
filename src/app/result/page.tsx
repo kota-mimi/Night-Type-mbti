@@ -222,11 +222,15 @@ export default function ResultPage() {
               <div className="text-center">
                 <div className="mb-6">
                   <Image 
-                    src="/test_banner.png"
-                    alt="Test Banner"
+                    src={`/characters/${userType}_${userGender}_banner.png`}
+                    alt={`${typeData.name} Banner`}
                     width={600}
                     height={200}
                     className="border border-[#333333]"
+                    onError={(e) => {
+                      // フォールバックとしてテスト画像を表示
+                      e.currentTarget.src = '/test_banner.png'
+                    }}
                     priority
                   />
                 </div>
