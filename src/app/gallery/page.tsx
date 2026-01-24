@@ -15,7 +15,7 @@ const notoSansJP = Noto_Sans_JP({
   display: 'swap',
 })
 
-function CharacterImageWithFallback({ typeCode, name, index }: { typeCode: string; name: string; index: number }) {
+function CharacterImageWithFallback({ typeCode, name, index, gender }: { typeCode: string; name: string; index: number; gender: 'male' | 'female' }) {
   const [imageError, setImageError] = useState(false)
   
   if (imageError) {
@@ -26,10 +26,14 @@ function CharacterImageWithFallback({ typeCode, name, index }: { typeCode: strin
     )
   }
   
+  const imageSrc = gender === 'female' 
+    ? `/characters/${typeCode}_gallery.png`
+    : `/characters/${typeCode}_gallery_male.png`
+  
   return (
     <div className="relative w-full aspect-[4/5] flex items-center justify-center overflow-hidden">
       <Image 
-        src={`/characters/${typeCode}_gallery.png`}
+        src={imageSrc}
         alt={name}
         width={400}
         height={500}
@@ -130,21 +134,14 @@ function GalleryContent() {
                 
                 {/* キャラクター画像 - ポップアウト効果 */}
                 <div className="relative mb-4 overflow-hidden">
-                  {selectedGender === 'female' ? (
-                    <div className="relative h-full flex items-end justify-center">
-                      <CharacterImageWithFallback 
-                        typeCode={typeCode}
-                        name={type.name}
-                        index={index}
-                      />
-                    </div>
-                  ) : (
-                    <div className="h-full flex items-center justify-center">
-                      <div className="w-24 h-24 bg-[#1A1A1A] rounded-full flex items-center justify-center border border-[#333333] group-hover:border-[#00FFFF] transition-all duration-300">
-                        <span className="text-4xl animate-float">{type.emoji}</span>
-                      </div>
-                    </div>
-                  )}
+                  <div className="relative h-full flex items-end justify-center">
+                    <CharacterImageWithFallback 
+                      typeCode={typeCode}
+                      name={type.name}
+                      index={index}
+                      gender={selectedGender}
+                    />
+                  </div>
                 </div>
 
                 {/* タイプコード */}
