@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Home, ArrowRight } from 'lucide-react'
-import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
+import { Noto_Sans_JP } from 'next/font/google'
 import { diagramTypes } from '@/data/diagramTypes'
 
 const notoSansJP = Noto_Sans_JP({
@@ -12,11 +12,6 @@ const notoSansJP = Noto_Sans_JP({
   display: 'swap',
 })
 
-const zenMaruGothic = Zen_Maru_Gothic({
-  weight: ['400', '700', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-})
 
 interface Props {
   slug: string
@@ -98,7 +93,7 @@ export default function CharacterPageClient({ slug, typeCode, character }: Props
 
               {/* キャラクター名とキャッチコピー */}
               <div className="mb-6">
-                <h1 className={`text-2xl md:text-3xl font-bold text-gray-800 mb-2 ${zenMaruGothic.className}`}>
+                <h1 className="text-2xl md:text-3xl font-bold text-[#FFFFFF] mb-2">
                   {character.name}
                 </h1>
                 <p className={`text-lg ${textColor} font-medium`}>

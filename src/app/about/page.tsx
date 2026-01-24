@@ -82,11 +82,8 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className={`min-h-screen bg-midnight-900 relative overflow-hidden ${notoSansJP.className}`}>
-      {/* Background Floating Orbs */}
-      <div className="floating-orb orb-pink w-64 h-64 top-20 left-10" style={{animationDelay: '0s'}} />
-      <div className="floating-orb orb-cyan w-48 h-48 top-1/2 right-20" style={{animationDelay: '4s'}} />
-      <div className="floating-orb orb-purple w-56 h-56 bottom-20 left-1/3" style={{animationDelay: '8s'}} />
+    <div className={`bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
+      {/* Removed floating orbs for flat design */}
       <div className="floating-orb orb-pink w-40 h-40 top-1/3 right-1/4" style={{animationDelay: '12s'}} />
       
       <div className="container mx-auto px-4 py-16 max-w-4xl relative z-10">
@@ -96,11 +93,11 @@ export default function AboutPage() {
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="neon-card p-8 md:p-10"
+          className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-8 md:p-10"
         >
           {/* ヘッダー */}
           <div className="text-center mb-8">
-            <h1 className="text-xl md:text-3xl font-bold neon-gold mb-6 whitespace-nowrap">
+            <h1 className="text-xl md:text-3xl font-bold text-[#FF007F] mb-6 whitespace-nowrap">
               Night Type診断
             </h1>
             <h2 className="text-lg md:text-xl text-gray-200 mb-6">
@@ -112,20 +109,20 @@ export default function AboutPage() {
                 なぜ、あの人と体の相性が合わないのでしょうか？ なぜ、いつも同じパターンで恋愛が終わるのでしょうか？
               </p>
               <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
-                それは「愛情の深さ」の違いではなく、<strong className="neon-pink">「本能のクセ（性癖）」</strong>の違いです。
+                それは「愛情の深さ」の違いではなく、<strong className="text-[#FF007F]">「本能のクセ（性癖）」</strong>の違いです。
               </p>
               <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                本診断では、あなたの夜の行動パターンを４つの指標で徹底分析。 全16タイプの中から、あなたが最も輝ける<strong className="neon-pink">「本当の夜の姿」と「運命の相手」</strong>を導き出します。
+                本診断では、あなたの夜の行動パターンを４つの指標で徹底分析。 全16タイプの中から、あなたが最も輝ける<strong className="text-[#FF007F]">「本当の夜の姿」と「運命の相手」</strong>を導き出します。
               </p>
             </div>
           </div>
 
           <div className="space-y-6">
             {axes.map((axis, index) => (
-              <div key={index} className="neon-card border border-gray-600/30 p-4 md:p-6">
+              <div key={index} className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-4 md:p-6">
                 {/* 軸のタイトル */}
                 <div className="mb-4">
-                  <h2 className="text-lg md:text-xl font-bold neon-cyan mb-2">
+                  <h2 className="text-lg md:text-xl font-bold text-[#00FFFF] mb-2">
                     {axis.title}
                   </h2>
                   <p className="text-sm md:text-base text-gray-300 font-medium">
@@ -138,7 +135,7 @@ export default function AboutPage() {
                   {axis.items.map((item, itemIndex) => (
                     <div
                       key={itemIndex}
-                      className="neon-card border border-gray-700/40 p-4 space-y-3"
+                      className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-4 space-y-3"
                     >
                       <h3 className="text-base font-bold text-gray-200">
                         {item.type}

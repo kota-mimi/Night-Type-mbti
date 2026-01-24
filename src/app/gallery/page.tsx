@@ -48,14 +48,10 @@ function GalleryContent() {
   const typeKeys = Object.keys(genderedDiagramTypes[selectedGender])
   
   return (
-    <div className={`min-h-screen bg-midnight-900 relative overflow-hidden ${notoSansJP.className}`}>
-      {/* Background Floating Orbs */}
-      <div className="floating-orb orb-pink w-64 h-64 top-20 left-10" style={{animationDelay: '0s'}} />
-      <div className="floating-orb orb-cyan w-48 h-48 top-1/2 right-20" style={{animationDelay: '4s'}} />
-      <div className="floating-orb orb-purple w-56 h-56 bottom-20 left-1/3" style={{animationDelay: '8s'}} />
-      <div className="floating-orb orb-pink w-40 h-40 top-1/3 right-1/4" style={{animationDelay: '12s'}} />
+    <div className={`bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
+      {/* Removed floating orbs for flat design */}
       
-      <div className="container mx-auto px-4 py-8 max-w-6xl relative z-10">
+      <div className="container mx-auto px-4 pt-8 pb-16 max-w-6xl relative z-10">
         
         {/* ヘッダー */}
         <motion.div
@@ -88,7 +84,7 @@ function GalleryContent() {
                 className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
                   selectedGender === 'male'
                     ? 'luxury-button text-white'
-                    : 'text-neon-cyan-400 hover:bg-cyan-500/10 hover:text-neon-cyan-300'
+                    : 'text-[#00FFFF] hover:bg-[#1A1A1A] hover:text-[#66FFFF]'
                 }`}
               >
                 男性版
@@ -98,7 +94,7 @@ function GalleryContent() {
                 className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
                   selectedGender === 'female'
                     ? 'luxury-button text-white'
-                    : 'text-neon-pink-400 hover:bg-pink-500/10 hover:text-neon-pink-300'
+                    : 'text-[#FF007F] hover:bg-[#1A1A1A] hover:text-[#FF66B3]'
                 }`}
               >
                 女性版
@@ -153,7 +149,7 @@ function GalleryContent() {
 
                 {/* タイプコード */}
                 <div className="text-center mb-1">
-                  <h2 className="text-xl font-bold neon-gold mb-1">
+                  <h2 className="text-xl font-bold text-[#FF007F] mb-1">
                     {typeCode}
                   </h2>
                 </div>
@@ -262,11 +258,11 @@ function GalleryContent() {
 export default function GalleryPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-midnight-900 flex items-center justify-center">
+      <div className="bg-[#111111] flex items-center justify-center min-h-[50vh] pt-16">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-8 h-8 border-2 border-neon-pink-500 border-t-transparent rounded-full"
+          className="w-8 h-8 border-2 border-[#FF007F] border-t-transparent rounded-full"
         />
       </div>
     }>

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Home, Twitter, MessageSquare, Instagram, Download, Copy } from 'lucide-react'
 import Breadcrumbs from '@/components/Breadcrumbs'
-import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
+import { Noto_Sans_JP } from 'next/font/google'
 import { getTypeFromAnswers } from '@/lib/scoring'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
@@ -18,11 +18,6 @@ const notoSansJP = Noto_Sans_JP({
   display: 'swap',
 })
 
-const zenMaruGothic = Zen_Maru_Gothic({
-  weight: ['700'],
-  subsets: ['latin'],
-  display: 'swap',
-})
 
 export default function ResultPage() {
   const router = useRouter()
@@ -175,11 +170,11 @@ export default function ResultPage() {
 
   if (isLoading) {
     return (
-      <div className={`min-h-screen bg-midnight-900 flex items-center justify-center ${notoSansJP.className}`}>
+      <div className={`bg-[#111111] flex items-center justify-center min-h-[50vh] pt-16 ${notoSansJP.className}`}>
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-8 h-8 border-2 border-neon-pink-500 border-t-transparent rounded-full"
+          className="w-8 h-8 border-2 border-[#FF007F] border-t-transparent rounded-full"
         />
       </div>
     )
@@ -191,7 +186,7 @@ export default function ResultPage() {
   
   if (!typeData) {
     return (
-      <div className={`min-h-screen bg-midnight-900 flex items-center justify-center ${notoSansJP.className}`}>
+      <div className={`bg-[#111111] flex items-center justify-center min-h-[50vh] pt-16 ${notoSansJP.className}`}>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-200 mb-4">エラーが発生しました</h1>
           <button
@@ -206,13 +201,9 @@ export default function ResultPage() {
   }
 
   return (
-    <div className={`min-h-screen bg-midnight-900 relative overflow-hidden ${notoSansJP.className}`}>
-      {/* Background Floating Orbs */}
-      <div className="floating-orb orb-pink w-64 h-64 top-20 left-10" style={{animationDelay: '0s'}} />
-      <div className="floating-orb orb-cyan w-48 h-48 top-1/2 right-20" style={{animationDelay: '4s'}} />
-      <div className="floating-orb orb-purple w-56 h-56 bottom-20 left-1/3" style={{animationDelay: '8s'}} />
-      <div className="floating-orb orb-pink w-40 h-40 top-1/3 right-1/4" style={{animationDelay: '12s'}} />
-      <div className="container mx-auto px-4 py-8 max-w-4xl relative z-10">
+    <div className={`bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
+      {/* Removed floating orbs for flat design */}
+      <div className="container mx-auto px-4 pt-8 pb-16 max-w-4xl relative z-10">
         
         {/* メインコンテンツカード */}
         <motion.div
@@ -236,7 +227,7 @@ export default function ResultPage() {
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className={`text-3xl md:text-4xl font-bold text-gray-200 mb-4 ${zenMaruGothic.className}`}
+                  className={`text-3xl md:text-4xl font-bold text-gray-200 mb-4`}
                   style={{
                     textShadow: '0 0 10px rgba(255, 215, 0, 0.3)'
                   }}
@@ -268,7 +259,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold neon-cyan text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold text-[#00FFFF] text-center`}>
                 夜の生態レポート
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -285,7 +276,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold neon-pink text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold text-[#FF007F] text-center`}>
                 あなたのエロさの正体
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -302,7 +293,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-red-400 text-center ${zenMaruGothic.className}`} style={{
+              <h2 className={`text-2xl font-bold text-red-400 text-center`} style={{
                 textShadow: '0 0 10px rgba(239, 68, 68, 0.5)'
               }}>
                 閲覧注意：本能のカルテ
@@ -321,7 +312,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-electric-purple-400 text-center ${zenMaruGothic.className}`} style={{
+              <h2 className={`text-2xl font-bold text-[#9966FF] text-center`} style={{
                 textShadow: '0 0 10px rgba(168, 85, 247, 0.5)'
               }}>
                 夜の口癖・脳内
@@ -340,7 +331,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold neon-gold text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold text-[#FF007F] text-center`}>
                 事後の賢者タイム
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -357,18 +348,18 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.9 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold neon-pink text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-xl font-bold text-[#FF007F] text-center`}>
                 SM診断
               </h2>
               <div className="neon-card p-4 border border-pink-500/30">
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
-                    <h3 className="text-sm font-medium text-neon-pink-300 mb-1">脳内ドS度</h3>
-                    <div className="text-2xl font-bold neon-pink">{typeData.sm_diagnosis.mind_s}%</div>
+                    <h3 className="text-sm font-medium text-[#FF66B3] mb-1">脳内ドS度</h3>
+                    <div className="text-2xl font-bold text-[#FF007F]">{typeData.sm_diagnosis.mind_s}%</div>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-neon-pink-300 mb-1">肉体ドM度</h3>
-                    <div className="text-2xl font-bold neon-pink">{typeData.sm_diagnosis.body_m}%</div>
+                    <h3 className="text-sm font-medium text-[#FF66B3] mb-1">肉体ドM度</h3>
+                    <div className="text-2xl font-bold text-[#FF007F]">{typeData.sm_diagnosis.body_m}%</div>
                   </div>
                 </div>
               </div>
@@ -383,22 +374,22 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 1.0 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold neon-cyan text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-xl font-bold text-[#00FFFF] text-center`}>
                 ステータス
               </h2>
               <div className="neon-card p-4 border border-cyan-500/30">
                 <div className="grid grid-cols-3 gap-3 text-center">
                   <div>
-                    <h3 className="text-xs font-medium text-neon-cyan-300 mb-1">性欲</h3>
-                    <div className="text-lg font-bold neon-cyan">{typeData.stats.libido}</div>
+                    <h3 className="text-xs font-medium text-[#66FFFF] mb-1">性欲</h3>
+                    <div className="text-lg font-bold text-[#00FFFF]">{typeData.stats.libido}</div>
                   </div>
                   <div>
-                    <h3 className="text-xs font-medium text-neon-cyan-300 mb-1">変態度</h3>
-                    <div className="text-lg font-bold neon-cyan">{typeData.stats.hentai}</div>
+                    <h3 className="text-xs font-medium text-[#66FFFF] mb-1">変態度</h3>
+                    <div className="text-lg font-bold text-[#00FFFF]">{typeData.stats.hentai}</div>
                   </div>
                   <div>
-                    <h3 className="text-xs font-medium text-neon-cyan-300 mb-1">むっつり度</h3>
-                    <div className="text-lg font-bold neon-cyan">{typeData.stats.muttsuri}</div>
+                    <h3 className="text-xs font-medium text-[#66FFFF] mb-1">むっつり度</h3>
+                    <div className="text-lg font-bold text-[#00FFFF]">{typeData.stats.muttsuri}</div>
                   </div>
                 </div>
               </div>
@@ -413,7 +404,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 1.1 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-electric-purple-400 text-center ${zenMaruGothic.className}`} style={{
+              <h2 className={`text-xl font-bold text-[#9966FF] text-center`} style={{
                 textShadow: '0 0 10px rgba(168, 85, 247, 0.5)'
               }}>
                 浮気分析
@@ -421,7 +412,7 @@ export default function ResultPage() {
               <div className="neon-card p-4 border border-purple-500/30">
                 <div className="text-center mb-3">
                   <div className="text-2xl font-bold text-electric-purple-300 mb-1">{typeData.uwaki.percent}</div>
-                  <div className="text-sm font-medium text-electric-purple-400">{typeData.uwaki.type}</div>
+                  <div className="text-sm font-medium text-[#9966FF]">{typeData.uwaki.type}</div>
                 </div>
                 <div className="text-xs leading-relaxed text-gray-400 text-center max-w-md mx-auto">
                   <p>{typeData.uwaki.text}</p>
@@ -438,7 +429,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-gray-300 text-center ${zenMaruGothic.className}`}>
+              <h2 className={`text-2xl font-bold text-gray-300 text-center`}>
                 基本生態
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -459,7 +450,7 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 1.2 }}
             className="space-y-8"
           >
-            <h2 className={`text-2xl font-bold neon-gold text-center ${zenMaruGothic.className}`}>
+            <h2 className={`text-2xl font-bold text-[#FF007F] text-center`}>
               相性チェック
             </h2>
             

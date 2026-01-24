@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Noto_Sans_JP, Zen_Maru_Gothic } from 'next/font/google'
+import { Noto_Sans_JP } from 'next/font/google'
 import CharacterMarquee from '@/components/CharacterMarquee'
 
 const notoSansJP = Noto_Sans_JP({
@@ -10,22 +10,13 @@ const notoSansJP = Noto_Sans_JP({
   display: 'swap',
 })
 
-const zenMaruGothic = Zen_Maru_Gothic({
-  weight: ['400', '700', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-})
 
 export default function HomeContent() {
   return (
-    <div className={`min-h-screen bg-midnight-900 relative overflow-hidden ${notoSansJP.className}`}>
-      {/* Background Floating Orbs */}
-      <div className="floating-orb orb-pink w-64 h-64 top-10 left-10" style={{animationDelay: '0s'}} />
-      <div className="floating-orb orb-cyan w-48 h-48 top-1/3 right-20" style={{animationDelay: '2s'}} />
-      <div className="floating-orb orb-purple w-56 h-56 bottom-20 left-1/3" style={{animationDelay: '4s'}} />
-      <div className="floating-orb orb-pink w-32 h-32 top-2/3 right-10" style={{animationDelay: '6s'}} />
+    <div className={`bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
+      {/* Removed floating orbs for flat design */}
       
-      <main className="flex flex-col justify-center items-center min-h-screen text-center px-4 relative z-10">
+      <main className="flex flex-col items-center text-center px-4 pt-8 pb-16 relative z-10">
         
         {/* メインコンテンツ */}
         <motion.div
@@ -35,9 +26,9 @@ export default function HomeContent() {
           className="text-center"
         >
           {/* タイトル */}
-          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ${zenMaruGothic.className}`}>
-            <span className="neon-pink">Night</span>{' '}
-            <span className="neon-cyan">Type</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+            <span className="text-[#FF007F]">Night</span>{' '}
+            <span className="text-[#00FFFF]">Type</span>
           </h1>
           
           {/* サブタイトル */}
@@ -47,7 +38,7 @@ export default function HomeContent() {
             transition={{ duration: 1, delay: 0.3 }}
             className="text-lg md:text-2xl text-gray-300 mb-4 leading-relaxed"
           >
-            あなたの性格と、<span className="neon-gold">夜の過ごし方</span>が見つかる。
+            あなたの性格と、<span className="text-[#FF007F]">夜の過ごし方</span>が見つかる。
           </motion.h2>
           
           {/* 説明テキスト */}

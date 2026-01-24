@@ -147,13 +147,10 @@ export default function QuizPage() {
   const allAnswered = questionGroup.every(q => answers[q.id] !== undefined)
 
   return (
-    <div className={`min-h-screen bg-midnight-900 relative overflow-hidden ${notoSansJP.className}`}>
-      {/* Background Floating Orbs */}
-      <div className="floating-orb orb-pink w-32 h-32 top-10 right-10" style={{animationDelay: '0s'}} />
-      <div className="floating-orb orb-cyan w-24 h-24 top-1/3 left-20" style={{animationDelay: '2s'}} />
-      <div className="floating-orb orb-purple w-28 h-28 bottom-20 right-1/3" style={{animationDelay: '4s'}} />
+    <div className={`bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
+      {/* Removed floating orbs for flat design */}
       {/* プログレスバー */}
-      <div className="w-full bg-midnight-800 h-3 relative">
+      <div className="w-full bg-[#1A1A1A] h-3 relative">
         <motion.div
           className="h-full bg-[#FF007F]"
           initial={{ width: 0 }}
