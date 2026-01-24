@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Night Type｜あなたの夜の性格、見つかる",
   description: "16タイプの夜の性格診断で、あなたに最適な夜の過ごし方を発見。20問・約3分で完了。科学的根拠に基づいた継続可能なアプローチをご提案します。",
   keywords: "夜,性格,診断,MBTI,ライフスタイル,夜型,深夜",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://diet-type16.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://night-type.net'),
   authors: [{ name: "Night Type" }],
   creator: "Night Type",
   publisher: "Night Type",

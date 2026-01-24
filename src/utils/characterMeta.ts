@@ -20,8 +20,8 @@ export function generateCharacterMetadata(slug: string): Metadata {
   const title = `${character.name}（${typeCode}）| ダイエットキャラ診断16`
   const description = `${character.name}の詳細分析：${character.catchcopy} ${character.basicEcology} あなたに最適なダイエット方法を無料診断で発見しよう！`
   
-  const url = `https://diet-type16.com/character/${slug}`
-  const imageUrl = `https://diet-type16.com/characters/${typeCode}_new3.png`
+  const url = `https://night-type.net/character/${slug}`
+  const imageUrl = `https://night-type.net/characters/${typeCode}_new3.png`
 
   return {
     title,

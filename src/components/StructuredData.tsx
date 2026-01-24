@@ -6,7 +6,7 @@ export default function StructuredData() {
     "name": "ダイエットキャラ診断16",
     "alternateName": "ダイエットタイプ診断",
     "description": "16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見。24問・約3分で完了。科学的根拠に基づいた継続可能なアプローチをご提案します。",
-    "url": "https://diet-type16.com",
+    "url": "https://night-type.net",
     "applicationCategory": "HealthApplication",
     "operatingSystem": "Web Browser",
     "browserRequirements": "HTML5, CSS3, JavaScript",
@@ -19,7 +19,7 @@ export default function StructuredData() {
     "creator": {
       "@type": "Organization", 
       "name": "ダイエットキャラ診断16",
-      "url": "https://diet-type16.com",
+      "url": "https://night-type.net",
       "sameAs": [
         "https://x.com/diet_chara16",
         "https://www.instagram.com/diet_chara16"
@@ -50,7 +50,7 @@ export default function StructuredData() {
     "@type": "Quiz",
     "name": "ダイエットキャラ診断16",
     "description": "あなたの性格と、痩せ方が見つかる。16種類のダイエットキャラクターから、あなたに最適なダイエット方法を診断します。",
-    "url": "https://diet-type16.com/quiz/1",
+    "url": "https://night-type.net/quiz/1",
     "timeRequired": "PT3M",
     "numberOfQuestions": 24,
     "typicalAgeRange": "18-65",
@@ -68,7 +68,7 @@ export default function StructuredData() {
     "provider": {
       "@type": "Organization", 
       "name": "ダイエットキャラ診断16",
-      "url": "https://diet-type16.com"
+      "url": "https://night-type.net"
     }
   };
 

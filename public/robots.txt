@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://diet-type16.com/sitemap.xml
+Sitemap: https://night-type.net/sitemap.xml
