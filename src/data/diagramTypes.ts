@@ -132,7 +132,7 @@ const maleTypes: DiagramTypes = {
     }
   },
   AREN: {
-    name: '過保護なパトロン',
+    name: '過保護な旦那',
     emoji: '🤱',
     catchcopy: '全部俺がしてあげる。君はただ、そこで愛されていればいい。',
     basicEcology: '愛情たっぷりで面倒見が良すぎるタイプ。相手を甘やかすのが大好きで安定した関係を築くのが得意。でも時々重いかもしれない。',
