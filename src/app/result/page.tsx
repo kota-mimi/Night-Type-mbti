@@ -474,8 +474,7 @@ export default function ResultPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {/* 最高のパートナー */}
                     <div className="bg-[#1A1A1A] border border-green-500/30 rounded-lg p-6 relative overflow-hidden">
-                      {/* 背景キャラクター画像 - 無効化 */}
-                      {/*
+                      {/* 背景キャラクター画像 - 無効化 
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-bounce-slow">
                           {bestPartner?.code ? (
@@ -497,7 +496,7 @@ export default function ResultPage() {
                           </span>
                         </div>
                       </div>
-                      */
+                      */}
                       <div className="text-center space-y-3 relative">
                         <h3 className="text-lg font-bold text-green-400" style={{
                           textShadow: '0 0 10px rgba(34, 197, 94, 0.5)'
@@ -513,8 +512,7 @@ export default function ResultPage() {
 
                     {/* 最悪の天敵 */}
                     <div className="bg-[#1A1A1A] border border-red-500/30 rounded-lg p-6 relative overflow-hidden">
-                      {/* 背景キャラクター画像 - 無効化 */}
-                      {/*
+                      {/* 背景キャラクター画像 - 無効化 
                       <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
                         <div className="animate-float">
                           {worstEnemy?.code ? (
@@ -536,7 +534,7 @@ export default function ResultPage() {
                           </span>
                         </div>
                       </div>
-                      */
+                      */}
                       <div className="text-center space-y-3 relative">
                         <h3 className="text-lg font-bold text-red-400" style={{
                           textShadow: '0 0 10px rgba(239, 68, 68, 0.5)'
