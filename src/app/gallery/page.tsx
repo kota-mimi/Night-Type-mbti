@@ -124,14 +124,12 @@ function GalleryContent() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 + index * 0.05 }}
-                className="p-4 border border-gray-600/30 transition-all duration-300 group"
+                className="p-4 border border-gray-600/30 transition-all duration-300 group h-full flex flex-col"
                 style={{
                   backgroundColor: 'rgba(10, 10, 18, 0.95)',
                   borderRadius: '20px'
                 }}
               >
-                <div className="relative overflow-hidden">
-                
                 {/* キャラクター画像 - ポップアウト効果 */}
                 <div className="relative mb-4 overflow-hidden">
                   <div className="relative h-full flex items-end justify-center">
@@ -155,7 +153,7 @@ function GalleryContent() {
                   </h2>
                 </div>
 
-                <div className="space-y-3 flex flex-col h-full">
+                <div className="space-y-3 flex flex-col flex-1">
                   {/* タイプ名 */}
                   <h3 className="text-base font-bold text-gray-200 text-center leading-tight transition-colors duration-300">
                     {type.name}
@@ -229,7 +227,6 @@ function GalleryContent() {
                     >
                       詳しく見る
                     </button>
-                  </div>
                   </div>
                 </div>
               </motion.div>
