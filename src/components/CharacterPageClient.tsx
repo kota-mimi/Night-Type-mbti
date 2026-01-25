@@ -113,16 +113,11 @@ export default function CharacterPageClient({ slug, typeCode }: Props) {
             {character.name}
           </h1>
           
-          {/* キャッチコピー */}
-          <p className="text-gray-400 text-center mb-6">
-            {character.catchcopy}
-          </p>
-          
           {/* 基本生態 */}
           {character.basicEcology && (
             <div className="mb-6">
-              <h3 className="text-lg font-bold text-gray-200 mb-3">基本生態</h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <h3 className="text-lg font-bold text-gray-200 mb-3 text-center">基本生態</h3>
+              <p className="text-gray-300 text-sm leading-relaxed text-center">
                 {character.basicEcology}
               </p>
             </div>
