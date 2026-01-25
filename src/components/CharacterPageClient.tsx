@@ -108,11 +108,6 @@ export default function CharacterPageClient({ slug, typeCode }: Props) {
             />
           </div>
 
-          {/* キャラクター名 */}
-          <h1 className="text-2xl font-bold text-gray-200 mb-2 text-center">
-            {character.name}
-          </h1>
-          
           {/* 基本生態 */}
           {character.basicEcology && (
             <div className="mb-6">
@@ -153,34 +148,11 @@ export default function CharacterPageClient({ slug, typeCode }: Props) {
           </Link>
         </motion.div>
 
-        {/* 共有ボタン */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex gap-4 mb-8"
-        >
-          <button
-            onClick={() => handleShare('twitter')}
-            className="flex-1 bg-[#1DA1F2] hover:bg-[#1a91da] text-white font-medium py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
-          >
-            <Twitter className="w-5 h-5" />
-            <span className="text-sm">Xで共有</span>
-          </button>
-          <button
-            onClick={() => handleShare('line')}
-            className="flex-1 bg-[#06C755] hover:bg-[#05b849] text-white font-medium py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
-          >
-            <MessageSquare className="w-5 h-5" />
-            <span className="text-sm">LINEで共有</span>
-          </button>
-        </motion.div>
-
         {/* ホームに戻る */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center"
         >
           <Link href="/">
