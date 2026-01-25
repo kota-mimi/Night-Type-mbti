@@ -234,27 +234,6 @@ export default function ResultPage() {
                     priority
                   />
                 </div>
-                {/* キャラクター名 */}
-                <motion.h1
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className={`text-3xl md:text-4xl font-bold text-gray-200 mb-4`}
-                  style={{
-                    textShadow: '0 0 10px rgba(255, 215, 0, 0.3)'
-                  }}
-                >
-                  {typeData.name}
-                </motion.h1>
-                {/* キャッチコピー */}
-                <motion.p
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-lg md:text-xl text-gray-400 font-medium max-w-2xl mx-auto leading-relaxed"
-                >
-                  {typeData.catchcopy}
-                </motion.p>
               </div>
             </div>
 
