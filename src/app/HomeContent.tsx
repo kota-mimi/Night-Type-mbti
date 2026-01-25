@@ -59,10 +59,16 @@ export default function HomeContent() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
               whileHover={{ 
-                scale: 1.05
+                scale: 1.05,
+                boxShadow: '0 0 30px rgba(255, 0, 127, 0.4)'
               }}
               whileTap={{ scale: 0.98 }}
-              className="luxury-button text-white font-bold py-4 px-16 rounded-full text-lg md:text-xl mb-16 relative"
+              className="relative text-white font-bold py-4 px-16 rounded-full text-lg md:text-xl mb-16 overflow-hidden border-2 border-[#FF007F] hover:border-[#FF007F] transition-all duration-300"
+              style={{
+                background: 'linear-gradient(135deg, #FF007F 0%, #00FFFF 50%, #FF007F 100%)',
+                backgroundSize: '200% 200%',
+                animation: 'gradientShift 3s ease infinite'
+              }}
             >
               <span className="relative z-10">診断を始める</span>
             </motion.button>

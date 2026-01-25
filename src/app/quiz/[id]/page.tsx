@@ -298,13 +298,21 @@ export default function QuizPage() {
               <motion.button
                 onClick={handleNext}
                 disabled={!allAnswered || isLoading}
-                whileHover={allAnswered ? { scale: 1.02 } : {}}
+                whileHover={allAnswered ? { 
+                  scale: 1.02,
+                  boxShadow: '0 0 20px rgba(0, 255, 255, 0.4)'
+                } : {}}
                 whileTap={allAnswered ? { scale: 0.98 } : {}}
-                className={`w-full py-3 rounded-lg font-medium text-base transition-all duration-300 ${
+                className={`w-full py-3 rounded-lg font-medium text-base transition-all duration-300 relative overflow-hidden ${
                   allAnswered
-                    ? 'luxury-button text-white'
-                    : 'bg-gray-700 text-gray-500 cursor-not-allowed'
+                    ? 'text-white border-2 border-[#00FFFF] hover:border-[#00FFFF]'
+                    : 'bg-gray-700 text-gray-500 cursor-not-allowed border-2 border-gray-600'
                 }`}
+                style={allAnswered ? {
+                  background: 'linear-gradient(135deg, #00FFFF 0%, #FF007F 50%, #00FFFF 100%)',
+                  backgroundSize: '200% 200%',
+                  animation: 'gradientShift 3s ease infinite'
+                } : {}}
               >
                 {isLoading ? (
                   <motion.div
