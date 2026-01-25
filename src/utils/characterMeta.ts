@@ -29,8 +29,8 @@ export function generateCharacterMetadata(slug: string): Metadata {
   const title = `${character.name}（${typeCode}）| Night Type`
   const description = `${character.name}の詳細分析：${character.catchcopy} ${character.basicEcology} あなたのNight Typeを無料診断で発見しよう！`
   
-  const url = `https://night-type.net/character/${slug}`
-  const imageUrl = `https://night-type.net/characters/${typeCode}_${gender}_banner.png`
+  const url = `https://night-type-mbti.vercel.app/character/${slug}`
+  const imageUrl = `https://night-type-mbti.vercel.app/characters/${typeCode}_${gender}_banner.png`
 
   return {
     title,
