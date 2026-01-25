@@ -45,9 +45,10 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center">
               <div 
-                className={`text-2xl font-black ${notoSerifJP.className} tracking-tight text-[#FF007F]`}
+                className={`text-2xl font-black ${notoSerifJP.className} tracking-tight`}
               >
-                Night Type
+                <span className="text-[#FF007F]">Night</span>{' '}
+                <span className="text-[#00FFFF]">Type</span>
               </div>
             </div>
           </Link>
@@ -138,9 +139,10 @@ export default function Header() {
             className="absolute bottom-16 text-center"
           >
             <div 
-              className={`text-xl font-black ${notoSerifJP.className} tracking-tight text-[#FF007F]`}
+              className={`text-xl font-black ${notoSerifJP.className} tracking-tight`}
             >
-              Night Type
+              <span className="text-[#FF007F]">Night</span>{' '}
+              <span className="text-[#00FFFF]">Type</span>
             </div>
           </motion.div>
         </motion.div>
