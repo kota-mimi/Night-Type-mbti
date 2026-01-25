@@ -1,4 +1,4 @@
-import { diagramTypes } from '@/data/diagramTypes'
+import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { characterSlugs, slugToType } from '@/data/characterSlugs'
 import { generateCharacterMetadata } from '@/utils/characterMeta'
 import { notFound } from 'next/navigation'
@@ -23,18 +23,25 @@ export async function generateStaticParams() {
 export default async function CharacterPage({ params }: Props) {
   const { slug } = await params
   
-  // スラッグからキャラクタータイプを取得
-  const typeCode = slugToType[slug]
+  // スラッグからキャラクタータイプ（ARTN-male形式）を取得
+  const fullTypeCode = slugToType[slug]
   
-  if (!typeCode) {
+  if (!fullTypeCode) {
     notFound()
   }
   
-  const character = diagramTypes[typeCode as keyof typeof diagramTypes]
+  // タイプコードと性別を分離
+  const [typeCode, gender] = fullTypeCode.split('-') as [string, 'male' | 'female']
+  
+  if (!typeCode || !gender || (gender !== 'male' && gender !== 'female')) {
+    notFound()
+  }
+  
+  const character = genderedDiagramTypes[gender][typeCode]
   
   if (!character) {
     notFound()
   }
 
-  return <CharacterPageClient slug={slug} typeCode={typeCode} />
+  return <CharacterPageClient slug={slug} typeCode={typeCode} gender={gender} />
 }

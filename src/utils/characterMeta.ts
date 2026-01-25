@@ -1,48 +1,55 @@
 import { Metadata } from 'next'
-import { diagramTypes } from '@/data/diagramTypes'
+import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { slugToType } from '@/data/characterSlugs'
 
 export function generateCharacterMetadata(slug: string): Metadata {
-  const typeCode = slugToType[slug]
-  if (!typeCode) {
+  const fullTypeCode = slugToType[slug]
+  if (!fullTypeCode) {
     return {
       title: 'キャラクターが見つかりません',
     }
   }
 
-  const character = diagramTypes[typeCode as keyof typeof diagramTypes]
+  // タイプコードと性別を分離
+  const [typeCode, gender] = fullTypeCode.split('-') as [string, 'male' | 'female']
+  
+  if (!typeCode || !gender || (gender !== 'male' && gender !== 'female')) {
+    return {
+      title: 'キャラクターが見つかりません',
+    }
+  }
+
+  const character = genderedDiagramTypes[gender][typeCode]
   if (!character) {
     return {
       title: 'キャラクターが見つかりません',
     }
   }
 
-  const title = `${character.name}（${typeCode}）| ダイエットキャラ診断16`
-  const description = `${character.name}の詳細分析：${character.catchcopy} ${character.basicEcology} あなたに最適なダイエット方法を無料診断で発見しよう！`
+  const title = `${character.name}（${typeCode}）| Night Type`
+  const description = `${character.name}の詳細分析：${character.catchcopy} ${character.basicEcology} あなたのNight Typeを無料診断で発見しよう！`
   
   const url = `https://night-type.net/character/${slug}`
-  const imageUrl = `https://night-type.net/characters/${typeCode}_new3.png`
+  const imageUrl = `https://night-type.net/characters/${typeCode}_${gender}_banner.png`
 
   return {
     title,
     description,
     keywords: [
       character.name,
-      'ダイエット',
+      'Night Type',
       'MBTI',
       'キャラクター診断',
-      '痩せ方',
       '性格診断',
       typeCode,
       character.catchcopy.replace(/[。、]/g, ''),
-      'ダイエット診断',
-      'ダイエット法',
-      '減量',
-      'キャラ診断'
+      '夜の性格診断',
+      'キャラ診断',
+      '性格分析'
     ].join(', '),
-    authors: [{ name: 'ダイエットキャラ診断16' }],
-    creator: 'ダイエットキャラ診断16',
-    publisher: 'ダイエットキャラ診断16',
+    authors: [{ name: 'Night Type' }],
+    creator: 'Night Type',
+    publisher: 'Night Type',
     formatDetection: {
       email: false,
       address: false,
@@ -52,7 +59,7 @@ export function generateCharacterMetadata(slug: string): Metadata {
       title,
       description,
       url,
-      siteName: 'ダイエットキャラ診断16',
+      siteName: 'Night Type',
       images: [
         {
           url: imageUrl,
@@ -69,8 +76,8 @@ export function generateCharacterMetadata(slug: string): Metadata {
       title,
       description,
       images: [imageUrl],
-      creator: '@diet_chara16',
-      site: '@diet_chara16',
+      creator: '@nighttype',
+      site: '@nighttype',
     },
     alternates: {
       canonical: url,

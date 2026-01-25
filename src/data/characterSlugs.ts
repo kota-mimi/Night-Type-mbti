@@ -1,22 +1,40 @@
-// Night Type キャラクターのURL用スラッグマッピング（タイプコード別）
+// Night Type キャラクターのURL用スラッグマッピング（32種類独立）
 export const characterSlugs: Record<string, string> = {
-  // Night Type characters
-  'ARTN': 'absolute-king',         // 絶対君主（キング）/ 冷徹な女帝（クイーン）
-  'AFTN': 'night-ceo',            // 夜のCEO / 小悪魔な発明家
-  'AREN': 'overprotective-husband', // 過保護な旦那 / 過保護なママ
-  'AFEN': 'love-guru',            // 愛の教祖 / 無邪気なティンカーベル
-  'ARTC': 'runaway-dumptruck',    // 暴走ダンプカー / 肉食系ハンター
-  'AFTC': 'night-joker',          // 夜のジョーカー / 氷の美貌（ビューティー）
-  'AREC': 'narcissistic-star',    // 自意識過剰なスター / スポットライト女優
-  'AFEC': 'whimsical-peter-pan',  // 気まぐれピーターパン / 魔性の聖女
-  'PRTN': 'serious-civil-servant', // 生真面目な公務員 / 鉄壁のガードマン
-  'PFTN': 'solo-player',          // ソロプレイヤー / 冷めた脚本家
-  'PRTC': 'silent-sniper',        // 無口なスナイパー / 無口なテクニシャン
-  'PFTC': 'fetish-researcher',    // 性癖研究員 / 変態リケジョ
-  'PREN': 'faithful-guard-dog',   // 忠実な番犬 / 従順な夜の秘書
-  'PFEN': 'love-enforcer',        // 愛の執行人 / 心中ロマンチスト
-  'PREC': 'sensitive-cat',        // 感度3000倍のオス猫 / とろける猫
-  'PFEC': 'dreaming-poet',        // 夢見る詩人（ポエマー）/ 悲劇のヒロイン
+  // 男性版 Night Type characters (16種類)
+  'ARTN-male': 'absolute-king',              // 絶対君主（キング）
+  'AFTN-male': 'night-ceo',                 // 夜のCEO
+  'AREN-male': 'overprotective-husband',    // 過保護な旦那
+  'AFEN-male': 'love-guru',                 // 愛の教祖
+  'ARTC-male': 'runaway-dumptruck',         // 暴走ダンプカー
+  'AFTC-male': 'night-joker',               // 夜のジョーカー
+  'AREC-male': 'narcissistic-star',         // 自意識過剰なスター
+  'AFEC-male': 'whimsical-peter-pan',       // 気まぐれピーターパン
+  'PRTN-male': 'serious-civil-servant',     // 生真面目な公務員
+  'PFTN-male': 'solo-player',               // ソロプレイヤー
+  'PRTC-male': 'silent-sniper',             // 無口なスナイパー
+  'PFTC-male': 'fetish-researcher',         // 性癖研究員
+  'PREN-male': 'faithful-guard-dog',        // 忠実な番犬
+  'PFEN-male': 'love-enforcer',             // 愛の執行人
+  'PREC-male': 'sensitive-male-cat',        // 感度3000倍のオス猫
+  'PFEC-male': 'dreaming-poet',             // 夢見る詩人（ポエマー）
+
+  // 女性版 Night Type characters (16種類)
+  'ARTN-female': 'cold-empress',            // 冷徹な女帝（クイーン）
+  'AFTN-female': 'little-devil-inventor',   // 小悪魔な発明家
+  'AREN-female': 'overprotective-mama',     // 過保護なママ
+  'AFEN-female': 'innocent-tinkerbell',     // 無邪気なティンカーベル
+  'ARTC-female': 'carnivorous-hunter',      // 肉食系ハンター
+  'AFTC-female': 'ice-beauty',              // 氷の美貌（ビューティー）
+  'AREC-female': 'spotlight-actress',       // スポットライト女優
+  'AFEC-female': 'magical-saint',           // 魔性の聖女
+  'PRTN-female': 'iron-wall-guard',         // 鉄壁のガードマン
+  'PFTN-female': 'cold-screenwriter',       // 冷めた脚本家
+  'PRTC-female': 'silent-technician',       // 無口なテクニシャン
+  'PFTC-female': 'perverted-science-girl',  // 変態リケジョ
+  'PREN-female': 'obedient-night-secretary',// 従順な夜の秘書
+  'PFEN-female': 'suicide-romanticist',     // 心中ロマンチスト
+  'PREC-female': 'melting-cat',             // とろける猫
+  'PFEC-female': 'tragic-heroine',          // 悲劇のヒロイン
 };
 
 // 逆引き用
