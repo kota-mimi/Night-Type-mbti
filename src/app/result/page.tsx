@@ -79,12 +79,13 @@ export default function ResultPage() {
     }
 
     // キャラクター個別ページのURLを生成
-    const characterSlug = characterSlugs[userType]
+    const characterKey = `${userType}-${userGender}`
+    const characterSlug = characterSlugs[characterKey]
     const shareUrl = `${window.location.origin}/character/${characterSlug}`
-    const shareText = `私のダイエットタイプは「${typeData.name}」でした${typeData.emoji}\n${typeData.catchcopy}\n\nあなたも診断してみて👇\n${shareUrl}\n\n#ダイエットキャラ診断16`
+    const shareText = `私のNight Typeは「${typeData.name}」でした！\n${typeData.catchcopy}\n\nあなたも診断してみて👇`
     
     const shareUrls = {
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`,
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
       line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`
     }
 
@@ -108,8 +109,8 @@ export default function ResultPage() {
         return
       }
 
-      // キャラクター画像のURLを取得
-      const imageUrl = `/characters/${userType}_new3.png`
+      // バナー画像のURLを取得
+      const imageUrl = `/characters/${userType}_${userGender}_banner.png`
       
       // 画像をfetchしてblobに変換
       const response = await fetch(imageUrl)
@@ -122,11 +123,13 @@ export default function ResultPage() {
 
       // Web Share API対応チェック
       if (navigator.share) {
-        // 一時的に診断結果ページに誘導（ドメイン移行中のため）
-        const shareUrl = `${window.location.origin}/result`
+        // キャラクター個別ページのURLを生成
+        const characterKey = `${userType}-${userGender}`
+        const characterSlug = characterSlugs[characterKey]
+        const shareUrl = `${window.location.origin}/character/${characterSlug}`
         const shareData = {
-          title: `私のダイエットタイプは「${typeData.name}」`,
-          text: `${typeData.catchcopy}\n\nダイエットキャラ診断16で診断してみて！\n${shareUrl}`,
+          title: `私のNight Typeは「${typeData.name}」`,
+          text: `${typeData.catchcopy}\n\nNight Typeで診断してみて！\n${shareUrl}`,
           files: [file]
         }
 
@@ -158,7 +161,8 @@ export default function ResultPage() {
     const typeData = genderedDiagramTypes[userGender][userType]
     if (!typeData) return
     // キャラクター個別ページのURLを生成
-    const characterSlug = characterSlugs[userType]
+    const characterKey = `${userType}-${userGender}`
+    const characterSlug = characterSlugs[characterKey]
     const shareUrl = `${window.location.origin}/character/${characterSlug}`
     navigator.clipboard.writeText(shareUrl)
     alert('リンクをコピーしました！')
