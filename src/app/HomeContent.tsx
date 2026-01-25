@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Noto_Sans_JP } from 'next/font/google'
-import CharacterMarquee from '@/components/CharacterMarquee'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -70,29 +69,6 @@ export default function HomeContent() {
           </Link>
         </motion.div>
 
-        {/* Character Marquee Section */}
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.9 }}
-          className="w-full space-y-8"
-        >
-          {/* セクションタイトル */}
-          <h3 className="text-xl md:text-2xl font-bold text-center mb-8">
-            <span className="text-gray-400">深夜に潜む</span>{' '}
-            <span className="neon-pink">32のタイプ</span>
-          </h3>
-          
-          {/* First row - scrolling right */}
-          <div className="relative overflow-hidden">
-            <CharacterMarquee direction="right" speed={15} row="first" />
-          </div>
-          
-          {/* Second row - scrolling left */}
-          <div className="relative overflow-hidden">
-            <CharacterMarquee direction="left" speed={18} row="second" />
-          </div>
-        </motion.div>
         
       </main>
     </div>
