@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
 
+# クロール頻度の最適化
+Crawl-delay: 1
+
+# 主要ページの優先順位
+Allow: /quiz/
+Allow: /gallery/
+Allow: /result/
+Allow: /character/
+
+# サイトマップ
 Sitemap: https://night-type.net/sitemap.xml
