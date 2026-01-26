@@ -1,11 +1,15 @@
 {
-  "name": "adult-mbti-app",
-  "version": "0.1.0",
+  "name": "night-type-diagnosis",
+  "version": "1.0.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/kota-mimi/adult-mbti.git"
+    "url": "https://github.com/kota-mimi/Night-Type-mbti.git"
   },
+  "homepage": "https://night-type.net",
+  "description": "32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見",
+  "keywords": ["夜", "性格診断", "MBTI", "ライフスタイル", "エンターテイメント"],
+  "author": "Night Type",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

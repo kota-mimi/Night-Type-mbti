@@ -1,7 +1,7 @@
 {
-  "name": "ダイエットタイプ診断",
-  "short_name": "ダイエット診断",
-  "description": "16タイプのダイエット性格診断で、あなたに最適なダイエット方法を発見",
+  "name": "Night Type - 夜の性格診断",
+  "short_name": "Night Type",
+  "description": "32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -14,9 +14,10 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#4CAF50",
-  "background_color": "#F5F9F5",
+  "theme_color": "#050510",
+  "background_color": "#111111",
   "display": "standalone",
   "start_url": "/",
-  "scope": "/"
+  "scope": "/",
+  "categories": ["lifestyle", "entertainment", "personalization"]
 }
