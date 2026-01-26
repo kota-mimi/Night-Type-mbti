@@ -366,11 +366,11 @@ export default function ResultPage() {
               <div className="neon-card p-4 border border-pink-500/30">
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
-                    <h3 className="text-sm font-medium text-[#FF66B3] mb-1">脳内ドS度</h3>
+                    <h3 className="text-sm font-bold text-white mb-1">脳内ドS度</h3>
                     <div className="text-2xl font-bold text-[#FF007F]">{typeData.sm_diagnosis.mind_s}%</div>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-[#FF66B3] mb-1">肉体ドM度</h3>
+                    <h3 className="text-sm font-bold text-white mb-1">肉体ドM度</h3>
                     <div className="text-2xl font-bold text-[#FF007F]">{typeData.sm_diagnosis.body_m}%</div>
                   </div>
                 </div>
@@ -392,15 +392,15 @@ export default function ResultPage() {
               <div className="neon-card p-4 border border-cyan-500/30">
                 <div className="grid grid-cols-3 gap-3 text-center">
                   <div>
-                    <h3 className="text-xs font-medium text-[#66FFFF] mb-1">性欲</h3>
+                    <h3 className="text-xs font-bold text-white mb-1">性欲</h3>
                     <div className="text-lg font-bold text-[#00FFFF]">{typeData.stats.libido}</div>
                   </div>
                   <div>
-                    <h3 className="text-xs font-medium text-[#66FFFF] mb-1">変態度</h3>
+                    <h3 className="text-xs font-bold text-white mb-1">変態度</h3>
                     <div className="text-lg font-bold text-[#00FFFF]">{typeData.stats.hentai}</div>
                   </div>
                   <div>
-                    <h3 className="text-xs font-medium text-[#66FFFF] mb-1">むっつり度</h3>
+                    <h3 className="text-xs font-bold text-white mb-1">むっつり度</h3>
                     <div className="text-lg font-bold text-[#00FFFF]">{typeData.stats.muttsuri}</div>
                   </div>
                 </div>
@@ -423,10 +423,10 @@ export default function ResultPage() {
               </h2>
               <div className="neon-card p-4 border border-purple-500/30">
                 <div className="text-center mb-3">
-                  <div className="text-2xl font-bold text-electric-purple-300 mb-1">{typeData.uwaki.percent}</div>
-                  <div className="text-sm font-medium text-[#9966FF]">{typeData.uwaki.type}</div>
+                  <div className="text-2xl font-bold text-[#9966FF] mb-1">{typeData.uwaki.percent}</div>
+                  <div className="text-sm font-bold text-white">{typeData.uwaki.type}</div>
                 </div>
-                <div className="text-xs leading-relaxed text-gray-400 text-center max-w-md mx-auto">
+                <div className="text-xs leading-relaxed text-[#AAAAAA] text-center max-w-md mx-auto">
                   <p>{typeData.uwaki.text}</p>
                 </div>
               </div>
