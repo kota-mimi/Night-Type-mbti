@@ -275,7 +275,7 @@ export default function ResultPage() {
                 夜の生態レポート
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4">{typeData.nightEcologyReport}</p>
+                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.nightEcologyReport?.replace(/。/g, '。\n')}</p>
               </div>
             </motion.div>
           )}
@@ -292,7 +292,7 @@ export default function ResultPage() {
                 あなたのエロさの正体
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4">{typeData.yourSexiness}</p>
+                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.yourSexiness?.replace(/。/g, '。\n')}</p>
               </div>
             </motion.div>
           )}
@@ -311,7 +311,7 @@ export default function ResultPage() {
                 閲覧注意：本能のカルテ
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4">{typeData.instinctChart}</p>
+                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.instinctChart?.replace(/。/g, '。\n')}</p>
               </div>
             </motion.div>
           )}
@@ -330,7 +330,7 @@ export default function ResultPage() {
                 夜の口癖・脳内
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4">{typeData.nightPhrase}</p>
+                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.nightPhrase?.replace(/。/g, '。\n')}</p>
               </div>
             </motion.div>
           )}
@@ -347,7 +347,7 @@ export default function ResultPage() {
                 事後の賢者タイム
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4">{typeData.afterTime}</p>
+                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.afterTime?.replace(/。/g, '。\n')}</p>
               </div>
             </motion.div>
           )}
@@ -445,12 +445,7 @@ export default function ResultPage() {
                 基本生態
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                {typeData.detailedEcology.split('。').map((sentence, index, array) => (
-                  <p key={index} className="mb-4">
-                    {sentence.trim()}
-                    {index < array.length - 1 && sentence.trim() && '。'}
-                  </p>
-                ))}
+                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.detailedEcology?.replace(/。/g, '。\n')}</p>
               </div>
             </motion.div>
           )}
