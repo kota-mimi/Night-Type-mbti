@@ -275,7 +275,17 @@ export default function ResultPage() {
                 夜の生態レポート
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.nightEcologyReport?.replace(/。/g, '。\n')}</p>
+                <div style={{ lineHeight: '1.8' }}>
+                  {typeData.nightEcologyReport?.split('。').filter(sentence => sentence.trim()).reduce((acc: string[], sentence: string, index: number, array: string[]) => {
+                    if (index % 2 === 0) {
+                      const nextSentence = array[index + 1] || '';
+                      acc.push(`${sentence.trim()}。${nextSentence ? ` ${nextSentence.trim()}。` : ''}`);
+                    }
+                    return acc;
+                  }, []).map((paragraph: string, index: number) => (
+                    <p key={index} className="mb-6 text-gray-300">{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </motion.div>
           )}
@@ -292,7 +302,17 @@ export default function ResultPage() {
                 あなたのエロさの正体
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.yourSexiness?.replace(/。/g, '。\n')}</p>
+                <div style={{ lineHeight: '1.8' }}>
+                  {typeData.yourSexiness?.split('。').filter(sentence => sentence.trim()).reduce((acc: string[], sentence: string, index: number, array: string[]) => {
+                    if (index % 2 === 0) {
+                      const nextSentence = array[index + 1] || '';
+                      acc.push(`${sentence.trim()}。${nextSentence ? ` ${nextSentence.trim()}。` : ''}`);
+                    }
+                    return acc;
+                  }, []).map((paragraph: string, index: number) => (
+                    <p key={index} className="mb-6 text-gray-300">{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </motion.div>
           )}
@@ -311,7 +331,17 @@ export default function ResultPage() {
                 閲覧注意：本能のカルテ
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.instinctChart?.replace(/。/g, '。\n')}</p>
+                <div style={{ lineHeight: '1.8' }}>
+                  {typeData.instinctChart?.split('。').filter(sentence => sentence.trim()).reduce((acc: string[], sentence: string, index: number, array: string[]) => {
+                    if (index % 2 === 0) {
+                      const nextSentence = array[index + 1] || '';
+                      acc.push(`${sentence.trim()}。${nextSentence ? ` ${nextSentence.trim()}。` : ''}`);
+                    }
+                    return acc;
+                  }, []).map((paragraph: string, index: number) => (
+                    <p key={index} className="mb-6 text-gray-300">{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </motion.div>
           )}
@@ -330,7 +360,17 @@ export default function ResultPage() {
                 夜の口癖・脳内
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.nightPhrase?.replace(/。/g, '。\n')}</p>
+                <div style={{ lineHeight: '1.8' }}>
+                  {typeData.nightPhrase?.split('。').filter(sentence => sentence.trim()).reduce((acc: string[], sentence: string, index: number, array: string[]) => {
+                    if (index % 2 === 0) {
+                      const nextSentence = array[index + 1] || '';
+                      acc.push(`${sentence.trim()}。${nextSentence ? ` ${nextSentence.trim()}。` : ''}`);
+                    }
+                    return acc;
+                  }, []).map((paragraph: string, index: number) => (
+                    <p key={index} className="mb-6 text-gray-300">{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </motion.div>
           )}
@@ -347,7 +387,17 @@ export default function ResultPage() {
                 事後の賢者タイム
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.afterTime?.replace(/。/g, '。\n')}</p>
+                <div style={{ lineHeight: '1.8' }}>
+                  {typeData.afterTime?.split('。').filter(sentence => sentence.trim()).reduce((acc: string[], sentence: string, index: number, array: string[]) => {
+                    if (index % 2 === 0) {
+                      const nextSentence = array[index + 1] || '';
+                      acc.push(`${sentence.trim()}。${nextSentence ? ` ${nextSentence.trim()}。` : ''}`);
+                    }
+                    return acc;
+                  }, []).map((paragraph: string, index: number) => (
+                    <p key={index} className="mb-6 text-gray-300">{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </motion.div>
           )}
@@ -445,7 +495,17 @@ export default function ResultPage() {
                 基本生態
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
-                <p className="mb-4" style={{ whiteSpace: 'pre-line', lineHeight: '1.8' }}>{typeData.detailedEcology?.replace(/。/g, '。\n')}</p>
+                <div style={{ lineHeight: '1.8' }}>
+                  {typeData.detailedEcology?.split('。').filter(sentence => sentence.trim()).reduce((acc: string[], sentence: string, index: number, array: string[]) => {
+                    if (index % 2 === 0) {
+                      const nextSentence = array[index + 1] || '';
+                      acc.push(`${sentence.trim()}。${nextSentence ? ` ${nextSentence.trim()}。` : ''}`);
+                    }
+                    return acc;
+                  }, []).map((paragraph: string, index: number) => (
+                    <p key={index} className="mb-6 text-gray-300">{paragraph}</p>
+                  ))}
+                </div>
               </div>
             </motion.div>
           )}
