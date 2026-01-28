@@ -568,9 +568,10 @@ export default function ResultPage() {
                                 className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300"
                                 style={{
                                   background: isMale
-                                    ? 'linear-gradient(135deg, #00FFFF 0%, #0066FF 100%)'
-                                    : 'linear-gradient(135deg, #FF007F 0%, #FF6B9D 100%)',
-                                  color: '#000'
+                                    ? 'linear-gradient(to right, #0f0c29, #302b63, #24243e)'
+                                    : 'linear-gradient(to right, #870000, #190a05)',
+                                  color: '#fff',
+                                  boxShadow: '0 0 15px rgba(255, 255, 255, 0.1)'
                                 }}
                               >
                                 DMM人気ランキングを見る ➤
@@ -585,7 +586,7 @@ export default function ResultPage() {
                                 }}
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-black border border-white/30 text-white hover:border-white/50"
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-black/50 border border-[#d4af37] text-[#d4af37] hover:border-[#f4d03f] hover:text-[#f4d03f] hover:shadow-lg hover:shadow-[#d4af37]/20"
                               >
                                 Amazonで探す ➤
                               </motion.a>
@@ -630,8 +631,9 @@ export default function ResultPage() {
                                 whileTap={{ scale: 0.97 }}
                                 className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300"
                                 style={{
-                                  background: 'linear-gradient(135deg, #9966FF 0%, #FF6B9D 100%)',
-                                  color: '#000'
+                                  background: 'linear-gradient(to right, #870000, #190a05)',
+                                  color: '#fff',
+                                  boxShadow: '0 0 15px rgba(255, 255, 255, 0.1)'
                                 }}
                               >
                                 DMM人気ランキングを見る ➤
@@ -646,7 +648,7 @@ export default function ResultPage() {
                                 }}
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-black border border-white/30 text-white hover:border-white/50"
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-black/50 border border-[#d4af37] text-[#d4af37] hover:border-[#f4d03f] hover:text-[#f4d03f] hover:shadow-lg hover:shadow-[#d4af37]/20"
                               >
                                 Amazonで探す ➤
                               </motion.a>
@@ -769,43 +771,6 @@ export default function ResultPage() {
                 );
               })()}
             </div>
-
-            {/* マッチング誘導ボタン - 相性チェックセクション下部 */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.3 }}
-              className="mt-8 pt-4"
-            >
-              <div className="flex justify-center">
-                <motion.a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    // ダミーアクション - 実際の実装では適切なURLに変更
-                  }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full max-w-lg block group relative overflow-hidden"
-                >
-                  <div 
-                    className="w-full py-4 px-8 rounded-xl text-white font-bold text-lg text-center relative z-10 transition-all duration-300"
-                    style={{
-                      background: 'linear-gradient(135deg, #FF007F 0%, #00FFFF 100%)',
-                      boxShadow: '0 0 20px rgba(255, 0, 127, 0.4), 0 0 40px rgba(0, 255, 255, 0.2)'
-                    }}
-                  >
-                    相性の良いパートナーを探しに行く ➤
-                    <div 
-                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-                      style={{
-                        background: 'linear-gradient(135deg, #00FFFF 0%, #FF007F 100%)'
-                      }}
-                    />
-                  </div>
-                </motion.a>
-              </div>
-            </motion.div>
           </motion.div>
 
           </div>
