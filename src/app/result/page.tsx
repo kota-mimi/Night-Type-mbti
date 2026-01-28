@@ -243,43 +243,6 @@ export default function ResultPage() {
 
           </div>
 
-          {/* マッチング誘導ボタン */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mb-12"
-          >
-            <div className="flex justify-center">
-              <motion.a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  // ダミーアクション - 実際の実装では適切なURLに変更
-                }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full max-w-lg block group relative overflow-hidden"
-              >
-                <div 
-                  className="w-full py-4 px-8 rounded-xl text-white font-bold text-lg text-center relative z-10 transition-all duration-300"
-                  style={{
-                    background: 'linear-gradient(135deg, #FF007F 0%, #00FFFF 100%)',
-                    boxShadow: '0 0 20px rgba(255, 0, 127, 0.4), 0 0 40px rgba(0, 255, 255, 0.2)'
-                  }}
-                >
-                  相性の良いパートナーを探しに行く ➤
-                  <div 
-                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-                    style={{
-                      background: 'linear-gradient(135deg, #00FFFF 0%, #FF007F 100%)'
-                    }}
-                  />
-                </div>
-              </motion.a>
-            </div>
-          </motion.div>
-
 
           {/* セクションごとの直接配置 */}
           <div className="space-y-10">
@@ -639,6 +602,43 @@ export default function ResultPage() {
                 );
               })()}
             </div>
+
+            {/* マッチング誘導ボタン - 相性チェックセクション下部 */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.3 }}
+              className="mt-8 pt-4"
+            >
+              <div className="flex justify-center">
+                <motion.a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // ダミーアクション - 実際の実装では適切なURLに変更
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full max-w-lg block group relative overflow-hidden"
+                >
+                  <div 
+                    className="w-full py-4 px-8 rounded-xl text-white font-bold text-lg text-center relative z-10 transition-all duration-300"
+                    style={{
+                      background: 'linear-gradient(135deg, #FF007F 0%, #00FFFF 100%)',
+                      boxShadow: '0 0 20px rgba(255, 0, 127, 0.4), 0 0 40px rgba(0, 255, 255, 0.2)'
+                    }}
+                  >
+                    相性の良いパートナーを探しに行く ➤
+                    <div 
+                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+                      style={{
+                        background: 'linear-gradient(135deg, #00FFFF 0%, #FF007F 100%)'
+                      }}
+                    />
+                  </div>
+                </motion.a>
+              </div>
+            </motion.div>
           </motion.div>
 
           </div>
