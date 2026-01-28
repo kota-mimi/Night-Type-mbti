@@ -551,11 +551,9 @@ export default function ResultPage() {
                               
                               {/* Sub Button - Amazon */}
                               <a
-                                href="#"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  // 後でAmazonのURLを設定
-                                }}
+                                href={isMale ? "https://amzn.to/4k34pzM" : "https://amzn.to/4qLOvfF"}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#00FFFF] text-[#00FFFF] hover:border-[#00CCCC] hover:text-[#00CCCC]"
                               >
                                 Amazonで探す ➤
@@ -590,11 +588,9 @@ export default function ResultPage() {
                             
                             {/* Sub Button - Amazon */}
                             <a
-                              href="#"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                // 後でAmazonのURLを設定
-                              }}
+                              href={isMale ? "https://amzn.to/49NIBF2" : "https://amzn.to/4aaudFU"}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#00FFFF] text-[#00FFFF] hover:border-[#00CCCC] hover:text-[#00CCCC]"
                             >
                               Amazonで探す ➤
