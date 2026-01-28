@@ -494,6 +494,137 @@ export default function ResultPage() {
             </motion.div>
           )}
 
+          {/* Night Type Selection - おすすめアイテムセクション */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="my-16"
+          >
+            <div className="max-w-5xl mx-auto">
+              {/* セクション見出し */}
+              <div className="text-center mb-12">
+                <h2 className={`text-2xl md:text-3xl font-bold mb-4 ${notoSansJP.className}`} style={{
+                  background: 'linear-gradient(135deg, #FF007F 0%, #00FFFF 50%, #9966FF 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  textShadow: '0 0 30px rgba(255, 0, 127, 0.3)'
+                }}>
+                  Night Type Selection
+                </h2>
+                <p className="text-gray-400 text-sm tracking-wide">おすすめアイテム</p>
+              </div>
+
+              {/* カードエリア */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* MEN Card */}
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                  className="group"
+                >
+                  <div 
+                    className="bg-[#0a0a12] border border-white/15 rounded-lg p-6 h-full transition-all duration-300 group-hover:border-cyan-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10"
+                    style={{
+                      background: 'linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%)'
+                    }}
+                  >
+                    <div className="flex flex-col h-full">
+                      {/* アイコン・ラベル */}
+                      <div className="mb-4">
+                        <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide" style={{
+                          background: 'linear-gradient(135deg, #00FFFF 0%, #0066FF 100%)',
+                          color: '#000'
+                        }}>
+                          FOR MEN
+                        </div>
+                      </div>
+                      
+                      {/* メインコンテンツ */}
+                      <div className="flex-grow">
+                        <h3 className="text-xl font-bold text-white mb-3 tracking-wide">UNLEASH INSTINCT</h3>
+                        <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                          本能を解放する、至高の刺激体験。
+                        </p>
+                      </div>
+                      
+                      {/* ボタン */}
+                      <motion.a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          // 後でDMMのURLを設定
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300 group-hover:shadow-lg"
+                        style={{
+                          background: 'linear-gradient(135deg, #00FFFF 0%, #0066FF 100%)',
+                          color: '#000'
+                        }}
+                      >
+                        人気ランキングを見る ➤
+                      </motion.a>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* WOMEN Card */}
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                  className="group"
+                >
+                  <div 
+                    className="bg-[#0a0a12] border border-white/15 rounded-lg p-6 h-full transition-all duration-300 group-hover:border-pink-500/30 group-hover:shadow-lg group-hover:shadow-pink-500/10"
+                    style={{
+                      background: 'linear-gradient(135deg, #0a0a12 0%, #2e1a1a 100%)'
+                    }}
+                  >
+                    <div className="flex flex-col h-full">
+                      {/* アイコン・ラベル */}
+                      <div className="mb-4">
+                        <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide" style={{
+                          background: 'linear-gradient(135deg, #FF007F 0%, #FF6B9D 100%)',
+                          color: '#000'
+                        }}>
+                          FOR WOMEN
+                        </div>
+                      </div>
+                      
+                      {/* メインコンテンツ */}
+                      <div className="flex-grow">
+                        <h3 className="text-xl font-bold text-white mb-3 tracking-wide">SELF LOVE</h3>
+                        <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                          誰にも邪魔されない、私だけの時間。
+                        </p>
+                      </div>
+                      
+                      {/* ボタン */}
+                      <motion.a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          // 後でDMMのURLを設定
+                        }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300 group-hover:shadow-lg"
+                        style={{
+                          background: 'linear-gradient(135deg, #FF007F 0%, #FF6B9D 100%)',
+                          color: '#000'
+                        }}
+                      >
+                        人気アイテムを見る ➤
+                      </motion.a>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
           {/* 相性チェックセクション */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
