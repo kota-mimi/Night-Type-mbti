@@ -524,32 +524,13 @@ export default function ResultPage() {
                   return (
                     <>
                       {/* Gender-specific Card (Left) */}
-                      <motion.div
-                        whileHover={{ scale: 1.02, y: -5 }}
-                        transition={{ duration: 0.3 }}
-                        className="group"
-                      >
-                        <div 
-                          className={`bg-[#0a0a12] border border-white/15 rounded-lg p-4 h-full transition-all duration-300 ${
-                            isMale 
-                              ? 'group-hover:border-cyan-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10' 
-                              : 'group-hover:border-pink-500/30 group-hover:shadow-lg group-hover:shadow-pink-500/10'
-                          }`}
-                          style={{
-                            background: isMale 
-                              ? 'linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%)'
-                              : 'linear-gradient(135deg, #0a0a12 0%, #2e1a1a 100%)'
-                          }}
-                        >
+                      <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-4 h-full">
                           <div className="flex flex-col h-full">
                             {/* アイコン・ラベル */}
                             <div className="mb-4">
-                              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide" style={{
-                                background: isMale
-                                  ? 'linear-gradient(135deg, #00FFFF 0%, #0066FF 100%)'
-                                  : 'linear-gradient(135deg, #FF007F 0%, #FF6B9D 100%)',
-                                color: '#000'
-                              }}>
+                              <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide text-black ${
+                                isMale ? 'bg-[#00FFFF]' : 'bg-[#FF007F]'
+                              }`}>
                                 {isMale ? 'FOR MEN' : 'FOR WOMEN'}
                               </div>
                             </div>
@@ -557,105 +538,70 @@ export default function ResultPage() {
                             {/* ダブルボタン */}
                             <div className="space-y-2">
                               {/* Main Button - DMM */}
-                              <motion.a
+                              <a
                                 href="#"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   // 後でDMMのURLを設定
                                 }}
-                                whileHover={{ scale: 1.03 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300"
-                                style={{
-                                  background: isMale
-                                    ? 'linear-gradient(to right, #0f0c29, #302b63, #24243e)'
-                                    : 'linear-gradient(to right, #870000, #190a05)',
-                                  color: '#fff',
-                                  boxShadow: '0 0 15px rgba(255, 255, 255, 0.1)'
-                                }}
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-[#FF007F] hover:bg-[#E6006B] text-white"
                               >
                                 DMM人気ランキングを見る ➤
-                              </motion.a>
+                              </a>
                               
                               {/* Sub Button - Amazon */}
-                              <motion.a
+                              <a
                                 href="#"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   // 後でAmazonのURLを設定
                                 }}
-                                whileHover={{ scale: 1.03 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-black/50 border border-[#d4af37] text-[#d4af37] hover:border-[#f4d03f] hover:text-[#f4d03f] hover:shadow-lg hover:shadow-[#d4af37]/20"
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#333333] text-gray-300 hover:border-gray-200 hover:text-white"
                               >
                                 Amazonで探す ➤
-                              </motion.a>
+                              </a>
                             </div>
                           </div>
-                        </div>
-                      </motion.div>
+                      </div>
 
                       {/* COUPLES Card (Right) */}
-                      <motion.div
-                        whileHover={{ scale: 1.02, y: -5 }}
-                        transition={{ duration: 0.3 }}
-                        className="group"
-                      >
-                        <div 
-                          className="bg-[#0a0a12] border border-white/15 rounded-lg p-4 h-full transition-all duration-300 group-hover:border-purple-500/30 group-hover:shadow-lg group-hover:shadow-purple-500/10"
-                          style={{
-                            background: 'linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%)'
-                          }}
-                        >
-                          <div className="flex flex-col h-full">
-                            {/* アイコン・ラベル */}
-                            <div className="mb-4">
-                              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide" style={{
-                                background: 'linear-gradient(135deg, #9966FF 0%, #FF6B9D 100%)',
-                                color: '#000'
-                              }}>
-                                FOR COUPLES
-                              </div>
-                            </div>
-                            
-                            {/* ダブルボタン */}
-                            <div className="space-y-2">
-                              {/* Main Button - DMM */}
-                              <motion.a
-                                href="#"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  // 後でDMMのURLを設定
-                                }}
-                                whileHover={{ scale: 1.03 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300"
-                                style={{
-                                  background: 'linear-gradient(to right, #870000, #190a05)',
-                                  color: '#fff',
-                                  boxShadow: '0 0 15px rgba(255, 255, 255, 0.1)'
-                                }}
-                              >
-                                DMM人気ランキングを見る ➤
-                              </motion.a>
-                              
-                              {/* Sub Button - Amazon */}
-                              <motion.a
-                                href="#"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  // 後でAmazonのURLを設定
-                                }}
-                                whileHover={{ scale: 1.03 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-black/50 border border-[#d4af37] text-[#d4af37] hover:border-[#f4d03f] hover:text-[#f4d03f] hover:shadow-lg hover:shadow-[#d4af37]/20"
-                              >
-                                Amazonで探す ➤
-                              </motion.a>
+                      <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-4 h-full">
+                        <div className="flex flex-col h-full">
+                          {/* アイコン・ラベル */}
+                          <div className="mb-4">
+                            <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide bg-[#9966FF] text-black">
+                              FOR COUPLES
                             </div>
                           </div>
+                          
+                          {/* ダブルボタン */}
+                          <div className="space-y-2">
+                            {/* Main Button - DMM */}
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                // 後でDMMのURLを設定
+                              }}
+                              className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-[#FF007F] hover:bg-[#E6006B] text-white"
+                            >
+                              DMM人気ランキングを見る ➤
+                            </a>
+                            
+                            {/* Sub Button - Amazon */}
+                            <a
+                              href="#"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                // 後でAmazonのURLを設定
+                              }}
+                              className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#333333] text-gray-300 hover:border-gray-200 hover:text-white"
+                            >
+                              Amazonで探す ➤
+                            </a>
+                          </div>
                         </div>
-                      </motion.div>
+                      </div>
                     </>
                   );
                 })()}
