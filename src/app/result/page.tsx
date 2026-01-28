@@ -516,111 +516,168 @@ export default function ResultPage() {
                 <p className="text-gray-400 text-sm tracking-wide">おすすめアイテム</p>
               </div>
 
-              {/* カードエリア */}
+              {/* カードエリア - 性別判定による動的表示 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* MEN Card */}
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                  className="group"
-                >
-                  <div 
-                    className="bg-[#0a0a12] border border-white/15 rounded-lg p-6 h-full transition-all duration-300 group-hover:border-cyan-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10"
-                    style={{
-                      background: 'linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%)'
-                    }}
-                  >
-                    <div className="flex flex-col h-full">
-                      {/* アイコン・ラベル */}
-                      <div className="mb-4">
-                        <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide" style={{
-                          background: 'linear-gradient(135deg, #00FFFF 0%, #0066FF 100%)',
-                          color: '#000'
-                        }}>
-                          FOR MEN
-                        </div>
-                      </div>
-                      
-                      {/* メインコンテンツ */}
-                      <div className="flex-grow">
-                        <h3 className="text-xl font-bold text-white mb-3 tracking-wide">UNLEASH INSTINCT</h3>
-                        <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                          本能を解放する、至高の刺激体験。
-                        </p>
-                      </div>
-                      
-                      {/* ボタン */}
-                      <motion.a
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          // 後でDMMのURLを設定
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300 group-hover:shadow-lg"
-                        style={{
-                          background: 'linear-gradient(135deg, #00FFFF 0%, #0066FF 100%)',
-                          color: '#000'
-                        }}
+                {(() => {
+                  const isMale = userGender === 'male';
+                  
+                  return (
+                    <>
+                      {/* Gender-specific Card (Left) */}
+                      <motion.div
+                        whileHover={{ scale: 1.02, y: -5 }}
+                        transition={{ duration: 0.3 }}
+                        className="group"
                       >
-                        人気ランキングを見る ➤
-                      </motion.a>
-                    </div>
-                  </div>
-                </motion.div>
+                        <div 
+                          className={`bg-[#0a0a12] border border-white/15 rounded-lg p-6 h-full transition-all duration-300 ${
+                            isMale 
+                              ? 'group-hover:border-cyan-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10' 
+                              : 'group-hover:border-pink-500/30 group-hover:shadow-lg group-hover:shadow-pink-500/10'
+                          }`}
+                          style={{
+                            background: isMale 
+                              ? 'linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%)'
+                              : 'linear-gradient(135deg, #0a0a12 0%, #2e1a1a 100%)'
+                          }}
+                        >
+                          <div className="flex flex-col h-full">
+                            {/* アイコン・ラベル */}
+                            <div className="mb-4">
+                              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide" style={{
+                                background: isMale
+                                  ? 'linear-gradient(135deg, #00FFFF 0%, #0066FF 100%)'
+                                  : 'linear-gradient(135deg, #FF007F 0%, #FF6B9D 100%)',
+                                color: '#000'
+                              }}>
+                                {isMale ? 'FOR MEN' : 'FOR WOMEN'}
+                              </div>
+                            </div>
+                            
+                            {/* メインコンテンツ */}
+                            <div className="flex-grow">
+                              <h3 className="text-xl font-bold text-white mb-3 tracking-wide">
+                                {isMale ? 'UNLEASH INSTINCT' : 'SELF LOVE'}
+                              </h3>
+                              <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                                {isMale 
+                                  ? '本能を解放する、至高の刺激体験。'
+                                  : '私だけの秘密の癒やし。'
+                                }
+                              </p>
+                            </div>
+                            
+                            {/* ダブルボタン */}
+                            <div className="space-y-3">
+                              {/* Main Button - DMM */}
+                              <motion.a
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  // 後でDMMのURLを設定
+                                }}
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.97 }}
+                                className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300"
+                                style={{
+                                  background: isMale
+                                    ? 'linear-gradient(135deg, #00FFFF 0%, #0066FF 100%)'
+                                    : 'linear-gradient(135deg, #FF007F 0%, #FF6B9D 100%)',
+                                  color: '#000'
+                                }}
+                              >
+                                DMM人気ランキングを見る ➤
+                              </motion.a>
+                              
+                              {/* Sub Button - Amazon */}
+                              <motion.a
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  // 後でAmazonのURLを設定
+                                }}
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.97 }}
+                                className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300 bg-black border border-white/30 text-white hover:border-white/50"
+                              >
+                                Amazonで探す ➤
+                              </motion.a>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
 
-                {/* WOMEN Card */}
-                <motion.div
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                  className="group"
-                >
-                  <div 
-                    className="bg-[#0a0a12] border border-white/15 rounded-lg p-6 h-full transition-all duration-300 group-hover:border-pink-500/30 group-hover:shadow-lg group-hover:shadow-pink-500/10"
-                    style={{
-                      background: 'linear-gradient(135deg, #0a0a12 0%, #2e1a1a 100%)'
-                    }}
-                  >
-                    <div className="flex flex-col h-full">
-                      {/* アイコン・ラベル */}
-                      <div className="mb-4">
-                        <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide" style={{
-                          background: 'linear-gradient(135deg, #FF007F 0%, #FF6B9D 100%)',
-                          color: '#000'
-                        }}>
-                          FOR WOMEN
-                        </div>
-                      </div>
-                      
-                      {/* メインコンテンツ */}
-                      <div className="flex-grow">
-                        <h3 className="text-xl font-bold text-white mb-3 tracking-wide">SELF LOVE</h3>
-                        <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                          誰にも邪魔されない、私だけの時間。
-                        </p>
-                      </div>
-                      
-                      {/* ボタン */}
-                      <motion.a
-                        href="#"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          // 後でDMMのURLを設定
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300 group-hover:shadow-lg"
-                        style={{
-                          background: 'linear-gradient(135deg, #FF007F 0%, #FF6B9D 100%)',
-                          color: '#000'
-                        }}
+                      {/* COUPLES Card (Right) */}
+                      <motion.div
+                        whileHover={{ scale: 1.02, y: -5 }}
+                        transition={{ duration: 0.3 }}
+                        className="group"
                       >
-                        人気アイテムを見る ➤
-                      </motion.a>
-                    </div>
-                  </div>
-                </motion.div>
+                        <div 
+                          className="bg-[#0a0a12] border border-white/15 rounded-lg p-6 h-full transition-all duration-300 group-hover:border-purple-500/30 group-hover:shadow-lg group-hover:shadow-purple-500/10"
+                          style={{
+                            background: 'linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%)'
+                          }}
+                        >
+                          <div className="flex flex-col h-full">
+                            {/* アイコン・ラベル */}
+                            <div className="mb-4">
+                              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide" style={{
+                                background: 'linear-gradient(135deg, #9966FF 0%, #FF6B9D 100%)',
+                                color: '#000'
+                              }}>
+                                FOR COUPLES
+                              </div>
+                            </div>
+                            
+                            {/* メインコンテンツ */}
+                            <div className="flex-grow">
+                              <h3 className="text-xl font-bold text-white mb-3 tracking-wide">DEEPER CONNECTION</h3>
+                              <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                                二人の時間を深める、特別なひととき。
+                              </p>
+                            </div>
+                            
+                            {/* ダブルボタン */}
+                            <div className="space-y-3">
+                              {/* Main Button - DMM */}
+                              <motion.a
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  // 後でDMMのURLを設定
+                                }}
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.97 }}
+                                className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300"
+                                style={{
+                                  background: 'linear-gradient(135deg, #9966FF 0%, #FF6B9D 100%)',
+                                  color: '#000'
+                                }}
+                              >
+                                DMM人気ランキングを見る ➤
+                              </motion.a>
+                              
+                              {/* Sub Button - Amazon */}
+                              <motion.a
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  // 後でAmazonのURLを設定
+                                }}
+                                whileHover={{ scale: 1.03 }}
+                                whileTap={{ scale: 0.97 }}
+                                className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300 bg-black border border-white/30 text-white hover:border-white/50"
+                              >
+                                Amazonで探す ➤
+                              </motion.a>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </>
+                  );
+                })()}
               </div>
             </div>
           </motion.div>
