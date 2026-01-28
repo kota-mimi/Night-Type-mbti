@@ -280,22 +280,6 @@ export default function ResultPage() {
             </div>
           </motion.div>
 
-          {/* 【広告枠 A】画像と基本生態の間 */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-8"
-          >
-            <div className="text-center">
-              <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-4 max-w-md mx-auto">
-                <div className="text-gray-500 text-xs mb-2">Advertisement</div>
-                <div className="w-full h-24 bg-[#0A0A0A] border border-[#2A2A2A] rounded flex items-center justify-center">
-                  <div className="text-gray-600 text-sm">Ad Space 320×100</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
 
           {/* セクションごとの直接配置 */}
           <div className="space-y-10">
