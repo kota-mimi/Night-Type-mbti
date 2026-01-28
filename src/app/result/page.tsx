@@ -544,9 +544,9 @@ export default function ResultPage() {
                                   e.preventDefault();
                                   // 後でDMMのURLを設定
                                 }}
-                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-[#FF007F] hover:bg-[#E6006B] text-white"
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#FF007F] text-[#FF007F] hover:border-[#E6006B] hover:text-[#E6006B]"
                               >
-                                DMM人気ランキングを見る ➤
+                                DMMで探す ➤
                               </a>
                               
                               {/* Sub Button - Amazon */}
@@ -583,9 +583,9 @@ export default function ResultPage() {
                                 e.preventDefault();
                                 // 後でDMMのURLを設定
                               }}
-                              className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-[#FF007F] hover:bg-[#E6006B] text-white"
+                              className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#FF007F] text-[#FF007F] hover:border-[#E6006B] hover:text-[#E6006B]"
                             >
-                              DMM人気ランキングを見る ➤
+                              DMMで探す ➤
                             </a>
                             
                             {/* Sub Button - Amazon */}
