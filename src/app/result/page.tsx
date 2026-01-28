@@ -530,7 +530,7 @@ export default function ResultPage() {
                         className="group"
                       >
                         <div 
-                          className={`bg-[#0a0a12] border border-white/15 rounded-lg p-6 h-full transition-all duration-300 ${
+                          className={`bg-[#0a0a12] border border-white/15 rounded-lg p-4 h-full transition-all duration-300 ${
                             isMale 
                               ? 'group-hover:border-cyan-500/30 group-hover:shadow-lg group-hover:shadow-cyan-500/10' 
                               : 'group-hover:border-pink-500/30 group-hover:shadow-lg group-hover:shadow-pink-500/10'
@@ -554,21 +554,8 @@ export default function ResultPage() {
                               </div>
                             </div>
                             
-                            {/* メインコンテンツ */}
-                            <div className="flex-grow">
-                              <h3 className="text-xl font-bold text-white mb-3 tracking-wide">
-                                {isMale ? 'UNLEASH INSTINCT' : 'SELF LOVE'}
-                              </h3>
-                              <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                                {isMale 
-                                  ? '本能を解放する、至高の刺激体験。'
-                                  : '私だけの秘密の癒やし。'
-                                }
-                              </p>
-                            </div>
-                            
                             {/* ダブルボタン */}
-                            <div className="space-y-3">
+                            <div className="space-y-2">
                               {/* Main Button - DMM */}
                               <motion.a
                                 href="#"
@@ -578,7 +565,7 @@ export default function ResultPage() {
                                 }}
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300"
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300"
                                 style={{
                                   background: isMale
                                     ? 'linear-gradient(135deg, #00FFFF 0%, #0066FF 100%)'
@@ -598,7 +585,7 @@ export default function ResultPage() {
                                 }}
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300 bg-black border border-white/30 text-white hover:border-white/50"
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-black border border-white/30 text-white hover:border-white/50"
                               >
                                 Amazonで探す ➤
                               </motion.a>
@@ -614,7 +601,7 @@ export default function ResultPage() {
                         className="group"
                       >
                         <div 
-                          className="bg-[#0a0a12] border border-white/15 rounded-lg p-6 h-full transition-all duration-300 group-hover:border-purple-500/30 group-hover:shadow-lg group-hover:shadow-purple-500/10"
+                          className="bg-[#0a0a12] border border-white/15 rounded-lg p-4 h-full transition-all duration-300 group-hover:border-purple-500/30 group-hover:shadow-lg group-hover:shadow-purple-500/10"
                           style={{
                             background: 'linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%)'
                           }}
@@ -630,16 +617,8 @@ export default function ResultPage() {
                               </div>
                             </div>
                             
-                            {/* メインコンテンツ */}
-                            <div className="flex-grow">
-                              <h3 className="text-xl font-bold text-white mb-3 tracking-wide">DEEPER CONNECTION</h3>
-                              <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                                二人の時間を深める、特別なひととき。
-                              </p>
-                            </div>
-                            
                             {/* ダブルボタン */}
-                            <div className="space-y-3">
+                            <div className="space-y-2">
                               {/* Main Button - DMM */}
                               <motion.a
                                 href="#"
@@ -649,7 +628,7 @@ export default function ResultPage() {
                                 }}
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300"
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300"
                                 style={{
                                   background: 'linear-gradient(135deg, #9966FF 0%, #FF6B9D 100%)',
                                   color: '#000'
@@ -667,7 +646,7 @@ export default function ResultPage() {
                                 }}
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
-                                className="inline-flex items-center justify-center w-full py-3 px-6 rounded-lg font-bold text-sm transition-all duration-300 bg-black border border-white/30 text-white hover:border-white/50"
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-black border border-white/30 text-white hover:border-white/50"
                               >
                                 Amazonで探す ➤
                               </motion.a>
