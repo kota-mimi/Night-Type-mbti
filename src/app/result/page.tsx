@@ -511,7 +511,7 @@ export default function ResultPage() {
                   WebkitTextFillColor: 'transparent',
                   textShadow: '0 0 30px rgba(255, 0, 127, 0.3)'
                 }}>
-                  Night Type Selection
+                  おすすめのアイテム
                 </h2>
                 <p className="text-gray-400 text-sm tracking-wide">おすすめアイテム</p>
               </div>
@@ -556,7 +556,7 @@ export default function ResultPage() {
                                   e.preventDefault();
                                   // 後でAmazonのURLを設定
                                 }}
-                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#333333] text-gray-300 hover:border-gray-200 hover:text-white"
+                                className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#00FFFF] text-[#00FFFF] hover:border-[#00CCCC] hover:text-[#00CCCC]"
                               >
                                 Amazonで探す ➤
                               </a>
@@ -595,7 +595,7 @@ export default function ResultPage() {
                                 e.preventDefault();
                                 // 後でAmazonのURLを設定
                               }}
-                              className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#333333] text-gray-300 hover:border-gray-200 hover:text-white"
+                              className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#00FFFF] text-[#00FFFF] hover:border-[#00CCCC] hover:text-[#00CCCC]"
                             >
                               Amazonで探す ➤
                             </a>
