@@ -243,6 +243,43 @@ export default function ResultPage() {
 
           </div>
 
+          {/* マッチング誘導ボタン */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mb-12"
+          >
+            <div className="flex justify-center">
+              <motion.a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // ダミーアクション - 実際の実装では適切なURLに変更
+                }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full max-w-lg block group relative overflow-hidden"
+              >
+                <div 
+                  className="w-full py-4 px-8 rounded-xl text-white font-bold text-lg text-center relative z-10 transition-all duration-300"
+                  style={{
+                    background: 'linear-gradient(135deg, #FF007F 0%, #00FFFF 100%)',
+                    boxShadow: '0 0 20px rgba(255, 0, 127, 0.4), 0 0 40px rgba(0, 255, 255, 0.2)'
+                  }}
+                >
+                  相性の良いパートナーを探しに行く ➤
+                  <div 
+                    className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"
+                    style={{
+                      background: 'linear-gradient(135deg, #00FFFF 0%, #FF007F 100%)'
+                    }}
+                  />
+                </div>
+              </motion.a>
+            </div>
+          </motion.div>
+
           {/* 【広告枠 A】画像と基本生態の間 */}
           <motion.div
             initial={{ y: 20, opacity: 0 }}
@@ -715,6 +752,91 @@ export default function ResultPage() {
             </div>
           </motion.div>
 
+        </motion.div>
+
+        {/* Night Type Recommended - アイテムカタログ */}
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
+          className="mt-16 pb-8"
+        >
+          <div className="max-w-4xl mx-auto">
+            <h2 className={`text-2xl md:text-3xl font-bold text-center mb-12 ${notoSansJP.className}`} style={{
+              background: 'linear-gradient(135deg, #FF007F 0%, #00FFFF 100%)',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              textShadow: '0 0 20px rgba(255, 0, 127, 0.3)'
+            }}>
+              Night Type Recommended
+            </h2>
+            <p className="text-center text-gray-400 mb-8 text-sm">夜の偏差値を上げるアイテム</p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Card 1 - MEN */}
+              <motion.a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // ダミーリンク - 実際の実装では適切なURLに変更
+                }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="group block bg-[#111] border border-[#333] rounded-lg overflow-hidden transition-all duration-300 hover:border-[#FF007F]/30 hover:shadow-lg hover:shadow-[#FF007F]/20"
+              >
+                <div className="aspect-video bg-gradient-to-br from-[#1A1A1A] via-[#222] to-[#111] flex items-center justify-center border-b border-[#333]">
+                  <div className="text-center">
+                    <div className="text-4xl mb-2">💪</div>
+                    <div className="text-sm text-gray-500">Image Placeholder</div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#FF007F] transition-colors">
+                    自信を取り戻す（MEN）
+                  </h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    夜の自信を取り戻すための専用プログラム。本物の男性力を手に入れる。
+                  </p>
+                  <div className="flex items-center justify-between mt-4">
+                    <span className="text-xs text-gray-500 px-2 py-1 bg-[#1A1A1A] rounded">おすすめ</span>
+                    <span className="text-sm text-[#00FFFF] group-hover:text-white transition-colors">詳細を見る ➤</span>
+                  </div>
+                </div>
+              </motion.a>
+
+              {/* Card 2 - WOMEN */}
+              <motion.a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // ダミーリンク - 実際の実装では適切なURLに変更
+                }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className="group block bg-[#111] border border-[#333] rounded-lg overflow-hidden transition-all duration-300 hover:border-[#00FFFF]/30 hover:shadow-lg hover:shadow-[#00FFFF]/20"
+              >
+                <div className="aspect-video bg-gradient-to-br from-[#1A1A1A] via-[#222] to-[#111] flex items-center justify-center border-b border-[#333]">
+                  <div className="text-center">
+                    <div className="text-4xl mb-2">✨</div>
+                    <div className="text-sm text-gray-500">Image Placeholder</div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#00FFFF] transition-colors">
+                    至高の愛されボディへ（WOMEN）
+                  </h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    理想的な体型と内面からの輝きを手に入れる究極のメソッド。
+                  </p>
+                  <div className="flex items-center justify-between mt-4">
+                    <span className="text-xs text-gray-500 px-2 py-1 bg-[#1A1A1A] rounded">おすすめ</span>
+                    <span className="text-sm text-[#FF007F] group-hover:text-white transition-colors">詳細を見る ➤</span>
+                  </div>
+                </div>
+              </motion.a>
+            </div>
+          </div>
         </motion.div>
         
       </div>
