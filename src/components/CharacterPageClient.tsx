@@ -85,49 +85,6 @@ export default function CharacterPageClient({ slug, typeCode, gender }: Props) {
           )}
         </motion.div>
 
-        {/* 診断ボタン */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-6"
-        >
-          <Link href="/quiz/1">
-            <button
-              className={`w-full text-white font-bold py-4 px-8 rounded-full text-lg relative overflow-hidden border-2 transition-all duration-300 ${
-                gender === 'male'
-                  ? 'border-[#00FFFF] hover:shadow-[0_0_20px_rgba(0,255,255,0.4)]'
-                  : 'border-[#FF007F] hover:shadow-[0_0_20px_rgba(255,0,127,0.4)]'
-              }`}
-              style={{
-                background: gender === 'male'
-                  ? 'linear-gradient(135deg, #00FFFF 0%, #FF007F 50%, #00FFFF 100%)'
-                  : 'linear-gradient(135deg, #FF007F 0%, #00FFFF 50%, #FF007F 100%)',
-                backgroundSize: '200% 200%',
-                animation: 'gradientShift 3s ease infinite'
-              }}
-            >
-              あなたのNight Typeは何かな？
-              <br />
-              <span className="text-base">診断してみよう！</span>
-            </button>
-          </Link>
-        </motion.div>
-
-        {/* ホームに戻る */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center"
-        >
-          <Link href="/">
-            <button className="inline-flex items-center gap-2 text-gray-400 hover:text-white font-medium transition-colors duration-300">
-              <Home className="w-5 h-5" />
-              ホームに戻る
-            </button>
-          </Link>
-        </motion.div>
 
         {/* おすすめアイテムセクション */}
         <motion.div
@@ -232,6 +189,50 @@ export default function CharacterPageClient({ slug, typeCode, gender }: Props) {
               </div>
             </div>
           </div>
+        </motion.div>
+
+        {/* 診断ボタン */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
+          className="mt-8 mb-6"
+        >
+          <Link href="/quiz/1">
+            <button
+              className={`w-full text-white font-bold py-4 px-8 rounded-full text-lg relative overflow-hidden border-2 transition-all duration-300 ${
+                gender === 'male'
+                  ? 'border-[#00FFFF] hover:shadow-[0_0_20px_rgba(0,255,255,0.4)]'
+                  : 'border-[#FF007F] hover:shadow-[0_0_20px_rgba(255,0,127,0.4)]'
+              }`}
+              style={{
+                background: gender === 'male'
+                  ? 'linear-gradient(135deg, #00FFFF 0%, #FF007F 50%, #00FFFF 100%)'
+                  : 'linear-gradient(135deg, #FF007F 0%, #00FFFF 50%, #FF007F 100%)',
+                backgroundSize: '200% 200%',
+                animation: 'gradientShift 3s ease infinite'
+              }}
+            >
+              あなたのNight Typeは何かな？
+              <br />
+              <span className="text-base">診断してみよう！</span>
+            </button>
+          </Link>
+        </motion.div>
+
+        {/* ホームに戻る */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          className="text-center"
+        >
+          <Link href="/">
+            <button className="inline-flex items-center gap-2 text-gray-400 hover:text-white font-medium transition-colors duration-300">
+              <Home className="w-5 h-5" />
+              ホームに戻る
+            </button>
+          </Link>
         </motion.div>
 
       </div>
