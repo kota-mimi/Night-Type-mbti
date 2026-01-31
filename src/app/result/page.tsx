@@ -792,23 +792,6 @@ export default function ResultPage() {
             </button>
           </div>
 
-          {/* 【広告枠 B】ボタン下部 */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="mt-8 flex justify-center"
-          >
-            <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-6 max-w-sm mx-auto">
-              <div className="text-gray-500 text-xs mb-4 text-center">Advertisement</div>
-              <div className="w-full h-64 bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-gray-600 text-sm mb-2">300×250</div>
-                  <div className="text-gray-700 text-xs">Banner Ad Space</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
 
         </motion.div>
         
