@@ -129,18 +129,106 @@ export default function CharacterPageClient({ slug, typeCode, gender }: Props) {
           </Link>
         </motion.div>
 
-        {/* 【広告枠】キャラクター専用ページ - ボタン下部 */}
+        {/* おすすめアイテムセクション */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-8"
         >
-          <div className="text-center">
-            <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-4 max-w-md mx-auto">
-              <div className="text-gray-500 text-xs mb-2">Advertisement</div>
-              <div className="w-full h-32 bg-[#0A0A0A] border border-[#2A2A2A] rounded flex items-center justify-center">
-                <div className="text-gray-600 text-sm">Ad Space 320×128</div>
+          <div className="max-w-md mx-auto">
+            {/* セクション見出し */}
+            <div className="text-center mb-6">
+              <h2 className={`text-xl md:text-2xl font-bold mb-2 ${notoSansJP.className}`} style={{
+                background: 'linear-gradient(135deg, #FF007F 0%, #00FFFF 50%, #9966FF 100%)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: '0 0 20px rgba(255, 0, 127, 0.3)'
+              }}>
+                おすすめのアイテム
+              </h2>
+              <p className="text-gray-400 text-sm">あなたにぴったりの商品</p>
+            </div>
+
+            {/* カードエリア */}
+            <div className="grid grid-cols-1 gap-4">
+              {/* Gender-specific Card */}
+              <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-4">
+                <div className="flex flex-col h-full">
+                  {/* ラベル */}
+                  <div className="mb-3">
+                    <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide text-black ${
+                      gender === 'male' ? 'bg-[#00FFFF]' : 'bg-[#FF007F]'
+                    }`}>
+                      {gender === 'male' ? 'FOR MEN' : 'FOR WOMEN'}
+                    </div>
+                  </div>
+                  
+                  {/* ダブルボタン */}
+                  <div className="space-y-2">
+                    {/* DMM Button */}
+                    <a
+                      href={gender === 'male' 
+                        ? "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Flist%2F%3D%2Flist_type%3Dmono%2Fsort%3Dranking%2F&af_id=nighttype-001&ch=toolbar&ch_id=link"
+                        : "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Fsearch%2F%3D%2Fsearchstr%3Diroha%2F&af_id=nighttype-001&ch=toolbar&ch_id=link"
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#FF007F] text-[#FF007F] hover:border-[#E6006B] hover:text-[#E6006B]"
+                    >
+                      DMMで探す ➤
+                    </a>
+                    
+                    {/* Amazon Button */}
+                    <a
+                      href={gender === 'male' ? "https://amzn.to/4k34pzM" : "https://amzn.to/4qLOvfF"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#00FFFF] text-[#00FFFF] hover:border-[#00CCCC] hover:text-[#00CCCC]"
+                    >
+                      Amazonで探す ➤
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* FOR COUPLES Card */}
+              <div className="bg-[#1A1A1A] border border-[#333333] rounded-lg p-4">
+                <div className="flex flex-col h-full">
+                  {/* ラベル */}
+                  <div className="mb-3">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold tracking-wide bg-[#9966FF] text-black">
+                      FOR COUPLES
+                    </div>
+                  </div>
+                  
+                  {/* ダブルボタン */}
+                  <div className="space-y-2">
+                    {/* DMM Button */}
+                    <a
+                      href={gender === 'male' 
+                        ? "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Fsearch%2F%3D%2Fsearchstr%3D%25E3%2582%25AB%25E3%2583%2583%25E3%2583%2597%25E3%2583%25AB%25E5%2590%2591%25E3%2581%2591%2F&af_id=nighttype-001&ch=toolbar&ch_id=link"
+                        : "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Fsearch%2F%3D%2Fsearchstr%3D%25E3%2582%25AB%25E3%2583%2583%25E3%2583%2597%25E3%2583%25AB%2F&af_id=nighttype-001&ch=toolbar&ch_id=link"
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#FF007F] text-[#FF007F] hover:border-[#E6006B] hover:text-[#E6006B]"
+                    >
+                      DMMで探す ➤
+                    </a>
+                    
+                    {/* Amazon Button */}
+                    <a
+                      href={gender === 'male' ? "https://amzn.to/49NIBF2" : "https://amzn.to/4aaudFU"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#00FFFF] text-[#00FFFF] hover:border-[#00CCCC] hover:text-[#00CCCC]"
+                    >
+                      Amazonで探す ➤
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
