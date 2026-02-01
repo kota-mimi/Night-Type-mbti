@@ -30,11 +30,20 @@ export default function PrivacyPage() {
             </section>
 
             <section>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">年齢制限について</h2>
+              <p className="mb-3">
+                当サービスは18歳以上の方を対象としており、アダルト向けコンテンツを含みます。
+                18歳未満の方のご利用はお控えください。
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-lg font-bold mb-2 text-gray-200">収集する情報</h2>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>診断結果に関する情報</li>
                 <li>アクセス解析のためのGoogle Analytics情報</li>
                 <li>サービス利用状況に関する統計情報</li>
+                <li>アフィリエイトリンクのクリック情報</li>
               </ul>
             </section>
 
@@ -58,9 +67,37 @@ export default function PrivacyPage() {
             </section>
 
             <section>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">アフィリエイトプログラムについて</h2>
+              <p className="mb-3">
+                当サービスは、以下のアフィリエイトプログラムに参加しており、
+                商品紹介によって紹介料を得る場合があります：
+              </p>
+              <ul className="list-disc list-inside space-y-1 ml-4 mb-3">
+                <li><strong>Amazonアソシエイト・プログラム：</strong> 
+                当サイトは、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。</li>
+                <li><strong>DMMアフィリエイトプログラム：</strong> 
+                DMMの商品・サービスを紹介することにより、紹介料を得る場合があります。</li>
+              </ul>
+              <p className="text-sm text-gray-400">
+                これらのリンクを通じて商品を購入された場合、当サービスに紹介料が支払われることがありますが、
+                購入者様に追加の費用が発生することはありません。
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-lg font-bold mb-2 text-gray-200">外部サービスについて</h2>
+              <p className="mb-3">
+                当サービスは、Amazon・DMM等の外部サービスへのリンクを含みます。
+                これらの外部サービスのプライバシーポリシーについては、
+                各サービスの規約をご確認ください。
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-lg font-bold mb-2 text-gray-200">Cookie（クッキー）について</h2>
               <p className="mb-3">
                 当サービスでは、Google Analyticsを使用してアクセス解析を行っています。
+                また、アフィリエイトプログラムの成果測定のためにCookieを使用する場合があります。
                 Cookieを無効にしても当サービスをご利用いただけますが、
                 一部機能が制限される場合があります。
               </p>
