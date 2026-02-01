@@ -513,7 +513,6 @@ export default function ResultPage() {
                 }}>
                   おすすめのアイテム
                 </h2>
-                <p className="text-gray-400 text-sm tracking-wide">おすすめアイテム</p>
               </div>
 
               {/* カードエリア - 性別判定による動的表示 */}
