@@ -59,7 +59,7 @@ export default function Footer() {
 
           {/* コピーライト */}
           <div className="pt-4 text-xs text-gray-600">
-            © 2024 Night Type. All rights reserved.
+            © 2026 Night Type. All rights reserved.
           </div>
 
         </div>
