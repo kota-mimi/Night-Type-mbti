@@ -15,7 +15,7 @@ export default function Footer() {
             </h3>
             <div className="flex justify-center items-center gap-6">
               <a 
-                href="https://x.com/diet_chara16" 
+                href="https://x.com/nighttype32" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 text-gray-500 hover:text-blue-400 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-gray-800/30"
@@ -23,7 +23,7 @@ export default function Footer() {
                 <span className="text-sm font-medium">X (Twitter)</span>
               </a>
               <a 
-                href="https://www.instagram.com/diet_chara16?igsh=MXNwOWc2eHM0c3Y5bg%3D%3D&utm_source=qr"
+                href="https://www.instagram.com/night_type32/"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group flex items-center gap-2 text-gray-500 hover:text-pink-400 transition-all duration-300 px-4 py-2 rounded-lg hover:bg-gray-800/30"
