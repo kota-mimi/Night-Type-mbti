@@ -744,26 +744,30 @@ export default function ResultPage() {
               </motion.button>
 
               {/* Instagram */}
-              <motion.button
-                onClick={() => handleShare('instagram')}
+              <motion.a
+                href="https://www.instagram.com/night_type32/"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="w-12 h-12 bg-[#E4405F] hover:bg-[#C13584] text-white rounded-full border border-[#333333] transition-all duration-300 flex items-center justify-center"
-                title="Instagram Storyにシェア"
+                title="Instagram をフォロー"
               >
                 <Instagram className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
 
               {/* X (Twitter) */}
-              <motion.button
-                onClick={() => handleShare('twitter')}
+              <motion.a
+                href="https://x.com/nighttype32"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="w-12 h-12 bg-black hover:bg-gray-800 text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
-                title="X (Twitter) にシェア"
+                title="X (Twitter) をフォロー"
               >
                 <Twitter className="w-5 h-5" />
-              </motion.button>
+              </motion.a>
 
               {/* Download */}
               <motion.button
