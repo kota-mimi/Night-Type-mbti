@@ -6,10 +6,10 @@ import HomeContent from './HomeContent'
 
 export const metadata: Metadata = {
   title: "夜のパーソナリティ診断｜あなたの夜の性格、見つかる",
-  description: "16タイプの大人向け性格診断で、あなたの夜の本性を発見。20問・約3分で完了。",
+  description: "32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見。24問・約3分で完了。",
   openGraph: {
     title: "夜のパーソナリティ診断｜あなたの夜の性格、見つかる",
-    description: "16タイプの大人向け性格診断で、あなたの夜の本性を発見。20問・約3分で完了。",
+    description: "32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見。24問・約3分で完了。",
     images: [
       {
         url: "/og-image.png",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '夜のパーソナリティ診断｜あなたの夜の性格、見つかる',
-    description: '16タイプの大人向け性格診断で、あなたの夜の本性を発見。20問・約3分で完了。',
+    description: '32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見。24問・約3分で完了。',
     images: ["/og-image.png"],
   },
 }
