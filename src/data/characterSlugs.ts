@@ -20,13 +20,13 @@ export const characterSlugs: Record<string, string> = {
 
   // 女性版 Night Type characters (16種類)
   'ARTN-female': 'cold-empress',            // 冷徹な女帝（クイーン）
-  'AFTN-female': 'ice-beauty',              // 氷の美貌（ビューティー）
+  'AFTN-female': 'little-devil-inventor',   // 小悪魔な発明家
   'AREN-female': 'overprotective-mama',     // 過保護なママ
-  'AFEN-female': 'magical-saint',           // 魔性の聖女
+  'AFEN-female': 'innocent-tinkerbell',     // 無邪気なティンカーベル
   'ARTC-female': 'carnivorous-hunter',      // 肉食系ハンター
-  'AFTC-female': 'little-devil-inventor',   // 小悪魔な発明家
+  'AFTC-female': 'ice-beauty',              // 氷の美貌（ビューティー）
   'AREC-female': 'spotlight-actress',       // スポットライト女優
-  'AFEC-female': 'innocent-tinkerbell',     // 無邪気なティンカーベル
+  'AFEC-female': 'magical-saint',           // 魔性の聖女
   'PRTN-female': 'iron-wall-guard',         // 鉄壁のガードマン
   'PFTN-female': 'cold-screenwriter',       // 冷めた脚本家
   'PRTC-female': 'silent-technician',       // 無口なテクニシャン
