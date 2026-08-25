@@ -67,7 +67,6 @@ export default function GalleryPage() {
                   <p className="text-xs font-black text-[#e4557f]">{selectedType}</p>
                   <h2 className="mt-1 text-xl font-black sm:text-2xl">{type.name}</h2>
                   <p className="mt-3 text-sm font-bold leading-relaxed text-[#6f625b]">「{type.catchcopy}」</p>
-                  <p className="mt-3 text-xs leading-relaxed text-[#8b7e76]">詳しい生態・相性・本能のカルテは、診断結果であなただけに公開します。</p>
                   <Link href="/quiz/1" className="mt-4 inline-flex items-center gap-2 rounded-full border-2 border-[#211b18] bg-[#ff6f91] px-5 py-2.5 text-sm font-black text-white shadow-[3px_3px_0_#211b18]">自分のタイプを診断する</Link>
                 </div>
               </motion.div>
