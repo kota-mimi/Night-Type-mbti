@@ -456,7 +456,7 @@ export default function ResultPage() {
                   <div className="text-2xl font-bold text-[#9966FF] mb-1">{typeData.uwaki.percent}</div>
                   <div className="text-sm font-bold text-white">{typeData.uwaki.type}</div>
                 </div>
-                <div className="text-xs leading-relaxed text-[#AAAAAA] text-center max-w-md mx-auto">
+                <div className="mx-auto max-w-md text-center text-sm font-medium leading-relaxed text-[#514741]">
                   <p>{typeData.uwaki.text}</p>
                 </div>
               </div>
