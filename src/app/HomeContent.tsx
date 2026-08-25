@@ -1,122 +1,68 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
-import { Noto_Sans_JP, Shippori_Mincho } from 'next/font/google'
+import { motion } from 'framer-motion'
+import { ArrowRight, Clock3, LockKeyhole, Sparkles } from 'lucide-react'
+import { trackEvent } from '@/lib/analyticsEvents'
 
-const notoSansJP = Noto_Sans_JP({
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const shipporiMincho = Shippori_Mincho({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
-})
-
+const previewCharacters = [
+  { src: '/characters/chibi/ARTN_male.png', rotate: '-rotate-3', label: '絶対君主' },
+  { src: '/characters/chibi/AFEC_female.png', rotate: 'rotate-2', label: '無邪気なティンカーベル' },
+  { src: '/characters/chibi/PFTC_male.png', rotate: '-rotate-1', label: '性癖研究員' },
+]
 
 export default function HomeContent() {
   return (
-    <>
-      <style jsx global>{`
-        @keyframes luxuryGlow {
-          0%, 100% { box-shadow: 0 4px 20px rgba(139, 0, 255, 0.5), 0 0 30px rgba(255, 0, 127, 0.3); }
-          50% { box-shadow: 0 6px 30px rgba(139, 0, 255, 0.7), 0 0 50px rgba(255, 0, 127, 0.5); }
-        }
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
-      <div 
-        className={`relative overflow-hidden ${notoSansJP.className}`}
-        style={{
-          background: 'radial-gradient(circle at 50% 40%, #1a0b2e 0%, #000000 90%)',
-          minHeight: '100vh'
-        }}
-      >
-      {/* Ambient luxury particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#8B00FF] opacity-10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-[#FF007F] opacity-8 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-[#00FFFF] opacity-5 rounded-full blur-3xl animate-pulse" style={{animationDelay: '4s'}}></div>
-      </div>
-      
-      <main className="flex flex-col items-center text-center px-4 pt-8 pb-16 relative z-10">
-        
-        {/* メインコンテンツ */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          className="text-center"
-        >
-          {/* タイトル */}
-          <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ${shipporiMincho.className}`}>
-            <span className="text-[#FF007F]">Night</span>{' '}
-            <span className="text-[#00FFFF]">Type</span>
-          </h1>
-          
-          {/* サブタイトル */}
-          <motion.h2 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className={`text-lg md:text-2xl mb-4 leading-relaxed ${shipporiMincho.className}`}
-            style={{
-              background: 'linear-gradient(135deg, #E6E6FA 0%, #DDA0DD 50%, #C0C0C0 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}
-          >
-            あなたの性格と、<span className="text-[#FF007F]">夜の過ごし方</span>が見つかる。
-          </motion.h2>
-          
-          {/* 説明テキスト */}
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-sm md:text-base mb-12 max-w-2xl mx-auto leading-relaxed"
-            style={{
-              color: '#B8B8B8',
-              textShadow: '0 0 10px rgba(184, 184, 184, 0.3)'
-            }}
-          >
-            深夜の世界で輝くあなたの本性を探る、大人のための性格診断。
-            <br />
-            24問・約5分で、隠された夜の自分と出会う。
-          </motion.p>
-          
-          {/* 診断ボタン */}
-          <Link href="/quiz/1">
-            <motion.button
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.7 }}
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: '0 0 30px rgba(255, 0, 127, 0.4)'
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="relative text-white font-bold py-4 px-16 rounded-full text-lg md:text-xl mb-16 overflow-hidden border-2 border-[#8B00FF] transition-all duration-300"
-              style={{
-                background: 'linear-gradient(135deg, #4B0082 0%, #8B00FF 50%, #FF007F 100%)',
-                backgroundSize: '200% 200%',
-                animation: 'gradientShift 3s ease infinite, luxuryGlow 2s ease-in-out infinite'
-              }}
-            >
-              <span className="relative z-10">診断を始める</span>
-            </motion.button>
-          </Link>
-        </motion.div>
+    <main className="min-h-screen overflow-hidden bg-[#fff8ee] text-[#211b18]">
+      <section className="relative px-4 pt-12 pb-20 md:pt-20">
+        <div className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-[#ffb6c8]/50 blur-3xl" />
+        <div className="absolute top-20 -right-20 h-72 w-72 rounded-full bg-[#82d9d0]/40 blur-3xl" />
+        <div className="relative mx-auto max-w-6xl grid lg:grid-cols-[1fr_1.05fr] gap-12 items-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 rounded-full border-2 border-[#211b18] bg-[#ffd166] px-4 py-2 text-xs font-black shadow-[3px_3px_0_#211b18] mb-7">
+              <Sparkles className="h-4 w-4" /> 大人の本音を、かわいく診断
+            </div>
+            <h1 className="text-5xl md:text-7xl font-black tracking-[-0.05em] leading-[0.95]">
+              夜のあなたは、<br /><span className="text-[#e4557f]">どの住人？</span>
+            </h1>
+            <p className="mt-7 text-base md:text-lg leading-relaxed text-[#695c55] max-w-xl mx-auto lg:mx-0">
+              24問から、主導権・刺激・感情・変化の好みを分析。<br className="hidden sm:block" />あなたの本音を16タイプのキャラクターにします。
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3 text-xs font-bold text-[#695c55]">
+              <span className="inline-flex items-center gap-1.5"><Clock3 className="h-4 w-4" />約3分</span>
+              <span className="inline-flex items-center gap-1.5"><LockKeyhole className="h-4 w-4" />登録不要</span>
+              <span className="inline-flex items-center gap-1.5"><Sparkles className="h-4 w-4" />完全無料</span>
+            </div>
+            <Link href="/quiz/1" onClick={() => trackEvent('quiz_start', { location: 'home_hero' })} className="mt-9 inline-flex items-center gap-3 rounded-full border-2 border-[#211b18] bg-[#ff6f91] px-8 py-4 text-lg font-black text-white shadow-[5px_5px_0_#211b18] transition hover:-translate-y-1 hover:shadow-[7px_7px_0_#211b18]">
+              診断をはじめる <ArrowRight className="h-5 w-5" />
+            </Link>
+          </motion.div>
 
-        
-      </main>
-      </div>
-    </>
+          <div className="grid grid-cols-3 gap-3 md:gap-5 items-center">
+            {previewCharacters.map((character, index) => (
+              <motion.div key={character.src} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: index === 1 ? -18 : 12 }} transition={{ delay: 0.15 + index * 0.1 }} className={`${character.rotate} overflow-hidden rounded-[28px] border-2 border-[#211b18] bg-white shadow-[5px_5px_0_#211b18]`}>
+                <div className="relative aspect-square"><Image src={character.src} alt={character.label} fill sizes="33vw" className="object-cover" priority /></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y-2 border-[#211b18] bg-[#211b18] px-4 py-5 text-white">
+        <div className="mx-auto max-w-5xl flex flex-wrap justify-center gap-x-10 gap-y-2 text-sm font-black">
+          <span>4つの本音軸</span><span className="text-[#ff8faa]">×</span><span>16タイプ</span><span className="text-[#75d5cc]">×</span><span>男女32キャラクター</span>
+        </div>
+      </section>
+
+      <section className="px-4 py-20 text-center">
+        <div className="mx-auto max-w-2xl">
+          <p className="text-xs font-black tracking-[0.25em] text-[#e4557f]">NO SPOILERS</p>
+          <h2 className="mt-3 text-3xl md:text-5xl font-black">結果を見るまで、正体は秘密。</h2>
+          <p className="mt-5 leading-relaxed text-[#695c55]">図鑑は診断したタイプだけが開放されます。まずは、あなたの夜の住人を見つけてください。</p>
+          <Link href="/gallery" className="mt-7 inline-flex items-center gap-2 font-black underline decoration-2 underline-offset-8">夜の住人図鑑を見る <ArrowRight className="h-4 w-4" /></Link>
+        </div>
+      </section>
+    </main>
   )
 }

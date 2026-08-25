@@ -17,6 +17,18 @@
 
 import { Answer, Score } from '@/types';
 import { questions } from '@/data/questions';
+import {
+  calculateAxisScores,
+  determineNightType,
+  isValidAnswerSet,
+  type ScoringQuestion,
+} from './scoringCore';
+
+const scoringQuestions = questions as ScoringQuestion[];
+
+export function areAnswersValid(answers: Answer[]): boolean {
+  return isValidAnswerSet(answers, scoringQuestions);
+}
 
 
 /**
@@ -33,88 +45,17 @@ import { questions } from '@/data/questions';
  * direction: 'positive'なら加算、'negative'なら減算（反転）
  */
 export function calculateScore(answers: Answer[]): Score {
-  // 1. スコア初期化
-  let scores: Score = { AP: 0, RF: 0, TE: 0, NC: 0 };
-
-  // 2. デバッグ用ログ（開発環境のみ）
-  if (process.env.NODE_ENV === 'development') {
-    console.log("=== DEBUG: calculateScore (NEW LOGIC) ===");
-    console.log("Input Answers:", answers); 
-    console.log("Total answers received:", answers.length);
-  }
-
-  // 3. 集計処理
-  questions.forEach(q => {
-    // 回答がない場合は 0 (どちらでもない)
-    const answerObj = answers.find(a => a.questionId === q.id);
-    const userValue = answerObj !== undefined ? answerObj.score : 0;
-
-    if (process.env.NODE_ENV === 'development') {
-      console.log(`Q${q.id}: axis=${q.axis}, direction=${q.direction}, userScore=${userValue}`);
-    }
-
-    if (q.direction === 'positive') {
-      scores[q.axis as keyof Score] += userValue;
-      if (process.env.NODE_ENV === 'development') {
-        console.log(`  → ${q.axis} += ${userValue} = ${scores[q.axis as keyof Score]}`);
-      }
-    } else {
-      scores[q.axis as keyof Score] -= userValue; // negativeは反転
-      if (process.env.NODE_ENV === 'development') {
-        console.log(`  → ${q.axis} -= ${userValue} = ${scores[q.axis as keyof Score]}`);
-      }
-    }
-  });
-
-  if (process.env.NODE_ENV === 'development') {
-    console.log("Calculated Scores:", scores);
-  }
-  return scores;
+  return calculateAxisScores(answers, scoringQuestions);
 }
 
-export function determineType(scores: Score): string {
-  if (process.env.NODE_ENV === 'development') {
-    console.log("=== DEBUG: determineType (NEW LOGIC) ===");
-    console.log("Input Scores:", scores);
+export function determineType(scores: Score, answers?: Answer[]): string {
+  if (!answers) {
+    throw new Error('同点を公平に判定するため、回答データが必要です。');
   }
-  
-  // 4. タイプ判定 (0以上なら左、未満なら右)
-  let typeCode = '';
-  typeCode += scores.AP >= 0 ? 'A' : 'P';
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`AP: ${scores.AP} >= 0 ? A : P → ${scores.AP >= 0 ? 'A' : 'P'}`);
-  }
-  
-  typeCode += scores.RF >= 0 ? 'R' : 'F';
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`RF: ${scores.RF} >= 0 ? R : F → ${scores.RF >= 0 ? 'R' : 'F'}`);
-  }
-  
-  typeCode += scores.TE >= 0 ? 'T' : 'E';
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`TE: ${scores.TE} >= 0 ? T : E → ${scores.TE >= 0 ? 'T' : 'E'}`);
-  }
-  
-  typeCode += scores.NC >= 0 ? 'N' : 'C';
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`NC: ${scores.NC} >= 0 ? N : C → ${scores.NC >= 0 ? 'N' : 'C'}`);
-  }
-
-  if (process.env.NODE_ENV === 'development') {
-    console.log("Final TypeCode:", typeCode);
-  }
-  return typeCode;
+  return determineNightType(scores, answers, scoringQuestions);
 }
 
 export function getTypeFromAnswers(answers: Answer[]): string {
   const scores = calculateScore(answers);
-  const nightCode = determineType(scores);
-  
-  // デバッグ情報
-  if (process.env.NODE_ENV === 'development') {
-    console.log('Debug - Scores:', scores);
-    console.log('Debug - Night Code:', nightCode);
-  }
-  
-  return nightCode;
+  return determineType(scores, answers);
 }

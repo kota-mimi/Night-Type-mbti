@@ -1,270 +1,79 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { Home } from 'lucide-react'
-import { Noto_Sans_JP } from 'next/font/google'
+import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { LockKeyhole, Sparkles } from 'lucide-react'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
-import { questions } from '@/data/questions'
-import { Suspense, useState } from 'react'
-import { characterSlugs } from '@/data/characterSlugs'
+import { chibiCharacterArt, getChibiImagePath } from '@/data/chibiCharacters'
 
-const notoSansJP = Noto_Sans_JP({
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-function CharacterImageWithFallback({ typeCode, name, index, gender }: { typeCode: string; name: string; index: number; gender: 'male' | 'female' }) {
-  const [imageError, setImageError] = useState(false)
-  
-  if (imageError) {
-    return (
-      <div className="w-24 h-24 bg-[#1A1A1A] rounded-full flex items-center justify-center border border-[#333333] mx-auto mt-20">
-        <span className="text-4xl animate-float">👑</span>
-      </div>
-    )
-  }
-  
-  const imageSrc = gender === 'female' 
-    ? `/characters/${typeCode}_gallery.png`
-    : `/characters/${typeCode}_gallery_male.png`
-  
-  return (
-    <div className="relative w-full aspect-[4/5] flex items-center justify-center overflow-hidden">
-      <Image 
-        src={imageSrc}
-        alt={name}
-        width={400}
-        height={500}
-        sizes="(max-width: 768px) 300px, 400px"
-        className="object-contain w-full h-full transition-all duration-300 md:character-popout"
-        onError={() => setImageError(true)}
-        priority={index < 4}
-      />
-    </div>
-  )
-}
-
-function GalleryContent() {
-  const [selectedGender, setSelectedGender] = useState<'male' | 'female'>('male')
-  // 選択された性別に応じて適切なキーを使用
-  const typeKeys = Object.keys(genderedDiagramTypes[selectedGender])
-  
-  return (
-    <div className={`bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
-      {/* Removed floating orbs for flat design */}
-      
-      <div className="container mx-auto px-4 pt-8 pb-16 max-w-6xl relative z-10">
-        
-        {/* ヘッダー */}
-        <motion.div
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-200 mb-4" style={{
-            textShadow: '0 0 10px rgba(255, 215, 0, 0.3)'
-          }}>
-            全16タイプ診断結果
-          </h1>
-          <p className="text-lg text-gray-400">
-            あなたはどのタイプに当てはまりますか？
-          </p>
-        </motion.div>
-
-        {/* 男女選択タブ */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center mb-10"
-        >
-          <div className="p-2 border border-gray-600/30 rounded-xl" style={{ backgroundColor: 'rgba(10, 10, 18, 0.95)' }}>
-            <div className="flex">
-              <button
-                onClick={() => setSelectedGender('male')}
-                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
-                  selectedGender === 'male'
-                    ? 'bg-[#00FFFF] text-[#111111] border border-[#00FFFF]'
-                    : 'text-[#00FFFF] hover:bg-[#1A1A1A] hover:text-[#66FFFF]'
-                }`}
-              >
-                男性版
-              </button>
-              <button
-                onClick={() => setSelectedGender('female')}
-                className={`px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 ${
-                  selectedGender === 'female'
-                    ? 'bg-[#FF007F] text-white border border-[#FF007F]'
-                    : 'text-[#FF007F] hover:bg-[#1A1A1A] hover:text-[#FF66B3]'
-                }`}
-              >
-                女性版
-              </button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* タイプ一覧グリッド */}
-        <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12"
-        >
-          {typeKeys.map((typeCode, index) => {
-            // 選択された性別のキャラクターデータを使用
-            const type = genderedDiagramTypes[selectedGender][typeCode]
-            
-            return (
-              <motion.div
-                key={typeCode}
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.6 + index * 0.05 }}
-                className="p-4 border border-gray-600/30 transition-all duration-300 group h-full flex flex-col"
-                style={{
-                  backgroundColor: 'rgba(10, 10, 18, 0.95)',
-                  borderRadius: '20px'
-                }}
-              >
-                {/* キャラクター画像 - ポップアウト効果 */}
-                <div className="relative mb-4 overflow-hidden">
-                  <div className="relative h-full flex items-end justify-center">
-                    <CharacterImageWithFallback 
-                      typeCode={typeCode}
-                      name={type.name}
-                      index={index}
-                      gender={selectedGender}
-                    />
-                  </div>
-                </div>
-
-                {/* タイプコード */}
-                <div className="text-center mb-1">
-                  <h2 className={`text-xl font-bold mb-1 ${
-                    selectedGender === 'male' 
-                      ? 'text-[#00FFFF]' 
-                      : 'text-[#FF007F]'
-                  }`}>
-                    {typeCode}
-                  </h2>
-                </div>
-
-                <div className="space-y-3 flex flex-col flex-1">
-                  {/* タイプ名 */}
-                  <h3 className="text-base font-bold text-gray-200 text-center leading-tight transition-colors duration-300">
-                    {type.name}
-                  </h3>
-
-                  {/* 基本生態 */}
-                  <p className="text-sm text-gray-400 text-left leading-relaxed transition-colors duration-300 mb-4">
-                    {type.basicEcology}
-                  </p>
-
-                  {/* 詳細ボタン */}
-                  <div className="mt-auto pt-3">
-                    <button
-                      onClick={() => {
-                        // 該当タイプの結果を生成するためのスコアを計算
-                        const typeCodeStr = String(typeCode)
-                        
-                        // Night Code対応スコアリング
-                        const answers = Array.from({ length: 24 }, (_, i) => {
-                          const questionId = i + 1
-                          const question = questions.find(q => q.id === questionId)
-                          
-                          if (!question) return { questionId, score: 1 }
-                          
-                          let targetScore: number = 0
-                          
-                          // Night Code軸に対応した目標スコア設定
-                          if (question.axis === 'AP') {
-                            // AP軸: Aタイプなら正方向、Pタイプなら負方向
-                            targetScore = typeCodeStr.charAt(0) === 'A' ? 3 : -3
-                          } else if (question.axis === 'RF') {
-                            // RF軸: Rタイプなら正方向、Fタイプなら負方向
-                            targetScore = typeCodeStr.charAt(1) === 'R' ? 3 : -3
-                          } else if (question.axis === 'TE') {
-                            // TE軸: Tタイプなら正方向、Eタイプなら負方向
-                            targetScore = typeCodeStr.charAt(2) === 'T' ? 3 : -3
-                          } else if (question.axis === 'NC') {
-                            // NC軸: Nタイプなら正方向、Cタイプなら負方向
-                            targetScore = typeCodeStr.charAt(3) === 'N' ? 3 : -3
-                          }
-                          
-                          // question.directionに基づいて実際の回答値を調整
-                          let answerScore: number
-                          if (question.direction === 'positive') {
-                            answerScore = targetScore
-                          } else {
-                            answerScore = -targetScore
-                          }
-                          
-                          return {
-                            questionId,
-                            score: answerScore
-                          }
-                        })
-                        
-                        localStorage.setItem('diet-quiz-answers', JSON.stringify(answers))
-                        localStorage.setItem('user-gender', selectedGender)
-                        localStorage.setItem('diet-quiz-result-type', String(typeCode))
-                        window.location.href = '/result'
-                      }}
-                      className={`w-full text-white text-sm font-medium py-3 px-4 rounded-full transition-all duration-300 relative overflow-hidden ${
-                        selectedGender === 'male' 
-                          ? 'border border-[#00FFFF] hover:bg-[#222222] hover:-translate-y-1'
-                          : 'border border-[#FF007F] hover:bg-[#222222] hover:-translate-y-1'
-                      }`}
-                      style={{
-                        background: selectedGender === 'male' 
-                          ? 'rgba(10, 30, 50, 0.9)' 
-                          : 'rgba(40, 10, 30, 0.9)'
-                      }}
-                    >
-                      詳しく見る
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
-        </motion.div>
-
-        {/* ホームに戻るボタン */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
-          className="text-center"
-        >
-          <Link href="/quiz/1">
-            <button className="inline-flex items-center gap-2 luxury-button text-white font-bold py-4 px-8 rounded-full transition-all duration-300 hover:scale-105">
-              <Home className="w-5 h-5" />
-              診断を始める
-            </button>
-          </Link>
-        </motion.div>
-      </div>
-    </div>
-  )
-}
+const DISCOVERED_TYPES_KEY = 'night-type-discovered-types'
 
 export default function GalleryPage() {
+  const [selectedGender, setSelectedGender] = useState<'male' | 'female'>('male')
+  const [discovered, setDiscovered] = useState<string[]>([])
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(DISCOVERED_TYPES_KEY) || '[]')
+      if (Array.isArray(saved)) {
+        const validTypes = saved.filter((value): value is string => typeof value === 'string')
+        queueMicrotask(() => setDiscovered(validTypes))
+      }
+    } catch {
+      localStorage.removeItem(DISCOVERED_TYPES_KEY)
+    }
+  }, [])
+
+  const typeCodes = Object.keys(genderedDiagramTypes[selectedGender])
+
   return (
-    <Suspense fallback={
-      <div className="bg-[#111111] flex items-center justify-center min-h-[50vh] pt-16">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-8 h-8 border-2 border-[#FF007F] border-t-transparent rounded-full"
-        />
+    <main className="min-h-screen bg-[#fff8ee] text-[#211b18] px-4 py-10 md:py-16">
+      <div className="mx-auto max-w-6xl">
+        <header className="text-center max-w-2xl mx-auto mb-10">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#211b18] px-4 py-2 text-sm font-bold text-white mb-5">
+            <Sparkles className="h-4 w-4 text-[#ffd166]" /> NIGHT TYPE COLLECTION
+          </div>
+          <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-4">夜の住人図鑑</h1>
+          <p className="text-[#6f625b] leading-relaxed">診断で出会ったタイプだけが開くコレクション。<br className="hidden sm:block" />名前も性格も、結果を見るまでのお楽しみです。</p>
+          <p className="mt-4 font-bold text-sm">発見済み {discovered.length} / 16</p>
+        </header>
+
+        <div className="flex justify-center mb-8">
+          <div className="flex rounded-full bg-white border-2 border-[#211b18] p-1 shadow-[3px_3px_0_#211b18]">
+            {(['male', 'female'] as const).map((gender) => (
+              <button key={gender} onClick={() => setSelectedGender(gender)} className={`rounded-full px-6 py-2 text-sm font-black transition ${selectedGender === gender ? 'bg-[#211b18] text-white' : 'text-[#6f625b]'}`}>
+                {gender === 'male' ? '男性版' : '女性版'}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          {typeCodes.map((typeCode, index) => {
+            const unlocked = discovered.includes(typeCode)
+            const type = genderedDiagramTypes[selectedGender][typeCode]
+            const art = chibiCharacterArt[selectedGender][typeCode as keyof typeof chibiCharacterArt.male]
+            return (
+              <motion.article key={typeCode} initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: Math.min(index * 0.03, 0.3) }} className="relative overflow-hidden rounded-[28px] border-2 border-[#211b18] bg-white shadow-[4px_4px_0_#211b18]">
+                <div className="relative aspect-square" style={{ backgroundColor: art?.color || '#f5d8bd' }}>
+                  <Image src={getChibiImagePath(typeCode, selectedGender)} alt={unlocked ? type.name : '未発見のNight Type'} fill sizes="(max-width: 768px) 50vw, 25vw" className={`object-cover transition duration-500 ${unlocked ? '' : 'blur-[10px] grayscale opacity-45 scale-105'}`} priority={index < 4} />
+                  {!unlocked && <div className="absolute inset-0 flex items-center justify-center bg-[#211b18]/10"><div className="grid h-12 w-12 place-items-center rounded-full bg-white border-2 border-[#211b18] shadow-[2px_2px_0_#211b18]"><LockKeyhole className="h-5 w-5" /></div></div>}
+                </div>
+                <div className="p-4 text-center min-h-[106px] flex flex-col justify-center">
+                  {unlocked ? <><p className="text-xs font-black text-[#e4557f] mb-1">{typeCode}</p><h2 className="font-black leading-tight">{type.name}</h2><p className="text-xs text-[#786a62] mt-2 line-clamp-1">{art?.motif}</p></> : <><p className="text-xs font-bold text-[#9b8e86] mb-1">UNKNOWN</p><h2 className="font-black">？？？？？</h2><p className="text-xs text-[#9b8e86] mt-2">診断すると開放</p></>}
+                </div>
+              </motion.article>
+            )
+          })}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link href="/quiz/1" className="inline-flex items-center gap-2 rounded-full border-2 border-[#211b18] bg-[#ff6f91] px-8 py-4 font-black text-white shadow-[4px_4px_0_#211b18] transition hover:-translate-y-1"><Sparkles className="h-5 w-5" />あなたの1体目を見つける</Link>
+          <p className="text-xs text-[#8b7e76] mt-4">24問・約3分／登録不要</p>
+        </div>
       </div>
-    }>
-      <GalleryContent />
-    </Suspense>
+    </main>
   )
 }

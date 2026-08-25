@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Home } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
+import { getChibiImagePath } from '@/data/chibiCharacters'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -18,24 +19,12 @@ interface Props {
   gender: 'male' | 'female'
 }
 
-export default function CharacterPageClient({ slug, typeCode, gender }: Props) {
+export default function CharacterPageClient({ typeCode, gender }: Props) {
   // 指定された性別のキャラクターデータを取得
   const character = genderedDiagramTypes[gender][typeCode]
   
   if (!character) {
     return <div>キャラクターが見つかりません</div>
-  }
-
-  const handleShare = (platform: string) => {
-    const shareUrl = `${window.location.origin}/character/${slug}`
-    const shareText = `私のNight Typeは「${character.name}」でした！\n${character.catchcopy}\n\nあなたも診断してみて👇`
-    
-    const urls = {
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
-      line: `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`
-    }
-
-    window.open(urls[platform as keyof typeof urls], '_blank')
   }
 
   return (
@@ -60,18 +49,20 @@ export default function CharacterPageClient({ slug, typeCode, gender }: Props) {
             </span>
           </div>
 
-          {/* キャラクターバナー画像 */}
-          <div className="mb-6">
+          {/* シェアしやすい新キャラクター画像 */}
+          <div className="mb-6 overflow-hidden rounded-2xl border-2 border-[#333333] bg-[#fff8ee]">
             <Image 
-              src={`/characters/${typeCode}_${gender}_banner.png`}
+              src={getChibiImagePath(typeCode, gender)}
               alt={character.name}
               width={600}
-              height={200}
-              className="w-full rounded-lg border border-[#333333]"
-              onError={(e) => {
-                e.currentTarget.src = '/test_banner.png'
-              }}
+              height={600}
+              className="w-full"
             />
+          </div>
+
+          <div className="text-center mb-7">
+            <h1 className="text-3xl font-black text-white">{character.name}</h1>
+            <p className="mt-3 text-sm leading-relaxed text-gray-400">{character.catchcopy}</p>
           </div>
 
           {/* 基本生態 */}

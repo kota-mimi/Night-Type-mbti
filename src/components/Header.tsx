@@ -22,7 +22,7 @@ export default function Header() {
 
   const menuItems = [
     { href: '/', label: 'ホーム', key: 'home' },
-    { href: '/gallery', label: 'キャラクター一覧', key: 'gallery' },
+    { href: '/gallery', label: '夜の住人図鑑', key: 'gallery' },
     { href: '/about', label: 'Night Typeとは', key: 'about' },
     { href: '/contact', label: 'お問い合わせ', key: 'contact' },
   ]

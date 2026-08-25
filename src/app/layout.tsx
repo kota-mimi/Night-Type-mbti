@@ -13,7 +13,7 @@ const notoSansJP = Noto_Sans_JP({
 
 export const metadata: Metadata = {
   title: "Night Type｜あなたの夜の性格、見つかる",
-  description: "32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見。24問・約3分で完了。科学的根拠に基づいたアプローチをご提案します。",
+  description: "24問から、あなたの夜の本音を16タイプのキャラクターに。約3分・登録不要のエンタメ性格診断。",
   keywords: "夜,性格,診断,MBTI,ライフスタイル,夜型,深夜",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://night-type.net'),
   authors: [{ name: "Night Type" }],

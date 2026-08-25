@@ -3,16 +3,17 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import Image from 'next/image'
-import { Home, Twitter, MessageSquare, Instagram, Download, Copy } from 'lucide-react'
-import Breadcrumbs from '@/components/Breadcrumbs'
+import { Twitter, Instagram, Download, Copy } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
-import { getTypeFromAnswers } from '@/lib/scoring'
+import { areAnswersValid, getTypeFromAnswers } from '@/lib/scoring'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { Answer } from '@/types'
 import { characterSlugs } from '@/data/characterSlugs'
-import { getCharacterIdByCode, getCharacterById, getCompatibility, getDetailedCompatibilityReason } from '@/lib/characterMapping'
+import { getCharacterById, getCompatibility, getDetailedCompatibilityReason } from '@/lib/characterMapping'
+import { getChibiImagePath } from '@/data/chibiCharacters'
+import html2canvas from 'html2canvas'
+import { trackEvent } from '@/lib/analyticsEvents'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -28,8 +29,8 @@ export default function ResultPage() {
 
   useEffect(() => {
     // 性別情報を取得
-    const savedGender = localStorage.getItem('user-gender') as 'male' | 'female'
-    if (savedGender) {
+    const savedGender = localStorage.getItem('user-gender')
+    if (savedGender === 'male' || savedGender === 'female') {
       setUserGender(savedGender)
     }
 
@@ -47,19 +48,33 @@ export default function ResultPage() {
       return
     }
 
-    const answers: Answer[] = JSON.parse(savedAnswers)
-    console.log("Parsed answers:", answers);
-    console.log("Answers length:", answers.length);
-    
-    if (answers.length !== 24) {
-      console.log("Invalid answers length, redirecting to home");
+    let answers: Answer[]
+    try {
+      answers = JSON.parse(savedAnswers) as Answer[]
+    } catch {
+      localStorage.removeItem('diet-quiz-answers')
       router.push('/')
       return
     }
 
-    console.log("Calling getTypeFromAnswers...");
+    if (!Array.isArray(answers) || !areAnswersValid(answers)) {
+      localStorage.removeItem('diet-quiz-answers')
+      router.push('/quiz/1')
+      return
+    }
+
     const typeCode = getTypeFromAnswers(answers)
-    console.log("Received typeCode:", typeCode);
+    trackEvent('quiz_complete', { type: typeCode, gender: savedGender || 'unknown' })
+
+    try {
+      const discovered = JSON.parse(localStorage.getItem('night-type-discovered-types') || '[]')
+      const nextDiscovered = Array.isArray(discovered)
+        ? Array.from(new Set([...discovered.filter((value): value is string => typeof value === 'string'), typeCode]))
+        : [typeCode]
+      localStorage.setItem('night-type-discovered-types', JSON.stringify(nextDiscovered))
+    } catch {
+      localStorage.setItem('night-type-discovered-types', JSON.stringify([typeCode]))
+    }
     
     // Use setTimeout to avoid synchronous state update
     setTimeout(() => {
@@ -73,10 +88,13 @@ export default function ResultPage() {
     if (!typeData) return
 
     if (platform === 'instagram') {
+      trackEvent('result_share', { platform: 'instagram', type: userType })
       // Instagramの場合は画像共有機能を使用
       handleDownloadImage()
       return
     }
+
+    trackEvent('result_share', { platform, type: userType })
 
     // キャラクター個別ページのURLを生成
     const characterKey = `${userType}-${userGender}`
@@ -92,15 +110,6 @@ export default function ResultPage() {
     window.open(shareUrls[platform as keyof typeof shareUrls], '_blank')
   }
 
-  const handleLineMenuRequest = () => {
-    const typeData = genderedDiagramTypes[userGender][userType]
-    if (!typeData) return
-
-    const menuText = `【${typeData.name}専用】ヘルシーくん利用希望\n\n診断結果：${userType}\nキャッチコピー：${typeData.catchcopy}\n\nLINEで使えるヘルシーくんを利用したいです！\n専用メニュー・記録機能について詳しく教えてください。`
-    const lineUrl = `https://line.me/R/msg/text/?${encodeURIComponent(menuText)}`
-    window.open(lineUrl, '_blank')
-  }
-
   const handleDownloadImage = async () => {
     try {
       const typeData = genderedDiagramTypes[userGender][userType]
@@ -109,16 +118,12 @@ export default function ResultPage() {
         return
       }
 
-      // バナー画像のURLを取得
-      const imageUrl = `/characters/${userType}_${userGender}_banner.png`
-      
-      // 画像をfetchしてblobに変換
-      const response = await fetch(imageUrl)
-      if (!response.ok) {
-        throw new Error('画像の取得に失敗しました')
-      }
-      
-      const blob = await response.blob()
+      const shareCard = document.getElementById('share-card')
+      if (!shareCard) throw new Error('シェアカードが見つかりません')
+      const canvas = await html2canvas(shareCard, { scale: 2, backgroundColor: '#fff8ee', useCORS: true })
+      const blob = await new Promise<Blob>((resolve, reject) => {
+        canvas.toBlob((value) => value ? resolve(value) : reject(new Error('画像変換に失敗しました')), 'image/png')
+      })
       const file = new File([blob], `${typeData.name}.png`, { type: 'image/png' })
 
       // Web Share API対応チェック
@@ -165,6 +170,7 @@ export default function ResultPage() {
     const characterSlug = characterSlugs[characterKey]
     const shareUrl = `${window.location.origin}/character/${characterSlug}`
     navigator.clipboard.writeText(shareUrl)
+    trackEvent('result_share', { platform: 'copy', type: userType })
     alert('リンクをコピーしました！')
   }
 
@@ -219,28 +225,18 @@ export default function ResultPage() {
           className="neon-card p-8 md:p-12"
         >
           
-          {/* キャラクター画像とタイトル */}
-          <div className="mb-16">
-            {/* キャラクター絵文字を中央配置 */}
-            <div className="flex justify-center items-center">
-              <div className="text-center">
-                <div className="mb-6">
-                  <Image 
-                    src={`/characters/${userType}_${userGender}_banner.png`}
-                    alt={`${typeData.name} Banner`}
-                    width={600}
-                    height={200}
-                    className="border border-[#333333]"
-                    onError={(e) => {
-                      // フォールバックとしてテスト画像を表示
-                      e.currentTarget.src = '/test_banner.png'
-                    }}
-                    priority
-                  />
-                </div>
-              </div>
+          {/* SNSにそのまま保存できる診断カード */}
+          <div id="share-card" className="mb-16 overflow-hidden rounded-[32px] border-2 border-[#211b18] bg-[#fff8ee] text-[#211b18] shadow-[6px_6px_0_#211b18]">
+            <div className="relative aspect-square w-full max-w-[620px] mx-auto">
+              <Image src={getChibiImagePath(userType, userGender)} alt={typeData.name} fill sizes="620px" className="object-cover" priority />
+              <div className="absolute left-5 top-5 rounded-full border-2 border-[#211b18] bg-white px-4 py-2 text-sm font-black shadow-[2px_2px_0_#211b18]">NIGHT TYPE · {userType}</div>
             </div>
-
+            <div className="px-6 pb-8 text-center">
+              <p className="text-xs font-black tracking-[0.25em] text-[#e4557f] mb-2">YOUR NIGHT CHARACTER</p>
+              <h1 className="text-3xl md:text-5xl font-black tracking-tight">{typeData.name}</h1>
+              <p className="mt-4 text-sm md:text-base font-bold leading-relaxed text-[#6f625b]">{typeData.catchcopy}</p>
+              <p className="mt-5 text-xs font-black">night-type.net</p>
+            </div>
           </div>
 
 
@@ -511,8 +507,9 @@ export default function ResultPage() {
                   WebkitTextFillColor: 'transparent',
                   textShadow: '0 0 30px rgba(255, 0, 127, 0.3)'
                 }}>
-                  おすすめのアイテム
+                  あなたの夜を、もう一歩快適に
                 </h2>
+                <p className="text-sm text-gray-400 max-w-xl mx-auto">結果を読んだあとに興味があれば。Night Type編集部が用途別に選びやすい入口だけをまとめました。</p>
               </div>
 
               {/* カードエリア - 性別判定による動的表示 */}
@@ -541,6 +538,7 @@ export default function ResultPage() {
                                 href={isMale ? "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Flist%2F%3D%2Flist_type%3Dmono%2Fsort%3Dranking%2F&af_id=nighttype-001&ch=toolbar&ch_id=link" : "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Fsearch%2F%3D%2Fsearchstr%3Diroha%2F&af_id=nighttype-001&ch=toolbar&ch_id=link"}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackEvent('affiliate_click', { store: 'dmm', audience: isMale ? 'men' : 'women', type: userType })}
                                 className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#FF007F] text-[#FF007F] hover:border-[#E6006B] hover:text-[#E6006B]"
                               >
                                 DMMで探す ➤
@@ -551,6 +549,7 @@ export default function ResultPage() {
                                 href={isMale ? "https://amzn.to/4k34pzM" : "https://amzn.to/4qLOvfF"}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => trackEvent('affiliate_click', { store: 'amazon', audience: isMale ? 'men' : 'women', type: userType })}
                                 className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#00FFFF] text-[#00FFFF] hover:border-[#00CCCC] hover:text-[#00CCCC]"
                               >
                                 Amazonで探す ➤
@@ -576,6 +575,7 @@ export default function ResultPage() {
                               href={isMale ? "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Fsearch%2F%3D%2Fsearchstr%3D%25E3%2582%25AB%25E3%2583%2583%25E3%2583%2597%25E3%2583%25AB%25E5%2590%2591%25E3%2581%2591%2F&af_id=nighttype-001&ch=toolbar&ch_id=link" : "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Fsearch%2F%3D%2Fsearchstr%3D%25E3%2582%25AB%25E3%2583%2583%25E3%2583%2597%25E3%2583%25AB%2F&af_id=nighttype-001&ch=toolbar&ch_id=link"}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={() => trackEvent('affiliate_click', { store: 'dmm', audience: 'couples', type: userType })}
                               className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#FF007F] text-[#FF007F] hover:border-[#E6006B] hover:text-[#E6006B]"
                             >
                               DMMで探す ➤
@@ -586,6 +586,7 @@ export default function ResultPage() {
                               href={isMale ? "https://amzn.to/49NIBF2" : "https://amzn.to/4aaudFU"}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={() => trackEvent('affiliate_click', { store: 'amazon', audience: 'couples', type: userType })}
                               className="inline-flex items-center justify-center w-full py-2 px-4 rounded-lg font-bold text-sm transition-all duration-300 bg-transparent border border-[#00FFFF] text-[#00FFFF] hover:border-[#00CCCC] hover:text-[#00CCCC]"
                             >
                               Amazonで探す ➤
@@ -597,6 +598,7 @@ export default function ResultPage() {
                   );
                 })()}
               </div>
+              <p className="mt-4 text-center text-[11px] leading-relaxed text-gray-500">※ 広告・アフィリエイトリンクを含みます。購入者の追加負担はありません。</p>
             </div>
           </motion.div>
 

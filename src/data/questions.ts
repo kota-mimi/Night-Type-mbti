@@ -1,4 +1,4 @@
-import { Question } from '@/types';
+import type { Question } from '@/types';
 
 export const questions: Question[] = [
   // Page 1: 基本スタンス
@@ -61,20 +61,20 @@ export const questions: Question[] = [
   {
     id: 10,
     axis: 'AP',
-    direction: 'positive',
-    text: '目隠しをされたり、手を押さえられたりして「自由を奪われる」ことに、少し興味がある。'
+    direction: 'negative',
+    text: '自分で決め続けるより、相手に身を任せてリードされる方が気持ちが楽だ。'
   },
   {
     id: 11,
     axis: 'RF',
     direction: 'positive',
-    text: '優しいだけのセックスより、少し乱暴に求められたり、痕（あと）が残るくらい激しい方が燃える。'
+    text: '言葉や演出よりも、触れ方・強さ・テンポなど、実際の身体感覚で気分が高まる。'
   },
   {
     id: 12,
     axis: 'RF',
-    direction: 'positive',
-    text: '耳元で囁かれる言葉や、ちょっと意地悪な言葉攻めに弱い。'
+    direction: 'negative',
+    text: '囁かれる言葉や役になりきる演出など、想像が膨らむほど気分が高まる。'
   },
   {
     id: 13,
@@ -85,20 +85,20 @@ export const questions: Question[] = [
   {
     id: 14,
     axis: 'TE',
-    direction: 'positive',
+    direction: 'negative',
     text: '好きな相手となら、ただ触れ合っているだけで泣きそうになるくらい幸せを感じる。'
   },
   {
     id: 15,
     axis: 'NC',
     direction: 'positive',
-    text: '相手の「過去」や「元恋人」の話は絶対に聞きたくないし、自分の過去も話したくない。'
+    text: '一度「これが心地いい」と分かった過ごし方は、何度でも同じように楽しみたい。'
   },
   {
     id: 16,
     axis: 'NC',
-    direction: 'positive',
-    text: '野外や車の中など、スリルのある環境ですることに興味がある。'
+    direction: 'negative',
+    text: '安全で慣れた環境だけでなく、場所や流れを変える新鮮さにも惹かれる。'
   },
 
   // Page 3: 本能・価値観
@@ -106,13 +106,13 @@ export const questions: Question[] = [
     id: 17,
     axis: 'AP',
     direction: 'positive',
-    text: '自分の「好き」や「快感」は、声や態度に出して相手にしっかり伝えたい派だ。'
+    text: '自分の望みは待つより先に伝え、二人の流れを自分から作りたい。'
   },
   {
     id: 18,
     axis: 'AP',
     direction: 'negative',
-    text: '恥ずかしいので、あまり明るい場所で顔を見られたり、まじまじと見られるのは苦手だ。'
+    text: '自分から流れを作るより、相手の働きかけに応える方が自然で心地いい。'
   },
   {
     id: 19,

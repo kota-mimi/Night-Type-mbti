@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Noto_Sans_JP } from 'next/font/google'
+import { areAnswersValid } from '@/lib/scoring'
+import type { Answer } from '@/types'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -23,8 +25,16 @@ export default function GenderSelectionPage() {
       return
     }
 
-    const answers = JSON.parse(savedAnswers)
-    if (answers.length !== 24) {
+    let answers: Answer[]
+    try {
+      answers = JSON.parse(savedAnswers) as Answer[]
+    } catch {
+      localStorage.removeItem('diet-quiz-answers')
+      router.push('/quiz/1')
+      return
+    }
+
+    if (!Array.isArray(answers) || !areAnswersValid(answers)) {
       router.push('/quiz/1')
       return
     }
