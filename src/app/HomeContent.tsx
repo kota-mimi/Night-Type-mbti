@@ -57,9 +57,9 @@ export default function HomeContent() {
 
       <section className="px-4 py-20 text-center">
         <div className="mx-auto max-w-2xl">
-          <p className="text-xs font-black tracking-[0.25em] text-[#e4557f]">NO SPOILERS</p>
-          <h2 className="mt-3 text-3xl md:text-5xl font-black">結果を見るまで、正体は秘密。</h2>
-          <p className="mt-5 leading-relaxed text-[#695c55]">図鑑は診断したタイプだけが開放されます。まずは、あなたの夜の住人を見つけてください。</p>
+          <p className="text-xs font-black tracking-[0.25em] text-[#e4557f]">MEET THE CHARACTERS</p>
+          <h2 className="mt-3 text-3xl md:text-5xl font-black">住人は見える。答えはまだ秘密。</h2>
+          <p className="mt-5 leading-relaxed text-[#695c55]">図鑑では全キャラクターの軽い自己紹介を公開。詳しい生態・相性・本能のカルテは、あなた自身の診断結果で分かります。</p>
           <Link href="/gallery" className="mt-7 inline-flex items-center gap-2 font-black underline decoration-2 underline-offset-8">夜の住人図鑑を見る <ArrowRight className="h-4 w-4" /></Link>
         </div>
       </section>
