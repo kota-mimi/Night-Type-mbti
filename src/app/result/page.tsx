@@ -20,16 +20,6 @@ const notoSansJP = Noto_Sans_JP({
   display: 'swap',
 })
 
-const compatibilityCutouts = new Set([
-  'AFTN-female',
-  'ARTC-female',
-])
-
-function getCompatibilityCutoutPath(typeCode: string, gender: 'male' | 'female') {
-  const key = `${typeCode}-${gender}`
-  return compatibilityCutouts.has(key) ? `/characters/cutout/${typeCode}_${gender}.png` : null
-}
-
 export default function ResultPage() {
   const router = useRouter()
   const [userType, setUserType] = useState<string>('')
@@ -627,8 +617,6 @@ export default function ResultPage() {
                 const targetGender = userGender === 'male' ? 'female' : 'male';
                 const bestPartner = getCharacterById(compatibility.best, targetGender);
                 const worstEnemy = getCharacterById(compatibility.worst, targetGender);
-                const bestCutout = bestPartner?.code ? getCompatibilityCutoutPath(bestPartner.code, targetGender) : null;
-                const worstCutout = worstEnemy?.code ? getCompatibilityCutoutPath(worstEnemy.code, targetGender) : null;
                 
                 // 詳細な相性説明を取得
                 const bestReason = getDetailedCompatibilityReason(userType, userGender, 'best');
@@ -638,36 +626,26 @@ export default function ResultPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {/* 最高のパートナー */}
                     <div className="relative min-h-[240px] overflow-hidden rounded-[24px] border-2 border-[#4f9f69] bg-[#eaf8ef] p-6 shadow-[4px_4px_0_#211b18]">
-                      {bestCutout && (
-                        <div className="pointer-events-none absolute -bottom-4 -right-3 h-48 w-48 opacity-45">
-                          <Image src={bestCutout} alt="" fill sizes="192px" className="object-contain object-bottom" />
-                        </div>
-                      )}
                       <div className="relative space-y-3 text-left">
                         <h3 className="text-lg font-black text-[#287a45]">最高のパートナー</h3>
                         <h4 className="text-lg font-bold text-gray-200">
                           {bestPartner?.name || '相性の良いタイプ'}
                         </h4>
                       </div>
-                      <div className={`relative mt-4 text-left text-sm font-medium leading-relaxed text-[#514741] ${bestCutout ? 'pr-16 sm:pr-24' : ''}`}>
+                      <div className="relative mt-4 text-left text-sm font-medium leading-relaxed text-[#514741]">
                         <p>{bestReason || 'このタイプとの相性は抜群です。お互いの特性が補完し合い、素晴らしい関係を築くことができます。'}</p>
                       </div>
                     </div>
 
                     {/* 最悪の天敵 */}
                     <div className="relative min-h-[240px] overflow-hidden rounded-[24px] border-2 border-[#d06b75] bg-[#fff0f1] p-6 shadow-[4px_4px_0_#211b18]">
-                      {worstCutout && (
-                        <div className="pointer-events-none absolute -bottom-4 -right-3 h-48 w-48 opacity-45">
-                          <Image src={worstCutout} alt="" fill sizes="192px" className="object-contain object-bottom" />
-                        </div>
-                      )}
                       <div className="relative space-y-3 text-left">
                         <h3 className="text-lg font-black text-[#b84251]">最悪の天敵</h3>
                         <h4 className="text-lg font-bold text-gray-200">
                           {worstEnemy?.name || '相性の悪いタイプ'}
                         </h4>
                       </div>
-                      <div className={`relative mt-4 text-left text-sm font-medium leading-relaxed text-[#514741] ${worstCutout ? 'pr-16 sm:pr-24' : ''}`}>
+                      <div className="relative mt-4 text-left text-sm font-medium leading-relaxed text-[#514741]">
                         <p>{worstReason || 'このタイプとは価値観や行動パターンが大きく異なるため、理解し合うのが難しい関係です。'}</p>
                       </div>
                     </div>
