@@ -32,23 +32,23 @@ export default function Header() {
     <header 
       className={`sticky top-0 z-50 ${notoSansJP.className}`}
       style={{
-        backgroundColor: '#0a0a12',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.15)',
+        backgroundColor: '#fff8ee',
+        borderBottom: '2px solid #211b18',
         // GPU optimized for smooth rendering
         transform: 'translateZ(0)',
         backfaceVisibility: 'hidden'
       }}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 md:h-[72px]">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center">
               <div 
                 className={`text-2xl font-black ${notoSerifJP.className} tracking-tight`}
               >
-                <span className="text-[#FF007F]">Night</span>{' '}
-                <span className="text-[#00FFFF]">Type</span>
+                <span className="text-[#e4557f]">Night</span>{' '}
+                <span className="text-[#299f99]">Type</span>
               </div>
             </div>
           </Link>
@@ -59,7 +59,7 @@ export default function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-[#AAAAAA] hover:text-[#FF007F] font-medium transition-colors duration-300"
+                className="font-black text-[#6f625b] transition-colors duration-200 hover:text-[#e4557f]"
               >
                 {item.label}
               </Link>
@@ -72,9 +72,9 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6 text-gray-300" />
+              <X className="w-6 h-6 text-[#211b18]" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-300" />
+              <Menu className="w-6 h-6 text-[#211b18]" />
             )}
           </button>
         </div>
@@ -89,7 +89,7 @@ export default function Header() {
           transition={{ duration: 0.3, ease: 'easeOut' }}
           className="fixed inset-0 w-screen h-screen z-[9999] md:hidden flex flex-col justify-center items-center"
           style={{
-            backgroundColor: 'rgba(10, 10, 18, 0.98)',
+            backgroundColor: 'rgba(255, 248, 238, 0.98)',
             // GPU optimized for smooth rendering
             transform: 'translateZ(0)',
             backfaceVisibility: 'hidden'
@@ -99,9 +99,9 @@ export default function Header() {
           {/* Close Button */}
           <button
             onClick={() => setIsMenuOpen(false)}
-            className="absolute top-8 right-8 p-3 rounded-full hover:bg-white/10 transition-all duration-300"
+            className="absolute right-6 top-6 rounded-full border-2 border-[#211b18] bg-white p-3 shadow-[3px_3px_0_#211b18]"
           >
-            <X className="w-8 h-8 text-gray-300" />
+            <X className="w-7 h-7 text-[#211b18]" />
           </button>
 
           {/* Menu Items */}
@@ -119,7 +119,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="block text-3xl font-medium text-[#AAAAAA] hover:text-[#FF007F] transition-colors duration-300 py-4 px-8 rounded-xl hover:bg-[#1A1A1A]"
+                  className="block rounded-full border-2 border-[#211b18] bg-white px-8 py-4 text-2xl font-black text-[#211b18] shadow-[4px_4px_0_#211b18] transition hover:-translate-y-1"
                   onClick={(e) => {
                     e.stopPropagation()
                     setIsMenuOpen(false)
@@ -141,8 +141,8 @@ export default function Header() {
             <div 
               className={`text-xl font-black ${notoSerifJP.className} tracking-tight`}
             >
-              <span className="text-[#FF007F]">Night</span>{' '}
-              <span className="text-[#00FFFF]">Type</span>
+              <span className="text-[#e4557f]">Night</span>{' '}
+              <span className="text-[#299f99]">Type</span>
             </div>
           </motion.div>
         </motion.div>

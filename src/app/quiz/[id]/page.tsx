@@ -147,12 +147,12 @@ export default function QuizPage() {
   const allAnswered = questionGroup.every(q => answers[q.id] !== undefined)
 
   return (
-    <div className={`bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
+    <div className={`min-h-screen bg-[#fff8ee] text-[#211b18] relative overflow-hidden ${notoSansJP.className}`}>
       {/* Removed floating orbs for flat design */}
       {/* プログレスバー */}
-      <div className="w-full bg-[#1A1A1A] h-3 relative">
+      <div className="relative h-3 w-full border-b-2 border-[#211b18] bg-white">
         <motion.div
-          className="h-full bg-[#FF007F]"
+          className="h-full bg-[#ff6f91]"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.3 }}
@@ -166,9 +166,9 @@ export default function QuizPage() {
             onClick={handleBack}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="glass-button p-2 rounded-full transition-all"
+            className="rounded-full border-2 border-[#211b18] bg-white p-2 shadow-[2px_2px_0_#211b18] transition-all"
           >
-            <ArrowLeft className="w-6 h-6 text-gray-300" />
+            <ArrowLeft className="w-6 h-6 text-[#211b18]" />
           </motion.button>
           
           <span className="text-gray-400 font-medium">
@@ -189,7 +189,7 @@ export default function QuizPage() {
             <div className="neon-card p-8 space-y-8">
               {questionGroup.map((question, index) => (
                 <div key={question.id} id={`question-${question.id}`} className="space-y-4 scroll-mt-20">
-                  <h3 className="text-base md:text-lg font-medium text-gray-200 text-left leading-relaxed">
+                  <h3 className="text-left text-base font-bold leading-relaxed text-[#211b18] md:text-lg">
                     {question.text}
                   </h3>
 
@@ -205,13 +205,13 @@ export default function QuizPage() {
                             const size = scoreIndex === 0 || scoreIndex === 3 ? 'w-12 h-12' : 'w-10 h-10'
                             
                             const colorStyle = scoreIndex <= 1 ? {
-                              borderColor: isSelected ? '#00FFFF' : '#00FFFF',
-                              backgroundColor: isSelected ? '#00FFFF' : '#1A1A1A',
-                              border: `1px solid ${isSelected ? '#00FFFF' : '#333333'}`
+                              borderColor: '#211b18',
+                              backgroundColor: isSelected ? '#56c9c1' : '#ffffff',
+                              border: '2px solid #211b18'
                             } : {
-                              borderColor: isSelected ? '#FF007F' : '#FF007F', 
-                              backgroundColor: isSelected ? '#FF007F' : '#1A1A1A',
-                              border: `1px solid ${isSelected ? '#FF007F' : '#333333'}`
+                              borderColor: '#211b18',
+                              backgroundColor: isSelected ? '#ff6f91' : '#ffffff',
+                              border: '2px solid #211b18'
                             }
                             
                             return (
@@ -248,13 +248,13 @@ export default function QuizPage() {
                                         'w-16 h-16'
                             
                             const colorStyle = scoreIndex <= 1 ? {
-                              borderColor: isSelected ? '#00FFFF' : '#00FFFF',
-                              backgroundColor: isSelected ? '#00FFFF' : '#1A1A1A',
-                              border: `1px solid ${isSelected ? '#00FFFF' : '#333333'}`
+                              borderColor: '#211b18',
+                              backgroundColor: isSelected ? '#56c9c1' : '#ffffff',
+                              border: '2px solid #211b18'
                             } : {
-                              borderColor: isSelected ? '#FF007F' : '#FF007F', 
-                              backgroundColor: isSelected ? '#FF007F' : '#1A1A1A',
-                              border: `1px solid ${isSelected ? '#FF007F' : '#333333'}`
+                              borderColor: '#211b18',
+                              backgroundColor: isSelected ? '#ff6f91' : '#ffffff',
+                              border: '2px solid #211b18'
                             }
                             
                             return (
@@ -305,14 +305,10 @@ export default function QuizPage() {
                 whileTap={allAnswered ? { scale: 0.98 } : {}}
                 className={`w-full py-3 rounded-lg font-medium text-base transition-all duration-300 relative overflow-hidden ${
                   allAnswered
-                    ? 'text-white border-2 border-[#00FFFF] hover:border-[#00FFFF]'
+                    ? 'bg-[#ff6f91] text-white border-2 border-[#211b18] shadow-[4px_4px_0_#211b18]'
                     : 'bg-gray-700 text-gray-500 cursor-not-allowed border-2 border-gray-600'
                 }`}
-                style={allAnswered ? {
-                  background: 'linear-gradient(135deg, #00FFFF 0%, #FF007F 50%, #00FFFF 100%)',
-                  backgroundSize: '200% 200%',
-                  animation: 'gradientShift 3s ease infinite'
-                } : {}}
+                style={{}}
               >
                 {isLoading ? (
                   <motion.div

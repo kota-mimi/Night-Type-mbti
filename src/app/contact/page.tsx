@@ -1,4 +1,5 @@
 import { Noto_Sans_JP } from 'next/font/google'
+import Link from 'next/link'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -6,8 +7,8 @@ const notoSansJP = Noto_Sans_JP({
 })
 
 export const metadata = {
-  title: 'お問い合わせ | ダイエットキャラ診断',
-  description: 'ダイエットキャラ診断へのお問い合わせ先について',
+  title: 'お問い合わせ | Night Type',
+  description: 'Night Typeへのお問い合わせ先について',
 }
 
 export default function ContactPage() {
@@ -40,12 +41,12 @@ export default function ContactPage() {
               </div>
               
               <div className="mt-8">
-                <a 
+                <Link
                   href="/"
                   className="luxury-button text-white px-8 py-3 rounded-full font-bold inline-block transition-all duration-300 hover:scale-105"
                 >
                   ホームに戻る
-                </a>
+                </Link>
               </div>
             </section>
           </div>

@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #111111;
-  --card-background: #1A1A1A;
-  --border-color: #333333;
-  --text-primary: #FFFFFF;
-  --text-secondary: #AAAAAA;
-  --accent-pink: #FF007F;
-  --accent-cyan: #00FFFF;
+  --background: #fff8ee;
+  --card-background: #ffffff;
+  --border-color: #211b18;
+  --text-primary: #211b18;
+  --text-secondary: #6f625b;
+  --accent-pink: #ff6f91;
+  --accent-cyan: #56c9c1;
 }
 
 @theme inline {
@@ -23,11 +23,42 @@ body {
   overflow-x: hidden;
 }
 
+::selection {
+  background: #ffd166;
+  color: #211b18;
+}
+
+/* Legacy pages inherit the current Night Type visual language. */
+.bg-\[\#111111\], .bg-\[\#0a0a12\] { background-color: #fff8ee !important; }
+.bg-\[\#1A1A1A\] { background-color: #ffffff !important; }
+.bg-\[\#222222\] { background-color: #fff2df !important; }
+.border-\[\#333333\] { border-color: #211b18 !important; }
+.text-\[\#FFFFFF\] { color: #211b18 !important; }
+.text-\[\#AAAAAA\] { color: #6f625b !important; }
+.text-\[\#FF007F\] { color: #e4557f !important; }
+.text-\[\#00FFFF\] { color: #299f99 !important; }
+.text-gray-200, .text-gray-300 { color: #3f3733 !important; }
+.text-gray-400 { color: #6f625b !important; }
+.text-gray-500 { color: #8b7e76 !important; }
+.text-white { color: #211b18 !important; }
+[class~="bg-[#ff6f91]"].text-white,
+[class~="bg-[#FF007F]"].text-white,
+[class~="bg-black"].text-white,
+.luxury-button.text-white { color: #ffffff !important; }
+.border-gray-600, .border-gray-700, .border-gray-800\/30 { border-color: #211b18 !important; }
+.bg-\[\#1A1A1A\].rounded-lg {
+  border-width: 2px !important;
+  border-radius: 28px !important;
+  box-shadow: 4px 4px 0 #211b18;
+}
+
 /* Flat Card Styles */
 .neon-card {
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  border-radius: 28px;
+  box-shadow: 4px 4px 0 var(--border-color);
   transition: transform 0.2s ease;
 }
 
@@ -38,7 +69,9 @@ body {
 /* Flat Button Styles */
 .neon-button {
   background-color: var(--card-background);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--border-color);
   transition: all 0.2s ease;
 }
 
@@ -63,12 +96,22 @@ body {
 /* Enhanced Cards */
 .neon-card-enhanced {
   background-color: var(--card-background);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
+  border-radius: 28px;
+  box-shadow: 4px 4px 0 var(--border-color);
 }
 
 .neon-button-enhanced {
   background-color: var(--card-background);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--border-color);
+}
+
+.luxury-button {
+  background: #ff6f91;
+  border: 2px solid #211b18;
+  box-shadow: 4px 4px 0 #211b18;
 }
 
 /* Character Image - Simple drop shadow only */

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Home, ArrowLeft, Salad } from 'lucide-react'
+import { Home, ArrowLeft, MoonStar } from 'lucide-react'
 import Link from 'next/link'
 import { Noto_Sans_JP } from 'next/font/google'
 
@@ -34,7 +34,7 @@ export default function NotFound() {
             }}
             className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 bg-[#FF007F] rounded-full flex items-center justify-center border border-[#333333]"
           >
-            <Salad className="w-12 h-12 md:w-16 md:h-16 text-white" />
+            <MoonStar className="w-12 h-12 md:w-16 md:h-16 text-white" />
           </motion.div>
         </motion.div>
 
@@ -94,9 +94,9 @@ export default function NotFound() {
           className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl w-full"
         >
           {[
-            { title: "ダイエット診断", desc: "16タイプの性格診断でダイエット方法を発見", link: "/" },
-            { title: "質問を見る", desc: "20問の質問でタイプを判定", link: "/quiz/1" },
-            { title: "タイプ一覧", desc: "16種類のダイエットタイプを確認", link: "/" }
+            { title: "Night Type診断", desc: "24問であなたの夜の本能を見つける", link: "/quiz/1" },
+            { title: "夜の住人図鑑", desc: "男女32体のキャラクターを見る", link: "/gallery" },
+            { title: "診断について", desc: "4つの分析軸を詳しく知る", link: "/about" }
           ].map((item, index) => (
             <motion.div
               key={index}
