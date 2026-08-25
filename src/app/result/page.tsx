@@ -225,7 +225,7 @@ export default function ResultPage() {
         >
           
           {/* SNSにそのまま保存できる診断カード */}
-          <div id="share-card" className="mx-auto mb-16 flex aspect-[4/5] w-full max-w-[560px] flex-col overflow-hidden rounded-[32px] border-2 border-[#211b18] bg-[#fff8ee] text-[#211b18] shadow-[6px_6px_0_#211b18]">
+          <div id="share-card" className="mx-auto mb-16 flex aspect-[4/5] w-full max-w-[560px] flex-col overflow-hidden bg-[#fff8ee] text-[#211b18]">
             <div className="relative min-h-0 flex-1">
               <Image src={getChibiImagePath(userType, userGender)} alt={typeData.name} fill sizes="(max-width: 640px) 100vw, 560px" className="object-cover" priority />
               <div className="absolute left-5 top-5 rounded-full border-2 border-[#211b18] bg-white px-4 py-2 text-sm font-black shadow-[2px_2px_0_#211b18]">NIGHT TYPE · {userType}</div>
