@@ -250,7 +250,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-[#00FFFF] text-center`}>
+              <h2 className="text-center text-2xl font-black text-[#352b52]">
                 夜の生態レポート
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -277,7 +277,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-[#FF007F] text-center`}>
+              <h2 className="text-center text-2xl font-black text-[#352b52]">
                 あなたのエロさの正体
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -304,9 +304,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-red-400 text-center`} style={{
-                textShadow: '0 0 10px rgba(239, 68, 68, 0.5)'
-              }}>
+              <h2 className="text-center text-2xl font-black text-[#352b52]">
                 閲覧注意：本能のカルテ
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -333,9 +331,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-[#9966FF] text-center`} style={{
-                textShadow: '0 0 10px rgba(168, 85, 247, 0.5)'
-              }}>
+              <h2 className="text-center text-2xl font-black text-[#352b52]">
                 夜の口癖・脳内
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -362,7 +358,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-[#FF007F] text-center`}>
+              <h2 className="text-center text-2xl font-black text-[#352b52]">
                 事後の賢者タイム
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -389,7 +385,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.9 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-[#FF007F] text-center`}>
+              <h2 className="text-center text-xl font-black text-[#352b52]">
                 SM診断
               </h2>
               <div className="neon-card p-4 border border-pink-500/30">
@@ -415,7 +411,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 1.0 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-[#00FFFF] text-center`}>
+              <h2 className="text-center text-xl font-black text-[#352b52]">
                 ステータス
               </h2>
               <div className="neon-card p-4 border border-cyan-500/30">
@@ -445,9 +441,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 1.1 }}
               className="space-y-3"
             >
-              <h2 className={`text-xl font-bold text-[#9966FF] text-center`} style={{
-                textShadow: '0 0 10px rgba(168, 85, 247, 0.5)'
-              }}>
+              <h2 className="text-center text-xl font-black text-[#352b52]">
                 浮気分析
               </h2>
               <div className="neon-card p-4 border border-purple-500/30">
@@ -470,7 +464,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className={`text-2xl font-bold text-gray-300 text-center`}>
+              <h2 className="text-center text-2xl font-black text-[#352b52]">
                 基本生態
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -494,7 +488,7 @@ export default function ResultPage() {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="my-16"
+            className="hidden"
           >
             <div className="max-w-5xl mx-auto">
               {/* セクション見出し */}
@@ -602,7 +596,7 @@ export default function ResultPage() {
             transition={{ duration: 0.6, delay: 1.2 }}
             className="space-y-8"
           >
-            <h2 className={`text-2xl font-bold text-[#FF007F] text-center`}>
+            <h2 className="text-center text-2xl font-black text-[#352b52]">
               相性チェック
             </h2>
             
@@ -628,7 +622,7 @@ export default function ResultPage() {
                     <div className="relative min-h-[240px] overflow-hidden rounded-[24px] border-2 border-[#4f9f69] bg-[#eaf8ef] p-6 shadow-[4px_4px_0_#211b18]">
                       <div className="relative space-y-3 text-left">
                         <h3 className="text-lg font-black text-[#287a45]">最高のパートナー</h3>
-                        <h4 className="text-lg font-bold text-gray-200">
+                        <h4 className="text-lg font-bold text-[#211b18]">
                           {bestPartner?.name || '相性の良いタイプ'}
                         </h4>
                       </div>
@@ -641,7 +635,7 @@ export default function ResultPage() {
                     <div className="relative min-h-[240px] overflow-hidden rounded-[24px] border-2 border-[#d06b75] bg-[#fff0f1] p-6 shadow-[4px_4px_0_#211b18]">
                       <div className="relative space-y-3 text-left">
                         <h3 className="text-lg font-black text-[#b84251]">最悪の天敵</h3>
-                        <h4 className="text-lg font-bold text-gray-200">
+                        <h4 className="text-lg font-bold text-[#211b18]">
                           {worstEnemy?.name || '相性の悪いタイプ'}
                         </h4>
                       </div>
@@ -721,6 +715,75 @@ export default function ResultPage() {
               </motion.button>
             </div>
           </div>
+
+          <p className="text-center text-[11px] font-medium leading-relaxed text-[#8a7a71]">
+            ※本診断はエンタメコンテンツです。医学的・心理学的な診断ではありません。
+          </p>
+
+          {/* 診断体験を妨げないよう、商品導線は結果とシェアの後に配置 */}
+          <section className="rounded-[24px] border-2 border-[#211b18] bg-[#f3edff] p-5 shadow-[4px_4px_0_#211b18]">
+            <div className="mb-5 text-center">
+              <h2 className="text-xl font-black text-[#352b52]">興味があれば</h2>
+              <p className="mt-1 text-xs font-medium leading-relaxed text-[#6f625b]">
+                Night Type編集部が、用途別の探しやすい入口をまとめました。
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border-2 border-[#211b18] bg-white p-4">
+                <p className="mb-3 text-xs font-black text-[#352b52]">
+                  {userGender === 'male' ? '男性向け' : '女性向け'}
+                </p>
+                <div className="space-y-2">
+                  <a
+                    href={userGender === 'male' ? "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Flist%2F%3D%2Flist_type%3Dmono%2Fsort%3Dranking%2F&af_id=nighttype-001&ch=toolbar&ch_id=link" : "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Fsearch%2F%3D%2Fsearchstr%3Diroha%2F&af_id=nighttype-001&ch=toolbar&ch_id=link"}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    onClick={() => trackEvent('affiliate_click', { store: 'dmm', audience: userGender === 'male' ? 'men' : 'women', type: userType })}
+                    className="flex w-full items-center justify-center rounded-full border-2 border-[#211b18] bg-[#ff6f91] px-4 py-2 text-sm font-black text-white"
+                  >
+                    DMMで探す
+                  </a>
+                  <a
+                    href={userGender === 'male' ? "https://amzn.to/4k34pzM" : "https://amzn.to/4qLOvfF"}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    onClick={() => trackEvent('affiliate_click', { store: 'amazon', audience: userGender === 'male' ? 'men' : 'women', type: userType })}
+                    className="flex w-full items-center justify-center rounded-full border-2 border-[#211b18] bg-[#56c9c1] px-4 py-2 text-sm font-black text-[#211b18]"
+                  >
+                    Amazonで探す
+                  </a>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border-2 border-[#211b18] bg-white p-4">
+                <p className="mb-3 text-xs font-black text-[#352b52]">カップル向け</p>
+                <div className="space-y-2">
+                  <a
+                    href={userGender === 'male' ? "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Fsearch%2F%3D%2Fsearchstr%3D%25E3%2582%25AB%25E3%2583%2583%25E3%2583%2597%25E3%2583%25AB%25E5%2590%2591%25E3%2581%2591%2F&af_id=nighttype-001&ch=toolbar&ch_id=link" : "https://al.fanza.co.jp/?lurl=https%3A%2F%2Fwww.dmm.co.jp%2Fmono%2Fgoods%2F-%2Fsearch%2F%3D%2Fsearchstr%3D%25E3%2582%25AB%25E3%2583%2583%25E3%2583%2597%25E3%2583%25AB%2F&af_id=nighttype-001&ch=toolbar&ch_id=link"}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    onClick={() => trackEvent('affiliate_click', { store: 'dmm', audience: 'couples', type: userType })}
+                    className="flex w-full items-center justify-center rounded-full border-2 border-[#211b18] bg-[#ff6f91] px-4 py-2 text-sm font-black text-white"
+                  >
+                    DMMで探す
+                  </a>
+                  <a
+                    href={userGender === 'male' ? "https://amzn.to/49NIBF2" : "https://amzn.to/4aaudFU"}
+                    target="_blank"
+                    rel="noopener noreferrer sponsored"
+                    onClick={() => trackEvent('affiliate_click', { store: 'amazon', audience: 'couples', type: userType })}
+                    className="flex w-full items-center justify-center rounded-full border-2 border-[#211b18] bg-[#56c9c1] px-4 py-2 text-sm font-black text-[#211b18]"
+                  >
+                    Amazonで探す
+                  </a>
+                </div>
+              </div>
+            </div>
+            <p className="mt-3 text-center text-[10px] leading-relaxed text-[#8a7a71]">
+              広告・アフィリエイトリンクを含みます。購入者の追加負担はありません。
+            </p>
+          </section>
 
           {/* ボタンエリア */}
           <div className="text-center pt-8 space-y-4">

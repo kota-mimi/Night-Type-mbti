@@ -37,6 +37,9 @@ export default function HomeContent() {
             <Link href="/quiz/1" onClick={() => trackEvent('quiz_start', { location: 'home_hero' })} className="mt-9 inline-flex items-center gap-3 rounded-full border-2 border-[#211b18] bg-[#ff6f91] px-8 py-4 text-lg font-black text-white shadow-[5px_5px_0_#211b18] transition hover:-translate-y-1 hover:shadow-[7px_7px_0_#211b18]">
               診断をはじめる <ArrowRight className="h-5 w-5" />
             </Link>
+            <p className="mt-4 text-[11px] font-medium text-[#8a7a71]">
+              ※本診断はエンタメコンテンツです。医学的・心理学的な診断ではありません。
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-3 gap-3 md:gap-5 items-center">

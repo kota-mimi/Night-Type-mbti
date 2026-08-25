@@ -68,7 +68,10 @@ export default function GenderSelectionPage() {
               <span className="text-[#e4557f]">最後</span>の質問です
             </h1>
             <p className="text-lg font-bold text-[#6f625b] leading-relaxed">
-              あなたの性別を教えてください
+              結果に表示するキャラクター版を選んでください
+            </p>
+            <p className="mt-2 text-sm font-medium text-[#8a7a71]">
+              あなた自身の性別にかかわらず選べます
             </p>
           </div>
 
@@ -85,7 +88,7 @@ export default function GenderSelectionPage() {
                   : 'bg-[#fff8ee] text-[#211b18] hover:bg-[#dff7f4]'
               }`}
             >
-              男性
+              男性キャラ版
             </motion.button>
 
             <motion.button
@@ -99,7 +102,7 @@ export default function GenderSelectionPage() {
                   : 'bg-[#fff8ee] text-[#211b18] hover:bg-[#ffe1e8]'
               }`}
             >
-              女性
+              女性キャラ版
             </motion.button>
           </div>
 

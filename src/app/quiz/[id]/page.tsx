@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
@@ -13,6 +13,19 @@ const notoSansJP = Noto_Sans_JP({
   display: 'swap',
 })
 
+function loadSavedAnswers(): Answer[] {
+  if (typeof window === 'undefined') return []
+
+  try {
+    const saved = localStorage.getItem('diet-quiz-answers')
+    const parsed: unknown = saved ? JSON.parse(saved) : []
+    return Array.isArray(parsed) ? parsed as Answer[] : []
+  } catch {
+    localStorage.removeItem('diet-quiz-answers')
+    return []
+  }
+}
+
 export default function QuizPage() {
   const router = useRouter()
   const params = useParams()
@@ -20,28 +33,23 @@ export default function QuizPage() {
   const questionGroup = getQuestionGroupByPage(pageNumber)
   const totalPages = getTotalPages()
   
-  const [answers, setAnswers] = useState<{[key: number]: number}>({})
-  const [savedAnswers, setSavedAnswers] = useState<Answer[]>([])
+  const [savedAnswers, setSavedAnswers] = useState<Answer[]>(loadSavedAnswers)
+  const [answers, setAnswers] = useState<{[key: number]: number}>(() => {
+    const groupIds = new Set(questionGroup?.map(question => question.id) ?? [])
+    return Object.fromEntries(
+      loadSavedAnswers()
+        .filter(answer => groupIds.has(answer.questionId))
+        .map(answer => [answer.questionId, answer.score])
+    )
+  })
   const [isLoading, setIsLoading] = useState(false)
   
-  // ローカルストレージから回答を取得・保存
+  // 診断開始時に前回の結果だけをクリアする
   useEffect(() => {
-    // 診断開始時（Page 1）で前回の結果をクリア
     if (pageNumber === 1) {
       localStorage.removeItem('diet-quiz-result-type')
     }
-    
-    const saved = localStorage.getItem('diet-quiz-answers')
-    if (saved) {
-      setSavedAnswers(JSON.parse(saved))
-    }
-  }, [])
-  
-  useEffect(() => {
-    if (savedAnswers.length > 0) {
-      localStorage.setItem('diet-quiz-answers', JSON.stringify(savedAnswers))
-    }
-  }, [savedAnswers])
+  }, [pageNumber])
 
   const progress = ((pageNumber - 1) / totalPages) * 100
 
@@ -70,7 +78,7 @@ export default function QuizPage() {
     }
   }
 
-  const handleNext = useCallback(() => {
+  const handleNext = () => {
     // 全ての質問に回答されているかチェック
     const allAnswered = questionGroup.every(q => answers[q.id] !== undefined)
     if (!allAnswered) return
@@ -83,18 +91,12 @@ export default function QuizPage() {
       score: answers[q.id]
     }))
     
-    console.log("=== DEBUG: Quiz Page ===");
-    console.log("Page:", pageNumber);
-    console.log("Current answers for this page:", answers);
-    console.log("New answers:", newAnswers);
-    console.log("Existing saved answers:", savedAnswers);
-
     const updatedAnswers = [
       ...savedAnswers.filter(a => !questionGroup.find(q => q.id === a.questionId)),
       ...newAnswers
     ]
-    console.log("Updated answers:", updatedAnswers);
     setSavedAnswers(updatedAnswers)
+    localStorage.setItem('diet-quiz-answers', JSON.stringify(updatedAnswers))
 
     setTimeout(() => {
       if (pageNumber < totalPages) {
@@ -104,41 +106,15 @@ export default function QuizPage() {
         router.push('/gender-selection')
       }
     }, 500)
-  }, [answers, questionGroup, savedAnswers, pageNumber, totalPages, router])
+  }
 
-  const handleBack = useCallback(() => {
+  const handleBack = () => {
     if (pageNumber > 1) {
       router.push(`/quiz/${pageNumber - 1}`)
     } else {
       router.push('/')
     }
-  }, [pageNumber, router])
-
-  // キーボードショートカット
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      const key = e.key
-
-      switch (key) {
-        case 'Enter':
-          // Enterキーで次へ
-          const allAnswered = questionGroup.every(q => answers[q.id] !== undefined)
-          if (allAnswered && !isLoading) {
-            handleNext()
-          }
-          return
-        case 'Backspace':
-          // Backspaceで戻る
-          handleBack()
-          return
-        default:
-          return
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyPress)
-    return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [answers, questionGroup, isLoading])
+  }
 
   if (!questionGroup) {
     return <div>ページが見つかりません</div>

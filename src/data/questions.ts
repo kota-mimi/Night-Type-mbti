@@ -12,7 +12,7 @@ export const questions: Question[] = [
     id: 2,
     axis: 'AP',
     direction: 'negative',
-    text: '相手に少し強引に服を脱がされたり、無理やりリードされるとゾクゾクする。'
+    text: 'お互いに合意したうえで、相手に少し強引にリードされるとゾクゾクする。'
   },
   {
     id: 3,

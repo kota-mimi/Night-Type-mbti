@@ -1,5 +1,4 @@
 import { Suspense } from 'react'
-import { diagramTypes } from '@/data/diagramTypes'
 import type { Metadata } from 'next'
 import HomeContent from './HomeContent'
 
