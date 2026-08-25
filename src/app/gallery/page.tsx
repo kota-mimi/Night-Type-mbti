@@ -57,17 +57,18 @@ export default function GalleryPage() {
 
         {selectedType && (() => {
           const type = genderedDiagramTypes[selectedGender][selectedType]
+          const art = chibiCharacterArt[selectedGender][selectedType as keyof typeof chibiCharacterArt.male]
           return (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#211b18]/70 p-4" onClick={() => setSelectedType(null)}>
-              <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} onClick={(event) => event.stopPropagation()} className="relative w-full max-w-md overflow-hidden rounded-[32px] border-2 border-[#211b18] bg-[#fff8ee] shadow-[8px_8px_0_#211b18]">
-                <button onClick={() => setSelectedType(null)} aria-label="閉じる" className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full border-2 border-[#211b18] bg-white shadow-[2px_2px_0_#211b18]"><X className="h-5 w-5" /></button>
-                <div className="relative aspect-square"><Image src={getChibiImagePath(selectedType, selectedGender)} alt={type.name} fill sizes="448px" className="object-cover" /></div>
-                <div className="px-6 pb-7 text-center">
+            <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#211b18]/70 p-3 sm:p-6" onClick={() => setSelectedType(null)}>
+              <motion.div initial={{ opacity: 0, scale: 0.94 }} animate={{ opacity: 1, scale: 1 }} onClick={(event) => event.stopPropagation()} className="relative w-full max-w-sm max-h-[calc(100dvh-1.5rem)] overflow-y-auto rounded-[28px] border-2 border-[#211b18] bg-[#fff8ee] shadow-[6px_6px_0_#211b18] sm:max-h-[calc(100dvh-3rem)]">
+                <button onClick={() => setSelectedType(null)} aria-label="閉じる" className="absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full border-2 border-[#211b18] bg-white shadow-[2px_2px_0_#211b18]"><X className="h-4 w-4" /></button>
+                <div className="relative h-[min(48dvh,340px)]" style={{ backgroundColor: art?.color || '#f5d8bd' }}><Image src={getChibiImagePath(selectedType, selectedGender)} alt={type.name} fill sizes="384px" className="object-contain" /></div>
+                <div className="px-5 pb-5 pt-3 text-center sm:px-6 sm:pb-6">
                   <p className="text-xs font-black text-[#e4557f]">{selectedType}</p>
-                  <h2 className="mt-1 text-2xl font-black">{type.name}</h2>
-                  <p className="mt-4 text-sm font-bold leading-relaxed text-[#6f625b]">「{type.catchcopy}」</p>
-                  <p className="mt-4 text-xs leading-relaxed text-[#8b7e76]">詳しい生態・相性・本能のカルテは、診断結果であなただけに公開します。</p>
-                  <Link href="/quiz/1" className="mt-6 inline-flex items-center gap-2 rounded-full border-2 border-[#211b18] bg-[#ff6f91] px-6 py-3 font-black text-white shadow-[3px_3px_0_#211b18]">自分のタイプを診断する</Link>
+                  <h2 className="mt-1 text-xl font-black sm:text-2xl">{type.name}</h2>
+                  <p className="mt-3 text-sm font-bold leading-relaxed text-[#6f625b]">「{type.catchcopy}」</p>
+                  <p className="mt-3 text-xs leading-relaxed text-[#8b7e76]">詳しい生態・相性・本能のカルテは、診断結果であなただけに公開します。</p>
+                  <Link href="/quiz/1" className="mt-4 inline-flex items-center gap-2 rounded-full border-2 border-[#211b18] bg-[#ff6f91] px-5 py-2.5 text-sm font-black text-white shadow-[3px_3px_0_#211b18]">自分のタイプを診断する</Link>
                 </div>
               </motion.div>
             </div>
