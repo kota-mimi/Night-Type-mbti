@@ -18,17 +18,17 @@ export default function GalleryPage() {
     <main className="min-h-screen bg-[#fff8ee] text-[#211b18] px-4 py-10 md:py-16">
       <div className="mx-auto max-w-6xl">
         <header className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#211b18] px-4 py-2 text-sm font-bold text-white mb-5">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#352b52] px-4 py-2 text-sm font-bold text-white mb-5">
             <Sparkles className="h-4 w-4 text-[#ffd166]" /> NIGHT TYPE COLLECTION
           </div>
-          <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-4">夜の住人図鑑</h1>
-          <p className="text-[#6f625b] leading-relaxed">個性豊かな16タイプの住人たち。<br className="hidden sm:block" />ここでは軽い自己紹介だけ。本当の診断レポートは、あなた自身の結果で。</p>
+          <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-4">Night Type図鑑</h1>
+          <p className="text-[#6f625b] leading-relaxed">個性豊かな16タイプのキャラクター。<br className="hidden sm:block" />気になるタイプをタップして、プロフィールをのぞいてみよう。</p>
         </header>
 
         <div className="flex justify-center mb-8">
           <div className="flex rounded-full bg-white border-2 border-[#211b18] p-1 shadow-[3px_3px_0_#211b18]">
             {(['male', 'female'] as const).map((gender) => (
-              <button key={gender} onClick={() => setSelectedGender(gender)} className={`rounded-full px-6 py-2 text-sm font-black transition ${selectedGender === gender ? 'bg-[#211b18] text-white' : 'text-[#6f625b]'}`}>
+              <button key={gender} onClick={() => setSelectedGender(gender)} className={`rounded-full px-6 py-2 text-sm font-black transition ${selectedGender === gender ? 'bg-[#352b52] text-white' : 'text-[#6f625b]'}`}>
                 {gender === 'male' ? '男性版' : '女性版'}
               </button>
             ))}

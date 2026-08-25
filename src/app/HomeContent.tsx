@@ -24,7 +24,7 @@ export default function HomeContent() {
               <Sparkles className="h-4 w-4" /> 大人の本音を、かわいく診断
             </div>
             <h1 className="text-5xl md:text-7xl font-black tracking-[-0.05em] leading-[0.95]">
-              夜のあなたは、<br /><span className="text-[#e4557f]">どの住人？</span>
+              夜のあなたは、<br /><span className="text-[#e4557f]">どのタイプ？</span>
             </h1>
             <p className="mt-7 text-base md:text-lg leading-relaxed text-[#695c55] max-w-xl mx-auto lg:mx-0">
               24問から、主導権・刺激・感情・変化の好みを分析。<br className="hidden sm:block" />あなたの本音を16タイプのキャラクターにします。
@@ -49,7 +49,7 @@ export default function HomeContent() {
         </div>
       </section>
 
-      <section className="border-y-2 border-[#211b18] bg-[#211b18] px-4 py-5 text-white">
+      <section className="border-y-2 border-[#211b18] bg-[#352b52] px-4 py-5 text-white">
         <div className="mx-auto max-w-5xl flex flex-wrap justify-center gap-x-10 gap-y-2 text-sm font-black">
           <span>4つの本音軸</span><span className="text-[#ff8faa]">×</span><span>16タイプ</span><span className="text-[#75d5cc]">×</span><span>男女32キャラクター</span>
         </div>
@@ -58,9 +58,9 @@ export default function HomeContent() {
       <section className="px-4 py-20 text-center">
         <div className="mx-auto max-w-2xl">
           <p className="text-xs font-black tracking-[0.25em] text-[#e4557f]">MEET THE CHARACTERS</p>
-          <h2 className="mt-3 text-3xl md:text-5xl font-black">住人は見える。答えはまだ秘密。</h2>
+          <h2 className="mt-3 text-3xl md:text-5xl font-black">キャラクターは見える。答えはまだ秘密。</h2>
           <p className="mt-5 leading-relaxed text-[#695c55]">図鑑では全キャラクターの軽い自己紹介を公開。詳しい生態・相性・本能のカルテは、あなた自身の診断結果で分かります。</p>
-          <Link href="/gallery" className="mt-7 inline-flex items-center gap-2 font-black underline decoration-2 underline-offset-8">夜の住人図鑑を見る <ArrowRight className="h-4 w-4" /></Link>
+          <Link href="/gallery" className="mt-7 inline-flex items-center gap-2 font-black underline decoration-2 underline-offset-8">Night Type図鑑を見る <ArrowRight className="h-4 w-4" /></Link>
         </div>
       </section>
     </main>

@@ -30,21 +30,13 @@ body {
 
 /* Legacy pages inherit the current Night Type visual language. */
 .bg-\[\#111111\], .bg-\[\#0a0a12\] { background-color: #fff8ee !important; }
-.bg-\[\#1A1A1A\] { background-color: #ffffff !important; }
+.bg-\[\#1A1A1A\] { background-color: #352b52 !important; }
 .bg-\[\#222222\] { background-color: #fff2df !important; }
 .border-\[\#333333\] { border-color: #211b18 !important; }
-.text-\[\#FFFFFF\] { color: #211b18 !important; }
-.text-\[\#AAAAAA\] { color: #6f625b !important; }
+.text-\[\#FFFFFF\] { color: #ffffff !important; }
+.text-\[\#AAAAAA\] { color: #d8cfca !important; }
 .text-\[\#FF007F\] { color: #e4557f !important; }
 .text-\[\#00FFFF\] { color: #299f99 !important; }
-.text-gray-200, .text-gray-300 { color: #3f3733 !important; }
-.text-gray-400 { color: #6f625b !important; }
-.text-gray-500 { color: #8b7e76 !important; }
-.text-white { color: #211b18 !important; }
-[class~="bg-[#ff6f91]"].text-white,
-[class~="bg-[#FF007F]"].text-white,
-[class~="bg-black"].text-white,
-.luxury-button.text-white { color: #ffffff !important; }
 .border-gray-600, .border-gray-700, .border-gray-800\/30 { border-color: #211b18 !important; }
 .bg-\[\#1A1A1A\].rounded-lg {
   border-width: 2px !important;

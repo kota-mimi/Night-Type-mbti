@@ -95,7 +95,7 @@ export default function NotFound() {
         >
           {[
             { title: "Night Type診断", desc: "24問であなたの夜の本能を見つける", link: "/quiz/1" },
-            { title: "夜の住人図鑑", desc: "男女32体のキャラクターを見る", link: "/gallery" },
+            { title: "Night Type図鑑", desc: "男女32体のキャラクターを見る", link: "/gallery" },
             { title: "診断について", desc: "4つの分析軸を詳しく知る", link: "/about" }
           ].map((item, index) => (
             <motion.div
