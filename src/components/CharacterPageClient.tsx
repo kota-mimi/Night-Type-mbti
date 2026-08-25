@@ -28,7 +28,7 @@ export default function CharacterPageClient({ typeCode, gender }: Props) {
   }
 
   return (
-    <div className={`min-h-screen bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
+    <div className={`character-page min-h-screen bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
       <div className="container mx-auto px-4 py-8 max-w-md">
         
         {/* メインキャラクターカード */}

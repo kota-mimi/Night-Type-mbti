@@ -8,7 +8,7 @@ import { trackEvent } from '@/lib/analyticsEvents'
 
 const previewCharacters = [
   { src: '/characters/chibi/ARTN_male.png', rotate: '-rotate-3', label: '絶対君主' },
-  { src: '/characters/chibi/AFEC_female.png', rotate: 'rotate-2', label: '無邪気なティンカーベル' },
+  { src: '/characters/chibi/AFEC_female.png', rotate: 'rotate-2', label: '魔性の聖女' },
   { src: '/characters/chibi/PFTC_male.png', rotate: '-rotate-1', label: '性癖研究員' },
 ]
 

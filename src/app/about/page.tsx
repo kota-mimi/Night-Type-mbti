@@ -82,7 +82,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className={`bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
+    <div className={`paper-page bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
       {/* Removed floating orbs for flat design */}
       <div className="floating-orb orb-pink w-40 h-40 top-1/3 right-1/4" style={{animationDelay: '12s'}} />
       

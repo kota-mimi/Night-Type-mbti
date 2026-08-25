@@ -142,6 +142,47 @@ body {
   .result-report > .space-y-10 > .space-y-6 { padding: 20px 18px; }
 }
 
+/* Static information and character pages no longer inherit the old neon skin. */
+.paper-page .bg-\[\#1A1A1A\],
+.character-page .bg-\[\#1A1A1A\] { background-color: #ffffff !important; }
+.paper-page .text-white,
+.paper-page .text-\[\#FFFFFF\],
+.paper-page .text-gray-200,
+.paper-page .text-gray-300,
+.character-page .text-white,
+.character-page .text-gray-200,
+.character-page .text-gray-300 { color: #3f3733 !important; }
+.paper-page .text-gray-400,
+.paper-page .text-gray-500,
+.character-page .text-gray-400,
+.character-page .text-gray-500 { color: #6f625b !important; }
+.paper-page .bg-\[\#1A1A1A\].rounded-lg,
+.character-page .bg-\[\#1A1A1A\].rounded-lg,
+.character-page .bg-\[\#1A1A1A\].rounded-2xl {
+  border: 2px solid #211b18 !important;
+  border-radius: 26px !important;
+  box-shadow: 4px 4px 0 #211b18;
+}
+.character-page * { text-shadow: none !important; }
+.character-page h2[style] {
+  background: none !important;
+  color: #352b52 !important;
+  -webkit-text-fill-color: #352b52 !important;
+}
+.character-page button[style] {
+  background: #ff6f91 !important;
+  border-color: #211b18 !important;
+  animation: none !important;
+  box-shadow: 4px 4px 0 #211b18;
+  color: #ffffff !important;
+}
+.paper-page .luxury-button.text-white,
+.paper-page .bg-\[\#FF007F\] .text-white,
+.character-page .bg-blue-500.text-white {
+  background-color: #ff6f91 !important;
+  color: #ffffff !important;
+}
+
 /* Character Image - Simple drop shadow only */
 .character-popout {
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
