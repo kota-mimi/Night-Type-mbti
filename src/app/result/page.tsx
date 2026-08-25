@@ -181,7 +181,7 @@ export default function ResultPage() {
 
   if (isLoading) {
     return (
-      <div className={`bg-[#111111] flex items-center justify-center min-h-[50vh] pt-16 ${notoSansJP.className}`}>
+      <div className={`result-page bg-[#111111] flex items-center justify-center min-h-[50vh] pt-16 ${notoSansJP.className}`}>
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -197,7 +197,7 @@ export default function ResultPage() {
   
   if (!typeData) {
     return (
-      <div className={`bg-[#111111] flex items-center justify-center min-h-[50vh] pt-16 ${notoSansJP.className}`}>
+      <div className={`result-page bg-[#111111] flex items-center justify-center min-h-[50vh] pt-16 ${notoSansJP.className}`}>
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-200 mb-4">エラーが発生しました</h1>
           <button
@@ -212,7 +212,7 @@ export default function ResultPage() {
   }
 
   return (
-    <div className={`bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
+    <div className={`result-page bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
       {/* Removed floating orbs for flat design */}
       <div className="container mx-auto px-4 pt-8 pb-16 max-w-4xl relative z-10">
         

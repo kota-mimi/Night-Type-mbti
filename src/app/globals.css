@@ -106,6 +106,18 @@ body {
   box-shadow: 4px 4px 0 #211b18;
 }
 
+/* Result report uses light paper cards; keep long-form copy readable. */
+.result-page .text-gray-200,
+.result-page .text-gray-300 { color: #514741 !important; }
+.result-page .text-gray-400 { color: #6f625b !important; }
+.result-page .text-gray-500 { color: #8b7e76 !important; }
+.result-page .neon-card .text-white { color: #211b18 !important; }
+.result-page .bg-\[\#1A1A1A\] .text-white,
+.result-page .bg-\[\#1A1A1A\] .text-gray-200,
+.result-page .bg-\[\#1A1A1A\] .text-gray-300,
+.result-page .bg-\[\#1A1A1A\] .text-gray-400 { color: #f6f1ed !important; }
+.result-page * { text-shadow: none !important; }
+
 /* Character Image - Simple drop shadow only */
 .character-popout {
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
