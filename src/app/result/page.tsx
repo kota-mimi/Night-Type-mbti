@@ -626,77 +626,37 @@ export default function ResultPage() {
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {/* 最高のパートナー */}
-                    <div className="bg-[#1A1A1A] border border-green-500/30 rounded-lg p-6 relative overflow-hidden">
-                      {/* 背景キャラクター画像 - 無効化 
-                      <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
-                        <div className="animate-bounce-slow">
-                          {bestPartner?.code ? (
-                            <img 
-                              src={userGender === 'male' 
-                                ? `/characters/${bestPartner.code}_character.png`
-                                : `/characters/${bestPartner.code}_male_character.png`}
-                              alt={bestPartner.name} 
-                              className="w-32 h-32 object-contain"
-                              onError={(e) => {
-                                e.currentTarget.style.display = 'none';
-                                const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
-                                if (nextElement) nextElement.style.display = 'block';
-                              }}
-                            />
-                          ) : null}
-                          <span className="text-6xl" style={{display: bestPartner?.code ? 'none' : 'block'}}>
-                            {bestPartner ? (genderedDiagramTypes[targetGender]?.[bestPartner.code]?.emoji || '💕') : '💕'}
-                          </span>
+                    <div className="relative min-h-[240px] overflow-hidden rounded-[24px] border-2 border-[#4f9f69] bg-[#eaf8ef] p-6 shadow-[4px_4px_0_#211b18]">
+                      {bestPartner?.code && (
+                        <div className="pointer-events-none absolute -bottom-5 -right-5 h-44 w-44 opacity-[0.18] sm:opacity-25">
+                          <Image src={getChibiImagePath(bestPartner.code, targetGender)} alt="" fill sizes="176px" className="object-contain" />
                         </div>
-                      </div>
-                      */}
-                      <div className="text-center space-y-3 relative">
-                        <h3 className="text-lg font-bold text-green-400" style={{
-                          textShadow: '0 0 10px rgba(34, 197, 94, 0.5)'
-                        }}>最高のパートナー</h3>
+                      )}
+                      <div className="relative space-y-3 text-left">
+                        <h3 className="text-lg font-black text-[#287a45]">最高のパートナー</h3>
                         <h4 className="text-lg font-bold text-gray-200">
                           {bestPartner?.name || '相性の良いタイプ'}
                         </h4>
                       </div>
-                      <div className="text-sm leading-relaxed text-gray-300 mt-4 text-left">
+                      <div className="relative mt-4 text-left text-sm font-medium leading-relaxed text-[#514741] sm:pr-20">
                         <p>{bestReason || 'このタイプとの相性は抜群です。お互いの特性が補完し合い、素晴らしい関係を築くことができます。'}</p>
                       </div>
                     </div>
 
                     {/* 最悪の天敵 */}
-                    <div className="bg-[#1A1A1A] border border-red-500/30 rounded-lg p-6 relative overflow-hidden">
-                      {/* 背景キャラクター画像 - 無効化 
-                      <div className="absolute inset-0 flex items-center justify-center opacity-15 pointer-events-none">
-                        <div className="animate-float">
-                          {worstEnemy?.code ? (
-                            <img 
-                              src={userGender === 'male' 
-                                ? `/characters/${worstEnemy.code}_character.png`
-                                : `/characters/${worstEnemy.code}_male_character.png`}
-                              alt={worstEnemy.name} 
-                              className="w-32 h-32 object-contain"
-                              onError={(e) => {
-                                e.currentTarget.style.display = 'none';
-                                const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
-                                if (nextElement) nextElement.style.display = 'block';
-                              }}
-                            />
-                          ) : null}
-                          <span className="text-6xl" style={{display: worstEnemy?.code ? 'none' : 'block'}}>{worstEnemy ? (genderedDiagramTypes[targetGender]?.[worstEnemy.code]?.emoji || '⚠️') : '⚠️'}
-                            {worstEnemy ? (genderedDiagramTypes[targetGender]?.[worstEnemy.code]?.emoji || '⚠️') : '⚠️'}
-                          </span>
+                    <div className="relative min-h-[240px] overflow-hidden rounded-[24px] border-2 border-[#d06b75] bg-[#fff0f1] p-6 shadow-[4px_4px_0_#211b18]">
+                      {worstEnemy?.code && (
+                        <div className="pointer-events-none absolute -bottom-5 -right-5 h-44 w-44 opacity-[0.18] sm:opacity-25">
+                          <Image src={getChibiImagePath(worstEnemy.code, targetGender)} alt="" fill sizes="176px" className="object-contain" />
                         </div>
-                      </div>
-                      */}
-                      <div className="text-center space-y-3 relative">
-                        <h3 className="text-lg font-bold text-red-400" style={{
-                          textShadow: '0 0 10px rgba(239, 68, 68, 0.5)'
-                        }}>最悪の天敵</h3>
+                      )}
+                      <div className="relative space-y-3 text-left">
+                        <h3 className="text-lg font-black text-[#b84251]">最悪の天敵</h3>
                         <h4 className="text-lg font-bold text-gray-200">
                           {worstEnemy?.name || '相性の悪いタイプ'}
                         </h4>
                       </div>
-                      <div className="text-sm leading-relaxed text-gray-300 mt-4 text-left">
+                      <div className="relative mt-4 text-left text-sm font-medium leading-relaxed text-[#514741] sm:pr-20">
                         <p>{worstReason || 'このタイプとは価値観や行動パターンが大きく異なるため、理解し合うのが難しい関係です。'}</p>
                       </div>
                     </div>
