@@ -225,12 +225,12 @@ export default function ResultPage() {
         >
           
           {/* SNSにそのまま保存できる診断カード */}
-          <div id="share-card" className="mb-16 overflow-hidden rounded-[32px] border-2 border-[#211b18] bg-[#fff8ee] text-[#211b18] shadow-[6px_6px_0_#211b18]">
-            <div className="relative aspect-square w-full max-w-[620px] mx-auto">
-              <Image src={getChibiImagePath(userType, userGender)} alt={typeData.name} fill sizes="620px" className="object-cover" priority />
+          <div id="share-card" className="mx-auto mb-16 flex aspect-[4/5] w-full max-w-[560px] flex-col overflow-hidden rounded-[32px] border-2 border-[#211b18] bg-[#fff8ee] text-[#211b18] shadow-[6px_6px_0_#211b18]">
+            <div className="relative min-h-0 flex-1">
+              <Image src={getChibiImagePath(userType, userGender)} alt={typeData.name} fill sizes="(max-width: 640px) 100vw, 560px" className="object-cover" priority />
               <div className="absolute left-5 top-5 rounded-full border-2 border-[#211b18] bg-white px-4 py-2 text-sm font-black shadow-[2px_2px_0_#211b18]">NIGHT TYPE · {userType}</div>
             </div>
-            <div className="px-6 pb-8 text-center">
+            <div className="shrink-0 px-6 py-5 text-center md:py-6">
               <p className="text-xs font-black tracking-[0.25em] text-[#e4557f] mb-2">YOUR NIGHT CHARACTER</p>
               <h1 className="text-3xl md:text-5xl font-black tracking-tight">{typeData.name}</h1>
               <p className="mt-4 text-sm md:text-base font-bold leading-relaxed text-[#6f625b]">{typeData.catchcopy}</p>
