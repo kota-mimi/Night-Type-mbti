@@ -213,7 +213,7 @@ export default function ResultPage() {
   return (
     <div className={`result-page bg-[#111111] relative overflow-hidden ${notoSansJP.className}`}>
       {/* Removed floating orbs for flat design */}
-      <div className="container mx-auto px-4 pt-8 pb-16 max-w-4xl relative z-10">
+      <div className="container mx-auto max-w-4xl px-3 pb-12 pt-5 relative z-10 sm:px-4 sm:pt-8 sm:pb-16">
         
         {/* メインコンテンツカード */}
         <motion.div
@@ -232,9 +232,9 @@ export default function ResultPage() {
             </div>
             <div className="shrink-0 px-6 py-5 text-center md:py-6">
               <p className="text-xs font-black tracking-[0.25em] text-[#e4557f] mb-2">YOUR NIGHT CHARACTER</p>
-              <h1 className="text-3xl md:text-5xl font-black tracking-tight">{typeData.name}</h1>
-              <p className="mt-4 text-sm md:text-base font-bold leading-relaxed text-[#6f625b]">{typeData.catchcopy}</p>
-              <p className="mt-5 text-xs font-black">night-type.net</p>
+              <h1 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight">{typeData.name}</h1>
+              <p className="mt-3 text-xs sm:text-sm md:text-base font-bold leading-relaxed text-[#6f625b]">{typeData.catchcopy}</p>
+              <p className="mt-4 text-xs font-black">night-type.net</p>
             </div>
           </div>
 
@@ -250,7 +250,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className="text-center text-2xl font-black text-[#352b52]">
+              <h2 className="text-center text-xl sm:text-2xl font-black text-[#352b52]">
                 夜の生態レポート
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -277,7 +277,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="space-y-6"
             >
-              <h2 className="text-center text-2xl font-black text-[#352b52]">
+              <h2 className="text-center text-xl sm:text-2xl font-black text-[#352b52]">
                 あなたのエロさの正体
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -304,7 +304,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="space-y-6"
             >
-              <h2 className="text-center text-2xl font-black text-[#352b52]">
+              <h2 className="text-center text-xl sm:text-2xl font-black text-[#352b52]">
                 閲覧注意：本能のカルテ
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -331,7 +331,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="space-y-6"
             >
-              <h2 className="text-center text-2xl font-black text-[#352b52]">
+              <h2 className="text-center text-xl sm:text-2xl font-black text-[#352b52]">
                 夜の口癖・脳内
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -358,7 +358,7 @@ export default function ResultPage() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="space-y-6"
             >
-              <h2 className="text-center text-2xl font-black text-[#352b52]">
+              <h2 className="text-center text-xl sm:text-2xl font-black text-[#352b52]">
                 事後の賢者タイム
               </h2>
               <div className="text-sm md:text-base leading-relaxed text-gray-300 space-y-4 max-w-4xl mx-auto text-left">
@@ -594,7 +594,7 @@ export default function ResultPage() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
             <h2 className="text-center text-2xl font-black text-[#352b52]">
               相性チェック
@@ -619,7 +619,7 @@ export default function ResultPage() {
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     {/* 最高のパートナー */}
-                    <div className="relative min-h-[240px] overflow-hidden rounded-[24px] border-2 border-[#4f9f69] bg-[#eaf8ef] p-6 shadow-[4px_4px_0_#211b18]">
+                    <div className="relative min-h-[220px] overflow-hidden rounded-[24px] border-2 border-[#4f9f69] bg-[#eaf8ef] p-5 shadow-[4px_4px_0_#211b18] sm:min-h-[240px] sm:p-6">
                       <div className="relative space-y-3 text-left">
                         <h3 className="text-lg font-black text-[#287a45]">最高のパートナー</h3>
                         <h4 className="text-lg font-bold text-[#211b18]">
@@ -632,7 +632,7 @@ export default function ResultPage() {
                     </div>
 
                     {/* 最悪の天敵 */}
-                    <div className="relative min-h-[240px] overflow-hidden rounded-[24px] border-2 border-[#d06b75] bg-[#fff0f1] p-6 shadow-[4px_4px_0_#211b18]">
+                    <div className="relative min-h-[220px] overflow-hidden rounded-[24px] border-2 border-[#d06b75] bg-[#fff0f1] p-5 shadow-[4px_4px_0_#211b18] sm:min-h-[240px] sm:p-6">
                       <div className="relative space-y-3 text-left">
                         <h3 className="text-lg font-black text-[#b84251]">最悪の天敵</h3>
                         <h4 className="text-lg font-bold text-[#211b18]">
