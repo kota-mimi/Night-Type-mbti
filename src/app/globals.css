@@ -112,11 +112,35 @@ body {
 .result-page .text-gray-400 { color: #6f625b !important; }
 .result-page .text-gray-500 { color: #8b7e76 !important; }
 .result-page .neon-card .text-white { color: #211b18 !important; }
+.result-page .bg-\[\#1A1A1A\] { background-color: #f3edff !important; }
 .result-page .bg-\[\#1A1A1A\] .text-white,
 .result-page .bg-\[\#1A1A1A\] .text-gray-200,
 .result-page .bg-\[\#1A1A1A\] .text-gray-300,
-.result-page .bg-\[\#1A1A1A\] .text-gray-400 { color: #f6f1ed !important; }
+.result-page .bg-\[\#1A1A1A\] .text-gray-400 { color: #514741 !important; }
 .result-page * { text-shadow: none !important; }
+
+.result-report {
+  background: transparent;
+}
+
+.result-report > .space-y-10 > .space-y-6 {
+  padding: 24px;
+  background: #ffffff;
+  border: 2px solid #211b18;
+  border-radius: 24px;
+  box-shadow: 4px 4px 0 #211b18;
+}
+
+.result-report .bg-\[\#1A1A1A\].rounded-lg {
+  border-width: 2px !important;
+  border-radius: 22px !important;
+  box-shadow: 3px 3px 0 #211b18;
+}
+
+@media (max-width: 640px) {
+  .result-report > .space-y-10 { gap: 24px; }
+  .result-report > .space-y-10 > .space-y-6 { padding: 20px 18px; }
+}
 
 /* Character Image - Simple drop shadow only */
 .character-popout {

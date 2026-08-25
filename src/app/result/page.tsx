@@ -222,7 +222,7 @@ export default function ResultPage() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="neon-card p-8 md:p-12"
+          className="result-report"
         >
           
           {/* SNSにそのまま保存できる診断カード */}
@@ -499,14 +499,8 @@ export default function ResultPage() {
           >
             <div className="max-w-5xl mx-auto">
               {/* セクション見出し */}
-              <div className="text-center mb-12">
-                <h2 className={`text-2xl md:text-3xl font-bold mb-4 ${notoSansJP.className}`} style={{
-                  background: 'linear-gradient(135deg, #FF007F 0%, #00FFFF 50%, #9966FF 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 30px rgba(255, 0, 127, 0.3)'
-                }}>
+              <div className="text-center mb-8 md:mb-12">
+                <h2 className={`text-2xl md:text-3xl font-black mb-4 text-[#352b52] ${notoSansJP.className}`}>
                   あなたの夜を、もう一歩快適に
                 </h2>
                 <p className="text-sm text-gray-400 max-w-xl mx-auto">結果を読んだあとに興味があれば。Night Type編集部が用途別に選びやすい入口だけをまとめました。</p>
