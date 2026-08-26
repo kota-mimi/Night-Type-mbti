@@ -244,12 +244,12 @@ export default function ResultPage() {
         >
           
           {/* SNSにそのまま保存できる診断カード */}
-          <div id="share-card" className="mx-auto mb-16 flex aspect-[4/5] w-full max-w-[560px] flex-col overflow-hidden bg-[#fff8ee] text-[#211b18]">
-            <div className="relative min-h-0 flex-1 border-b-2 border-[#211b18]">
+          <div id="share-card" className="mx-auto mb-16 flex w-full max-w-[560px] flex-col overflow-hidden bg-[#fff8ee] text-[#211b18]">
+            <div className="relative aspect-square w-full border-b-2 border-[#211b18]">
               <Image src={getChibiImagePath(userType, userGender)} alt={typeData.name} fill sizes="(max-width: 640px) 100vw, 560px" className="object-cover" priority />
               <div className="absolute left-5 top-5 rounded-full border-2 border-[#211b18] bg-white px-4 py-2 text-sm font-black shadow-[2px_2px_0_#211b18]">NIGHT TYPE · {userType}</div>
             </div>
-            <div className="shrink-0 px-6 py-5 text-center md:py-6">
+            <div className="shrink-0 px-6 pb-8 pt-5 text-center md:py-6">
               <p className="text-xs font-black tracking-[0.25em] text-[#e4557f] mb-2">YOUR NIGHT CHARACTER</p>
               <h1 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight">{typeData.name}</h1>
               <p className="mt-3 text-xs sm:text-sm md:text-base font-bold leading-relaxed text-[#6f625b]">{typeData.catchcopy}</p>
