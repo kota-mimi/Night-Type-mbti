@@ -32,7 +32,7 @@ export default function Header() {
     <header 
       className={`sticky top-0 z-50 ${notoSansJP.className}`}
       style={{
-        backgroundColor: '#fff8ee',
+        backgroundColor: '#17152b',
         borderBottom: '2px solid #211b18',
         // GPU optimized for smooth rendering
         transform: 'translateZ(0)',
@@ -59,7 +59,7 @@ export default function Header() {
               <Link
                 key={item.key}
                 href={item.href}
-                className="font-black text-[#6f625b] transition-colors duration-200 hover:text-[#e4557f]"
+                className="font-black text-[#f7f0ff] transition-colors duration-200 hover:text-[#ff8faa]"
               >
                 {item.label}
               </Link>
@@ -72,9 +72,9 @@ export default function Header() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6 text-[#211b18]" />
+              <X className="w-6 h-6 text-[#f7f0ff]" />
             ) : (
-              <Menu className="w-6 h-6 text-[#211b18]" />
+              <Menu className="w-6 h-6 text-[#f7f0ff]" />
             )}
           </button>
         </div>
@@ -89,7 +89,7 @@ export default function Header() {
           transition={{ duration: 0.3, ease: 'easeOut' }}
           className="fixed inset-0 w-screen h-screen z-[9999] md:hidden flex flex-col justify-center items-center"
           style={{
-            backgroundColor: 'rgba(255, 248, 238, 0.98)',
+            backgroundColor: 'rgba(23, 21, 43, 0.98)',
             // GPU optimized for smooth rendering
             transform: 'translateZ(0)',
             backfaceVisibility: 'hidden'
@@ -99,9 +99,9 @@ export default function Header() {
           {/* Close Button */}
           <button
             onClick={() => setIsMenuOpen(false)}
-            className="absolute right-6 top-6 rounded-full border-2 border-[#211b18] bg-white p-3 shadow-[3px_3px_0_#211b18]"
+            className="absolute right-6 top-6 rounded-full border-2 border-[#f7f0ff] bg-[#352b52] p-3 shadow-[3px_3px_0_#0d0b18]"
           >
-            <X className="w-7 h-7 text-[#211b18]" />
+            <X className="w-7 h-7 text-[#f7f0ff]" />
           </button>
 
           {/* Menu Items */}
@@ -119,7 +119,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="block rounded-full border-2 border-[#211b18] bg-white px-8 py-4 text-2xl font-black text-[#211b18] shadow-[4px_4px_0_#211b18] transition hover:-translate-y-1"
+                  className="block rounded-full border-2 border-[#f7f0ff] bg-[#352b52] px-8 py-4 text-2xl font-black text-[#f7f0ff] shadow-[4px_4px_0_#0d0b18] transition hover:-translate-y-1"
                   onClick={(e) => {
                     e.stopPropagation()
                     setIsMenuOpen(false)

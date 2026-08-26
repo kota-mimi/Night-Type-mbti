@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t-2 border-[#211b18] bg-[#ffd166] py-10 text-[#211b18]">
+    <footer className="mt-16 border-t-2 border-[#0d0b18] bg-[#17152b] py-10 text-[#f7f0ff]">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center space-y-6">
           
@@ -18,7 +18,7 @@ export default function Footer() {
                 href="https://x.com/nighttype32" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="rounded-full border-2 border-[#211b18] bg-white px-4 py-2 font-black shadow-[2px_2px_0_#211b18] transition hover:-translate-y-0.5"
+                className="rounded-full border-2 border-[#f7f0ff] bg-[#352b52] px-4 py-2 font-black shadow-[2px_2px_0_#0d0b18] transition hover:-translate-y-0.5"
               >
                 <span className="text-sm font-medium">X (Twitter)</span>
               </a>
@@ -26,7 +26,7 @@ export default function Footer() {
                 href="https://www.instagram.com/night_type32/"
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="rounded-full border-2 border-[#211b18] bg-white px-4 py-2 font-black shadow-[2px_2px_0_#211b18] transition hover:-translate-y-0.5"
+                className="rounded-full border-2 border-[#f7f0ff] bg-[#352b52] px-4 py-2 font-black shadow-[2px_2px_0_#0d0b18] transition hover:-translate-y-0.5"
               >
                 <span className="text-sm font-medium">Instagram</span>
               </a>
@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
 
           {/* 区切り線 */}
-          <div className="h-0.5 bg-[#211b18]"></div>
+          <div className="h-0.5 bg-[#695b8f]"></div>
 
           {/* リーガルリンクセクション */}
           <div className="space-y-4">
@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
 
           {/* コピーライト */}
-          <div className="pt-4 text-xs font-bold text-[#6f625b]">
+          <div className="pt-4 text-xs font-bold text-[#b9afd0]">
             © 2026 Night Type. All rights reserved.
           </div>
 
