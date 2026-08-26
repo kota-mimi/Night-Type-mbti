@@ -20,6 +20,25 @@ const notoSansJP = Noto_Sans_JP({
   display: 'swap',
 })
 
+const shareTaglines: Record<string, string> = {
+  ARTN: '頼られるほど、夜の主導権を握るタイプ。',
+  AFTN: '仕事も遊びも、自分のペースで楽しむタイプ。',
+  AREN: '大切な人を包み込む、面倒見のいいタイプ。',
+  AFEN: '好きなものには一直線。愛嬌で惹きつけるタイプ。',
+  ARTC: '狙いを定めたら逃さない、情熱派タイプ。',
+  AFTC: '好奇心とひらめきで夜を変えるタイプ。',
+  AREC: '注目を味方にする、華やかなタイプ。',
+  AFEC: '自由な発想で空気を軽くするタイプ。',
+  PRTN: '静かな余裕で相手を惹きつけるタイプ。',
+  PFTN: '落ち着きと遊び心を両立するタイプ。',
+  PRTC: '誠実さの奥に熱を秘めたタイプ。',
+  PFTC: '想像力豊かに、ふたりの時間を楽しむタイプ。',
+  PREN: '安心感とやさしさで寄り添うタイプ。',
+  PFEN: '気まぐれさも魅力に変えるタイプ。',
+  PREC: '空気を読みながら、心地よく導くタイプ。',
+  PFEC: '好奇心のままに、夜を自由に彩るタイプ。',
+}
+
 export default function ResultPage() {
   const router = useRouter()
   const [userType, setUserType] = useState<string>('')
@@ -99,7 +118,7 @@ export default function ResultPage() {
     const characterKey = `${userType}-${userGender}`
     const characterSlug = characterSlugs[characterKey]
     const shareUrl = `${window.location.origin}/character/${characterSlug}`
-    const shareText = `私のNight Typeは「${typeData.name}」でした！\n${typeData.catchcopy}\n\nあなたも診断してみて👇`
+    const shareText = `私のNight Typeは「${typeData.name}」でした！\n${shareTaglines[userType] || typeData.catchcopy}\n\nあなたも診断してみて👇`
     
     const shareUrls = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
@@ -133,7 +152,7 @@ export default function ResultPage() {
         const shareUrl = `${window.location.origin}/character/${characterSlug}`
         const shareData = {
           title: `私のNight Typeは「${typeData.name}」`,
-          text: `${typeData.catchcopy}\n\nNight Typeで診断してみて！\n${shareUrl}`,
+          text: `${shareTaglines[userType] || typeData.catchcopy}\n\nNight Typeで診断してみて！\n${shareUrl}`,
           files: [file]
         }
 
