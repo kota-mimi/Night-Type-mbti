@@ -25,11 +25,20 @@ export default function GalleryPage() {
           <p className="text-[#6f625b] leading-relaxed">個性豊かな16タイプのキャラクター。<br className="hidden sm:block" />気になるタイプをタップして、プロフィールをのぞいてみよう。</p>
         </header>
 
-        <div className="flex justify-center mb-8">
+        <div className="mb-8 flex justify-center" aria-label="表示するキャラクター版">
           <div className="flex rounded-full bg-white border-2 border-[#211b18] p-1 shadow-[3px_3px_0_#211b18]">
             {(['male', 'female'] as const).map((gender) => (
-              <button key={gender} onClick={() => setSelectedGender(gender)} className={`rounded-full px-6 py-2 text-sm font-black transition ${selectedGender === gender ? 'bg-[#352b52] text-white' : 'text-[#6f625b]'}`}>
-                {gender === 'male' ? '男性版' : '女性版'}
+              <button
+                key={gender}
+                type="button"
+                aria-pressed={selectedGender === gender}
+                onClick={() => {
+                  setSelectedGender(gender)
+                  setSelectedType(null)
+                }}
+                className={`rounded-full px-5 py-2.5 text-sm font-black transition sm:px-6 ${selectedGender === gender ? 'bg-[#352b52] text-white' : 'text-[#6f625b] hover:bg-[#f3edff]'}`}
+              >
+                {gender === 'male' ? '男性キャラ' : '女性キャラ'}
               </button>
             ))}
           </div>
