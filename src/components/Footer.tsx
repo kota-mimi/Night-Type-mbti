@@ -7,6 +7,10 @@ export default function Footer() {
     <footer className="mt-16 border-t-2 border-[#0d0b18] bg-[#17152b] py-10 text-[#f7f0ff]">
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center space-y-6">
+          <div className="space-y-2">
+            <p className="text-lg font-black tracking-tight text-[#f7f0ff]">夜のあなたを、もっと自由に。</p>
+            <p className="text-xs font-medium text-[#b9afd0]">Night Type — 16タイプの夜のパーソナリティ診断</p>
+          </div>
           
           {/* SNSセクション */}
           <div className="space-y-4">
