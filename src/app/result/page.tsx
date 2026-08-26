@@ -82,6 +82,7 @@ export default function ResultPage() {
     }
 
     const typeCode = getTypeFromAnswers(answers)
+    sessionStorage.removeItem('night-type-quiz-active')
     trackEvent('quiz_complete', { type: typeCode, gender: savedGender || 'unknown' })
 
     try {
@@ -194,6 +195,7 @@ export default function ResultPage() {
 
   const handleRestart = () => {
     localStorage.removeItem('diet-quiz-answers')
+    sessionStorage.removeItem('night-type-quiz-active')
     router.push('/quiz/1')
   }
 

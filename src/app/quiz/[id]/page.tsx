@@ -13,6 +13,8 @@ const notoSansJP = Noto_Sans_JP({
   display: 'swap',
 })
 
+const QUIZ_SESSION_KEY = 'night-type-quiz-active'
+
 function loadSavedAnswers(): Answer[] {
   if (typeof window === 'undefined') return []
 
@@ -32,9 +34,11 @@ export default function QuizPage() {
   const pageNumber = parseInt(params.id as string)
   const questionGroup = getQuestionGroupByPage(pageNumber)
   const totalPages = getTotalPages()
+  const shouldStartFresh = pageNumber === 1 && typeof window !== 'undefined' && !sessionStorage.getItem(QUIZ_SESSION_KEY)
   
-  const [savedAnswers, setSavedAnswers] = useState<Answer[]>(loadSavedAnswers)
+  const [savedAnswers, setSavedAnswers] = useState<Answer[]>(() => shouldStartFresh ? [] : loadSavedAnswers())
   const [answers, setAnswers] = useState<{[key: number]: number}>(() => {
+    if (shouldStartFresh) return {}
     const groupIds = new Set(questionGroup?.map(question => question.id) ?? [])
     return Object.fromEntries(
       loadSavedAnswers()
@@ -47,6 +51,12 @@ export default function QuizPage() {
   // 診断開始時に前回の結果だけをクリアする
   useEffect(() => {
     if (pageNumber === 1) {
+      // 新しく診断を始めた時だけ前回の回答を初期化する。
+      // 同じ診断中の更新・戻る操作では途中回答を保持する。
+      if (!sessionStorage.getItem(QUIZ_SESSION_KEY)) {
+        localStorage.removeItem('diet-quiz-answers')
+      }
+      sessionStorage.setItem(QUIZ_SESSION_KEY, '1')
       localStorage.removeItem('diet-quiz-result-type')
     }
   }, [pageNumber])
@@ -112,6 +122,7 @@ export default function QuizPage() {
     if (pageNumber > 1) {
       router.push(`/quiz/${pageNumber - 1}`)
     } else {
+      sessionStorage.removeItem(QUIZ_SESSION_KEY)
       router.push('/')
     }
   }
