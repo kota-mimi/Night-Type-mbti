@@ -3,10 +3,11 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Home } from 'lucide-react'
+import { Home, Share2 } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { getChibiImagePath } from '@/data/chibiCharacters'
+import { trackEvent } from '@/lib/analyticsEvents'
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -19,12 +20,30 @@ interface Props {
   gender: 'male' | 'female'
 }
 
-export default function CharacterPageClient({ typeCode, gender }: Props) {
+export default function CharacterPageClient({ slug, typeCode, gender }: Props) {
   // 指定された性別のキャラクターデータを取得
   const character = genderedDiagramTypes[gender][typeCode]
   
   if (!character) {
     return <div>キャラクターが見つかりません</div>
+  }
+
+  const handleShare = async () => {
+    const url = `${window.location.origin}/character/${slug}`
+    const text = `Night Type「${character.name}」（${typeCode}）\n${character.catchcopy}`
+
+    trackEvent('character_share', { type: typeCode, gender })
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: `${character.name}｜Night Type`, text, url })
+        return
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+      }
+    }
+
+    await navigator.clipboard.writeText(url)
+    alert('キャラクターページのURLをコピーしました！')
   }
 
   return (
@@ -64,6 +83,15 @@ export default function CharacterPageClient({ typeCode, gender }: Props) {
             <h1 className="text-3xl font-black text-white">{character.name}</h1>
             <p className="mt-3 text-sm leading-relaxed text-gray-400">{character.catchcopy}</p>
           </div>
+
+          <button
+            type="button"
+            onClick={handleShare}
+            className="mb-6 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#f7f0ff] bg-[#352b52] px-5 py-3 font-black text-white transition hover:-translate-y-0.5"
+          >
+            <Share2 className="h-5 w-5" />
+            {character.name}をシェア
+          </button>
 
           {/* 基本生態 */}
           {character.basicEcology && (

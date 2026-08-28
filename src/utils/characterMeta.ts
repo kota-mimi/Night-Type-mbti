@@ -26,7 +26,7 @@ export function generateCharacterMetadata(slug: string): Metadata {
     }
   }
 
-  const title = `${character.name}（${typeCode}）| Night Type`
+  const title = `${character.name}（${typeCode}）の性格・特徴`
   const description = `${character.name}の詳細分析：${character.catchcopy} ${character.basicEcology} あなたのNight Typeを無料診断で発見しよう！`
   
   const url = `https://night-type.net/character/${slug}`
@@ -56,7 +56,7 @@ export function generateCharacterMetadata(slug: string): Metadata {
       telephone: false,
     },
     openGraph: {
-      title,
+      title: `${title}｜Night Type`,
       description,
       url,
       siteName: 'Night Type',
@@ -73,7 +73,7 @@ export function generateCharacterMetadata(slug: string): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: `${title}｜Night Type`,
       description,
       images: [imageUrl],
       creator: '@nighttype',

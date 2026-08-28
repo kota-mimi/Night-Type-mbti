@@ -43,5 +43,36 @@ export default async function CharacterPage({ params }: Props) {
     notFound()
   }
 
-  return <CharacterPageClient slug={slug} typeCode={typeCode} gender={gender} />
+  const url = `https://night-type.net/character/${slug}`
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ProfilePage',
+        name: `${character.name}（${typeCode}）の性格・特徴`,
+        description: `${character.catchcopy} ${character.basicEcology}`,
+        url,
+        inLanguage: 'ja-JP',
+        isPartOf: { '@type': 'WebSite', name: 'Night Type', url: 'https://night-type.net' },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://night-type.net' },
+          { '@type': 'ListItem', position: 2, name: 'Night Type図鑑', item: 'https://night-type.net/gallery' },
+          { '@type': 'ListItem', position: 3, name: character.name, item: url },
+        ],
+      },
+    ],
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <CharacterPageClient slug={slug} typeCode={typeCode} gender={gender} />
+    </>
+  )
 }

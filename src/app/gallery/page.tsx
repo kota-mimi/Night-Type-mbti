@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import { Sparkles, X } from 'lucide-react'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
 import { chibiCharacterArt, getChibiImagePath } from '@/data/chibiCharacters'
+import { characterSlugs } from '@/data/characterSlugs'
 
 export default function GalleryPage() {
   const [selectedGender, setSelectedGender] = useState<'male' | 'female'>('male')
@@ -58,6 +59,12 @@ export default function GalleryPage() {
                   <h2 className="font-black leading-tight">{type.name}</h2>
                   <p className="text-xs text-[#786a62] mt-2 line-clamp-1">{art?.motif}</p>
                   <button onClick={() => setSelectedType(typeCode)} className="mt-4 rounded-full border-2 border-[#211b18] bg-[#fff8ee] px-4 py-2 text-xs font-black shadow-[2px_2px_0_#211b18] transition hover:-translate-y-0.5">自己紹介を見る</button>
+                  <Link
+                    href={`/character/${characterSlugs[`${typeCode}-${selectedGender}`]}`}
+                    className="mt-3 text-xs font-bold text-[#695c55] underline decoration-2 underline-offset-4"
+                  >
+                    {type.name}の詳細ページ
+                  </Link>
                 </div>
               </motion.article>
             )
@@ -77,6 +84,12 @@ export default function GalleryPage() {
                   <h2 className="mt-1 text-xl font-black sm:text-2xl">{type.name}</h2>
                   <p className="mt-3 text-sm font-bold leading-relaxed text-[#6f625b]">「{type.catchcopy}」</p>
                   <Link href="/quiz/1" className="mt-4 inline-flex items-center gap-2 rounded-full border-2 border-[#211b18] bg-[#ff6f91] px-5 py-2.5 text-sm font-black text-white shadow-[3px_3px_0_#211b18]">自分のタイプを診断する</Link>
+                  <Link
+                    href={`/character/${characterSlugs[`${selectedType}-${selectedGender}`]}`}
+                    className="mt-4 block text-sm font-black underline decoration-2 underline-offset-4"
+                  >
+                    このキャラクターを詳しく見る
+                  </Link>
                 </div>
               </motion.div>
             </div>

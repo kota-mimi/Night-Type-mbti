@@ -4,11 +4,13 @@ import HomeContent from './HomeContent'
 
 
 export const metadata: Metadata = {
-  title: "夜のパーソナリティ診断｜あなたの夜の性格、見つかる",
-  description: "32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見。24問・約3分で完了。",
+  title: "大人の夜の性格診断・夜のMBTI風16タイプ",
+  description: "24問・約3分で、恋愛や親密な場面の本音を16タイプに分析。男女32キャラクターで楽しむ、登録不要の無料エンタメ診断です。",
+  alternates: { canonical: '/' },
   openGraph: {
-    title: "夜のパーソナリティ診断｜あなたの夜の性格、見つかる",
-    description: "32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見。24問・約3分で完了。",
+    title: "Night Type｜大人の夜の性格診断",
+    description: "24問で恋愛や親密な場面の本音を16タイプに。男女32キャラクターからあなたのNight Typeを診断。",
+    url: '/',
     images: [
       {
         url: "/og-image.png",
@@ -18,12 +20,12 @@ export const metadata: Metadata = {
       },
     ],
     type: 'website',
-    siteName: '夜のパーソナリティ診断',
+      siteName: 'Night Type',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '夜のパーソナリティ診断｜あなたの夜の性格、見つかる',
-    description: '32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見。24問・約3分で完了。',
+    title: 'Night Type｜大人の夜の性格診断',
+    description: '24問で恋愛や親密な場面の本音を16タイプに。男女32キャラクターで楽しむ無料診断。',
     images: ["/og-image.png"],
   },
 }

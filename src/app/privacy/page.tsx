@@ -8,6 +8,7 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata = {
   title: 'プライバシーポリシー | Night Type',
   description: 'Night Typeのプライバシーポリシー・個人情報の取り扱いについて',
+  alternates: { canonical: '/privacy' },
 }
 
 export default function PrivacyPage() {

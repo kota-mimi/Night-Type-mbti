@@ -12,9 +12,12 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: "Night Type｜あなたの夜の性格、見つかる",
-  description: "24問から、あなたの夜の本音を16タイプのキャラクターに。約3分・登録不要のエンタメ性格診断。",
-  keywords: "夜,性格,診断,MBTI,ライフスタイル,夜型,深夜",
+  title: {
+    default: "Night Type｜大人の夜の性格診断",
+    template: "%s｜Night Type",
+  },
+  description: "24問で恋愛や親密な場面の価値観を16タイプに分析。男女32キャラクターから、あなたのNight Typeが見つかる無料エンタメ診断です。",
+  keywords: ["大人の性格診断", "夜の性格診断", "16タイプ診断", "恋愛診断", "キャラクター診断"],
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://night-type.net'),
   authors: [{ name: "Night Type" }],
   creator: "Night Type",
@@ -23,9 +26,6 @@ export const metadata: Metadata = {
     email: false,
     address: false,
     telephone: false,
-  },
-  alternates: {
-    canonical: '/',
   },
   icons: {
     icon: [
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     siteName: 'Night Type',
     locale: 'ja_JP',
     type: 'website',
-    title: "Night Type｜あなたの夜の性格、見つかる",
-    description: "32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見。24問・約3分で完了。",
+    title: "Night Type｜大人の夜の性格診断",
+    description: "24問で恋愛や親密な場面の本音を16タイプに。男女32キャラクターで楽しむ無料エンタメ診断。",
     images: [
       {
         url: '/og-image.png',
@@ -52,8 +52,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Night Type｜あなたの夜の性格、見つかる",
-    description: "32種類の夜の性格診断で、あなたに最適な夜の過ごし方を発見。24問・約3分で完了。",
+    title: "Night Type｜大人の夜の性格診断",
+    description: "24問で恋愛や親密な場面の本音を16タイプに。男女32キャラクターで楽しむ無料エンタメ診断。",
     images: ['/og-image.png'],
   },
   robots: {

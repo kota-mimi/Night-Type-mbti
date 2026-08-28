@@ -9,6 +9,7 @@ const notoSansJP = Noto_Sans_JP({
 export const metadata = {
   title: 'お問い合わせ | Night Type',
   description: 'Night Typeへのお問い合わせ先について',
+  alternates: { canonical: '/contact' },
 }
 
 export default function ContactPage() {
