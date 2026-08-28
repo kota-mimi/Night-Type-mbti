@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/result', '/gender-selection', '/quiz/'],
+      disallow: ['/api/', '/result', '/gender-selection', '/quiz/', '/story-maker'],
     },
     sitemap: 'https://www.night-type.net/sitemap.xml',
     host: 'https://www.night-type.net',

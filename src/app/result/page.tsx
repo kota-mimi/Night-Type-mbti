@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Twitter, Instagram, Download, Copy } from 'lucide-react'
+import { Twitter, Instagram, Download, Copy, ImagePlus } from 'lucide-react'
 import { Noto_Sans_JP } from 'next/font/google'
 import { areAnswersValid, getTypeFromAnswers } from '@/lib/scoring'
 import { genderedDiagramTypes } from '@/data/diagramTypes'
@@ -49,7 +49,7 @@ export default function ResultPage() {
     // 性別情報を取得
     const savedGender = localStorage.getItem('user-gender')
     if (savedGender === 'male' || savedGender === 'female') {
-      setUserGender(savedGender)
+      setTimeout(() => setUserGender(savedGender), 0)
     }
 
     // 新しい診断の場合は前回の結果をクリア
@@ -736,6 +736,20 @@ export default function ResultPage() {
               </motion.button>
             </div>
           </div>
+
+          <motion.button
+            type="button"
+            onClick={() => {
+              trackEvent('story_maker_click', { type: userType, gender: userGender })
+              router.push('/story-maker')
+            }}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="mx-auto flex w-full max-w-sm items-center justify-center gap-2 rounded-full border-2 border-[#211b18] bg-[#ffd166] px-5 py-3.5 font-black text-[#211b18] shadow-[4px_4px_0_#211b18]"
+          >
+            <ImagePlus className="h-5 w-5" />
+            写真にキャラを貼ってシェア
+          </motion.button>
 
           <p className="text-center text-[11px] font-medium leading-relaxed text-[#8a7a71]">
             ※本診断はエンタメコンテンツです。医学的・心理学的な診断ではありません。
