@@ -3,15 +3,15 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "Night Type - 夜の性格診断",
-    "alternateName": ["Night Type", "ナイトタイプ診断", "夜のMBTI診断"],
+    "alternateName": ["Night Type", "ナイトタイプ", "ないとタイプ", "ナイトタイプ診断", "夜のMBTI風診断"],
     "description": "24問で恋愛や親密な場面の価値観を16タイプに分析する、18歳以上向けの無料エンタメ診断です。",
-    "url": "https://night-type.net",
+    "url": "https://www.night-type.net",
     "inLanguage": "ja-JP",
     "publisher": {
       "@type": "Organization",
       "name": "Night Type",
-      "url": "https://night-type.net",
-      "logo": "https://night-type.net/og-image.png"
+      "url": "https://www.night-type.net",
+      "logo": "https://www.night-type.net/og-image.png"
     }
   };
 

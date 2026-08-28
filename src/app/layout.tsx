@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   description: "24問で恋愛や親密な場面の価値観を16タイプに分析。男女32キャラクターから、あなたのNight Typeが見つかる無料エンタメ診断です。",
   keywords: ["大人の性格診断", "夜の性格診断", "16タイプ診断", "恋愛診断", "キャラクター診断"],
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://night-type.net'),
+  metadataBase: new URL('https://www.night-type.net'),
   authors: [{ name: "Night Type" }],
   creator: "Night Type",
   publisher: "Night Type",

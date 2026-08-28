@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/result', '/gender-selection', '/quiz/'],
     },
-    sitemap: 'https://night-type.net/sitemap.xml',
-    host: 'https://night-type.net',
+    sitemap: 'https://www.night-type.net/sitemap.xml',
+    host: 'https://www.night-type.net',
   }
 }

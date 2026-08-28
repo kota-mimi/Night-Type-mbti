@@ -29,6 +29,9 @@ export default function HomeContent() {
             <p className="mt-7 text-base md:text-lg leading-relaxed text-[#695c55] max-w-xl mx-auto lg:mx-0">
               24問から、主導権・刺激・感情・変化の好みを分析。<br className="hidden sm:block" />あなたの本音を16タイプのキャラクターにします。
             </p>
+            <p className="mt-3 text-xs font-bold text-[#8a7a71]">
+              Night Type（ナイトタイプ・ないとタイプ）は、18歳以上向けの無料エンタメ診断です。
+            </p>
             <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3 text-xs font-bold text-[#695c55]">
               <span className="inline-flex items-center gap-1.5"><Clock3 className="h-4 w-4" />約3分</span>
               <span className="inline-flex items-center gap-1.5"><LockKeyhole className="h-4 w-4" />登録不要</span>

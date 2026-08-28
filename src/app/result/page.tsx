@@ -255,7 +255,7 @@ export default function ResultPage() {
               <p className="text-xs font-black tracking-[0.25em] text-[#e4557f] mb-2">YOUR NIGHT CHARACTER</p>
               <h1 className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight">{typeData.name}</h1>
               <p className="mt-3 text-xs sm:text-sm md:text-base font-bold leading-relaxed text-[#6f625b]">{typeData.catchcopy}</p>
-              <p className="mt-4 text-xs font-black">night-type.net</p>
+              <p className="mt-4 text-xs font-black">www.night-type.net</p>
             </div>
           </div>
 

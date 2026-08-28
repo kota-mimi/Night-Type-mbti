@@ -43,7 +43,7 @@ export default async function CharacterPage({ params }: Props) {
     notFound()
   }
 
-  const url = `https://night-type.net/character/${slug}`
+  const url = `https://www.night-type.net/character/${slug}`
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -53,13 +53,13 @@ export default async function CharacterPage({ params }: Props) {
         description: `${character.catchcopy} ${character.basicEcology}`,
         url,
         inLanguage: 'ja-JP',
-        isPartOf: { '@type': 'WebSite', name: 'Night Type', url: 'https://night-type.net' },
+        isPartOf: { '@type': 'WebSite', name: 'Night Type', url: 'https://www.night-type.net' },
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://night-type.net' },
-          { '@type': 'ListItem', position: 2, name: 'Night Type図鑑', item: 'https://night-type.net/gallery' },
+          { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.night-type.net' },
+          { '@type': 'ListItem', position: 2, name: 'Night Type図鑑', item: 'https://www.night-type.net/gallery' },
           { '@type': 'ListItem', position: 3, name: character.name, item: url },
         ],
       },

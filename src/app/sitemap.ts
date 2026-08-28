@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { characterSlugs } from '@/data/characterSlugs'
 
-const SITE_URL = 'https://night-type.net'
+const SITE_URL = 'https://www.night-type.net'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const updatedAt = new Date('2026-08-28')
