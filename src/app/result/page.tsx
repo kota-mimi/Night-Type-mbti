@@ -696,7 +696,7 @@ export default function ResultPage() {
                 onClick={handleCopyLink}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 glass-button text-gray-300 hover:text-white rounded-full transition-all duration-300 flex items-center justify-center"
+                className="w-12 h-12 rounded-full border-2 border-[#211b18] bg-white text-[#352b52] shadow-[2px_2px_0_#211b18] transition-all duration-300 hover:bg-[#f3edff] flex items-center justify-center"
                 title="リンクをコピー"
               >
                 <Copy className="w-5 h-5" />
@@ -729,7 +729,7 @@ export default function ResultPage() {
                 onClick={handleDownloadImage}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="w-12 h-12 glass-button text-gray-300 hover:text-white rounded-full transition-all duration-300 flex items-center justify-center"
+                className="w-12 h-12 rounded-full border-2 border-[#211b18] bg-white text-[#352b52] shadow-[2px_2px_0_#211b18] transition-all duration-300 hover:bg-[#f3edff] flex items-center justify-center"
                 title="画像をダウンロード"
               >
                 <Download className="w-5 h-5" />
