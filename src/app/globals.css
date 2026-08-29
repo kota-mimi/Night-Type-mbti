@@ -145,6 +145,15 @@ body {
 .paper-page .text-gray-500,
 .character-page .text-gray-400,
 .character-page .text-gray-500 { color: #6f625b !important; }
+
+.character-page .character-share-button {
+  color: #ffffff !important;
+}
+
+.character-page .character-share-button svg {
+  color: #ffffff !important;
+  stroke: currentColor;
+}
 .paper-page .bg-\[\#1A1A1A\].rounded-lg,
 .character-page .bg-\[\#1A1A1A\].rounded-lg,
 .character-page .bg-\[\#1A1A1A\].rounded-2xl {

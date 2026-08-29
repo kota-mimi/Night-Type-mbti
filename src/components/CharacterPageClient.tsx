@@ -87,7 +87,7 @@ export default function CharacterPageClient({ slug, typeCode, gender }: Props) {
           <button
             type="button"
             onClick={handleShare}
-            className="mb-6 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#f7f0ff] bg-[#352b52] px-5 py-3 font-black text-white transition hover:-translate-y-0.5"
+            className="character-share-button mb-6 inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#211b18] bg-[#352b52] px-5 py-3 font-black text-white shadow-[3px_3px_0_#211b18] transition hover:-translate-y-0.5 hover:bg-[#46366d]"
           >
             <Share2 className="h-5 w-5" />
             {character.name}をシェア
