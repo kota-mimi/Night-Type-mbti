@@ -1,24 +1,26 @@
+import { genderedDiagramTypes } from '@/data/diagramTypes';
+
 // キャラクターIDと相性データの完全定義
 
 // ■ 1. キャラクターID定義 (Master Map)
 // ID: 1~16, Code: NightCode
 export const characterIdMap = {
-  1:  { code: 'ARTN', male: '絶対君主',           female: '冷徹な女帝' },
-  2:  { code: 'AFTN', male: '夜のCEO',            female: '氷の美貌' },
-  3:  { code: 'AREN', male: '過保護なパトロン',   female: '過保護なママ' },
-  4:  { code: 'AFEN', male: '愛の教祖',           female: '魔性の聖女' },
-  5:  { code: 'ARTC', male: '暴走ダンプカー',     female: '肉食系ハンター' },
-  6:  { code: 'AFTC', male: '夜のジョーカー',     female: '小悪魔な発明家' },
-  7:  { code: 'AREC', male: '自意識過剰なスター', female: 'スポットライト女優' },
-  8:  { code: 'AFEC', male: '気まぐれピーターパン', female: '無邪気なティンカーベル' },
-  9:  { code: 'PRTN', male: '生真面目な公務員',   female: '鉄壁のガードマン' },
-  10: { code: 'PFTN', male: 'ソロプレイヤー',     female: '冷めた脚本家' },
-  11: { code: 'PRTC', male: '無口なスナイパー',   female: '無口なテクニシャン' },
-  12: { code: 'PFTC', male: '性癖研究員',         female: '変態リケジョ' },
-  13: { code: 'PREN', male: '忠実な番犬',         female: '従順な夜の秘書' },
-  14: { code: 'PFEN', male: '愛の執行人',         female: '心中ロマンチスト' },
-  15: { code: 'PREC', male: '感度3000倍のオス猫', female: 'とろける猫' },
-  16: { code: 'PFEC', male: '夢見る詩人',         female: '悲劇のヒロイン' }
+  1:  { code: 'ARTN' },
+  2:  { code: 'AFTN' },
+  3:  { code: 'AREN' },
+  4:  { code: 'AFEN' },
+  5:  { code: 'ARTC' },
+  6:  { code: 'AFTC' },
+  7:  { code: 'AREC' },
+  8:  { code: 'AFEC' },
+  9:  { code: 'PRTN' },
+  10: { code: 'PFTN' },
+  11: { code: 'PRTC' },
+  12: { code: 'PFTC' },
+  13: { code: 'PREN' },
+  14: { code: 'PFEN' },
+  15: { code: 'PREC' },
+  16: { code: 'PFEC' }
 } as const;
 
 // ■ 2. 相性マトリクス (Compatibility Matrix)
@@ -74,7 +76,8 @@ export function getCharacterById(id: number, gender: 'male' | 'female') {
   
   return {
     code: character.code,
-    name: character[gender],
+    // 名前は図鑑・診断結果・詳細ページと同じマスターを参照する。
+    name: genderedDiagramTypes[gender][character.code].name,
     id
   };
 }

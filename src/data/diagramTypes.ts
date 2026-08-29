@@ -1,4 +1,4 @@
-import { DiagramTypes, GenderedDiagramTypes } from '@/types';
+import type { DiagramTypes, GenderedDiagramTypes } from '@/types';
 
 const maleTypes: DiagramTypes = {
   ARTN: { // Active, Real, Technical, Normal = 絶対君主
