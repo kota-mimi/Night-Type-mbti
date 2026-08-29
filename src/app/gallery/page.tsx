@@ -54,10 +54,9 @@ export default function GalleryPage() {
                 <div className="relative aspect-square" style={{ backgroundColor: art?.color || '#f5d8bd' }}>
                   <Image src={getChibiImagePath(typeCode, selectedGender)} alt={type.name} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover transition duration-300 group-hover:scale-105" priority={index < 4} />
                 </div>
-                <div className="p-4 text-center min-h-[150px] flex flex-col justify-center">
+                <div className="flex min-h-[132px] flex-col justify-center p-4 text-center">
                   <p className="text-xs font-black text-[#e4557f] mb-1">{typeCode}</p>
                   <h2 className="font-black leading-tight">{type.name}</h2>
-                  <p className="text-xs text-[#786a62] mt-2 line-clamp-1">{art?.motif}</p>
                   <button onClick={() => setSelectedType(typeCode)} className="mt-4 rounded-full border-2 border-[#211b18] bg-[#fff8ee] px-4 py-2 text-xs font-black shadow-[2px_2px_0_#211b18] transition hover:-translate-y-0.5">自己紹介を見る</button>
                   <Link
                     href={`/character/${characterSlugs[`${typeCode}-${selectedGender}`]}`}
